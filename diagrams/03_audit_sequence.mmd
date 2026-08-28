@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant P as Policy Contract
+  participant B as Beacon
+  participant C as Sampled Custodian
+  participant V as Audit Verifier
+  P->>P: Commit epoch roster, commitments, domains
+  B-->>P: Unpredictable epoch seed
+  P->>P: Sample s custodians
+  P-->>C: Canonical HashToGroup canary X, context, deadline
+  C-->>V: D_i = Y^x_i plus DLEQ proof
+  V->>V: Verify membership, proof, uniqueness, context
+  V-->>P: Valid/invalid response commitment
+  P->>P: Finalize at deadline; mark missing responses
+  P-->>P: Audit result and accountability evidence

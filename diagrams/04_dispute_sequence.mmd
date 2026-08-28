@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant U as Challenger
+  participant P as Policy Contract
+  participant V as Authorized Verifier
+  participant C as Custodian Committee
+  participant R as Re-execution Engine
+  U->>P: Dispute(record_id, reason, bond)
+  P->>P: Validate window and policy
+  P-->>V: Authorization token, deadline
+  V->>V: Fetch ciphertext and encapsulated key
+  V-->>C: Confidential partial-decryption request
+  C-->>V: Verified partial decryptions
+  V->>V: Combine at least t partials, recover K_r
+  V->>R: Decrypted inference record
+  R-->>P: Deterministic verdict / proof artifact
+  P-->>U: Settlement, bond result, fault evidence

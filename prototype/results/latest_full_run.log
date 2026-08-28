@@ -1,0 +1,117 @@
+{
+  "audit_passed": true,
+  "audit_valid_responses": 5,
+  "dispute_success": true,
+  "plaintext": "encrypted AI inference receipt"
+}
+{
+  "false_accept_probability": 0.01934628219389065,
+  "detection_probability": 0.9806537178061093
+}
+[
+  {
+    "name": "iid-10pct-uniform",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.99975,
+    "audit_pass_rate": 0.42905,
+    "catastrophic_rate": 0.00025,
+    "catastrophic_false_pass_rate": 0.0,
+    "catastrophic_detection_rate": 1.0,
+    "average_dispute_ready": 28.78005,
+    "sampling_strategy": "uniform",
+    "scenario": {
+      "name": "iid-10pct-uniform",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.1,
+      "domain_outage_probability": 0.0,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1001,
+      "sampling_strategy": "uniform",
+      "selective_withholders": 0
+    }
+  },
+  {
+    "name": "domain-20pct-uniform",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.8136,
+    "audit_pass_rate": 0.37125,
+    "catastrophic_rate": 0.1864,
+    "catastrophic_false_pass_rate": 0.0024141630901287556,
+    "catastrophic_detection_rate": 0.9975858369098712,
+    "average_dispute_ready": 25.0592,
+    "sampling_strategy": "uniform",
+    "scenario": {
+      "name": "domain-20pct-uniform",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.02,
+      "domain_outage_probability": 0.2,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1002,
+      "sampling_strategy": "uniform",
+      "selective_withholders": 0
+    }
+  },
+  {
+    "name": "domain-20pct-stratified",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.8143,
+    "audit_pass_rate": 0.33895,
+    "catastrophic_rate": 0.1857,
+    "catastrophic_false_pass_rate": 0.0,
+    "catastrophic_detection_rate": 1.0,
+    "average_dispute_ready": 25.0057,
+    "sampling_strategy": "stratified",
+    "scenario": {
+      "name": "domain-20pct-stratified",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.02,
+      "domain_outage_probability": 0.2,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1002,
+      "sampling_strategy": "stratified",
+      "selective_withholders": 0
+    }
+  },
+  {
+    "name": "selective-withholding-11",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.0,
+    "audit_pass_rate": 1.0,
+    "catastrophic_rate": 1.0,
+    "catastrophic_false_pass_rate": 1.0,
+    "catastrophic_detection_rate": 0.0,
+    "average_dispute_ready": 21.0,
+    "sampling_strategy": "uniform",
+    "scenario": {
+      "name": "selective-withholding-11",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.0,
+      "domain_outage_probability": 0.0,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1003,
+      "sampling_strategy": "uniform",
+      "selective_withholders": 11
+    }
+  }
+]
+{'n': 16, 'threshold': 11, 'repeats': 20, 'keygen_median_ms': 23.265540000011242, 'keygen_p95_ms': 25.38959999992585, 'seal_median_ms': 0.33781300021473726, 'partial_proof_median_ms': 0.7795999999871128, 'partial_verify_median_ms': 0.9920170000441431, 'open_median_ms': 11.820541499901083, 'open_p95_ms': 14.235523000024841}
+{'n': 32, 'threshold': 22, 'repeats': 20, 'keygen_median_ms': 96.48104749976483, 'keygen_p95_ms': 322.58930000034525, 'seal_median_ms': 0.465479000013147, 'partial_proof_median_ms': 0.8465310002065962, 'partial_verify_median_ms': 1.0031815002093936, 'open_median_ms': 24.67525000020032, 'open_p95_ms': 44.80837299979612}
+{'n': 64, 'threshold': 43, 'repeats': 12, 'keygen_median_ms': 440.0637030003054, 'keygen_p95_ms': 457.72082599978603, 'seal_median_ms': 0.4452865000530437, 'partial_proof_median_ms': 0.8232635000240407, 'partial_verify_median_ms': 1.0320530000171857, 'open_median_ms': 48.499306999929104, 'open_p95_ms': 54.40503199997693}
+.................                                                        [100%]
+17 passed in 0.26s

@@ -1,0 +1,10 @@
+flowchart TB
+  CA[Ciphertext Availability] --> DKA[Dispute-Key Availability]
+  VSR[Valid-Share Readiness] --> AD[Authorized Decryptability]
+  AKR[Authorized Key Release] --> AD
+  AD --> DKA
+  DDL[Dispute-Deadline Liveness] --> DKA
+  PAC[Public Accountability] -. detects and attributes failures .-> DKA
+  N1[CA does not imply DKA] -.-> CA
+  N2[PVSS correctness does not imply deadline response] -.-> VSR
+  L[Sampling is conditional evidence, not unconditional future proof] -.-> DKA

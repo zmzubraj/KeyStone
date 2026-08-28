@@ -1,0 +1,7 @@
+flowchart LR
+  A1[Invalid partial] --> C1[Feldman plus DLEQ verification] --> R1[Crypto soundness assumption]
+  A2[Non-response or churn] --> C2[Public deadline and response commitment] --> R2[Partial synchrony assumption]
+  A3[Equivocation] --> C3[Context-bound signed commitments] --> R3[Identity correctness]
+  A4[Correlated outage] --> C4[Domain diversity and stratified sampling] --> R4[Domain labels may be dishonest]
+  A5[Selective withholding] --> C5[Counterexample experiment and optional hidden request class] --> R5[Audits do not prove future cooperation]
+  A6[Early key-release collusion] --> C6[Threshold, rotation, policy gate] --> R6[Fewer than t collude before authorization]

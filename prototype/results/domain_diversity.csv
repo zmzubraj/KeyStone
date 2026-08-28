@@ -1,0 +1,5 @@
+domains,reconstruction_success_rate,catastrophic_rate
+2,0.719,0.281
+4,0.89095,0.10905
+8,0.89325,0.10675
+16,0.96635,0.03365

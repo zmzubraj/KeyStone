@@ -1,0 +1,21 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.45", fontname="DejaVu Sans", label="Uniform vs Domain-Stratified Sampling Under Correlated Failure", labelloc=t, fontsize=18];
+  node [shape=circle, width=0.38, fixedsize=true, style="filled", fillcolor="#EAF8EA", color="#444444", fontname="DejaVu Sans", fontsize=8];
+  edge [style=invis];
+
+  anchor [shape=point, width=0.01, label="", style=invis];
+  subgraph cluster_domains {
+    label="Committee n=32, four fault domains; Domain C is offline"; color="#999999"; style="rounded";
+    subgraph cluster_A { label="Domain A"; color="#83B58A"; A1[label="1"];A2[label="2"];A3[label="3"];A4[label="4"];A5[label="5"];A6[label="6"];A7[label="7"];A8[label="8"]; A1->A2->A3->A4->A5->A6->A7->A8; }
+    subgraph cluster_B { label="Domain B"; color="#83B58A"; B1[label="9"];B2[label="10"];B3[label="11"];B4[label="12"];B5[label="13"];B6[label="14"];B7[label="15"];B8[label="16"]; B1->B2->B3->B4->B5->B6->B7->B8; }
+    subgraph cluster_C { label="Domain C — OFFLINE"; color="#D88F8F"; C1[label="17",fillcolor="#FFE0E0"];C2[label="18",fillcolor="#FFE0E0"];C3[label="19",fillcolor="#FFE0E0"];C4[label="20",fillcolor="#FFE0E0"];C5[label="21",fillcolor="#FFE0E0"];C6[label="22",fillcolor="#FFE0E0"];C7[label="23",fillcolor="#FFE0E0"];C8[label="24",fillcolor="#FFE0E0"]; C1->C2->C3->C4->C5->C6->C7->C8; }
+    subgraph cluster_D { label="Domain D"; color="#83B58A"; D1[label="25"];D2[label="26"];D3[label="27"];D4[label="28"];D5[label="29"];D6[label="30"];D7[label="31"];D8[label="32"]; D1->D2->D3->D4->D5->D6->D7->D8; }
+    A8 -> anchor; B8 -> anchor; C8 -> anchor; D8 -> anchor;
+  }
+
+  U [shape=box, fixedsize=false, style="rounded,filled", fillcolor="#FFF4D6", label="Uniform sample s=8\nmay concentrate on a few domains\nand miss the failed domain"];
+  S [shape=box, fixedsize=false, style="rounded,filled", fillcolor="#E9F1FF", label="Domain-stratified sample s=8\nselects two per domain; a complete\ndomain outage is necessarily observed"];
+  anchor -> U [style=dashed, color="#555555", label="uniform nodes"];
+  anchor -> S [style=dashed, color="#555555", label="domain-aware allocation"];
+  {rank=same; U; S}
+}

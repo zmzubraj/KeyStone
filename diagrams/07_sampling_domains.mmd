@@ -1,0 +1,12 @@
+flowchart TB
+  A[Domain A: 8 online] --- B[Domain B: 8 online]
+  B --- C[Domain C: 8 offline]
+  C --- D[Domain D: 8 online]
+  U[Uniform sample s=8: may miss or under-sample a failed domain]
+  S[Stratified sample s=8: two samples per domain, complete outage observed]
+  A --> U
+  D --> U
+  A --> S
+  B --> S
+  C --> S
+  D --> S

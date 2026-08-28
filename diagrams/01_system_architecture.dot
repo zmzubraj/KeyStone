@@ -1,0 +1,37 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.55", fontname="DejaVu Sans", label="KEYSTONE System Architecture", labelloc=t, fontsize=20, splines=ortho];
+  node [shape=box, style="rounded,filled", fillcolor="#F7F7F7", color="#444444", fontname="DejaVu Sans", fontsize=11, margin="0.12,0.08"];
+  edge [color="#555555", fontname="DejaVu Sans", fontsize=9, arrowsize=0.75];
+
+  worker [label="Inference Worker\nAEAD-encrypt record with Kᵣ"];
+  da [label="Ciphertext DA Layer\nrecord + receipt + Enc₍PKₑ₎(Kᵣ)", fillcolor="#E9F1FF"];
+  beacon [label="Unpredictable Beacon"];
+  policy [label="Policy / Bulletin Board\nepochs, requests, deadlines, evidence", fillcolor="#FFF4D6"];
+  committee [label="Threshold Custodian Committee\nepoch shares skₑ,ᵢ + commitments", fillcolor="#EAF8EA"];
+  audit [label="Readiness Audit Verifier\ncanary partials + DLEQ proofs"];
+  auth [label="Authorized Verifier Set\npolicy token / fresh attestation", fillcolor="#F5E9FF"];
+  combiner [label="Threshold Combiner\nverify and combine ≥ t partials"];
+  reexec [label="Private Re-execution\nopen record + verify inference"];
+  verdict [label="Dispute Verdict\nsettlement / blame / slashing", fillcolor="#FFE9E9"];
+
+  {rank=same; worker; beacon}
+  {rank=same; da; policy}
+  {rank=same; audit; committee; auth}
+  {rank=same; combiner; reexec; verdict}
+
+  worker -> da [label="ciphertext record"];
+  beacon -> policy [label="randomness"];
+  da -> policy [label="record commitment", constraint=false];
+  policy -> committee [label="sampled canary audit"];
+  committee -> audit [label="partial + DLEQ proof"];
+  audit -> policy [label="result/evidence"];
+  policy -> auth [label="authorized dispute + deadline"];
+  da -> auth [label="ciphertext + key capsule"];
+  auth -> committee [label="confidential release request"];
+  committee -> combiner [label="verified partial decryptions"];
+  da -> combiner [label="Enc₍PKₑ₎(Kᵣ)"];
+  combiner -> reexec [label="Kᵣ"];
+  da -> reexec [label="encrypted record"];
+  reexec -> verdict [label="verification result"];
+  policy -> verdict [label="accountability evidence"];
+}

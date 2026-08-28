@@ -1,0 +1,14 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.35", fontname="DejaVu Sans", label="KEYSTONE Readiness Audit Sequence", labelloc=t, fontsize=18];
+  node [shape=box, width=4.2, style="rounded,filled", fillcolor="#F7F7F7", color="#444444", fontname="DejaVu Sans", fontsize=10, margin="0.14,0.10"];
+  edge [color="#555555", fontname="DejaVu Sans", fontsize=9, arrowsize=0.7];
+  p0 [label="1  Commit epoch roster, public commitments, and failure-domain labels"];
+  p1 [label="2  Unpredictable beacon finalizes the audit seed", fillcolor="#E9F1FF"];
+  p2 [label="3  Deterministically sample s custodians (uniform or stratified)"];
+  p3 [label="4  Derive canonical X = HashToGroup(epoch, slot, beacon); publish context and Δ"];
+  p4 [label="5  Each sampled custodian returns Dᵢ = Yˣⁱ and a context-bound DLEQ proof", fillcolor="#EAF8EA"];
+  p5 [label="6  Verify roster membership, uniqueness, context, and DLEQ validity"];
+  p6 [label="7  At Δ classify every sample as valid, invalid, or missing", fillcolor="#FFF4D6"];
+  p7 [label="8  Emit audit result plus objective evidence for replacement/slashing", fillcolor="#FFE9E9"];
+  p0 -> p1 -> p2 -> p3 -> p4 -> p5 -> p6 -> p7;
+}

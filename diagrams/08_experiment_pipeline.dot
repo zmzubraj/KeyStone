@@ -1,0 +1,23 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.4", ranksep="0.5", fontname="DejaVu Sans", label="Reproducible Minimum Publishable Prototype Pipeline", labelloc=t, fontsize=18];
+  node [shape=box, style="rounded,filled", fillcolor="#F7F7F7", color="#444444", fontname="DejaVu Sans", fontsize=10];
+  edge [color="#555555", fontname="DejaVu Sans", fontsize=8, arrowsize=0.7];
+  cfg [label="Frozen Config\nn, t, s, q, domains, random seeds", fillcolor="#E9F1FF"];
+  unit [label="Crypto Unit Tests\nshare / commitment / proof / KEM"];
+  demo [label="End-to-End Demo\nreadiness audit + authorized opening"];
+  sim [label="Adversarial Simulator\nIID, correlated domains, collusion, selective withholding"];
+  bench [label="Microbenchmarks\nprove, verify, threshold combine"];
+  data [label="Versioned CSV / JSON\nraw metrics + experiment manifest", fillcolor="#EAF8EA"];
+  figs [label="Publication Figures\nbounds, outages, strategies, limitation gap", fillcolor="#FFF4D6"];
+  claims [label="Claim–Evidence Matrix\neach claim tied to theorem, test, or figure"];
+  paper [label="Minimum Publishable Paper\nmethods + results + limitations", fillcolor="#F5E9FF"];
+  gate [label="Success Gates\nreproducibility, no overclaim, reviewer attacks", fillcolor="#FFE9E9"];
+
+  {rank=same; unit; demo; sim; bench}
+  {rank=same; figs; claims}
+  cfg -> unit; cfg -> demo; cfg -> sim; cfg -> bench;
+  unit -> data; demo -> data; sim -> data; bench -> data;
+  data -> figs; data -> claims;
+  figs -> paper; claims -> paper;
+  paper -> gate;
+}

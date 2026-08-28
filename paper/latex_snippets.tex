@@ -1,0 +1,48 @@
+% KEYSTONE paper-ready mathematical snippets
+
+\newcommand{\DKA}{\mathsf{DKA}}
+\newcommand{\AKR}{\mathsf{AKR}}
+\newcommand{\DDL}{\mathsf{DDL}}
+\newcommand{\PAC}{\mathsf{PAC}}
+\newcommand{\Ready}{\mathsf{Ready}}
+
+\paragraph{Dispute-key availability.}
+For record $r$ protected in epoch $E$, protocol $\Pi$ satisfies
+$(\varepsilon,\Delta_d)$-dispute-key availability for an execution class
+$\mathcal{X}$ if, after a valid authorization at time $\tau$, the authorized
+combiner obtains $t$ distinct valid decryption contributions by
+$\tau+\Delta_d$ with probability at least $1-\varepsilon$, conditioned on the
+readiness and network assumptions defining $\mathcal{X}$, while
+pre-authorization confidentiality holds.
+
+\begin{theorem}[Static catastrophic-state audit bound]
+Suppose $r<t$ of $n$ custodians are audit-ready throughout one audit and a
+uniform sample of size $s$ is drawn without replacement. If the audit accepts
+when at least $q$ sampled custodians return valid responses, then
+\[
+ \Pr[\mathsf{accept}\mid r]
+ = \sum_{j=q}^{\min\{s,r\}}
+   \frac{\binom{r}{j}\binom{n-r}{s-j}}{\binom{n}{s}}.
+\]
+The worst catastrophic state is $r=t-1$. For $q=s$,
+\[
+ \Pr[\mathsf{false\ accept}]
+ \leq \frac{\binom{t-1}{s}}{\binom{n}{s}}.
+\]
+\end{theorem}
+
+\begin{proposition}[No unconditional future guarantee]
+For every finite audit transcript there exists an execution that is identical
+through the final audit and in which at least $n-t+1$ custodians become
+unavailable before a later dispute. Hence audit acceptance alone cannot imply
+unconditional future reconstructability.
+\end{proposition}
+
+\paragraph{Threshold combination.}
+For partial decryptions $D_i=C_1^{f(i)}$ and Lagrange coefficients
+$\lambda_i=\prod_{j\in I,j\neq i}\frac{-j}{i-j}$,
+\[
+ \prod_{i\in I}D_i^{\lambda_i}
+ = C_1^{\sum_i \lambda_i f(i)}
+ = C_1^{f(0)}.
+\]
