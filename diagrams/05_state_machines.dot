@@ -1,0 +1,43 @@
+digraph G {
+  graph [rankdir=LR, compound=true, bgcolor="white", pad="0.25", nodesep="0.35", ranksep="0.7", fontname="DejaVu Sans", label="Epoch, Audit, and Dispute State Machines", labelloc=t, fontsize=18];
+  node [shape=ellipse, style="filled", fillcolor="#F7F7F7", color="#444444", fontname="DejaVu Sans", fontsize=9];
+  edge [color="#555555", fontname="DejaVu Sans", fontsize=8, arrowsize=0.65];
+
+  subgraph cluster_epoch {
+    label="Epoch"; color="#9CB7D9"; style="rounded";
+    e0 [label="CREATED"];
+    e1 [label="ACTIVE", fillcolor="#E9F1FF"];
+    e2 [label="REFRESHING"];
+    e3 [label="RETIRED"];
+    e0 -> e1 [label="roster + commitments"];
+    e1 -> e2 [label="scheduled refresh"];
+    e2 -> e1 [label="valid refreshed shares"];
+    e1 -> e3 [label="challenge window closed"];
+  }
+  subgraph cluster_audit {
+    label="Audit"; color="#92C79A"; style="rounded";
+    a0 [label="COMMITTED"];
+    a1 [label="SAMPLED"];
+    a2 [label="OPEN"];
+    a3 [label="PASSED", fillcolor="#EAF8EA"];
+    a4 [label="FAILED", fillcolor="#FFE9E9"];
+    a0 -> a1 [label="beacon"];
+    a1 -> a2 [label="canary posted"];
+    a2 -> a3 [label="≥q valid by Δ"];
+    a2 -> a4 [label="invalid/missing at Δ"];
+  }
+  subgraph cluster_dispute {
+    label="Dispute"; color="#C6A1D8"; style="rounded";
+    d0 [label="REQUESTED"];
+    d1 [label="AUTHORIZED"];
+    d2 [label="COLLECTING"];
+    d3 [label="OPENED", fillcolor="#F5E9FF"];
+    d4 [label="EXPIRED", fillcolor="#FFE9E9"];
+    d5 [label="RESOLVED"];
+    d0 -> d1 [label="policy accepts"];
+    d1 -> d2 [label="release request"];
+    d2 -> d3 [label="≥t valid partials"];
+    d2 -> d4 [label="deadline"];
+    d3 -> d5 [label="verdict"];
+  }
+}

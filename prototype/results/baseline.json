@@ -1,0 +1,102 @@
+[
+  {
+    "name": "iid-10pct-uniform",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.99975,
+    "audit_pass_rate": 0.42905,
+    "catastrophic_rate": 0.00025,
+    "catastrophic_false_pass_rate": 0.0,
+    "catastrophic_detection_rate": 1.0,
+    "average_dispute_ready": 28.78005,
+    "sampling_strategy": "uniform",
+    "scenario": {
+      "name": "iid-10pct-uniform",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.1,
+      "domain_outage_probability": 0.0,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1001,
+      "sampling_strategy": "uniform",
+      "selective_withholders": 0
+    }
+  },
+  {
+    "name": "domain-20pct-uniform",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.8136,
+    "audit_pass_rate": 0.37125,
+    "catastrophic_rate": 0.1864,
+    "catastrophic_false_pass_rate": 0.0024141630901287556,
+    "catastrophic_detection_rate": 0.9975858369098712,
+    "average_dispute_ready": 25.0592,
+    "sampling_strategy": "uniform",
+    "scenario": {
+      "name": "domain-20pct-uniform",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.02,
+      "domain_outage_probability": 0.2,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1002,
+      "sampling_strategy": "uniform",
+      "selective_withholders": 0
+    }
+  },
+  {
+    "name": "domain-20pct-stratified",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.8143,
+    "audit_pass_rate": 0.33895,
+    "catastrophic_rate": 0.1857,
+    "catastrophic_false_pass_rate": 0.0,
+    "catastrophic_detection_rate": 1.0,
+    "average_dispute_ready": 25.0057,
+    "sampling_strategy": "stratified",
+    "scenario": {
+      "name": "domain-20pct-stratified",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.02,
+      "domain_outage_probability": 0.2,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1002,
+      "sampling_strategy": "stratified",
+      "selective_withholders": 0
+    }
+  },
+  {
+    "name": "selective-withholding-11",
+    "trials": 20000,
+    "reconstruction_success_rate": 0.0,
+    "audit_pass_rate": 1.0,
+    "catastrophic_rate": 1.0,
+    "catastrophic_false_pass_rate": 1.0,
+    "catastrophic_detection_rate": 0.0,
+    "average_dispute_ready": 21.0,
+    "sampling_strategy": "uniform",
+    "scenario": {
+      "name": "selective-withholding-11",
+      "n": 32,
+      "threshold": 22,
+      "sample_size": 8,
+      "required_audit_responses": 8,
+      "independent_offline_probability": 0.0,
+      "domain_outage_probability": 0.0,
+      "domains": 4,
+      "trials": 20000,
+      "seed": 1003,
+      "sampling_strategy": "uniform",
+      "selective_withholders": 11
+    }
+  }
+]

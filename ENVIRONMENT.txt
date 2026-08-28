@@ -1,0 +1,11 @@
+Verification date: 2026-08-29
+OS: macOS 15.1 (Darwin 24.1.0, arm64)
+Hardware: Apple M4 Pro
+Logical CPUs: 12
+Python: 3.13.13 (uv-managed)
+uv: 0.11.8
+pytest: 9.1.1
+cryptography: 50.0.1
+matplotlib: 3.11.1
+forge: 1.5.1-stable (b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2)
+solc: 0.8.24 via Foundry

@@ -1,0 +1,13 @@
+sample_size,strategy,catastrophic_detection_rate,audit_pass_rate
+4,uniform,0.9535738142952572,0.518375
+4,stratified,1.0,0.3814375
+6,uniform,0.9947807933194155,0.449625
+6,stratified,1.0,0.3818125
+8,uniform,0.99763991908294,0.4060625
+8,stratified,1.0,0.3755
+10,uniform,1.0,0.3764375
+10,stratified,1.0,0.3719375
+12,uniform,1.0,0.3765
+12,stratified,1.0,0.364875
+16,uniform,1.0,0.3493125
+16,stratified,1.0,0.347625

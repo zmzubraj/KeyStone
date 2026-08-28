@@ -1,0 +1,26 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.55", fontname="DejaVu Sans", label="Property Separation: Data Availability Is Not Dispute-Key Availability", labelloc=t, fontsize=18];
+  node [shape=box, style="rounded,filled", fillcolor="#F7F7F7", color="#444444", fontname="DejaVu Sans", fontsize=10, margin="0.12,0.08"];
+  edge [color="#555555", arrowsize=0.7];
+
+  CA [label="CA\nCiphertext Availability", fillcolor="#E9F1FF"];
+  VSR [label="VSR\nValid-Share Readiness", fillcolor="#EAF8EA"];
+  AKR [label="AKR\nAuthorized Key Release", fillcolor="#F5E9FF"];
+  AD [label="AD\nAuthorized Decryptability", fillcolor="#FFF4D6"];
+  DDL [label="DDL\nDispute-Deadline Liveness", fillcolor="#FFE9E9"];
+  PAC [label="PAC\nPublic Accountability", fillcolor="#F0F0F0"];
+  DKA [label="DKA\nDispute-Key Availability\nPr[authorized reconstruction by Δ] ≥ 1−ε", shape=doubleoctagon, fillcolor="#DFF5F2", fontsize=12];
+  NOT1 [label="CA ⇏ DKA", shape=note, fillcolor="#FFFFFF"];
+  NOT2 [label="PVSS correctness ⇏ deadline response", shape=note, fillcolor="#FFFFFF"];
+  LIMIT [label="Sampling evidence is conditional;\nnot an unconditional future guarantee", shape=note, fillcolor="#FFFFFF"];
+
+  CA -> DKA;
+  VSR -> AD;
+  AKR -> AD;
+  AD -> DKA;
+  DDL -> DKA;
+  PAC -> DKA [style=dashed, label="detect / attribute failures"];
+  NOT1 -> CA [style=dotted, arrowhead=none];
+  NOT2 -> VSR [style=dotted, arrowhead=none];
+  LIMIT -> DKA [style=dotted, arrowhead=none];
+}

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keystone-mpp"
+version = "0.1.0"
+description = "Minimum publishable prototype for auditable dispute-key availability"
+requires-python = ">=3.11"
+dependencies = [
+  "cryptography>=42.0",
+  "matplotlib>=3.8"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+keystone = "keystone.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

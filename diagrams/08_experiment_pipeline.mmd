@@ -1,0 +1,14 @@
+flowchart LR
+  C[Frozen config: n,t,s,q,domains,seeds] --> U[Crypto unit tests]
+  C --> D[End-to-end audit and dispute demo]
+  C --> S[Adversarial simulator]
+  C --> B[Microbenchmarks]
+  U --> R[Versioned CSV/JSON and manifest]
+  D --> R
+  S --> R
+  B --> R
+  R --> F[Publication figures]
+  R --> M[Claim-evidence matrix]
+  F --> P[MPP paper]
+  M --> P
+  P --> G[Publication success gates]

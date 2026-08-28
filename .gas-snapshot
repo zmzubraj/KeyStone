@@ -1,0 +1,2 @@
+KeystoneBulletinBoardTest:testAuditFinalizesWithMissingBitmap() (gas: 246178)
+KeystoneBulletinBoardTest:testEquivocationExcludesResponse() (gas: 240867)

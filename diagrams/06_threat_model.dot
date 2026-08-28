@@ -1,0 +1,37 @@
+digraph G {
+  graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.75", fontname="DejaVu Sans", label="Threat Model, Controls, and Residual Risk", labelloc=t, fontsize=18];
+  node [shape=box, style="rounded,filled", fillcolor="#F7F7F7", color="#444444", fontname="DejaVu Sans", fontsize=9];
+  edge [color="#555555", fontname="DejaVu Sans", fontsize=8, arrowsize=0.65];
+
+  subgraph cluster_a { label="Adversary / Fault"; color="#D88F8F"; style="rounded";
+    a1 [label="Invalid share or partial"];
+    a2 [label="Non-response / churn"];
+    a3 [label="Equivocation"];
+    a4 [label="Correlated cloud/region outage"];
+    a5 [label="Adaptive selective withholding"];
+    a6 [label="Early key-release collusion"];
+  }
+  subgraph cluster_c { label="KEYSTONE Control"; color="#83B58A"; style="rounded";
+    c1 [label="Feldman commitment + DLEQ verification", fillcolor="#EAF8EA"];
+    c2 [label="Public deadline + response commitment", fillcolor="#EAF8EA"];
+    c3 [label="Context-bound signatures / duplicate detection", fillcolor="#EAF8EA"];
+    c4 [label="Domain diversity + stratified audit", fillcolor="#EAF8EA"];
+    c5 [label="Explicit attack experiment; optional hidden request class", fillcolor="#FFF4D6"];
+    c6 [label="Threshold assumption + epoch rotation + policy gate", fillcolor="#EAF8EA"];
+  }
+  subgraph cluster_r { label="Residual / Assumption"; color="#A5A5A5"; style="rounded";
+    r1 [label="Cryptographic soundness assumption"];
+    r2 [label="Partial synchrony and public inclusion"];
+    r3 [label="Metadata and identity correctness"];
+    r4 [label="Domain labels may be dishonest"];
+    r5 [label="Audits do not prove future cooperation", fillcolor="#FFE9E9"];
+    r6 [label="Fewer than t custodians collude before authorization"];
+  }
+
+  a1 -> c1 -> r1;
+  a2 -> c2 -> r2;
+  a3 -> c3 -> r3;
+  a4 -> c4 -> r4;
+  a5 -> c5 -> r5;
+  a6 -> c6 -> r6;
+}

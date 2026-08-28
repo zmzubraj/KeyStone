@@ -1,0 +1,58 @@
+[
+  {
+    "name": "iid-10pct-uniform",
+    "n": 32,
+    "threshold": 22,
+    "sample_size": 8,
+    "required_audit_responses": 8,
+    "independent_offline_probability": 0.10,
+    "domain_outage_probability": 0.0,
+    "domains": 4,
+    "trials": 20000,
+    "seed": 1001,
+    "sampling_strategy": "uniform",
+    "selective_withholders": 0
+  },
+  {
+    "name": "domain-20pct-uniform",
+    "n": 32,
+    "threshold": 22,
+    "sample_size": 8,
+    "required_audit_responses": 8,
+    "independent_offline_probability": 0.02,
+    "domain_outage_probability": 0.20,
+    "domains": 4,
+    "trials": 20000,
+    "seed": 1002,
+    "sampling_strategy": "uniform",
+    "selective_withholders": 0
+  },
+  {
+    "name": "domain-20pct-stratified",
+    "n": 32,
+    "threshold": 22,
+    "sample_size": 8,
+    "required_audit_responses": 8,
+    "independent_offline_probability": 0.02,
+    "domain_outage_probability": 0.20,
+    "domains": 4,
+    "trials": 20000,
+    "seed": 1002,
+    "sampling_strategy": "stratified",
+    "selective_withholders": 0
+  },
+  {
+    "name": "selective-withholding-11",
+    "n": 32,
+    "threshold": 22,
+    "sample_size": 8,
+    "required_audit_responses": 8,
+    "independent_offline_probability": 0.0,
+    "domain_outage_probability": 0.0,
+    "domains": 4,
+    "trials": 20000,
+    "seed": 1003,
+    "sampling_strategy": "uniform",
+    "selective_withholders": 11
+  }
+]

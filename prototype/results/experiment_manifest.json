@@ -1,0 +1,26 @@
+{
+  "datasets": [
+    "theoretical_bound.csv",
+    "iid_failure_sweep.csv",
+    "domain_diversity.csv",
+    "selective_withholding.csv",
+    "sampling_strategy.csv"
+  ],
+  "figures": [
+    "figure_1_theoretical_detection_bound.png",
+    "figure_1_theoretical_detection_bound.svg",
+    "figure_2_iid_failure_sweep.png",
+    "figure_2_iid_failure_sweep.svg",
+    "figure_3_domain_diversity.png",
+    "figure_3_domain_diversity.svg",
+    "figure_4_selective_withholding_gap.png",
+    "figure_4_selective_withholding_gap.svg",
+    "figure_5_sampling_strategy.png",
+    "figure_5_sampling_strategy.svg"
+  ],
+  "notes": [
+    "Monte Carlo outputs are deterministic for the frozen seeds.",
+    "The selective-withholding experiment intentionally demonstrates a protocol limitation.",
+    "Production claims require repeating experiments on real distributed nodes and a standard cryptographic library."
+  ]
+}

@@ -1,0 +1,23 @@
+stateDiagram-v2
+  state Epoch {
+    [*] --> CREATED
+    CREATED --> ACTIVE: roster + commitments
+    ACTIVE --> REFRESHING: scheduled refresh
+    REFRESHING --> ACTIVE: valid refreshed shares
+    ACTIVE --> RETIRED: challenge window closed
+  }
+  state Audit {
+    [*] --> COMMITTED
+    COMMITTED --> SAMPLED: beacon
+    SAMPLED --> OPEN: canary posted
+    OPEN --> PASSED: at least q valid by deadline
+    OPEN --> FAILED: invalid or missing at deadline
+  }
+  state Dispute {
+    [*] --> REQUESTED
+    REQUESTED --> AUTHORIZED: policy accepts
+    AUTHORIZED --> COLLECTING
+    COLLECTING --> OPENED: at least t valid partials
+    COLLECTING --> EXPIRED: deadline
+    OPENED --> RESOLVED: verdict
+  }

@@ -1,0 +1,14 @@
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.25", ranksep="0.35", fontname="DejaVu Sans", label="Authorized Dispute Opening Sequence", labelloc=t, fontsize=18];
+  node [shape=box, width=4.2, style="rounded,filled", fillcolor="#F7F7F7", color="#444444", fontname="DejaVu Sans", fontsize=10, margin="0.14,0.10"];
+  edge [color="#555555", fontname="DejaVu Sans", fontsize=9, arrowsize=0.7];
+  d0 [label="1  Challenger posts bond, record ID, and dispute reason"];
+  d1 [label="2  Policy validates challenge window and authorizes a verifier set", fillcolor="#FFF4D6"];
+  d2 [label="3  Verifier fetches the ciphertext record and threshold-KEM capsule", fillcolor="#E9F1FF"];
+  d3 [label="4  Custodians return confidential partial decryptions with validity proofs", fillcolor="#EAF8EA"];
+  d4 [label="5  Combiner verifies and combines at least t valid partials"];
+  d5 [label="6  Recover Kᵣ and AEAD-decrypt only inside the authorized environment", fillcolor="#F5E9FF"];
+  d6 [label="7  Re-execute inference and verify the receipt/policy"];
+  d7 [label="8  Publish verdict, settle bond, and attribute protocol faults", fillcolor="#FFE9E9"];
+  d0 -> d1 -> d2 -> d3 -> d4 -> d5 -> d6 -> d7;
+}
