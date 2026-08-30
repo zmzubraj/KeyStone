@@ -34,16 +34,30 @@ Frozen now:
 - failed or contradictory runs remain in the evidence ledger and cannot be
   silently excluded;
 - no numeric success, futility, or performance thresholds may be backfit from
-  the existing exploratory outputs.
+  the existing exploratory outputs;
+- the result-blind PC03 draft amendment freezes 32 primary and four reserve seed
+  blocks per included cell, 4,096 independent synthetic model draws per block,
+  131,072 primary draws per included cell, and the complete deterministic seed
+  schedule for one IID baseline cell, one stratified-versus-uniform `s=8`
+  matched cell, and one selective-withholding `w=11` cell;
+- each included family has one primary cell, so no within-family primary
+  multiplicity adjustment is required; optional secondary tests use Holm;
+- `RID-C003-CORR-001` is
+  `EXCLUDED_PENDING_TRUTHFUL_DOMAIN_LABEL_SOURCE`; current correlated-domain
+  outputs remain exploratory and cannot determine a confirmatory denominator;
+- `RID-C003-STRAT-001` and `RID-C003-SW-001` remain paired within synthetic
+  draw and seed block; unpaired substitution is prohibited;
+- `RID-C003-DEADLINE-001` is `EXCLUDED_PENDING_ENVIRONMENT_PROFILE`.
 
 Frozen as unresolved and delegated:
 
-- replicate counts, precision targets, and any quantitative acceptance
-  tolerances for `RID-C003-IID-001`, `RID-C003-CORR-001`,
-  `RID-C003-STRAT-001`, `RID-C003-SW-001`, and `RID-C003-DEADLINE-001`
-  belong to `research-case/03-design/power-or-precision.md`;
+- the three included stochastic cells have exact draft counts and
+  precision targets in `pc03-prospective-amendment.md` and
+  `pc03-prospective-counts.csv`, but they remain non-executable until an
+  independent methods verifier accepts the denominator, pairing, stream,
+  multiplicity, and analysis rules and a separate start decision is signed;
 - the generated deadline environment profiles are role-only placeholders with
-  `UNRESOLVED_BEFORE_EXECUTION` for the environment profile, run-day block,
+  `EXCLUDED_PENDING_ENVIRONMENT_PROFILE` for the environment profile, run-day block,
   deadline interpretation, trace denominator, precision target, and
   multiplicity rule;
 - any distributed execution remains prohibited until the environment profile,
@@ -61,12 +75,16 @@ Frozen as unresolved and delegated:
 
 Preregistration draft timestamp: `2026-08-29 Asia/Dhaka`
 
+PC03 result-blind amendment timestamp: `2026-08-30 Asia/Dhaka`
+
 Evidence cutoff used for freezing this draft:
 
 - local unpublished workspace artifacts available through `2026-08-29`;
 - no new public-web or external-source material was introduced by this task;
 - existing exploratory results were read only as feasibility context and were
-  not used to derive confirmatory thresholds.
+  not used to derive confirmatory thresholds;
+- count formulas use only the prespecified family sizes, alpha, absolute-error
+  targets, bounded outcome ranges, and synthetic Monte Carlo draw contract.
 
 ## Deviations
 

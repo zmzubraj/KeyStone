@@ -10,11 +10,11 @@
     },
     {
       "path": "research-case/03-design/analysis-plan.md",
-      "sha256": "ab5a01e12b8b2e65275ad9317aad219e3219c63c45395e6274f68dc049c915a1"
+      "sha256": "ef2c05bff11d9c7aca886737d342eaa77f5c9f26096869e9b9eba9bfb313c1ef"
     },
     {
       "path": "research-case/03-design/power-or-precision.md",
-      "sha256": "b8488329b5e851db18f7a8ba923c308387845772b59d3d23ea737d992ded7993"
+      "sha256": "dfb678063d914134d78950620654d8907c84784f612bc529cd53a6518886bde5"
     },
     {
       "path": "research-case/03-design/protocol.md",
@@ -22,7 +22,7 @@
     },
     {
       "path": "research-case/program-state.json",
-      "sha256": "e1a8185c07a300a6b3d1c61f50d7f4ada9ddabffdcccabd52505b4645fda040a"
+      "sha256": "c39bb9e4398eec10edc77030900433d063afd4cd290a548871cbf9a8b15192b0"
     }
   ],
   "integrity_artifacts": [

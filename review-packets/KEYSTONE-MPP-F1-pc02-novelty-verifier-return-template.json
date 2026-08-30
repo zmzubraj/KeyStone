@@ -1,0 +1,173 @@
+{
+  "artifact_dispositions": [
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/novelty-claim-specification.md",
+      "residual_uncertainty": "",
+      "revision": "1",
+      "sha256": "933c027ede5ddcf2379731f9022f64d0d6ad3fc004187dfe66a9276fec28c7af",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/search-protocol.md",
+      "residual_uncertainty": "",
+      "revision": "3",
+      "sha256": "ec9e4b57c22d81ede9aaba8ec37b332df9df04eee720f5512a390b96ea85b3df",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/prior-art-query-log.json",
+      "residual_uncertainty": "",
+      "revision": "1",
+      "sha256": "b367f53057b21d10097aeb7f7d04393903b77e52f19a0104011af1918c7e52cd",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/prior-art-raw-snapshots.json",
+      "residual_uncertainty": "",
+      "revision": "1",
+      "sha256": "124df5b63e65a22ed68f0800587623e53cb73b504e5349f38f4efe79e398430f",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/prior-art-dedup-report.json",
+      "residual_uncertainty": "",
+      "revision": "1",
+      "sha256": "8bd6c6fbbe15a27fdcd134e0bfc35781c1093f8f81b422480435731627319d8a",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/search-coverage.csv",
+      "residual_uncertainty": "",
+      "revision": "1",
+      "sha256": "dca3b3a2eec9733447f431b142708fec3c0e7f5da00dd1c2e0e7f29a8646dc4f",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/evidence-ledger.csv",
+      "residual_uncertainty": "",
+      "revision": "3",
+      "sha256": "b909f908c1ec8471f0273757776b97caa0d85aa216441b44e520fe8e99ce3080",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/independent-search-challenge.md",
+      "residual_uncertainty": "",
+      "revision": "1",
+      "sha256": "85336ce474c9c5320c40bc10aa50180f7d1174551cc46eb76daeb52df7722263",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/novelty-matrix.csv",
+      "residual_uncertainty": "",
+      "revision": "3",
+      "sha256": "5692d14ace4267f949163f7f9cb2bb06daee00bffd2223b725c43157c4c1c3cd",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/01-novelty/citation-audit.md",
+      "residual_uncertainty": "",
+      "revision": "3",
+      "sha256": "4f4c96cdf5d11032c707d6b9ff17db5963dcd960b63927eb46dd9257e08e65eb",
+      "verification_event_id": ""
+    }
+  ],
+  "author_metadata_included": false,
+  "canonical_phase": "INTAKE",
+  "contract_timestamp": "2026-08-29T00:18:50Z",
+  "may_assert_novelty": false,
+  "may_authorize_execution": false,
+  "may_promote_phase": false,
+  "overall_disposition": "UNANSWERED",
+  "question_responses": [
+    {
+      "access_limitations": "",
+      "decisive_overlap_or_differentiator": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Is the ciphertext-availability versus dispute-key-serviceability distinction materially explicit in a stronger predecessor?",
+      "question_id": "PC02-Q01",
+      "rationale": "",
+      "strongest_predecessor": ""
+    },
+    {
+      "access_limitations": "",
+      "decisive_overlap_or_differentiator": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does a predecessor already combine a pre-authorization non-production partial-decryption readiness drill with a present-serviceability estimand?",
+      "question_id": "PC02-Q02",
+      "rationale": "",
+      "strongest_predecessor": ""
+    },
+    {
+      "access_limitations": "",
+      "decisive_overlap_or_differentiator": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does prior work already provide equivalent catastrophic false-accept analysis tied to that drill?",
+      "question_id": "PC02-Q03",
+      "rationale": "",
+      "strongest_predecessor": ""
+    },
+    {
+      "access_limitations": "",
+      "decisive_overlap_or_differentiator": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does prior work already tie correlation-aware or failure-domain sampling to the same readiness decision?",
+      "question_id": "PC02-Q04",
+      "rationale": "",
+      "strongest_predecessor": ""
+    },
+    {
+      "access_limitations": "",
+      "decisive_overlap_or_differentiator": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Is the surviving contribution best disposed as NOVELTY_SURVIVES, REFRAME, or STOP?",
+      "question_id": "PC02-Q05",
+      "rationale": "",
+      "strongest_predecessor": ""
+    }
+  ],
+  "review_packet_path": "review-packets/KEYSTONE-MPP-F1-pc02-novelty-review-packet.zip",
+  "review_packet_sha256": "24f263ee763796a5904cb5412eb376deac93781652bea266208fc5faf7018223",
+  "review_scope": "PC02_NOVELTY_ONLY",
+  "reviewer": {
+    "competence_basis": "",
+    "conflicts_disclosure": "",
+    "identity": "",
+    "independence_basis": "",
+    "registry_id": "",
+    "signing_key_id": ""
+  },
+  "reviewer_attestation": "",
+  "schema_id": "KEYSTONE_PC02_NOVELTY_VERIFIER_RETURN",
+  "schema_version": 1,
+  "signed_return": {
+    "signature_path": "",
+    "signature_sha256": ""
+  },
+  "status": "UNCOMPLETED_TEMPLATE",
+  "validation_boundary": "Structural validation does not verify signature authenticity, reviewer identity, scientific correctness, independence, provenance, or novelty disposition eligibility."
+}

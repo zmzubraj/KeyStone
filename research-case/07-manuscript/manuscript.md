@@ -1,6 +1,6 @@
 ## Title
 
-KEYSTONE: Auditable Dispute-Key Availability for Encrypted AI Rollups
+KEYSTONE: A Draft Study of Dispute-Key Serviceability Distinct from Ciphertext Availability in Encrypted AI Rollups
 
 Status: `DRAFT / PRE-MANUSCRIPT / PRE-AUTHORIZATION`  
 System: `KEYSTONE-MPP-F1`  
@@ -52,6 +52,21 @@ The three manuscript-level claim anchors are:
 The detailed methods architecture is organized across Sections 2–6. Those
 sections remain a pre-authorization manuscript view of the canonical novelty,
 protocol, analysis-plan, and implementation artifacts.
+
+The feasibility package now includes a non-executable confirmatory pilot plan,
+machine-readable result contract, and a result-blind PC03 amendment. They reserve
+all nine `RID-*` result families, separate the minimum short-paper core from the
+extended deadline lane, prohibit reuse of historical outputs as confirmatory
+evidence, and leave all observed outcomes missing. For three minimum synthetic
+cells—IID baseline, stratified-versus-uniform at `s=8`, and selective withholding
+at `w=11`—the draft amendment predeclares 32 primary and four reserve seed
+blocks, 4,096 draws per block, result-blind precision rules, and deterministic
+seed schedules. Correlated-domain analysis is
+`EXCLUDED_PENDING_TRUTHFUL_DOMAIN_LABEL_SOURCE`; its current plots remain
+exploratory only. The distributed deadline family is
+`EXCLUDED_PENDING_ENVIRONMENT_PROFILE`. This design-readiness package does not
+issue `GO`: it still needs independent methods verification and separate
+execution authority.
 
 ## 2. Background and Related Work
 
@@ -231,7 +246,8 @@ independent reproduction, or human submission approval.
 ## Results
 
 The present results surface is an explicitly preliminary inventory. It does not
-replace the missing authorized `05-analysis` ledgers.
+replace missing authorized `05-analysis` evidence or the still-missing canonical
+primary-results ledger.
 
 The temporary Markdown/LaTeX preliminary-table bundle has a fail-closed
 same-workspace lineage receipt that binds its five input files, exporter,
@@ -264,10 +280,52 @@ Only a limited set of result classes is admissible for drafting:
 
 The current figures F1–F5 and `paper/tables/t1_t8_package.*` are draft
 preauthorization display assets. They are not canonical confirmatory tables or
-publication evidence. Missing or blocked evaluation outputs include canonical
-`04-data` provenance and evidence-status ledgers, `05-analysis` exploratory and
-confirmatory ledgers, deadline Figures F6–F7, the planned recovery-timeline
-Figure F8, independent reproduction, and external validation for `C003`.
+publication evidence. Missing or blocked evaluation outputs include the
+canonical `05-analysis` primary ledger, authorized confirmatory robustness and
+negative-result analyses, deadline Figures F6–F7, the planned recovery-timeline
+Figure F8, independent reproduction, and external validation for `C003`. The canonical
+`05-analysis/results/exploratory-findings.csv` now records the four temporal
+Markov rows under distinct `EXPLORE-*` identifiers. It preserves the simulated
+source maturity but caps claim support at `V0 ASSERTED`: each row is explicitly
+post-hoc, preauthorization-only, unauthorized, non-independent, and descriptive
+rather than confirmatory. Its conditional denominator is the number of trials
+ending in the catastrophic state, not all simulated trials. Draft `04-data`
+provenance and evidence-status ledgers hash-bind the source inputs; the deadline
+result remains explicitly `BLOCKED` with no executed provenance row. These
+ledgers improve traceability only and do not activate scientific support edges
+or advance the canonical `INTAKE` phase.
+
+The canonical draft `05-analysis/results/negative-findings.csv` now records
+only the interval-separated selective-withholding gap already present in the
+frozen simulation (`NEG-SW-11` through `NEG-SW-14`). Each row remains a
+preauthorization simulated negative finding, unauthorized, non-independent,
+and capped at `V0 ASSERTED`. This closes a traceability gap but is not an
+authorized confirmatory result and does not provide deadline, production,
+external, field, adaptive-adversary, or universal-security evidence.
+
+The canonical draft `05-analysis/results/robustness-and-boundaries.csv` now
+preserves all 17 frozen IID outage cells and all 12 frozen matched-seed sampling
+policy cells as a deterministic traceability ledger. Every row is explicitly
+`DRAFT_ROBUSTNESS_BOUNDARY_ONLY`, preauthorization, simulated, unauthorized,
+non-independent, and capped at `V0 ASSERTED`. Correlated-domain output is
+excluded because its current result-ID binding is entangled with the quarantined
+Markov asset; Markov, selective-withholding, and deadline rows are also excluded
+from this ledger. The file therefore does not establish confirmatory robustness,
+policy optimality, production behavior, deadline performance, generality, or
+external validity.
+
+The future confirmatory outputs are predeclared in
+`02-feasibility/pilot-run-contract.csv`. The minimum core comprises the
+separation witness, exact static result, deterministic crypto and contract
+boundaries, and the limitation-bearing selective-withholding family. IID and
+stratification are supporting qualification families; correlated-domain
+analysis is excluded pending a truthful domain-label source. The included draft
+counts and stream schedule are recorded in
+`03-design/pc03-prospective-counts.csv` and
+`03-design/pc03-seed-schedule.csv`; these are design inputs, not results. The
+distributed deadline result remains an extended full-paper family and must be
+excluded, rather than imputed, if its environment and precision gates remain
+open.
 
 ### 7.1 Preliminary quantitative display map
 
@@ -315,9 +373,9 @@ claim or evidence source.
 - `T1` bounds the strongest-prior-art matrix and does not clear novelty.
 - `T2` is a design-comparator registry only and makes no measured-superiority claim.
 - `T3` records frozen local conditions and the still-missing `RID-C003-DEADLINE-001` distributed profile.
-- `T4` displays current preliminary internal results parsed from canonical JSON outputs only.
+- `T4` displays preauthorization simulated results parsed from canonical JSON outputs only, capped at `V0 ASSERTED` for manuscript claims.
 - `T5` is a planned mechanism-isolation registry; every row remains `MISSING_NOT_EXECUTED`.
-- `T6` separates exact, exploratory temporal, and selective-withholding estimands instead of merging them.
+- `T6` presents the canonical robustness ledger plus separately classified exact and exploratory temporal checks; selective-withholding negative findings remain in `T8`.
 - `T7` limits feasibility evidence to local timings and Foundry gas while leaving distributed, operator, network, and external rows blocked.
 - `T8` preserves selective withholding, synchrony limits, truthful-domain-label dependency, and missing external validation as explicit negative or unresolved findings.
 
@@ -367,14 +425,33 @@ Current local source assets include `prototype/src/keystone/*`,
 `*/results/engineering_qa/*-preauth-receipt.json` bundles. Availability does
 not imply evidence authorization or final reproducibility. The manuscript
 assembly inventory is tracked in `07-manuscript/source-manifest.json`.
+Draft source-to-result lineage is recorded in `04-data/provenance-manifest.csv`
+and `04-data/evidence-status.csv`; those files retain the preauthorization and
+same-workspace limitations of their inputs. The derived temporal ledger at
+`05-analysis/results/exploratory-findings.csv` is reproducible from the
+hash-bound Markov dataset through `scripts/export_exploratory_findings.py`, but
+is quarantined from confirmatory, novelty, feasibility, and external-validation
+claims.
+The derived robustness ledger at
+`05-analysis/results/robustness-and-boundaries.csv` is reproducible from the
+hash-bound IID and sampling-policy datasets through
+`scripts/export_robustness_boundaries.py`; it remains a draft traceability
+surface and cannot substitute for the missing primary ledger, authorized
+confirmatory analysis, independent reproduction, or external validation.
+The non-executable future-run contract is recorded in
+`02-feasibility/pilot-plan.md` and `02-feasibility/pilot-run-contract.csv`; it
+contains no collected outcome and grants no authorization. The PC03 amendment,
+count contract, and seed schedule under `03-design/` are likewise result-blind,
+non-executable planning artifacts pending independent methods verification.
 
 ## Declarations and Pending Human Inputs
 
-Draft accountable-author and prospective second-author metadata have been
-supplied, and the accountable human reported no institution, employer, funding
-agreement, NDA, venue policy, or export-control conflict with the current
-charter or study profile. At the author's request, final author order,
-corresponding-author designation, and exact affiliation wording are deferred.
+Draft author metadata inputs have been supplied for prospective authors, and
+the accountable human reported no institution, employer, funding agreement,
+NDA, venue policy, or export-control conflict with the current charter or
+study profile. At the author's request, final author order,
+corresponding-author designation, accountable metadata freeze, and exact
+affiliation wording remain deferred.
 Funding, conflicts of interest, CRediT roles, data/code release terms, AI-use
 disclosure, and venue-specific institutional checks also remain pending. No
 AI-generated text in this shell constitutes author approval or submission

@@ -44,6 +44,12 @@ def _build_case(root: Path) -> Path:
     )
     _write(root / "scripts/check_manuscript_alignment.py", "# manifest-bound checker stub\n")
     _write(root / "prototype/tests/test_manuscript_alignment.py", "# manifest-bound tests stub\n")
+    _write(root / "research-case/05-analysis/results/negative-findings.csv", "result_id,status\nRID-NEG-001,MISSING\n")
+    _write(root / "research-case/05-analysis/results/robustness-and-boundaries.csv", "result_id,status\nRID-ROB-001,MISSING\n")
+    _write(root / "scripts/export_negative_findings.py", "# negative findings exporter stub\n")
+    _write(root / "scripts/export_robustness_boundaries.py", "# robustness boundaries exporter stub\n")
+    _write(root / "prototype/tests/test_negative_findings.py", "# negative findings tests stub\n")
+    _write(root / "prototype/tests/test_robustness_boundaries.py", "# robustness boundaries tests stub\n")
     _write(
         root / "research-case/07-manuscript/manuscript.md",
         """# Draft
@@ -65,11 +71,38 @@ Figures: `F1`, `F2`, `F3`, `F4`, `F5`.
     )
     matrix_path = root / "research-case/07-manuscript/claim-evidence-matrix.csv"
     matrix_path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "claim_id",
+        "claim_text",
+        "current_status",
+        "blocked_by",
+        "allowed_wording",
+    ]
+    rows = {
+        "C001": {
+            "claim_text": "C001",
+            "current_status": "BLOCKED",
+            "blocked_by": "NOVELTY_UNRESOLVED; signed independent closure absent",
+            "allowed_wording": "This paper studies|under the stated static catastrophic model",
+        },
+        "C002": {
+            "claim_text": "C002",
+            "current_status": "AT_RISK",
+            "blocked_by": "independent reproduction and external review are missing",
+            "allowed_wording": "internal prototype evidence shows|local reproducibility evidence records",
+        },
+        "C003": {
+            "claim_text": "C003",
+            "current_status": "AT_RISK",
+            "blocked_by": "RID-C003-DEADLINE-001 absent; independent reproduction and external validation are missing; F6-F8 remain future outputs",
+            "allowed_wording": "bounded internal evidence indicates|within the declared model|conditional on synchrony assumptions|selective withholding remains a limitation",
+        },
+    }
     with matrix_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["claim_id", "claim_text"])
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
         for claim_id in ("C001", "C002", "C003"):
-            writer.writerow({"claim_id": claim_id, "claim_text": claim_id})
+            writer.writerow({"claim_id": claim_id, **rows[claim_id]})
     _write(
         root / "research-case/07-manuscript/claim-graph.json",
         json.dumps(
@@ -85,6 +118,12 @@ Figures: `F1`, `F2`, `F3`, `F4`, `F5`.
         ("SRC-BIB", "paper/references.bib"),
         ("SRC-MANUSCRIPT-ALIGNMENT-CHECKER", "scripts/check_manuscript_alignment.py"),
         ("SRC-MANUSCRIPT-ALIGNMENT-TESTS", "prototype/tests/test_manuscript_alignment.py"),
+        ("SRC-CANONICAL-NEGATIVE-FINDINGS", "research-case/05-analysis/results/negative-findings.csv"),
+        ("SRC-CANONICAL-ROBUSTNESS-BOUNDARIES", "research-case/05-analysis/results/robustness-and-boundaries.csv"),
+        ("SRC-NEGATIVE-FINDINGS-EXPORTER", "scripts/export_negative_findings.py"),
+        ("SRC-ROBUSTNESS-BOUNDARIES-EXPORTER", "scripts/export_robustness_boundaries.py"),
+        ("SRC-NEGATIVE-FINDINGS-TESTS", "prototype/tests/test_negative_findings.py"),
+        ("SRC-ROBUSTNESS-BOUNDARIES-TESTS", "prototype/tests/test_robustness_boundaries.py"),
     ):
         path = root / relative
         sources.append(
@@ -124,7 +163,7 @@ def test_valid_alignment_passes_with_a_machine_readable_summary(tmp_path: Path) 
         "diagram_ids": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"],
         "figure_ids": ["F1", "F2", "F3", "F4", "F5"],
         "image_reference_count": 2,
-        "source_count": 4,
+        "source_count": 10,
         "status": "PASS",
         "table_ids": ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8"],
     }
@@ -244,3 +283,20 @@ def test_missing_required_source_binding_fails_closed(tmp_path: Path) -> None:
 
     assert result.returncode == 1
     assert "missing required source manifest bindings: SRC-MANUSCRIPT-ALIGNMENT-CHECKER" in result.stderr
+
+
+def test_claim_matrix_guard_drift_fails_closed(tmp_path: Path) -> None:
+    root = _build_case(tmp_path / "case")
+    matrix = root / "research-case/07-manuscript/claim-evidence-matrix.csv"
+    matrix.write_text(
+        matrix.read_text().replace(
+            "RID-C003-DEADLINE-001 absent; independent reproduction and external validation are missing; F6-F8 remain future outputs",
+            "independent reproduction and external validation are missing",
+        ),
+        encoding="utf-8",
+    )
+
+    result = _run(root)
+
+    assert result.returncode == 1
+    assert "claim matrix blocked_by drift for C003" in result.stderr

@@ -14,9 +14,9 @@
   "solution_viability_status": "ASSERTED_ONLY",
   "acceptance_readiness": "NOT_ASSESSABLE",
   "postdoctoral_ai_audit": "UNASSESSED",
-  "claim_graph_revision": 14,
+  "claim_graph_revision": 16,
   "verifier_registry_revision": 1,
-  "provenance_anchor_revision": 15,
+  "provenance_anchor_revision": 20,
   "semantic_schema_revision": 1,
   "legacy_inference_flags": [],
   "assurance_policy": {
@@ -94,7 +94,7 @@
     "schema_version": 4,
     "solution_viability": {
       "status": "ASSERTED_ONLY",
-      "basis": "Solution-viability evidence is not independently signed and verified: 02-feasibility/evidence-maturity-ladder.csv, 02-feasibility/solution-viability-case.md"
+      "basis": "Solution-viability evidence is not independently signed and verified: 02-feasibility/evidence-maturity-ladder.csv, 02-feasibility/solution-viability-case.md, 04-data/evidence-status.csv"
     },
     "postdoctoral_audit": {
       "status": "UNASSESSED",
@@ -115,16 +115,16 @@
       },
       "C002": {
         "required_maturity": "V3 INTERNAL",
-        "current_maturity": "V3 INTERNAL",
-        "maturity_ceiling": "V3 INTERNAL",
+        "current_maturity": "V0 ASSERTED",
+        "maturity_ceiling": "V0 ASSERTED",
         "external_validation_required": false,
         "refuted": false,
         "supports_claim": false
       },
       "C003": {
         "required_maturity": "V4 EXTERNAL",
-        "current_maturity": "V3 INTERNAL",
-        "maturity_ceiling": "V3 INTERNAL",
+        "current_maturity": "V0 ASSERTED",
+        "maturity_ceiling": "V0 ASSERTED",
         "external_validation_required": true,
         "refuted": false,
         "supports_claim": false
@@ -327,9 +327,9 @@
     "busy_loop_prohibited": true
   },
   "recovery_queue": [],
-  "next_action": "Verify intake, authority, confidentiality, and claim boundaries before novelty work.",
+  "next_action": "Collect an authenticated, independently signed human INTAKE verifier return for the four canonical INTAKE artifacts; then run strict checks before any phase advance.",
   "created_at": "2026-08-28T21:14:30Z",
-  "updated_at": "2026-08-29T00:26:09Z",
+  "updated_at": "2026-08-30T08:59:13Z",
   "migration_signed_revalidation_required": false,
-  "latest_anchor_hash": "c298642f53f87eca14dca7cfe1570e0a75ec510eef861a6babc94d1ea7bf97d4"
+  "latest_anchor_hash": "02f4e814ab8952c753ec6595d3e02b676d9da0224f769ad7166ea32e78092836"
 }

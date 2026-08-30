@@ -40,6 +40,12 @@ ALLOWED_FIGURES = {f"F{index}" for index in range(1, 9)}
 REQUIRED_SOURCE_BINDINGS = {
     "SRC-MANUSCRIPT-ALIGNMENT-CHECKER": Path("scripts/check_manuscript_alignment.py"),
     "SRC-MANUSCRIPT-ALIGNMENT-TESTS": Path("prototype/tests/test_manuscript_alignment.py"),
+    "SRC-CANONICAL-NEGATIVE-FINDINGS": Path("research-case/05-analysis/results/negative-findings.csv"),
+    "SRC-NEGATIVE-FINDINGS-EXPORTER": Path("scripts/export_negative_findings.py"),
+    "SRC-NEGATIVE-FINDINGS-TESTS": Path("prototype/tests/test_negative_findings.py"),
+    "SRC-CANONICAL-ROBUSTNESS-BOUNDARIES": Path("research-case/05-analysis/results/robustness-and-boundaries.csv"),
+    "SRC-ROBUSTNESS-BOUNDARIES-EXPORTER": Path("scripts/export_robustness_boundaries.py"),
+    "SRC-ROBUSTNESS-BOUNDARIES-TESTS": Path("prototype/tests/test_robustness_boundaries.py"),
 }
 REQUIRED_MANUSCRIPT_MARKERS = (
     "DRAFT / PRE-MANUSCRIPT / PRE-AUTHORIZATION",
@@ -51,6 +57,48 @@ REQUIRED_MANUSCRIPT_MARKERS = (
     "exact affiliation wording",
     "deferred",
 )
+REQUIRED_MATRIX_FIELDS = {
+    "claim_id",
+    "current_status",
+    "blocked_by",
+    "allowed_wording",
+}
+REQUIRED_MATRIX_GUARDS = {
+    "C001": {
+        "current_status": "BLOCKED",
+        "blocked_by": ("NOVELTY_UNRESOLVED",),
+        "allowed_wording": (
+            "This paper studies",
+            "under the stated static catastrophic model",
+        ),
+    },
+    "C002": {
+        "current_status": "AT_RISK",
+        "blocked_by": (
+            "independent reproduction",
+            "external review",
+        ),
+        "allowed_wording": (
+            "internal prototype evidence shows",
+            "local reproducibility evidence records",
+        ),
+    },
+    "C003": {
+        "current_status": "AT_RISK",
+        "blocked_by": (
+            "RID-C003-DEADLINE-001 absent",
+            "independent reproduction",
+            "external validation",
+            "F6-F8 remain future outputs",
+        ),
+        "allowed_wording": (
+            "bounded internal evidence indicates",
+            "within the declared model",
+            "conditional on synchrony assumptions",
+            "selective withholding remains a limitation",
+        ),
+    },
+}
 
 
 class AlignmentError(RuntimeError):
@@ -146,20 +194,33 @@ def _check_images(root: Path, manuscript_path: Path, manuscript: str) -> list[Pa
     return resolved_images
 
 
-def _read_matrix_claims(path: Path) -> set[str]:
+def _read_matrix_rows(path: Path) -> dict[str, dict[str, str]]:
     try:
         with path.open(encoding="utf-8", newline="") as handle:
             reader = csv.DictReader(handle)
-            if reader.fieldnames is None or "claim_id" not in reader.fieldnames:
-                raise AlignmentError(f"claim matrix lacks claim_id column: {path}")
-            return {row["claim_id"].strip() for row in reader if row.get("claim_id", "").strip()}
+            fields = set(reader.fieldnames or ())
+            missing = sorted(REQUIRED_MATRIX_FIELDS - fields)
+            if missing:
+                raise AlignmentError(
+                    f"claim matrix lacks required columns: {', '.join(missing)}"
+                )
+            rows: dict[str, dict[str, str]] = {}
+            for row in reader:
+                claim_id = row.get("claim_id", "").strip()
+                if not claim_id:
+                    continue
+                if claim_id in rows:
+                    raise AlignmentError(f"duplicate claim matrix row: {claim_id}")
+                rows[claim_id] = row
+            return rows
     except OSError as exc:
         raise AlignmentError(f"cannot read claim matrix {path}: {exc}") from exc
 
 
 def _check_claims(root: Path, manuscript: str) -> set[str]:
     manuscript_claims = set(re.findall(r"\bC\d{3}\b", manuscript))
-    matrix_claims = _read_matrix_claims(root / MATRIX_RELATIVE)
+    matrix_rows = _read_matrix_rows(root / MATRIX_RELATIVE)
+    matrix_claims = set(matrix_rows)
     graph = _read_json(root / GRAPH_RELATIVE)
     claims_node = graph.get("claims")
     if not isinstance(claims_node, dict):
@@ -171,6 +232,30 @@ def _check_claims(root: Path, manuscript: str) -> set[str]:
             f"manuscript={sorted(manuscript_claims)}; matrix={sorted(matrix_claims)}; "
             f"graph={sorted(graph_claims)}; expected={sorted(EXPECTED_CLAIMS)}"
         )
+    for claim_id, guard in REQUIRED_MATRIX_GUARDS.items():
+        row = matrix_rows[claim_id]
+        actual_status = row["current_status"].strip()
+        if actual_status != guard["current_status"]:
+            raise AlignmentError(
+                f"claim matrix status drift for {claim_id}: expected "
+                f"{guard['current_status']}, got {actual_status}"
+            )
+        blocked_by = row["blocked_by"].strip()
+        missing_blockers = [token for token in guard["blocked_by"] if token not in blocked_by]
+        if missing_blockers:
+            raise AlignmentError(
+                f"claim matrix blocked_by drift for {claim_id}: missing "
+                + ", ".join(missing_blockers)
+            )
+        allowed_wording = row["allowed_wording"].strip()
+        missing_allowed = [
+            token for token in guard["allowed_wording"] if token not in allowed_wording
+        ]
+        if missing_allowed:
+            raise AlignmentError(
+                f"claim matrix allowed_wording drift for {claim_id}: missing "
+                + ", ".join(missing_allowed)
+            )
     return manuscript_claims
 
 

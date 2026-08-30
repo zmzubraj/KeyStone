@@ -100,6 +100,18 @@ def latest_required_updated_at(project_root: Path) -> str:
     )
 
 
+def canonical_trust_mode(project_root: Path) -> str:
+    payload = json.loads(
+        (project_root / "research-case/00-governance/verifier-registry.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    value = payload.get("trust_mode")
+    if not isinstance(value, str) or not value:
+        raise RuntimeError("verifier-registry.json lacks trust_mode")
+    return value
+
+
 def mutate_registry_sha(project_root: Path, path: str, sha256: str) -> None:
     csv_path = project_root / "research-case/artifact-registry.csv"
     with csv_path.open("r", encoding="utf-8", newline="") as handle:
@@ -148,7 +160,7 @@ def test_generation_writes_exact_allowlist_manifest_and_sidecar(tmp_path: Path) 
     assert manifest["feasibility_decision"] == "UNASSESSED"
     assert manifest["solution_viability_status"] == "ASSERTED_ONLY"
     assert manifest["acceptance_readiness"] == "NOT_ASSESSABLE"
-    assert manifest["trust_mode"] == "CASE_LOCAL_MECHANICAL_ONLY"
+    assert manifest["trust_mode"] == canonical_trust_mode(project_root)
     assert manifest["bundle_timestamp"] == latest_required_updated_at(project_root)
 
     source_files = manifest["source_files"]

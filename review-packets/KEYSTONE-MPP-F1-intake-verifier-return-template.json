@@ -1,0 +1,132 @@
+{
+  "artifact_dispositions": [
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/00-governance/intake-original.md",
+      "residual_uncertainty": "",
+      "revision": "2",
+      "sha256": "6f21c82ed0fe6c2933e689ab22750ee838e88b75e564eb985da119faf22a5ddd",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/00-governance/intake.json",
+      "residual_uncertainty": "",
+      "revision": "2",
+      "sha256": "800fdb650470596dc67367ba6868bffbb60b80cf7fe2471734254dc60d1ef9eb",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/00-governance/program-charter.md",
+      "residual_uncertainty": "",
+      "revision": "4",
+      "sha256": "a14ed6564b8d8bf3c51dff8f931321b6f288a9c832a6326522bac96c454b3f44",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/00-governance/study-profile.json",
+      "residual_uncertainty": "",
+      "revision": "3",
+      "sha256": "74e76831f2fc44f8b4a659a94b326ed621b886c2fb70c42794a94e3f28b7a982",
+      "verification_event_id": ""
+    }
+  ],
+  "author_metadata_included": false,
+  "canonical_phase": "INTAKE",
+  "contract_timestamp": "2026-08-30T05:18:24Z",
+  "may_assert_novelty": false,
+  "may_authorize_execution": false,
+  "may_promote_phase": false,
+  "overall_disposition": "UNANSWERED",
+  "question_responses": [
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does the normalized intake preserve the exact six-field original intake?",
+      "question_id": "INTAKE-Q01",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Is the core research question falsifiable and measurable within the stated computational scope?",
+      "question_id": "INTAKE-Q02",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Are novelty and contribution statements explicitly hypotheses rather than findings?",
+      "question_id": "INTAKE-Q03",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does the charter prevent claims stronger than the authorized evidence maturity and scope?",
+      "question_id": "INTAKE-Q04",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Is the non-human computational study classification consistent with the authorized boundary?",
+      "question_id": "INTAKE-Q05",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Are privacy, dual-use, exploitation, secret, upload, participant, intervention, and policy limits explicit?",
+      "question_id": "INTAKE-Q06",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does the study profile resolve the required routing fields without freezing later venue rules?",
+      "question_id": "INTAKE-Q07",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Are the frozen claim boundaries and evidence-maturity ceilings internally coherent?",
+      "question_id": "INTAKE-Q08",
+      "rationale": ""
+    },
+    {
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Is there any reason the case must remain at INTAKE after corrections?",
+      "question_id": "INTAKE-Q09",
+      "rationale": ""
+    }
+  ],
+  "review_packet_path": "review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip",
+  "review_packet_sha256": "3c9433eb163c322ccd911806f69f71303ad70ec5d0989b1edb84b36e57eba1bc",
+  "review_scope": "INTAKE_ONLY",
+  "reviewer": {
+    "competence_basis": "",
+    "conflicts_disclosure": "",
+    "identity": "",
+    "independence_basis": "",
+    "registry_id": "",
+    "signing_key_id": ""
+  },
+  "reviewer_attestation": "",
+  "schema_id": "KEYSTONE_INTAKE_VERIFIER_RETURN",
+  "schema_version": 1,
+  "signed_return": {
+    "signature_path": "",
+    "signature_sha256": ""
+  },
+  "status": "UNCOMPLETED_TEMPLATE",
+  "validation_boundary": "Structural validation does not verify signature authenticity, reviewer identity, scientific correctness, independence, provenance, or phase eligibility."
+}

@@ -9,11 +9,15 @@ Upstream blockers preserved: `NOVELTY_UNRESOLVED`, `feasibility_decision=UNASSES
 This file is a result-blind planning artifact. It does not authorize execution,
 does not issue `GO`, does not set an operational deadline target from existing
 outputs, and does not change `research-case/program-state.json`.
-It does not freeze final confirmatory sample sizes, exact half-width targets,
-zero-event upper-bound targets, paired discordance caps, or within-family
-adjusted alpha rules. Design or power freeze remains `BLOCKED` until an
-accountable, prospective amendment adds those bases here and in
-`research-case/03-design/preregistration-and-deviations.md`.
+The result-blind draft amendment at
+`research-case/03-design/pc03-prospective-amendment.md` now specifies exact
+counts, precision targets, multiplicity rules, and seed blocks for three
+minimum synthetic cells: IID baseline, stratified-versus-uniform at `s=8`, and
+selective withholding at `w=11`. Those parameters remain developmental and
+non-executable until independently verified and separately authorized.
+Correlated-domain analysis remains
+`EXCLUDED_PENDING_TRUTHFUL_DOMAIN_LABEL_SOURCE`; the deadline family remains
+`EXCLUDED_PENDING_ENVIRONMENT_PROFILE`.
 
 ## Target
 
@@ -27,11 +31,32 @@ within-run events as independent replicates.
 | `RID-C001-STATIC-001` | analytic calculation | one frozen parameter cell | count of exact parameter cells under one semantics | exact calculation with model-faithful reproduction; no stochastic power target |
 | `RID-C002-CRYPTO-001` | deterministic obligation | one named correctness case | count of required threshold, invalid-partial, stale-context, replay, and ciphertext-boundary cases | exhaustive zero-tolerance case coverage; no pseudo-binomial power |
 | `RID-C002-CONTRACT-001` | deterministic obligation | one named complete lifecycle case | count of required success, missing, invalid, and equivocation lifecycle cases | exhaustive zero-tolerance case coverage; no pseudo-binomial power |
-| `RID-C003-IID-001` | stochastic scenario family | one complete seed-level scenario run per config cell | count of valid seed-level runs per IID cell | precision of binary scenario proportions plus rare-event upper-bound assurance |
-| `RID-C003-CORR-001` | stochastic scenario family | one complete seed-level scenario run per config and placement cell | count of valid seed-level runs per correlated cell | precision of binary scenario proportions per placement cell plus rare-event upper-bound assurance |
-| `RID-C003-STRAT-001` | paired comparison | one matched seed pair spanning both policies under one semantic cell | count of matched seed pairs per semantic cell | precision of the paired policy difference, parameterized by discordance |
-| `RID-C003-SW-001` | paired comparison | one complete adversary scenario run containing both audit-pass and dispute-success outcomes | count of valid seed-level paired runs per adversary cell | precision of the within-run negative-result gap plus optional component-wise interval reporting |
-| `RID-C003-DEADLINE-001` | distributed-trace benchmark | one complete end-to-end distributed trace per seed and environment profile | count of valid trace-level runs per environment profile | precision of conditional deadline success proportion and zero-failure upper-bound assurance; no operational SLA target yet |
+| `RID-C003-IID-001` | stochastic scenario family | one seed block containing 4,096 independent model draws | 131,072 prespecified draws plus 32 blockwise estimates for the single `iid-10pct-uniform` cell | absolute error at most 0.005 under the frozen synthetic model |
+| `RID-C003-CORR-001` | excluded stochastic family | not frozen | not frozen | `EXCLUDED_PENDING_TRUTHFUL_DOMAIN_LABEL_SOURCE`; current correlated-domain displays remain exploratory only |
+| `RID-C003-STRAT-001` | paired comparison | one seed block containing 4,096 common-random-number policy pairs | 131,072 paired draws plus 32 blockwise estimates for the single `s=8` matched cell | absolute error at most 0.01 for the paired policy difference |
+| `RID-C003-SW-001` | paired comparison | one seed block containing 4,096 draws with both audit-pass and dispute-success outcomes | 131,072 paired draws plus 32 blockwise estimates for the single `w=11` cell | absolute error at most 0.01 for the within-draw limitation gap |
+| `RID-C003-DEADLINE-001` | excluded distributed-trace benchmark | not frozen | not frozen | `EXCLUDED_PENDING_ENVIRONMENT_PROFILE`; no operational SLA target |
+
+## Operative PC03 amendment
+
+The machine-readable operative draft is
+`research-case/03-design/pc03-prospective-counts.csv`; the deterministic primary
+and reserve streams are in `research-case/03-design/pc03-seed-schedule.csv`.
+Every scheduled cell uses 32 primary seed blocks and four reserve blocks, with
+4,096 draws per block and 131,072 primary draws per cell. The reserve blocks do
+not increase the planned denominator; they replace documented infrastructure
+failures in order and never replace an unfavorable valid outcome.
+
+For the single scheduled Bernoulli cell, the result-blind planning rule is the
+Hoeffding bound `n >= ceil(log(2/0.05)/(2 epsilon^2))`. At
+`epsilon=0.005`, the requirement is 73,778 independent synthetic draws. For
+each single scheduled paired-difference cell in `[-1,1]`, the rule is
+`n >= ceil(2 log(2/0.05)/epsilon^2)`; at `epsilon=0.01`, the requirement is
+also 73,778 matched synthetic draws. The scheduled 131,072 draws per included
+cell satisfy both envelopes without using an exploratory effect size or
+discordance estimate. Seed blocks are execution and reproducibility units;
+model draws are the Monte Carlo sampling units for the frozen synthetic
+probability estimands.
 
 ## Assumptions
 
@@ -39,12 +64,13 @@ within-run events as independent replicates.
   not used to choose thresholds here.
 - The default family for precision statements is two-sided 95 percent coverage
   with `alpha = 0.05`, giving `z_(1-alpha/2) = 1.9599639845`.
-- Multiplicity sensitivity is illustrated here by tightening the
+- Historical multiplicity sensitivity is illustrated here by tightening the
   per-comparison alpha inside one prose claim family:
   - `alpha = 0.025` for two protected comparisons gives `z = 2.2414027276`;
   - `alpha = 0.0166666667` for three protected comparisons gives `z = 2.3939797991`.
-  These are non-binding sensitivity examples only, not the frozen
-  within-family adjusted-alpha rule for confirmatory execution.
+  These remain non-binding sensitivity examples. The operative draft contains
+  one primary cell in each included family, so no within-family primary
+  multiplicity adjustment is required; optional secondary tests use Holm.
 - For unpaired binary stochastic families, the reporting interval is the Wilson
   score interval and the planning envelope uses the conservative worst-case
   variance at `p = 0.5`:
@@ -56,18 +82,18 @@ within-run events as independent replicates.
   With `q = P(D_i != 0)` as the discordance fraction, `Var(D_i) <= q`, so a
   conservative precision envelope is
   - `n >= ceil(z^2 * q / h^2)`.
-  Because `q` is not yet justified from an accountable decision target, this
-  artifact keeps `q` explicit and reports a sensitivity table rather than one
-  fixed pair count.
+  The historical sensitivity table below keeps `q` explicit. The operative
+  amendment avoids outcome-derived `q` by using the distribution-free range-two
+  Hoeffding bound.
 - For zero-observed-event assurance, the relevant logic is not efficacy power.
   If `x = 0` failures are observed in `n` independent runs, the one-sided upper
   bound `u` on the true failure probability solves
   - `(1 - u)^n = alpha`,
   so
   - `n >= ceil(log(alpha) / log(1 - u_target))`.
-- `RID-C003-IID-001`, `RID-C003-CORR-001`, and `RID-C003-DEADLINE-001` may use
-  the closed-form precision envelopes directly because the estimands are
-  seed-level or trace-level binary proportions. `RID-C003-STRAT-001` and
+- `RID-C003-IID-001` uses the closed-form precision envelope directly because
+  the estimand is a model-draw binary proportion with blockwise reporting.
+  `RID-C003-CORR-001` remains excluded. `RID-C003-STRAT-001` and
   `RID-C003-SW-001` require paired-gap planning rather than unpaired formulas.
 - If a later design-amendment needs model-specific operating-characteristic
   checks for the deadline benchmark or a more complex paired estimator, use a
@@ -75,9 +101,11 @@ within-run events as independent replicates.
   candidate `n` and report the Monte Carlo Wilson interval on estimated
   power or coverage. Near `0.80`, `5000` replicates imply about `+/- 0.011`
   Monte Carlo uncertainty.
-- Seed-level runs are independent only within one blocked cell. Events inside a
-  single trajectory, contract lifecycle, or distributed trace are not separate
-  replicates and must not inflate the denominator.
+- Seed blocks use disjoint deterministic streams. Independent synthetic scenario
+  draws estimate only a frozen model probability; blockwise estimates remain the
+  execution and reproducibility units. Events inside one trajectory, contract
+  lifecycle, or distributed trace are not separate draws and must not inflate
+  the denominator.
 
 ## Calculation
 
@@ -98,10 +126,12 @@ Illustrative unpaired precision envelope per config or environment cell only:
 | `0.025` | `2.2414027276` | `126` | `224` | `503` |
 | `0.0166666667` | `2.3939797991` | `144` | `255` | `574` |
 
-These counts apply separately to:
+These historical sensitivity counts could apply separately to a future
+prospectively frozen cell; they are non-operative for the present amendment:
 
 - `RID-C003-IID-001` per IID scenario cell;
-- `RID-C003-CORR-001` per correlated placement or outage cell;
+- `RID-C003-CORR-001` only after a truthful domain-label source and a new
+  prospective amendment;
 - `RID-C003-DEADLINE-001` per environment profile when the endpoint is a trace
   success proportion.
 
@@ -146,19 +176,19 @@ Result-specific calculation rule:
 | `RID-C001-STATIC-001` | exact combinatorial or hypergeometric calculation on the frozen parameter cell | the quantity is analytic and deterministic |
 | `RID-C002-CRYPTO-001` | exhaustive named-case checklist over the full correctness boundary set | the claim is "all required cases behave exactly as specified", not "most cases succeed" |
 | `RID-C002-CONTRACT-001` | exhaustive named-case checklist over the full lifecycle boundary set | auditable contract behavior is a deterministic obligation |
-| `RID-C003-IID-001` | Wilson-precision planning on seed-level binary outcomes; optional zero-failure upper-bound check for rare catastrophic misses | each seed-level scenario is one independent Bernoulli trial inside one IID cell |
-| `RID-C003-CORR-001` | Wilson-precision planning per correlated placement or outage cell; optional zero-failure upper-bound check for rare catastrophic misses | correlation changes the cell meaning, so cells may not be pooled |
-| `RID-C003-STRAT-001` | paired-gap precision planning with explicit discordance `q` sensitivity | matched seeds create paired outcomes, so unpaired formulas would overstate information |
-| `RID-C003-SW-001` | paired-gap precision planning on the audit-pass minus dispute-success gap; optional Wilson intervals for the two component proportions as descriptive support | the central estimand is a within-run limitation gap, not two unrelated proportions |
-| `RID-C003-DEADLINE-001` | Wilson-precision planning on trace-level success plus zero-failure upper-bound assurance for rare missed-deadline events; simulation-based operating-characteristic check if the estimator becomes more complex | the endpoint is trace-level and bounded by environment profile, not message-level events |
+| `RID-C003-IID-001` | distribution-free Hoeffding planning over independent synthetic draws, with blockwise reporting and descriptive Wilson intervals | model draws estimate the frozen synthetic probability; blocks preserve execution dispersion and reproducibility |
+| `RID-C003-CORR-001` | no operative calculation while excluded | truthful domain labels and a valid comparator are missing, so current exploratory displays cannot determine a confirmatory denominator |
+| `RID-C003-STRAT-001` | distribution-free range-two Hoeffding planning over common-random-number matched draws | matched draws create paired outcomes, so unpaired formulas would overstate information |
+| `RID-C003-SW-001` | distribution-free range-two Hoeffding planning on the within-draw audit-pass minus dispute-success gap; component Wilson intervals are descriptive | the central estimand is a within-draw limitation gap, not two unrelated proportions |
+| `RID-C003-DEADLINE-001` | no operative calculation while excluded | the environment profile and trace-level denominator are not frozen |
 
 ## Decision
 
-Planning consequences are stated without issuing `GO`. The numerical tables in
-`## Calculation` are sensitivity examples only. They are not operative green,
-amber, or red thresholds until a logged amendment prospectively freezes the
-accountable target, the exact replicate and denominator definition for the
-affected family, and the within-family multiplicity rule when applicable.
+Planning consequences are stated without issuing `GO`. The older numerical
+tables in `## Calculation` remain sensitivity history. The operative draft
+thresholds and denominators are those in the PC03 amendment and counts CSV, but
+they cannot become executable until independent methods verification and a
+separate accountable start decision are recorded.
 
 Deterministic and analytic rows:
 
@@ -178,26 +208,28 @@ Stochastic and paired families:
 | Family | Green gate consequence | Amber gate consequence | Red gate consequence |
 | --- | --- | --- | --- |
 | `RID-C003-IID-001` | an accountable, result-blind precision or assurance target and any within-family multiplicity rule are frozen by logged amendment, the exact count is computed from that frozen target, and the valid seed-level run count meets or exceeds it without invalid pooling | the family still has only sensitivity-envelope guidance from `## Calculation`, or the target, replicate rule, denominator rule, or multiplicity rule remains unresolved | thresholds are retrofitted after outcome inspection, replicate or denominator definitions are underdefined, invalid pooling occurs across blocked cells, or a properly frozen count is not met |
-| `RID-C003-CORR-001` | an accountable, result-blind per-cell target and any within-family multiplicity rule are frozen by logged amendment, the exact per-cell count is computed prospectively, and each correlated placement or outage cell meets it without cross-cell pooling | only sensitivity-envelope guidance exists, or the target, per-cell denominator, blocking rule, or multiplicity rule remains unresolved | retrofitted thresholds, underdefined replicate or denominator, invalid pooling across placement or outage cells, or failure to meet a properly frozen per-cell count |
+| `RID-C003-CORR-001` | a truthful domain-label source, valid comparator, result-blind target, and new prospective amendment are independently verified before execution | remains `EXCLUDED_PENDING_TRUTHFUL_DOMAIN_LABEL_SOURCE` | exploratory outputs are relabeled as confirmatory, or execution occurs without the missing source and amendment |
 | `RID-C003-STRAT-001` | an accountable, result-blind paired-gap target and justified discordance handling are frozen by logged amendment, the exact matched-pair count is computed prospectively, and the matched-pair run count meets it | only paired sensitivity-envelope examples exist, or the paired target, discordance basis, or multiplicity rule remains unresolved | retrofitted thresholds, unpaired treatment of matched data, underdefined pair denominator, invalid pooling across semantic cells, or failure to meet a properly frozen matched-pair count |
 | `RID-C003-SW-001` | an accountable, result-blind paired-gap target and justified discordance handling are frozen by logged amendment, the exact paired-run count is computed prospectively, and the valid paired run count meets it | only paired sensitivity-envelope examples exist, or the paired target, discordance basis, or multiplicity rule remains unresolved | retrofitted thresholds, treating component outcomes as independent unpaired samples, underdefined paired denominator, invalid pooling across adversary cells, or failure to meet a properly frozen paired-run count |
-| `RID-C003-DEADLINE-001` | an accountable environment profile, claim-safe deadline target, and any within-family multiplicity rule are frozen by logged amendment, the exact per-profile count is computed prospectively, and each valid trace-level environment block meets it | only sensitivity-envelope guidance exists, or the environment profile, deadline target, trace denominator, or multiplicity rule remains unresolved | retrofitted thresholds, underdefined trace denominator, invalid pooling across run day or host-topology blocks, unsupported operational-SLA wording, or failure to meet a properly frozen per-profile count |
+| `RID-C003-DEADLINE-001` | an accountable environment profile and claim-safe trace-level target are independently verified in a new prospective amendment | remains `EXCLUDED_PENDING_ENVIRONMENT_PROFILE` | exploratory or local timing is relabeled as an operational deadline result, or execution occurs without the missing profile and amendment |
 
 Exact unresolved decision parameters preserved here:
 
-- `RID-C003-STRAT-001` still needs an accountable or clearly justified
-  discordance cap `q` before one exact pair count can be frozen.
+- Three minimum cells now have exact result-blind counts and deterministic seed
+  schedules, but the amendment still needs independent methods verification and
+  must remain non-executable until a separate start decision.
+- `RID-C003-CORR-001` remains
+  `EXCLUDED_PENDING_TRUTHFUL_DOMAIN_LABEL_SOURCE`; its existing displays are
+  preliminary and cannot support a confirmatory correlation claim.
 - `RID-C003-DEADLINE-001` still needs an accountable environment profile and a
   claim-safe deadline interpretation target before an operational benchmark size
   can be frozen.
-- `RID-C003-IID-001`, `RID-C003-CORR-001`, `RID-C003-STRAT-001`,
-  `RID-C003-SW-001`, and `RID-C003-DEADLINE-001` still need their final
-  confirmatory precision or assurance targets to be prospectively frozen rather
-  than inferred from the sensitivity examples above.
-- No within-family adjusted-alpha rule is frozen yet for any confirmatory
-  stochastic family. The `alpha = 0.025` and `alpha = 0.0166666667` rows remain
-  sensitivity examples only until a logged amendment selects the actual rule.
-- If either parameter is introduced later, it must arrive by logged amendment to
+- The deadline family still needs its final precision and multiplicity rule.
+  Its environment profile, trace denominator, and claim-safe deadline
+  interpretation remain unresolved.
+  Each included family has one primary cell; optional secondary hypothesis tests
+  use Holm within the same prespecified family.
+- If a parameter is revised later, it must arrive by logged amendment to
   this file and `research-case/03-design/preregistration-and-deviations.md`,
   not by backfitting from observed confirmatory outputs.
 

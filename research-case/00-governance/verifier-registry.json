@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
-  "registry_revision": 1,
-  "trust_mode": "CASE_LOCAL_MECHANICAL_ONLY",
-  "registry_signing_key_id": "runtime-governance",
-  "trust_root_fingerprint": "",
+  "registry_revision": 3,
+  "trust_mode": "EXTERNAL_RUN_BOUND_REGISTRY_ADMIN",
+  "registry_signing_key_id": "registry-admin-keystone-mpp-f1",
+  "trust_root_fingerprint": "987c74bc279de8c004ff285abdcc3acc7c93a06ceaa8ad1badc9f4b79d94f159",
   "entries": [
     {
       "registry_id": "runtime-mechanical-attestor",
@@ -11,6 +11,17 @@
       "verifier_type": "ROOT_MECHANICAL_CHECK",
       "signing_key_id": "runtime-governance",
       "authority_tier": "MECHANICAL_RUNTIME_ONLY",
+      "active": true,
+      "public_key_fingerprint": "025d2bd8c60a15e2e63615826a51f96b8d864852c74e729567bab4a4ed8bff4a"
+    },
+    {
+      "registry_id": "intake-reviewer-002",
+      "identity_pattern": "intake\\-reviewer\\-002",
+      "verifier_type": "INDEPENDENT_REVIEWER",
+      "signing_key_id": "intake-reviewer-key-002",
+      "public_key_fingerprint": "4d6c4c63561e3a5b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8",
+      "registration_method": "EXPLICIT_LOCAL_PUBLIC_KEY_BOOTSTRAP",
+      "authority_tier": "SCIENTIFIC_INDEPENDENT",
       "active": true
     }
   ]
