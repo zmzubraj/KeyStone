@@ -2,11 +2,17 @@
 
 **Frozen title:** *KEYSTONE: Auditable Dispute-Key Availability for Encrypted AI Rollups*
 
-This package is a research-ready minimum publishable prototype (MPP) for a narrow claim:
+This package is an evidence-gated minimum publishable prototype (MPP) for a narrow research claim:
 
 > An encrypted rollup can obtain non-revealing, probabilistic evidence that a threshold decryption service is currently ready to serve an authorized dispute before a deadline, while keeping production records encrypted before authorization.
 
 KEYSTONE is **not** presented as a new threshold-encryption, VSS, PVSS, proactive-secret-sharing, or TEE primitive. Its contribution is the formal separation of ciphertext availability from dispute-time decryption capability, an auditable canary partial-decryption protocol, explicit probability bounds, correlation-aware evaluation, and deadline-accountability interfaces.
+
+Repository owner, draft-research attribution, and public-release authority:
+**Zubaer Mahmood Zubraj** ([`@zmzubraj`](https://github.com/zmzubraj)).
+The owner authorized this repository to remain publicly accessible on
+30 August 2026. The MIT licence applies as recorded in [`LICENSE`](LICENSE);
+third-party material retains its original terms.
 
 ## Package map
 
@@ -50,11 +56,27 @@ Expected verification:
 
 ## Research status
 
-The package is suitable for:
+Canonical status is fail-closed:
 
-1. an arXiv/technical-report submission after the formal definitions are polished;
-2. a minimum workshop paper after the generated experiments are expanded and described;
-3. a stronger full paper after replacing dealer key generation with a production DKG/PVSS implementation, running a distributed testbed, and adding a rigorous selective-withholding extension or impossibility boundary.
+- current phase: `INTAKE`;
+- novelty: `UNRESOLVED`;
+- solution viability: `ASSERTED_ONLY`;
+- acceptance readiness: `NOT_ASSESSABLE`; and
+- manuscript: `DRAFT / PRE-MANUSCRIPT / PRE-AUTHORIZATION`.
+
+Public hosting is authorized, but no arXiv, workshop, journal, or other
+submission is authorized by this README. Independent novelty closure, methods
+verification, execution authority, external evidence, final author metadata and
+declarations, and accountable submission approval remain open.
+
+```mermaid
+flowchart LR
+    A[Public owner-authorized MPP] --> B[Internal prototype and bounded simulations]
+    B --> C[INTAKE]
+    C --> D{Independent novelty + methods + execution gates}
+    D -->|Open| E[Pre-authorization manuscript]
+    D -->|Future verified pass| F[Feasibility and submission QA]
+```
 
 ## Safety and cryptographic status
 
