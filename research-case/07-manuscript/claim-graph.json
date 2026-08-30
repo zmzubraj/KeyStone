@@ -19,8 +19,13 @@
       "current_maturity": "V0 ASSERTED",
       "status": "BLOCKED",
       "excluded_generality": "",
-      "evidence_ids": [],
-      "artifact_paths": [],
+      "evidence_ids": [
+        "RID-C001-SEP-001",
+        "RID-C001-STATIC-001"
+      ],
+      "artifact_paths": [
+        "04-data/provenance-manifest.csv"
+      ],
       "claim_scope": "ANALYTIC",
       "central": true,
       "refuted": false,
@@ -37,16 +42,21 @@
       "exact_claim": "The workspace already contains a reproducible Python threshold-KEM and DLEQ prototype, 17 passing tests, deterministic simulations and datasets, five quantitative figures, eight editable diagrams, a compiling Solidity bulletin-board skeleton with two passing tests and gas snapshots, locked dependencies, and a one-command verification path; remaining constraints are expanded exact and stochastic experiment coverage, fuzz and invariant contract tests, complete performance and deadline measurements, formal proof completion, a distributed testbed, production DKG or PVSS substitution for a full-paper claim, current prior-art and venue verification, independent cryptography and systems review, and accountable human submission approval.",
       "claim_type": "feasibility hypothesis",
       "required_maturity": "V3 INTERNAL",
-      "current_maturity": "V3 INTERNAL",
+      "current_maturity": "V0 ASSERTED",
       "status": "AT RISK",
       "excluded_generality": "",
-      "evidence_ids": [],
-      "artifact_paths": [],
+      "evidence_ids": [
+        "RID-C002-CONTRACT-001",
+        "RID-C002-CRYPTO-001"
+      ],
+      "artifact_paths": [
+        "04-data/provenance-manifest.csv"
+      ],
       "claim_scope": "INTERNAL",
       "central": true,
       "refuted": false,
-      "maturity_ceiling_rank": 3,
-      "maturity_ceiling": "V3 INTERNAL",
+      "maturity_ceiling_rank": 0,
+      "maturity_ceiling": "V0 ASSERTED",
       "scope_ceiling_rank": 0,
       "scope_ceiling": "ASSERTED",
       "required_maturity_rank": 3,
@@ -58,16 +68,26 @@
       "exact_claim": "A formal DKA property suite; a canonical non-production canary audit with context-bound DLEQ proofs; static and repeated-audit probability analysis with explicit temporal assumptions; failure-domain-aware placement and stratified sampling; a public deadline-accountability interface; and a reproducible threshold-KEM prototype, adversarial simulator, datasets, figures, tests, and bulletin-board contract boundary, without claiming a new cryptographic primitive or production security.",
       "claim_type": "solution-viability hypothesis",
       "required_maturity": "V4 EXTERNAL",
-      "current_maturity": "V3 INTERNAL",
+      "current_maturity": "V0 ASSERTED",
       "status": "AT RISK",
       "excluded_generality": "",
-      "evidence_ids": [],
-      "artifact_paths": [],
+      "evidence_ids": [
+        "RID-C001-STATIC-001",
+        "RID-C002-CRYPTO-001",
+        "RID-C003-CORR-001",
+        "RID-C003-DEADLINE-001",
+        "RID-C003-IID-001",
+        "RID-C003-STRAT-001",
+        "RID-C003-SW-001"
+      ],
+      "artifact_paths": [
+        "04-data/provenance-manifest.csv"
+      ],
       "claim_scope": "EXTERNAL",
       "central": true,
       "refuted": false,
-      "maturity_ceiling_rank": 3,
-      "maturity_ceiling": "V3 INTERNAL",
+      "maturity_ceiling_rank": 0,
+      "maturity_ceiling": "V0 ASSERTED",
       "scope_ceiling_rank": 0,
       "scope_ceiling": "ASSERTED",
       "required_maturity_rank": 4,
@@ -75,10 +95,536 @@
       "external_validation_required": true
     }
   },
-  "evidence": {},
-  "artifact_to_claims": {},
-  "evidence_to_claims": {},
+  "evidence": {
+    "RID-C001-SEP-001": {
+      "evidence_id": "RID-C001-SEP-001",
+      "claim_ids": [
+        "C001"
+      ],
+      "origin": "ANALYTIC",
+      "maturity": "V1 ANALYTIC",
+      "scope": "ANALYTIC",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C001-STATIC-001": {
+      "evidence_id": "RID-C001-STATIC-001",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
+      "origin": "ANALYTIC",
+      "maturity": "V1 ANALYTIC",
+      "scope": "ANALYTIC",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C002-CONTRACT-001": {
+      "evidence_id": "RID-C002-CONTRACT-001",
+      "claim_ids": [
+        "C002"
+      ],
+      "origin": "INTERNAL_EXPERIMENT",
+      "maturity": "V3 INTERNAL",
+      "scope": "INTERNAL",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C002-CRYPTO-001": {
+      "evidence_id": "RID-C002-CRYPTO-001",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "origin": "INTERNAL_EXPERIMENT",
+      "maturity": "V3 INTERNAL",
+      "scope": "INTERNAL",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C003-CORR-001": {
+      "evidence_id": "RID-C003-CORR-001",
+      "claim_ids": [
+        "C003"
+      ],
+      "origin": "SIMULATED",
+      "maturity": "V2 SIMULATED",
+      "scope": "SIMULATED",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C003-DEADLINE-001": {
+      "evidence_id": "RID-C003-DEADLINE-001",
+      "claim_ids": [
+        "C003"
+      ],
+      "origin": "EXPERT_JUDGMENT",
+      "maturity": "V0 ASSERTED",
+      "scope": "ASSERTED",
+      "status": "BLOCKED",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C003-IID-001": {
+      "evidence_id": "RID-C003-IID-001",
+      "claim_ids": [
+        "C003"
+      ],
+      "origin": "SIMULATED",
+      "maturity": "V2 SIMULATED",
+      "scope": "SIMULATED",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C003-STRAT-001": {
+      "evidence_id": "RID-C003-STRAT-001",
+      "claim_ids": [
+        "C003"
+      ],
+      "origin": "SIMULATED",
+      "maturity": "V2 SIMULATED",
+      "scope": "SIMULATED",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    },
+    "RID-C003-SW-001": {
+      "evidence_id": "RID-C003-SW-001",
+      "claim_ids": [
+        "C003"
+      ],
+      "origin": "SIMULATED",
+      "maturity": "V2 SIMULATED",
+      "scope": "SIMULATED",
+      "status": "PARTIAL",
+      "authorized": false,
+      "independent": false,
+      "source_artifact": "04-data/provenance-manifest.csv",
+      "supported_maturity_rank": 0,
+      "supported_scope_rank": 0
+    }
+  },
+  "artifact_to_claims": {
+    "04-data/provenance-manifest.csv": [
+      "C001",
+      "C002",
+      "C003"
+    ]
+  },
+  "evidence_to_claims": {
+    "RID-C001-SEP-001": [
+      "C001"
+    ],
+    "RID-C001-STATIC-001": [
+      "C001",
+      "C003"
+    ],
+    "RID-C002-CONTRACT-001": [
+      "C002"
+    ],
+    "RID-C002-CRYPTO-001": [
+      "C002",
+      "C003"
+    ],
+    "RID-C003-CORR-001": [
+      "C003"
+    ],
+    "RID-C003-DEADLINE-001": [
+      "C003"
+    ],
+    "RID-C003-IID-001": [
+      "C003"
+    ],
+    "RID-C003-STRAT-001": [
+      "C003"
+    ],
+    "RID-C003-SW-001": [
+      "C003"
+    ]
+  },
   "edges": [
+    {
+      "edge_id": "EDGE-requires-C001-RID-C001-SEP-001",
+      "source": "claim:C001",
+      "target": "evidence:RID-C001-SEP-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C001-SEP-001-C001",
+      "source": "evidence:RID-C001-SEP-001",
+      "target": "claim:C001",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C001-SEP-001-C001",
+      "source": "evidence:RID-C001-SEP-001",
+      "target": "claim:C001",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C001-SEP-001",
+      "source": "evidence:RID-C001-SEP-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C001-RID-C001-STATIC-001",
+      "source": "claim:C001",
+      "target": "evidence:RID-C001-STATIC-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C001-STATIC-001-C001",
+      "source": "evidence:RID-C001-STATIC-001",
+      "target": "claim:C001",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C001-STATIC-001-C001",
+      "source": "evidence:RID-C001-STATIC-001",
+      "target": "claim:C001",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C001-STATIC-001",
+      "source": "evidence:RID-C001-STATIC-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C003-RID-C001-STATIC-001",
+      "source": "claim:C003",
+      "target": "evidence:RID-C001-STATIC-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C001-STATIC-001-C003",
+      "source": "evidence:RID-C001-STATIC-001",
+      "target": "claim:C003",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C001-STATIC-001-C003",
+      "source": "evidence:RID-C001-STATIC-001",
+      "target": "claim:C003",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C001-STATIC-001",
+      "source": "evidence:RID-C001-STATIC-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C002-RID-C002-CONTRACT-001",
+      "source": "claim:C002",
+      "target": "evidence:RID-C002-CONTRACT-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C002-CONTRACT-001-C002",
+      "source": "evidence:RID-C002-CONTRACT-001",
+      "target": "claim:C002",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C002-CONTRACT-001-C002",
+      "source": "evidence:RID-C002-CONTRACT-001",
+      "target": "claim:C002",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C002-CONTRACT-001",
+      "source": "evidence:RID-C002-CONTRACT-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C002-RID-C002-CRYPTO-001",
+      "source": "claim:C002",
+      "target": "evidence:RID-C002-CRYPTO-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C002-CRYPTO-001-C002",
+      "source": "evidence:RID-C002-CRYPTO-001",
+      "target": "claim:C002",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C002-CRYPTO-001-C002",
+      "source": "evidence:RID-C002-CRYPTO-001",
+      "target": "claim:C002",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C002-CRYPTO-001",
+      "source": "evidence:RID-C002-CRYPTO-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C003-RID-C002-CRYPTO-001",
+      "source": "claim:C003",
+      "target": "evidence:RID-C002-CRYPTO-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C002-CRYPTO-001-C003",
+      "source": "evidence:RID-C002-CRYPTO-001",
+      "target": "claim:C003",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C002-CRYPTO-001-C003",
+      "source": "evidence:RID-C002-CRYPTO-001",
+      "target": "claim:C003",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C002-CRYPTO-001",
+      "source": "evidence:RID-C002-CRYPTO-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C003-RID-C003-CORR-001",
+      "source": "claim:C003",
+      "target": "evidence:RID-C003-CORR-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C003-CORR-001-C003",
+      "source": "evidence:RID-C003-CORR-001",
+      "target": "claim:C003",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C003-CORR-001-C003",
+      "source": "evidence:RID-C003-CORR-001",
+      "target": "claim:C003",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C003-CORR-001",
+      "source": "evidence:RID-C003-CORR-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C003-RID-C003-DEADLINE-001",
+      "source": "claim:C003",
+      "target": "evidence:RID-C003-DEADLINE-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C003-DEADLINE-001-C003",
+      "source": "evidence:RID-C003-DEADLINE-001",
+      "target": "claim:C003",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C003-DEADLINE-001-C003",
+      "source": "evidence:RID-C003-DEADLINE-001",
+      "target": "claim:C003",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C003-DEADLINE-001",
+      "source": "evidence:RID-C003-DEADLINE-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C003-RID-C003-IID-001",
+      "source": "claim:C003",
+      "target": "evidence:RID-C003-IID-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C003-IID-001-C003",
+      "source": "evidence:RID-C003-IID-001",
+      "target": "claim:C003",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C003-IID-001-C003",
+      "source": "evidence:RID-C003-IID-001",
+      "target": "claim:C003",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C003-IID-001",
+      "source": "evidence:RID-C003-IID-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C003-RID-C003-STRAT-001",
+      "source": "claim:C003",
+      "target": "evidence:RID-C003-STRAT-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C003-STRAT-001-C003",
+      "source": "evidence:RID-C003-STRAT-001",
+      "target": "claim:C003",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C003-STRAT-001-C003",
+      "source": "evidence:RID-C003-STRAT-001",
+      "target": "claim:C003",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C003-STRAT-001",
+      "source": "evidence:RID-C003-STRAT-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
+    {
+      "edge_id": "EDGE-requires-C003-RID-C003-SW-001",
+      "source": "claim:C003",
+      "target": "evidence:RID-C003-SW-001",
+      "relation_type": "REQUIRES",
+      "active": true,
+      "basis": "Claim/evidence matrix or evidence-status linkage."
+    },
+    {
+      "edge_id": "EDGE-supports-RID-C003-SW-001-C003",
+      "source": "evidence:RID-C003-SW-001",
+      "target": "claim:C003",
+      "relation_type": "SUPPORTS",
+      "active": false,
+      "basis": "Authorized supported evidence."
+    },
+    {
+      "edge_id": "EDGE-replicates-RID-C003-SW-001-C003",
+      "source": "evidence:RID-C003-SW-001",
+      "target": "claim:C003",
+      "relation_type": "REPLICATES",
+      "active": false,
+      "basis": "Evidence record marked independent."
+    },
+    {
+      "edge_id": "EDGE-derived-RID-C003-SW-001",
+      "source": "evidence:RID-C003-SW-001",
+      "target": "artifact:04-data/provenance-manifest.csv",
+      "relation_type": "DERIVED_FROM",
+      "active": true,
+      "basis": "Evidence ledger source_artifact reference."
+    },
     {
       "edge_id": "EDGE-qualifies-C001",
       "source": "artifact:07-manuscript/claim-evidence-matrix.csv",

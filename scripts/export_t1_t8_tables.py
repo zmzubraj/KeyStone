@@ -19,6 +19,10 @@ INPUT_PATHS = (
     "research-case/02-feasibility/risk-register.csv",
     "research-case/03-design/protocol.md",
     "research-case/03-design/analysis-plan.md",
+    "research-case/04-data/evidence-status.csv",
+    "research-case/05-analysis/results/exploratory-findings.csv",
+    "research-case/05-analysis/results/negative-findings.csv",
+    "research-case/05-analysis/results/robustness-and-boundaries.csv",
     "research-case/07-manuscript/claim-evidence-matrix.csv",
     "prototype/configs/baseline.json",
     "prototype/results/experiment_manifest.json",
@@ -46,18 +50,20 @@ TABLE_DISPOSITIONS = {
     "T1": "bounded strongest-prior-art matrix only; not novelty clearance",
     "T2": "design comparator registry only; no measured superiority claim",
     "T3": "frozen local conditions plus explicit missing distributed deadline profile",
-    "T4": "preliminary internal result display only; numeric values remain source-bound",
+    "T4": "preauthorization simulated result display only; numeric values remain source-bound and claim-capped",
     "T5": "planned mechanism-isolation registry only; all rows missing and unexecuted",
-    "T6": "exact, exploratory, and preliminary robustness checks with distinct estimands",
+    "T6": "canonical robustness ledger plus separately classified exact and exploratory checks",
     "T7": "local timing and gas observations only; distributed, operator, network, and external evidence blocked",
     "T8": "negative findings and unresolved risks ledger with selective withholding preserved",
 }
 
 ALLOWED_STAGES = {
     "DESIGN_ONLY",
-    "PRELIMINARY_INTERNAL",
+    "PREAUTHORIZATION_SIMULATION_INPUT",
+    "PREAUTHORIZATION_SIMULATED",
+    "EXPLORATORY_PREAUTHORIZATION_SIMULATED",
+    "NEGATIVE_FINDING_PREAUTHORIZATION_SIMULATED",
     "PREAUTHORIZATION_INTERNAL",
-    "EXPLORATORY_INTERNAL",
     "ANALYTIC_DRAFT",
     "MISSING_NOT_EXECUTED",
     "BLOCKED_EXTERNAL",
@@ -87,6 +93,10 @@ PREAUTH_QA_HEADERS = (
 SOURCE_HEADERS = {
     "research-case/01-novelty/novelty-matrix.csv": ("claim_id", "predecessor_id", "material_difference", "defeating_evidence", "residual_uncertainty"),
     "research-case/02-feasibility/risk-register.csv": ("risk_id", "category", "description", "likelihood", "impact", "status", "evidence_grade", "evidence_source", "owner", "mitigation", "verification", "related_claims", "trigger"),
+    "research-case/04-data/evidence-status.csv": ("evidence_id", "claim_ids", "origin", "maturity", "scope", "status", "authorized", "independent", "source_artifact", "source_asset_ids", "authorization", "directness", "uncertainty", "tested_setting", "failure_envelope", "excluded_generality", "notes"),
+    "research-case/05-analysis/results/exploratory-findings.csv": ("finding_id", "claim_id", "evidence_ids", "source_asset_id", "source_path", "analysis_class", "estimand", "condition", "effect_estimate", "uncertainty_interval", "sample_size", "seed", "comparison", "analysis_status", "authorized", "independent", "evidence_origin", "evidence_maturity", "claim_ceiling", "interpretation_boundary", "excluded_generality", "notes"),
+    "research-case/05-analysis/results/negative-findings.csv": ("finding_id", "claim_ids", "evidence_ids", "source_asset_id", "source_path", "analysis_class", "test", "result", "uncertainty", "implication", "condition", "sample_size", "seed", "analysis_status", "authorized", "independent", "evidence_origin", "evidence_maturity", "claim_ceiling", "excluded_generality", "notes"),
+    "research-case/05-analysis/results/robustness-and-boundaries.csv": ("robustness_id", "claim_ids", "evidence_ids", "source_asset_id", "source_path", "experiment_id", "analysis_class", "boundary_axis", "condition", "result", "uncertainty", "comparison", "sample_size", "seed", "analysis_status", "authorized", "independent", "evidence_origin", "evidence_maturity", "claim_ceiling", "interpretation_boundary", "excluded_generality", "notes"),
     "prototype/results/exact_stratified_validation.csv": ("design", "strata", "required_successes", "exact_tail_probability", "monte_carlo_tail_probability", "absolute_error", "trials", "seed"),
     "prototype/results/markov_temporal_dependence.csv": ("audits", "trials", "seed", "online_to_offline", "offline_to_online", "final_catastrophic_trials", "all_audits_pass_and_final_catastrophic_count", "conditional_sequence_false_accept_rate", "conditional_sequence_false_accept_ci_low", "conditional_sequence_false_accept_ci_high", "static_set_repeated_bound"),
     "prototype/results/selective_withholding.csv": ("selective_withholders", "reconstruction_success_rate", "reconstruction_success_ci_low", "reconstruction_success_ci_high", "audit_pass_rate", "audit_pass_ci_low", "audit_pass_ci_high"),
@@ -264,6 +274,26 @@ def _validate_preauthorization_qa(project_root: Path) -> None:
 def _validate_required_lineage_inputs(project_root: Path) -> None:
     _validate_experiment_manifest(project_root)
     _validate_preauthorization_qa(project_root)
+    evidence = _require_csv_rows(
+        project_root,
+        "research-case/04-data/evidence-status.csv",
+        "evidence_id",
+        ("RID-C003-IID-001", "RID-C003-CORR-001", "RID-C003-STRAT-001", "RID-C003-SW-001"),
+    )
+    for evidence_id in ("RID-C003-IID-001", "RID-C003-CORR-001", "RID-C003-STRAT-001", "RID-C003-SW-001"):
+        row = evidence[evidence_id]
+        expected = {
+            "origin": "SIMULATED",
+            "maturity": "V2 SIMULATED",
+            "authorized": "false",
+            "independent": "false",
+            "authorization": "PREAUTHORIZATION_ONLY",
+        }
+        for field, value in expected.items():
+            if row[field] != value:
+                raise PackageValidationError(
+                    f"research-case/04-data/evidence-status.csv: {evidence_id} {field} must be {value!r}"
+                )
 
 
 def _string(value: object) -> str:
@@ -366,8 +396,9 @@ def _build_t3(project_root: Path) -> PaperTable:
              "domain_outage_probability": config["domain_outage_probability"], "domains": config["domains"],
              "trials": config["trials"], "seed": config["seed"], "sampling_strategy": config["sampling_strategy"],
              "selective_withholders": config["selective_withholders"], "environment_profile": "LOCAL_SIMULATION"},
-            claim_ids="C002|C003", source_path=source, evidence_stage="PRELIMINARY_INTERNAL",
-            claim_ceiling="V3_INTERNAL",
+            claim_ids="C003", source_path=source,
+            evidence_stage="PREAUTHORIZATION_SIMULATION_INPUT",
+            claim_ceiling="V0 ASSERTED",
         ))
     rows.append(_row(
         {"condition_id": "RID-C003-DEADLINE-001", "n": "MISSING", "threshold": "MISSING",
@@ -407,8 +438,9 @@ def _build_t4(project_root: Path) -> PaperTable:
              "ci_low": item["catastrophic_false_pass_ci_low"],
              "ci_high": item["catastrophic_false_pass_ci_high"],
              "denominator": item["catastrophic_trials"], "trials": item["trials"]},
-            claim_ids="C003", source_path=source, evidence_stage="PRELIMINARY_INTERNAL",
-            claim_ceiling="V3_INTERNAL",
+            claim_ids="C003", source_path=source,
+            evidence_stage="PREAUTHORIZATION_SIMULATED",
+            claim_ceiling="V0 ASSERTED",
         ))
     return _table("T4", "Current preliminary internal results",
                   ("result_id", "condition_id", "estimand", "estimate", "ci_low", "ci_high",
@@ -436,6 +468,25 @@ def _build_t5(project_root: Path) -> PaperTable:
 
 
 def _build_t6(project_root: Path) -> PaperTable:
+    robustness_source = "research-case/05-analysis/results/robustness-and-boundaries.csv"
+    rows = []
+    for item in _read_csv(project_root, robustness_source):
+        if item["authorized"] != "false" or item["independent"] != "false":
+            raise PackageValidationError(
+                f"{robustness_source}: {item['robustness_id']} must remain unauthorized and non-independent"
+            )
+        if item["evidence_origin"] != "SIMULATED" or item["evidence_maturity"] != "V2 SIMULATED" or item["claim_ceiling"] != "V0 ASSERTED":
+            raise PackageValidationError(
+                f"{robustness_source}: {item['robustness_id']} evidence boundary drift"
+            )
+        rows.append(_row(
+            {"check_id": item["robustness_id"], "estimand": item["boundary_axis"],
+             "condition": item["condition"], "estimate": item["result"],
+             "comparison": item["comparison"], "uncertainty_or_error": item["uncertainty"],
+             "interpretation_boundary": item["interpretation_boundary"]},
+            claim_ids=item["claim_ids"], source_path=robustness_source,
+            evidence_stage="PREAUTHORIZATION_SIMULATED", claim_ceiling="V0 ASSERTED",
+        ))
     exact_source = "prototype/results/exact_stratified_validation.csv"
     exact_rows = _read_csv(project_root, exact_source)
     if len(exact_rows) != 1:
@@ -443,49 +494,39 @@ def _build_t6(project_root: Path) -> PaperTable:
             f"{exact_source}: expected exactly one data row, found {len(exact_rows)}"
         )
     (exact,) = exact_rows
-    rows = [_row(
+    rows.append(_row(
         {"check_id": "EXACT_STRATIFIED", "estimand": "tail probability for the declared fixed-quota strata",
          "condition": exact["strata"], "estimate": exact["exact_tail_probability"],
          "comparison": exact["monte_carlo_tail_probability"], "uncertainty_or_error": exact["absolute_error"],
          "interpretation_boundary": "exact-versus-Monte-Carlo validation for one declared parameter cell"},
-        claim_ids="C003", source_path=exact_source, evidence_stage="EXPLORATORY_INTERNAL",
-        claim_ceiling="V3_INTERNAL",
-    )]
-    markov_source = "prototype/results/markov_temporal_dependence.csv"
-    markov_rows = _require_csv_rows(
-        project_root, markov_source, "audits", ("1", "2", "4", "8")
-    )
-    for audits in ("1", "2", "4", "8"):
-        item = markov_rows[audits]
-        rows.append(_row(
-            {"check_id": f"MARKOV_AUDITS_{item['audits']}",
-             "estimand": "conditional sequence false-accept rate among final catastrophic trials",
-             "condition": f"audits={item['audits']}; p_on_off={item['online_to_offline']}; p_off_on={item['offline_to_online']}",
-             "estimate": item["conditional_sequence_false_accept_rate"],
-             "comparison": item["static_set_repeated_bound"],
-             "uncertainty_or_error": f"[{item['conditional_sequence_false_accept_ci_low']}, {item['conditional_sequence_false_accept_ci_high']}]",
-             "interpretation_boundary": "exploratory temporal-dependence estimand; not interchangeable with the static-set bound"},
-            claim_ids="C003", source_path=markov_source, evidence_stage="EXPLORATORY_INTERNAL",
-            claim_ceiling="V3_INTERNAL",
-        ))
-    selective_source = "prototype/results/selective_withholding.csv"
-    selective_rows = _require_csv_rows(
-        project_root, selective_source, "selective_withholders", ("11",)
-    )
-    selective = selective_rows["11"]
-    rows.append(_row(
-        {"check_id": "SELECTIVE_WITHHOLDING_11", "estimand": "audit-pass and reconstruction-success rates",
-         "condition": "selective_withholders=11", "estimate": selective["audit_pass_rate"],
-         "comparison": selective["reconstruction_success_rate"],
-         "uncertainty_or_error": f"audit CI [{selective['audit_pass_ci_low']}, {selective['audit_pass_ci_high']}]; reconstruction CI [{selective['reconstruction_success_ci_low']}, {selective['reconstruction_success_ci_high']}]",
-         "interpretation_boundary": "negative result: audit pass does not imply dispute reconstruction under targeted withholding"},
-        claim_ids="C003", source_path=selective_source, evidence_stage="PRELIMINARY_INTERNAL",
-        claim_ceiling="V3_INTERNAL",
+        claim_ids="C003", source_path=exact_source,
+        evidence_stage="EXPLORATORY_PREAUTHORIZATION_SIMULATED",
+        claim_ceiling="V0 ASSERTED",
     ))
+    exploratory_source = "research-case/05-analysis/results/exploratory-findings.csv"
+    exploratory_rows = _read_csv(project_root, exploratory_source)
+    for item in exploratory_rows:
+        if item["authorized"] != "false" or item["independent"] != "false":
+            raise PackageValidationError(
+                f"{exploratory_source}: {item['finding_id']} must remain unauthorized and non-independent"
+            )
+        if item["evidence_origin"] != "SIMULATED" or item["evidence_maturity"] != "V2 SIMULATED" or item["claim_ceiling"] != "V0 ASSERTED":
+            raise PackageValidationError(
+                f"{exploratory_source}: {item['finding_id']} evidence boundary drift"
+            )
+        rows.append(_row(
+            {"check_id": item["finding_id"], "estimand": item["estimand"],
+             "condition": item["condition"], "estimate": item["effect_estimate"],
+             "comparison": item["comparison"], "uncertainty_or_error": item["uncertainty_interval"],
+             "interpretation_boundary": item["interpretation_boundary"]},
+            claim_ids=item["claim_id"], source_path=exploratory_source,
+            evidence_stage="EXPLORATORY_PREAUTHORIZATION_SIMULATED",
+            claim_ceiling="V0 ASSERTED",
+        ))
     return _table("T6", "Robustness and boundary-condition checks",
                   ("check_id", "estimand", "condition", "estimate", "comparison",
                    "uncertainty_or_error", "interpretation_boundary"), rows,
-                  ("Estimands remain distinct across exact, temporal, and selective-withholding checks.",))
+                  ("Canonical robustness rows and exploratory temporal rows remain separately classified; selective-withholding negative findings are in T8.",))
 
 
 def _build_t7(project_root: Path) -> PaperTable:
@@ -538,19 +579,37 @@ def _build_t7(project_root: Path) -> PaperTable:
 
 def _build_t8(project_root: Path) -> PaperTable:
     risk_source = "research-case/02-feasibility/risk-register.csv"
-    selected = ("R004", "R005", "R007", "R008", "R009", "R010")
+    selected = ("R005", "R007", "R008", "R009", "R010")
     risk_rows = _require_csv_rows(project_root, risk_source, "risk_id", selected)
     rows = []
     for risk_id in selected:
         item = risk_rows[risk_id]
-        stage = "PRELIMINARY_INTERNAL" if risk_id == "R004" else (
-            "BLOCKED_EXTERNAL" if risk_id in {"R005", "R007"} else "DESIGN_ONLY"
-        )
+        stage = "BLOCKED_EXTERNAL" if risk_id in {"R005", "R007"} else "DESIGN_ONLY"
         rows.append(_row(
             {"finding_id": risk_id, "finding": item["description"], "status": item["status"],
              "consequence": item["trigger"], "required_resolution": item["verification"]},
             claim_ids=item["related_claims"], source_path=risk_source, evidence_stage=stage,
-            claim_ceiling="V3_INTERNAL" if risk_id == "R004" else "ASSERTED_ONLY",
+            claim_ceiling="ASSERTED_ONLY",
+        ))
+    negative_source = "research-case/05-analysis/results/negative-findings.csv"
+    for item in _read_csv(project_root, negative_source):
+        if item["authorized"] != "false" or item["independent"] != "false":
+            raise PackageValidationError(
+                f"{negative_source}: {item['finding_id']} must remain unauthorized and non-independent"
+            )
+        if item["evidence_origin"] != "SIMULATED" or item["evidence_maturity"] != "V2 SIMULATED" or item["claim_ceiling"] != "V0 ASSERTED":
+            raise PackageValidationError(
+                f"{negative_source}: {item['finding_id']} evidence boundary drift"
+            )
+        rows.append(_row(
+            {"finding_id": item["finding_id"],
+             "finding": f"Selective withholding: {item['implication']}",
+             "status": item["analysis_status"],
+             "consequence": item["excluded_generality"],
+             "required_resolution": item["notes"]},
+            claim_ids=item["claim_ids"], source_path=negative_source,
+            evidence_stage="NEGATIVE_FINDING_PREAUTHORIZATION_SIMULATED",
+            claim_ceiling="V0 ASSERTED",
         ))
     rows.extend((
         _row({"finding_id": "AUDIT_DISPUTE_SEPARATION", "finding": "routine audit response is not a dispute reconstruction guarantee",
@@ -627,6 +686,15 @@ def latex_escape(value: str) -> str:
     return "".join(replacements.get(char, char) for char in value).replace("\n", r"\newline{}")
 
 
+def _latex_cell(value: str) -> str:
+    """Escape a cell while adding safe discretionary breaks for long identifiers."""
+    return (
+        latex_escape(value)
+        .replace(r"\_", r"\_\allowbreak{}")
+        .replace("; ", r";\allowbreak{} ")
+    )
+
+
 def _latex(package: dict[str, PaperTable]) -> str:
     lines = [r"% KEYSTONE T1--T8 editable table source",
              r"% DRAFT / PRE-AUTHORIZATION; NOT CONFIRMATORY OR INDEPENDENT EVIDENCE",
@@ -650,7 +718,7 @@ def _latex(package: dict[str, PaperTable]) -> str:
             )
             for header in table.headers:
                 lines.append(
-                    latex_escape(header) + " & " + latex_escape(row[header])
+                    _latex_cell(header) + " & " + _latex_cell(row[header])
                     + r" \\ \hline"
                 )
         notes = " ".join(table.notes)

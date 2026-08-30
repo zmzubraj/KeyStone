@@ -1,0 +1,276 @@
+{
+  "artifact_dispositions": [
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/protocol.md",
+      "residual_uncertainty": "",
+      "revision": "2",
+      "sha256": "4ab6e396a75a6c5cab6290de681b7c3ba8de468606a591a19ee951ae6963efc3",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/analysis-plan.md",
+      "residual_uncertainty": "",
+      "revision": "3",
+      "sha256": "ef2c05bff11d9c7aca886737d342eaa77f5c9f26096869e9b9eba9bfb313c1ef",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/power-or-precision.md",
+      "residual_uncertainty": "",
+      "revision": "4",
+      "sha256": "dfb678063d914134d78950620654d8907c84784f612bc529cd53a6518886bde5",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/preregistration-and-deviations.md",
+      "residual_uncertainty": "",
+      "revision": "4",
+      "sha256": "b82ac6378281ce132bf8ae763128e83af02d7267f38216bbcfd1f475ccc0c71d",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/pc03-prospective-amendment.md",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "fa92cf52c7db2bb4377bb6b94303b086ca1ec37d372b8bf9af1a23b4c47e82e0",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/pc03-prospective-counts.csv",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "840db07ed3f228662625beeac1d42d74cfb78dc85610f2b9ddd4a05c2f8d5a2b",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/pc03-seed-schedule.csv",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "7063adc013979905e0e296f4ace7daa5dde2053c3f78c080c586f567ac18954a",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/pc03-independent-methods-challenge/design-assessment.md",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "e2759aefb89dd6e082b7db10cd8a85b75df759e91309d83e975bf85eaa5ab9f8",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/pc03-independent-methods-challenge/prospective-counts.csv",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "f04946b030306e376745e938dea9f1ddd11e0df6cbddbeaf54368ecb138c75e0",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/03-design/pc03-independent-methods-challenge/calculation-notes.md",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "365f620a5e166d429b6b805de5404e7e67cae4db361a16e6a4e880c632434696",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/02-feasibility/pilot-plan.md",
+      "residual_uncertainty": "",
+      "revision": "3",
+      "sha256": "907d9c6f954daa44216b5ee83f56bd42a7c990c2fd8d0dccaacf1f5a7e134b8a",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "research-case/02-feasibility/pilot-run-contract.csv",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "918dacfae714329d9b37a174421ee02806f3c06a2777b09de07f59c40627db95",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "prototype/src/keystone/simulation.py",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "61662f7c144723aeaa9b75e3f6c51991f9b8006543d68f801b47be1d4254ff77",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "prototype/scripts/run_experiments.py",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
+      "verification_event_id": ""
+    },
+    {
+      "corrections_required": [],
+      "disposition": "UNANSWERED",
+      "path": "prototype/configs/baseline.json",
+      "residual_uncertainty": "",
+      "revision": "N/A",
+      "sha256": "ceef72707f92f3b5a17a7343339222114e92110b145f9db3f7ff5b17a4631c59",
+      "verification_event_id": ""
+    }
+  ],
+  "author_metadata_included": false,
+  "canonical_phase": "INTAKE",
+  "contract_timestamp": "2026-08-30T07:45:01Z",
+  "may_assert_novelty": false,
+  "may_authorize_execution": false,
+  "may_promote_phase": false,
+  "overall_disposition": "UNANSWERED",
+  "question_responses": [
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does the sampling-unit definition match the actual simulator semantics, without treating a seed-run aggregate as a Bernoulli observation?",
+      "question_id": "PC03-Q01",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Are scenario draws independent under the frozen generator, and are blockwise estimates sufficient to expose implementation-level dependence or drift?",
+      "question_id": "PC03-Q02",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "For RID-C003-STRAT-001, does the implementation create true common-random-number matched policy pairs with identical latent scenarios and no unpaired substitution?",
+      "question_id": "PC03-Q03",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "For RID-C003-SW-001, are audit-pass and dispute-success outcomes evaluated within the same synthetic draw, with the signed gap direction fixed before execution?",
+      "question_id": "PC03-Q04",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Recompute both Hoeffding requirements of 73,778 and confirm that 32 x 4,096 = 131,072 valid primary draws exceeds them under the stated bounded outcomes.",
+      "question_id": "PC03-Q05",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Are all 108 seed-schedule rows unique and deterministic, with exactly 32 primary and four reserve streams for each included result ID?",
+      "question_id": "PC03-Q06",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does the reserve rule replace only documented infrastructure failures and prohibit replacement of valid unfavorable blocks?",
+      "question_id": "PC03-Q07",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Is one primary cell per included family sufficient for the frozen minimum claim, with optional secondary tests correctly confined to Holm control?",
+      "question_id": "PC03-Q08",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Are CORR and DEADLINE correctly excluded, and is every existing correlated/deadline display prevented from becoming confirmatory evidence?",
+      "question_id": "PC03-Q09",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Are missingness, invalid-run, deviation, stopping, negative-result retention, and exploratory-quarantine rules complete and operationally testable?",
+      "question_id": "PC03-Q10",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Could any existing exploratory value, figure, or code default have contaminated the chosen cells, precision targets, or decision rules?",
+      "question_id": "PC03-Q11",
+      "smallest_adequate_correction": ""
+    },
+    {
+      "calculation_or_code_evidence": "",
+      "consequence": "",
+      "disposition": "UNANSWERED",
+      "evidence_locations": [],
+      "question": "Does the pilot run contract reproduce the same included/excluded boundaries without introducing a stronger claim or execution authorization?",
+      "question_id": "PC03-Q12",
+      "smallest_adequate_correction": ""
+    }
+  ],
+  "review_packet_path": "review-packets/KEYSTONE-MPP-F1-pc03-methods-review-packet.zip",
+  "review_packet_sha256": "e95b0927825b522ecd010de3f16652929a3397153a5d2e854994fca5e3c36b27",
+  "review_scope": "PC03_METHODS_ONLY",
+  "reviewer": {
+    "competence_basis": "",
+    "conflicts_disclosure": "",
+    "identity": "",
+    "independence_basis": "",
+    "registry_id": "",
+    "signing_key_id": ""
+  },
+  "reviewer_attestation": "",
+  "schema_id": "KEYSTONE_PC03_METHODS_VERIFIER_RETURN",
+  "schema_version": 1,
+  "signed_return": {
+    "signature_path": "",
+    "signature_sha256": ""
+  },
+  "status": "UNCOMPLETED_TEMPLATE",
+  "validation_boundary": "Structural validation does not verify signature authenticity, reviewer identity, scientific correctness, independence, provenance, or execution eligibility."
+}

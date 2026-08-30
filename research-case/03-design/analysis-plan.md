@@ -33,10 +33,10 @@ Result-ID closure and denominator contract:
 | `EST-02` | `RID-C001-STATIC-001` | one frozen parameter cell | count of exact parameter cells under one stated semantics | blocked by parameter cell and model semantics |
 | `EST-03` | `RID-C002-CRYPTO-001` | one named correctness case | count of required deterministic correctness cases | blocked by code revision, transcript version, and seed batch |
 | `EST-04` | `RID-C002-CONTRACT-001` | one named complete contract lifecycle case | count of required deterministic lifecycle cases | blocked by contract revision, toolchain version, and seed batch |
-| `EST-05` | `RID-C003-IID-001` | one complete scenario run under one seed and config cell | count of seed-level IID scenario runs per config cell | blocked by scenario family, config revision, runtime, and seed block |
-| `EST-06` | `RID-C003-CORR-001` | one complete scenario run under one seed, config cell, and placement policy | count of seed-level correlated scenario runs per policy cell | blocked by domain-label source, placement policy, config revision, and seed block |
-| `EST-07` | `RID-C003-STRAT-001` | one matched seed pair spanning both policies under one semantic cell | count of matched seed pairs per semantic cell | paired within seed; blocked by draw semantics and scenario cell |
-| `EST-08` | `RID-C003-SW-001` | one complete adversary scenario run under one seed and config cell | count of seed-level selective-withholding scenario runs per adversary cell | blocked by adversary configuration, config revision, runtime, and seed block |
+| `EST-05` | `RID-C003-IID-001` | one prespecified seed block containing 4,096 independent synthetic model draws | 131,072 draws and 32 blockwise estimates per IID cell | blocked by scenario family, config revision, runtime, and seed block |
+| `EST-06` | `RID-C003-CORR-001` | not frozen | not frozen | `EXCLUDED_PENDING_TRUTHFUL_DOMAIN_LABEL_SOURCE`; requires a truthful domain-label source, valid comparator, and new prospective amendment |
+| `EST-07` | `RID-C003-STRAT-001` | one prespecified seed block containing 4,096 common-random-number policy pairs | 131,072 paired draws and 32 blockwise paired estimates per sample-size cell | paired within draw and block; blocked by draw semantics and scenario cell |
+| `EST-08` | `RID-C003-SW-001` | one prespecified seed block containing 4,096 draws with both audit and dispute outcomes | 131,072 paired draws and 32 blockwise gap estimates per adversary cell | paired within draw and block; blocked by adversary configuration, config revision, runtime, and seed block |
 | `EST-09` | `RID-C003-DEADLINE-001` | one complete distributed trace under one seed and environment profile | count of trace-level runs per environment profile | blocked by environment profile, host topology, run day, and seed block |
 
 Robustness estimands:
@@ -65,17 +65,17 @@ Primary analysis rules by estimand:
 | `EST-02` | exact combinatorial calculation; if mirrored by simulation, simulation is validation not replacement | none for the exact calculation; any simulation cross-check gets a confidence interval | static catastrophic semantics only; never converted into a time-evolving claim |
 | `EST-03` | zero-tolerance deterministic correctness checklist over the full named case set; every required case must match its expected pass or fail outcome | none; any failure is dispositive for the affected claim boundary | prototype-scope correctness only; not production assurance |
 | `EST-04` | zero-tolerance deterministic lifecycle checklist over the full named contract case set; every required case must preserve the expected evidence state transition | none; any failure is dispositive for the affected contract-boundary wording | contract-boundary behavior only; not an independent security audit |
-| `EST-05` | seed-level empirical proportions for IID scenario outcomes | two-sided 95 percent Wilson score intervals unless superseded by a stronger design-matched rule in `power-or-precision.md` | IID model family only |
-| `EST-06` | seed-level empirical proportions for correlated-domain scenario outcomes | two-sided 95 percent Wilson score intervals unless superseded by a stronger design-matched rule in `power-or-precision.md` | correlated-domain model family only |
-| `EST-07` | paired seed-level difference between the two sampling policies | paired uncertainty method to be frozen in `power-or-precision.md`; no unpaired substitution is allowed | matched semantics only; no extrapolation to other samplers |
-| `EST-08` | seed-level empirical gap between audit-pass and dispute-success outcomes under the same adversary configuration | uncertainty method to be frozen in `power-or-precision.md`; the gap is retained even if one component looks favorable | limitation surface only; not a success endpoint |
+| `EST-05` | empirical IID model-draw proportions plus 32 blockwise estimates per cell | simultaneous family-wise Hoeffding absolute-error bound at 0.005, Wilson intervals as descriptive support, exact zero-event upper bound | IID synthetic model family only |
+| `EST-06` | no confirmatory estimator or test while excluded | not applicable until a new prospective amendment freezes the source, comparator, denominator, and precision rule | existing correlated-domain outputs are exploratory only and cannot support a confirmatory claim |
+| `EST-07` | matched-draw difference between sampling policies plus 32 blockwise paired estimates | simultaneous family-wise range-two Hoeffding absolute-error bound at 0.01; no unpaired substitution | matched synthetic semantics only; no extrapolation to other samplers |
+| `EST-08` | within-draw audit-pass minus dispute-success gap plus 32 blockwise gap estimates | simultaneous family-wise range-two Hoeffding absolute-error bound at 0.01; component intervals are descriptive | limitation surface only; not a success endpoint |
 | `EST-09` | trace-level success proportion over independent benchmark traces | confidence interval method to be frozen in `power-or-precision.md`; Wilson interval is the default if no better design-specific rule is later justified | conditional synchrony wording only; not unconditional future availability |
 
-For stochastic binary endpoints, the default estimator is the empirical
-proportion over independent scenario seeds, with two-sided 95 percent Wilson
-score intervals for `EST-05`, `EST-06`, and the binary components of `EST-08`
-unless `power-or-precision.md` later freezes a stronger design-matched
-alternative.
+For stochastic binary endpoints, the estimator is the empirical proportion over
+the prespecified independent synthetic model draws, with seed blocks retained as
+execution and reproducibility units. Simultaneous family-wise Hoeffding bounds
+are primary; two-sided Wilson intervals for individual binary components are
+descriptive and cannot replace the simultaneous contract.
 
 Deterministic correctness rules for `EST-03` and `EST-04`:
 
@@ -125,10 +125,9 @@ Multiplicity strategy:
 - no omnibus claim is allowed to borrow strength from unrelated endpoint
   families;
 - each charter claim uses its own required evidence bundle;
-- if multiple stochastic comparisons are used to support the same prose claim,
-  adjust within that family using Holm control on the named comparison set or
-  report simultaneous intervals, with the exact choice frozen in
-  `power-or-precision.md`;
+- the three scheduled stochastic families each contain one primary cell, so no
+  within-family primary multiplicity adjustment is required; any optional
+  secondary hypothesis tests use Holm control within that prespecified family;
 - robustness and exploratory endpoints do not upgrade a primary claim if the
   primary endpoint fails.
 
@@ -152,10 +151,11 @@ Missing or failed-run handling:
 - a run with missing essential telemetry, missing seed provenance, or broken
   environment capture is marked invalid for the primary endpoint and kept in the
   run ledger;
-- one same-seed rerun is permitted only for documented infrastructure failure
-  before a valid result object exists;
-- if both the original and rerun fail, the cell remains failed or missing and is
-  counted against feasibility;
+- a failed primary block remains in the deviation ledger and may be replaced only
+  by the next unused predeclared reserve block; a valid unfavorable block is never
+  replaceable;
+- if four reserve blocks are exhausted before 32 valid primary-equivalent blocks
+  exist, the cell remains incomplete and is counted against feasibility;
 - partial benchmark traces are not converted into complete successes by nodewise
   averaging.
 
@@ -177,11 +177,12 @@ Not valid exclusions:
 
 Required sensitivity analyses:
 
-- compare IID and correlated outage families under matched baseline parameters;
+- keep any IID-versus-correlated comparison exploratory until a truthful
+  domain-label source, valid comparator, and new prospective amendment exist;
 - compare uniform and fixed-quota stratified sampling under matched total draws
   and matched catastrophic semantics;
-- stress the placement cap by using at least one cap-respecting and one
-  concentration-stress configuration;
+- defer placement-cap concentration stress to the excluded correlated-domain
+  family or a separately preregistered exploratory result ID;
 - preserve the selective-withholding negative result under the frozen adversary
   configuration;
 - for deadline traces, vary only prespecified environment profiles recorded in

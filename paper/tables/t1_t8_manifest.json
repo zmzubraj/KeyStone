@@ -21,11 +21,27 @@
     },
     {
       "path": "research-case/03-design/analysis-plan.md",
-      "sha256": "ab5a01e12b8b2e65275ad9317aad219e3219c63c45395e6274f68dc049c915a1"
+      "sha256": "ef2c05bff11d9c7aca886737d342eaa77f5c9f26096869e9b9eba9bfb313c1ef"
+    },
+    {
+      "path": "research-case/04-data/evidence-status.csv",
+      "sha256": "7c2676af76a779b9dd9166bc810f9a55e48a525e5ac2e022d312e27fd9339a29"
+    },
+    {
+      "path": "research-case/05-analysis/results/exploratory-findings.csv",
+      "sha256": "d37b47dc46018b72b79f37e42a859d955e700100041e42750b3e32dc2bad8ad5"
+    },
+    {
+      "path": "research-case/05-analysis/results/negative-findings.csv",
+      "sha256": "fda64ed1160f827a8f09e5168ce0429f740852a9bea3247fe0aa695f5f0985f7"
+    },
+    {
+      "path": "research-case/05-analysis/results/robustness-and-boundaries.csv",
+      "sha256": "da0ff36cdcf5a5165545ce9b9ff402914d76029b20c4f21982c70b2ed579c9c9"
     },
     {
       "path": "research-case/07-manuscript/claim-evidence-matrix.csv",
-      "sha256": "d70979a1ae641f51669519dc0dadda0b683766a32520365d2279218fd1b54553"
+      "sha256": "fc3ef162ba028a5f6cbbcf0520539f3752d5e37a392c3a8eef2a7c7a9745fe43"
     },
     {
       "path": "prototype/configs/baseline.json",
@@ -76,11 +92,11 @@
     },
     {
       "path": "t1_t8_package.md",
-      "sha256": "0876dd9fe3fec6256a8b11dbdfbcadad8e66a0f6a9855a43a6819afdd6045d51"
+      "sha256": "6935c20dbb3326cec0b0809d0dcac7b846737b70b3142ae651dc1792edcdeaba"
     },
     {
       "path": "t1_t8_package.tex",
-      "sha256": "8b7088f63f36c57c5b1dba8ccdadb20b8ff2aa3a449d0673b0603e1d4ca38e8c"
+      "sha256": "b4f0415ac0decbc091ee0502ca92d2bb683d7c48310adb6924919d7f36acba82"
     },
     {
       "path": "t2_proposed_vs_baselines.csv",
@@ -88,11 +104,11 @@
     },
     {
       "path": "t3_experimental_conditions.csv",
-      "sha256": "0ce677c2ce2208bd8ceef8b113f044e543a28231dec2c2a327b88338a888d5e4"
+      "sha256": "cc6802461e0a97728145d6b048fa4e9a2401b6b3d91d58b74240f1f6f23e4907"
     },
     {
       "path": "t4_primary_results.csv",
-      "sha256": "3a3ff0cd703bb31138c81a1e7f7ba7aacae6a671490328d070e47b37876816fb"
+      "sha256": "ccdc7357825b17060a87610de13fd5121aed77f9cca12d7712f211aac1e81c58"
     },
     {
       "path": "t5_ablation_mechanism.csv",
@@ -100,7 +116,7 @@
     },
     {
       "path": "t6_robustness_boundaries.csv",
-      "sha256": "4c14fa59b7d1e1df3f65b91ee29a846712b633ec7779d1abb2d79482e69262d0"
+      "sha256": "3f6b9128860bd83e89c83cc6c46bb546f14554524373e924ece19243606e92e5"
     },
     {
       "path": "t7_real_world_feasibility.csv",
@@ -108,7 +124,7 @@
     },
     {
       "path": "t8_negative_findings_risks.csv",
-      "sha256": "a9861681e31fc8052500ab059260e40a33784f1d5fa341f9846e1ae5c90eebac"
+      "sha256": "55d7cd1b4d91d309059fa65b1b620e89a81294d5848626bc1fb545c9eba577f2"
     }
   ],
   "schema_id": "KEYSTONE_T1_T8_TABLE_PACKAGE",
@@ -119,9 +135,9 @@
     "T1": "bounded strongest-prior-art matrix only; not novelty clearance",
     "T2": "design comparator registry only; no measured superiority claim",
     "T3": "frozen local conditions plus explicit missing distributed deadline profile",
-    "T4": "preliminary internal result display only; numeric values remain source-bound",
+    "T4": "preauthorization simulated result display only; numeric values remain source-bound and claim-capped",
     "T5": "planned mechanism-isolation registry only; all rows missing and unexecuted",
-    "T6": "exact, exploratory, and preliminary robustness checks with distinct estimands",
+    "T6": "canonical robustness ledger plus separately classified exact and exploratory checks",
     "T7": "local timing and gas observations only; distributed, operator, network, and external evidence blocked",
     "T8": "negative findings and unresolved risks ledger with selective withholding preserved"
   },

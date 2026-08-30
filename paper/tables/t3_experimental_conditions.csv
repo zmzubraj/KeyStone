@@ -1,6 +1,6 @@
 condition_id,n,threshold,sample_size,required_responses,offline_probability,domain_outage_probability,domains,trials,seed,sampling_strategy,selective_withholders,environment_profile,claim_ids,source_path,evidence_stage,claim_ceiling
-iid-10pct-uniform,32,22,8,8,0.1,0.0,4,20000,1001,uniform,0,LOCAL_SIMULATION,C002|C003,prototype/configs/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL
-domain-20pct-uniform,32,22,8,8,0.02,0.2,4,20000,1002,uniform,0,LOCAL_SIMULATION,C002|C003,prototype/configs/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL
-domain-20pct-stratified,32,22,8,8,0.02,0.2,4,20000,1002,stratified,0,LOCAL_SIMULATION,C002|C003,prototype/configs/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL
-selective-withholding-11,32,22,8,8,0.0,0.0,4,20000,1003,uniform,11,LOCAL_SIMULATION,C002|C003,prototype/configs/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL
+iid-10pct-uniform,32,22,8,8,0.1,0.0,4,20000,1001,uniform,0,LOCAL_SIMULATION,C003,prototype/configs/baseline.json,PREAUTHORIZATION_SIMULATION_INPUT,V0 ASSERTED
+domain-20pct-uniform,32,22,8,8,0.02,0.2,4,20000,1002,uniform,0,LOCAL_SIMULATION,C003,prototype/configs/baseline.json,PREAUTHORIZATION_SIMULATION_INPUT,V0 ASSERTED
+domain-20pct-stratified,32,22,8,8,0.02,0.2,4,20000,1002,stratified,0,LOCAL_SIMULATION,C003,prototype/configs/baseline.json,PREAUTHORIZATION_SIMULATION_INPUT,V0 ASSERTED
+selective-withholding-11,32,22,8,8,0.0,0.0,4,20000,1003,uniform,11,LOCAL_SIMULATION,C003,prototype/configs/baseline.json,PREAUTHORIZATION_SIMULATION_INPUT,V0 ASSERTED
 RID-C003-DEADLINE-001,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,DISTRIBUTED_MULTI_PROCESS_OR_MULTI_MACHINE_PROFILE_MISSING,C003,research-case/03-design/protocol.md,MISSING_NOT_EXECUTED,ASSERTED_ONLY

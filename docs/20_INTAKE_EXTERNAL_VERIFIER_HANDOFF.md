@@ -67,8 +67,8 @@ Snapshot source timestamp: `2026-08-30T05:18:24Z` (latest required artifact `upd
 - Feasibility decision: `UNASSESSED`
 - Solution viability: `ASSERTED_ONLY`
 - Acceptance readiness: `NOT_ASSESSABLE`
-- Verifier trust mode: `CASE_LOCAL_MECHANICAL_ONLY`
-- Active independent reviewers: `0`
+- Verifier trust mode: `EXTERNAL_RUN_BOUND_REGISTRY_ADMIN`
+- Active independent reviewers: `1`
 - Independent verification events for these four artifacts: `0`
 
 | Path | Required | Status | Revision | SHA-256 |
@@ -221,3 +221,28 @@ Return a signed, artifact-specific disposition containing:
 - unique verification event IDs for artifacts accepted as `VERIFIED`;
 - residual uncertainty and the explicit statement that the review is
   `INTAKE_ONLY`.
+
+The workspace provides a deterministic companion template bound to the current
+review-packet SHA-256:
+
+```bash
+make intake-verifier-return-template
+make intake-verifier-return-template-check
+```
+
+The generated path is
+`review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json`. After a
+reviewer completes and signs a copy outside the template path, its structure can
+be checked without writing canonical state:
+
+```bash
+python3 scripts/intake_verifier_return_contract.py \
+  --validate /absolute/path/to/completed-intake-verifier-return.json
+```
+
+This validation checks packet identity, artifact revisions and hashes, complete
+question dispositions, unique verification-event references, review scope, and
+non-promotion flags. It does **not** verify the signature, real-world identity,
+independence, scientific correctness, provenance, registry acceptance, or phase
+eligibility. Those checks remain in the authenticated schema-v4 verifier and
+strict research-case workflow above.

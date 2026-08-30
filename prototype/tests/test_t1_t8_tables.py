@@ -26,9 +26,11 @@ EXPECTED_IDS = tuple(f"T{i}" for i in range(1, 9))
 REQUIRED_FIELDS = {"claim_ids", "source_path", "evidence_stage", "claim_ceiling"}
 ALLOWED_STAGES = {
     "DESIGN_ONLY",
-    "PRELIMINARY_INTERNAL",
+    "PREAUTHORIZATION_SIMULATION_INPUT",
+    "PREAUTHORIZATION_SIMULATED",
+    "EXPLORATORY_PREAUTHORIZATION_SIMULATED",
+    "NEGATIVE_FINDING_PREAUTHORIZATION_SIMULATED",
     "PREAUTHORIZATION_INTERNAL",
-    "EXPLORATORY_INTERNAL",
     "ANALYTIC_DRAFT",
     "MISSING_NOT_EXECUTED",
     "BLOCKED_EXTERNAL",
@@ -112,6 +114,45 @@ def test_numeric_values_are_bound_directly_to_canonical_csv_and_json() -> None:
     t6_row = next(row for row in package["T6"].rows if row.get("check_id") == "EXACT_STRATIFIED")
     assert t6_row["estimate"] == exact_source["exact_tail_probability"]
     assert t6_row["comparison"] == exact_source["monte_carlo_tail_probability"]
+
+
+def test_c003_simulations_are_never_mislabeled_as_internal_v3_evidence() -> None:
+    package = tables.build_package(ROOT)
+    c003_rows = [
+        row
+        for table_id in ("T3", "T4", "T6", "T8")
+        for row in package[table_id].rows
+        if "C003" in row["claim_ids"]
+        and row["evidence_stage"] not in {
+            "DESIGN_ONLY", "MISSING_NOT_EXECUTED", "BLOCKED_EXTERNAL"
+        }
+    ]
+    assert c003_rows
+    assert all(row["claim_ceiling"] != "V3_INTERNAL" for row in c003_rows)
+    assert all("SIMULAT" in row["evidence_stage"] for row in c003_rows)
+
+
+def test_t6_and_t8_use_canonical_classified_analysis_ledgers() -> None:
+    package = tables.build_package(ROOT)
+    markov_rows = [
+        row for row in package["T6"].rows
+        if row["check_id"].startswith("EXPLORE-MARKOV-")
+    ]
+    assert len(markov_rows) == 4
+    assert {
+        row["source_path"] for row in markov_rows
+    } == {"research-case/05-analysis/results/exploratory-findings.csv"}
+
+    selective_rows = [
+        row for row in package["T8"].rows
+        if row["finding_id"].startswith("NEG-SW-")
+    ]
+    assert len(selective_rows) == 4
+    assert {
+        row["source_path"] for row in selective_rows
+    } == {"research-case/05-analysis/results/negative-findings.csv"}
+    assert all(row["status"] == "DRAFT_NEGATIVE_FINDING_ONLY" for row in selective_rows)
+    assert not any(row["finding_id"] == "R004" for row in package["T8"].rows)
 
 
 def test_write_is_deterministic_and_manifest_sidecar_hashes_match(tmp_path: Path) -> None:

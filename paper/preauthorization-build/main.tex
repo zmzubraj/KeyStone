@@ -1,0 +1,878 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\footnotesize INTAKE --- NOT SUBMISSION READY --- AUTHOR METADATA DEFERRED}
+\fancyfoot[R]{\thepage}
+\setlength{\headheight}{14pt}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={KEYSTONE-MPP-F1 -\/-\/- DRAFT PREAUTHORIZATION MANUSCRIPT},
+  pdfauthor={Author metadata deferred},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\ifXeTeX
+\special{pdf:trailerid [ <2c22e8e75e21567a28aa50ae592a3e1e> <2c22e8e75e21567a28aa50ae592a3e1e> ]}
+\fi
+\ifPDFTeX
+\pdftrailerid{}
+\pdftrailer{/ID [ <2c22e8e75e21567a28aa50ae592a3e1e> <2c22e8e75e21567a28aa50ae592a3e1e> ]}
+\fi
+\ifLuaTeX
+\pdfvariable trailerid {[ <2c22e8e75e21567a28aa50ae592a3e1e> <2c22e8e75e21567a28aa50ae592a3e1e> ]}
+\fi
+
+\title{KEYSTONE-MPP-F1 -\/-\/- DRAFT PREAUTHORIZATION MANUSCRIPT}
+\author{Author metadata deferred}
+\date{2026-08-30}
+
+\begin{document}
+\maketitle
+
+\subsection{Title}\label{title}
+
+KEYSTONE: A Draft Study of Dispute-Key Serviceability Distinct from
+Ciphertext Availability in Encrypted AI Rollups
+
+Status: \texttt{DRAFT\ /\ PRE-MANUSCRIPT\ /\ PRE-AUTHORIZATION}\\
+System: \texttt{KEYSTONE-MPP-F1}\\
+Date: \texttt{2026-08-29}\\
+Canonical phase at draft time: \texttt{INTAKE}
+
+\subsection{Abstract}\label{abstract}
+
+Encrypted optimistic AI rollups can preserve ciphertext availability
+while still failing to deliver timely dispute-key serviceability.
+KEYSTONE studies that separation through a non-production
+readiness-audit workflow assembled from established threshold-decryption
+components rather than a new cryptographic primitive. The present draft
+is bounded to three research-case claims: a property-separation
+hypothesis (\texttt{C001}), an internal prototype and reproducibility
+hypothesis (\texttt{C002}), and a broader solution-viability hypothesis
+that still requires external evidence (\texttt{C003}). Existing tests,
+simulations, figures, diagrams, and contract-boundary artifacts are
+internal, analytic, preliminary, or exploratory evidence only. Novelty
+remains unresolved, feasibility is unassessed in canonical state, and
+confirmatory execution is not authorized. Accordingly, this shell
+records admissible wording, planned sections, and explicit evidence
+gaps; it does not make a publication-readiness claim.
+
+\subsection{1. Introduction}\label{introduction}
+
+The motivating problem is not ciphertext publication alone. A rollup
+dispute may require authorized recovery of a record key or
+threshold-decryption output within a deadline, and that requirement can
+fail even when ciphertext bytes or receipts remain retrievable. The
+current draft treats that gap as the core research question.
+
+The manuscript remains within \texttt{FREEZE.md},
+\texttt{docs/11\_PAPER\_BLUEPRINT.md}, and the canonical novelty case.
+It does not claim a new threshold-decryption primitive, timing-free
+accountability, adaptive selective-withholding resistance, unconditional
+future availability, or production security.
+
+The three manuscript-level claim anchors are:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{C001}: study and formalize dispute-key availability as
+  distinct from ciphertext availability under the frozen model, subject
+  to unresolved strongest-prior-art closure;
+\item
+  \texttt{C002}: document the internal, non-production prototype and
+  local reproducibility boundary;
+\item
+  \texttt{C003}: test the frozen analytic, simulated, prototype, and
+  eventually external evidence package without wording above its current
+  maturity ceiling.
+\end{itemize}
+
+\subsection{Methods}\label{methods}
+
+The detailed methods architecture is organized across Sections 2--6.
+Those sections remain a pre-authorization manuscript view of the
+canonical novelty, protocol, analysis-plan, and implementation
+artifacts.
+
+The feasibility package now includes a non-executable confirmatory pilot
+plan, machine-readable result contract, and a result-blind PC03
+amendment. They reserve all nine \texttt{RID-*} result families,
+separate the minimum short-paper core from the extended deadline lane,
+prohibit reuse of historical outputs as confirmatory evidence, and leave
+all observed outcomes missing. For three minimum synthetic cells---IID
+baseline, stratified-versus-uniform at \texttt{s=8}, and selective
+withholding at \texttt{w=11}---the draft amendment predeclares 32
+primary and four reserve seed blocks, 4,096 draws per block,
+result-blind precision rules, and deterministic seed schedules.
+Correlated-domain analysis is
+\texttt{EXCLUDED\_PENDING\_TRUTHFUL\_DOMAIN\_LABEL\_SOURCE}; its current
+plots remain exploratory only. The distributed deadline family is
+\texttt{EXCLUDED\_PENDING\_ENVIRONMENT\_PROFILE}. This design-readiness
+package does not issue \texttt{GO}: it still needs independent methods
+verification and separate execution authority.
+
+\subsection{2. Background and Related
+Work}\label{background-and-related-work}
+
+\texttt{PENDING\ —\ NOVELTY\_UNRESOLVED.} This section will compare
+KEYSTONE with data availability sampling, threshold encryption and
+verifiable partial decryption, VSS/PVSS and DKG, proactive or dynamic
+sharing, proof of retrievability, encrypted execution, threshold KMS,
+and accountable liveness. The current novelty matrix rejects broad
+primitive or first-system novelty. Until the independent, signed novelty
+closure exists, only narrow property-separation and integration language
+is admissible.
+
+PeerDAS is the relevant contrast class for public or ciphertext-oriented
+data availability rather than dispute-key serviceability (Ryan et al.
+2024). Established secret-sharing, PVSS, proactive sharing, robust DPSS,
+threshold-decryption, and DLEQ-style proof lineage are adopted building
+blocks rather than claimable novelty (Shamir 1979; Schoenmakers 1999;
+Herzberg et al. 1995; Yurek et al. 2023; Boneh et al. 2006; Chaum and
+Pedersen 1993).
+
+The adjacent encrypted-rollup, threshold-release, and
+authorized-decryption design space is already populated by encrypted
+optimistic-execution and threshold-release systems, including EigenAI,
+ETHTID, Ferveo, vetKeys, BEAT-MEV, practical one-time-setup batched
+threshold encryption, time-lock encrypted storage, context-dependent
+threshold decryption, and consensus- authorized threshold decryption for
+voting (Alves et al. 2026; Stengele et al. 2021; Bebel and Ojha 2022;
+Cerulli et al. 2023; Bormet et al. 2025; Choudhuri et al. 2025; Agarwal
+et al. 2025; Boneh et al. 2025; Liu et al. 2026). Accountability and
+timing assumptions are also prior-art surfaces rather than
+KEYSTONE-owned primitives (Boneh et al. 2023; Lewis-Pye et al. 2025).
+Accordingly, the only currently admissible contribution language is the
+narrower distinction between ciphertext availability and dispute-key
+serviceability under the frozen model, plus the claim-bounded audit and
+analysis surfaces that still require independent review.
+
+\subsection{3. Model and Definitions}\label{model-and-definitions}
+
+The pre-authorization formal source defines ciphertext availability,
+valid-share registration, audit-time readiness, authorized
+decryptability, deadline liveness, pre-authorization confidentiality,
+and conditional dispute-key availability. Three constructive obligations
+are currently preserved: (i) ciphertext availability does not imply
+deadline-bounded dispute-key availability when only \texttt{t-1} record
+contributions are serviceable; (ii) a routine audit may pass while a
+target-aware selective withholder prevents an authorized dispute from
+reaching \texttt{t} contributions; and (iii) a finite audit prefix
+cannot guarantee unconditional future availability without temporal
+assumptions. These are draft logical non-implication witnesses, not
+prevalence, novelty, or production-security results. The paper does not
+claim a complete pairwise property lattice, and all three obligations
+remain subject to formal and novelty review.
+
+\subsection{4. KEYSTONE Protocol}\label{keystone-protocol}
+
+The authoritative pre-authorization protocol is
+\texttt{research-case/03-design/protocol.md}. The manuscript-facing
+protocol will cover epoch setup, record KEM/DEM handling, beacon-derived
+canary challenges, context-bound partial decryptions and proofs, audit
+verification, authorized dispute release, evidence records, recovery,
+and domain-aware placement.
+
+The current local package contains deterministic transcript and
+signature fixtures that exercise audit-request and partial-response
+interfaces. These are interoperability fixtures, not empirical evidence
+or proof of production security. The current local audit API accepts
+beacon and context inputs and derives the canary challenge internally,
+removing the direct caller-supplied group-element path from routine
+audit execution. This is a pre-authorization prototype boundary, not a
+formal non-substitution proof or production-security claim, and it still
+requires independent cryptographic review. The current draft treats
+threshold decryption, DLEQ-style verification, and hash-to-curve usage
+as adopted components rather than new cryptographic claims (Boneh et al.
+2006, 2025; Chaum and Pedersen 1993; Faz-Hernandez et al. 2023).
+
+\subsection{5. Analysis}\label{analysis}
+
+The current analysis surface includes a static catastrophic-state
+hypergeometric calculation and internal simulation models for IID,
+correlated-domain, stratified-sampling, and selective-withholding
+scenarios. Any static probability statement must be qualified as
+one-audit reasoning under the declared fixed-ready-set and sampling
+assumptions. Repeated-audit and deadline claims require explicit
+temporal and synchrony assumptions.
+
+Current boundaries are mandatory:
+
+\begin{itemize}
+\tightlist
+\item
+  temporal Markov outputs are exploratory only;
+\item
+  selective withholding is a negative finding and limitation;
+\item
+  deadline success remains blocked pending an accountable environment
+  profile, synchronized trace design, and authorized distributed
+  benchmark;
+\item
+  no analysis statement may exceed the claim ceilings encoded in the
+  canonical research case.
+\end{itemize}
+
+\subsection{6. Implementation}\label{implementation}
+
+The workspace contains a Python threshold-KEM/DLEQ prototype,
+deterministic fixtures, local experiment scripts, and a Solidity
+bulletin-board boundary. Local cryptographic timings and contract
+test-body gas measurements are implementation artifacts only. They do
+not establish production throughput, deployment cost, audited
+cryptographic security, or independent reproducibility.
+
+Two fail-closed pre-authorization engineering receipts currently bind
+local source/configuration hashes to observed test outcomes. The crypto
+receipt maps 22 pytest nodes and two vector-freshness checks; the
+contract receipt maps 27 Foundry cases, including 14 deterministic
+boundary tests, three fuzz properties, eight test-body gas operations,
+and two stateful invariants. All mapped cases passed in the current
+same-workspace runs. The receipts explicitly remain non-empirical,
+non-independent engineering QA; they are not canonical scientific
+results, cryptographic or smart-contract audits, or production
+validation. An editable pre-authorization QA coverage table is generated
+from the two receipts and their hash sidecars at
+\texttt{paper/tables/preauthorization\_engineering\_qa.csv} for paper
+drafting, but it is not a canonical T-series result table and cannot be
+used to promote any scientific claim or raise the maturity or supported
+scope of \texttt{C002}.
+
+Production DKG/PVSS, audited cryptographic libraries, distributed
+deployment, and independently controlled reproduction remain outside the
+current internal prototype boundary.
+
+\subsubsection{6.1 Draft protocol and method display
+map}\label{draft-protocol-and-method-display-map}
+
+The following diagram callouts bind the current editable sources and
+rendered derivatives to their intended manuscript roles. They
+communicate definitions, protocol structure, methods, and limitations;
+they are not result evidence and do not raise the maturity of
+\texttt{C001}, \texttt{C002}, or \texttt{C003}. Final placement remains
+subject to the target venue, final-size review, and accountable-human
+approval.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D1. System architecture separating ciphertext publication, policy coordination, readiness auditing, authorized release, threshold combination, private re-execution, and the dispute verdict.}]{diagrams/01_system_architecture.png}}
+\caption{D1. System architecture separating ciphertext publication,
+policy coordination, readiness auditing, authorized release, threshold
+combination, private re-execution, and the dispute verdict.}
+\end{figure}
+
+\textbf{D1 --- System architecture.} Ciphertext availability, routine
+canary auditing, and authorized dispute-key release are shown as
+separate paths. The diagram is a protocol map for
+\texttt{C002}/\texttt{C003}, not evidence that each path is externally
+available or production-secure.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D2. Three constructive property-separation witnesses, each routing a held condition and a failed condition to one bounded non-implication.}]{diagrams/02_property_separation.png}}
+\caption{D2. Three constructive property-separation witnesses, each
+routing a held condition and a failed condition to one bounded
+non-implication.}
+\end{figure}
+
+\textbf{D2 --- Constructive property separation.} Exactly three
+witnesses support the draft analytic obligations in \texttt{C001}:
+ciphertext availability does not imply deadline-bounded DKA; routine
+audit acceptance does not unconditionally imply targeted dispute
+success; and a finite audit prefix does not guarantee future DKA. This
+is not a complete pairwise property lattice.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D3. Eight-step readiness-audit sequence from committed epoch data and beacon sampling through canary proof verification and evidence emission.}]{diagrams/03_audit_sequence.png}}
+\caption{D3. Eight-step readiness-audit sequence from committed epoch
+data and beacon sampling through canary proof verification and evidence
+emission.}
+\end{figure}
+
+\textbf{D3 --- Readiness-audit sequence.} The routine path uses fresh,
+context-bound canaries and classifies valid, invalid, and missing
+responses at the declared deadline. It does not exercise production
+ciphertext.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D4. Eight-step authorized-dispute sequence from challenge validation through confidential partial release, threshold combination, re-execution, and verdict.}]{diagrams/04_dispute_sequence.png}}
+\caption{D4. Eight-step authorized-dispute sequence from challenge
+validation through confidential partial release, threshold combination,
+re-execution, and verdict.}
+\end{figure}
+
+\textbf{D4 --- Authorized dispute sequence.} The diagram records the
+intended policy and threshold-release ordering; it does not establish
+deployed confidential transport, deadline success, or production
+authorization.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D5. Epoch, audit, and dispute state machines with explicit successful, failed, expired, and retired terminal paths.}]{diagrams/05_state_machines.png}}
+\caption{D5. Epoch, audit, and dispute state machines with explicit
+successful, failed, expired, and retired terminal paths.}
+\end{figure}
+
+\textbf{D5 --- State machines.} Allowed transitions make terminal and
+failure paths explicit for implementation review. The current contract
+is still a non-production boundary with admin-adjudicated off-chain
+proof outcomes.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D6. Six adversary or fault classes mapped through KEYSTONE controls to six residual assumptions or risks.}]{diagrams/06_threat_model.png}}
+\caption{D6. Six adversary or fault classes mapped through KEYSTONE
+controls to six residual assumptions or risks.}
+\end{figure}
+
+\textbf{D6 --- Threat model and residual risk.} Each control is paired
+with a residual assumption. In particular, domain labels may be
+dishonest, audits do not prove future cooperation, and the
+pre-authorization collusion threshold remains an assumption rather than
+an observed result.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D7. Four fault domains with one offline domain and contrasting uniform versus domain-stratified sample routes.}]{diagrams/07_sampling_domains.png}}
+\caption{D7. Four fault domains with one offline domain and contrasting
+uniform versus domain-stratified sample routes.}
+\end{figure}
+
+\textbf{D7 --- Sampling and failure domains.} This is a method
+illustration under truthful domain labels. It does not claim universal
+superiority of stratification or field prevalence of the illustrated
+outage.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={D8. Reproducibility pipeline from frozen configuration through tests, simulation, data products, figures, claim mapping, manuscript assembly, and publication gates.}]{diagrams/08_experiment_pipeline.png}}
+\caption{D8. Reproducibility pipeline from frozen configuration through
+tests, simulation, data products, figures, claim mapping, manuscript
+assembly, and publication gates.}
+\end{figure}
+
+\textbf{D8 --- Experiment-to-manuscript pipeline.} The flow separates
+configuration, execution, versioned outputs, displays, claim binding,
+and review gates. A clean local pipeline does not substitute for
+authorized confirmatory analysis, independent reproduction, or human
+submission approval.
+
+\subsection{Results}\label{results}
+
+The present results surface is an explicitly preliminary inventory. It
+does not replace missing authorized \texttt{05-analysis} evidence or the
+still-missing canonical primary-results ledger.
+
+The temporary Markdown/LaTeX preliminary-table bundle has a fail-closed
+same-workspace lineage receipt that binds its five input files,
+exporter, selected fields and row identities, section mapping, and both
+outputs. This improves draft reproducibility only; it is not a canonical
+T-series result, scientific verification, or independent reproduction.
+
+A second-agent, same-host isolated-copy mechanical rerun subsequently
+executed the frozen ten-command package check under tool-level offline
+flags. The first fresh attempt failed closed when Foundry rejected a
+non-boolean offline setting; its hash-bound failure receipt and logs
+were preserved. After the environment contract was corrected and
+independently re-reviewed, a new operator completed all ten commands
+with zero return codes, unchanged source and isolated-copy inventories,
+and a valid \texttt{MECHANICAL\_PASS} receipt. This establishes bounded
+same-host mechanical replay only: it used the same machine and
+potentially the same tool caches, did not enforce network isolation at
+the kernel level, did not execute the distributed deadline study, and is
+neither external reproduction nor independent scientific verification,
+institutional approval, venue approval, or evidence that changes the
+current claim-maturity ceilings.
+
+\subsection{7. Evaluation}\label{evaluation}
+
+Only a limited set of result classes is admissible for drafting:
+
+\begin{itemize}
+\tightlist
+\item
+  analytic static catastrophic false-accept and detection calculations;
+\item
+  deterministic correctness and interoperability fixtures;
+\item
+  internal preliminary IID, correlated-domain, stratified-sampling, and
+  selective-withholding simulation outputs;
+\item
+  internal local cryptographic timings and contract test-body gas
+  measurements.
+\end{itemize}
+
+The current figures F1--F5 and \texttt{paper/tables/t1\_t8\_package.*}
+are draft preauthorization display assets. They are not canonical
+confirmatory tables or publication evidence. Missing or blocked
+evaluation outputs include the canonical \texttt{05-analysis} primary
+ledger, authorized confirmatory robustness and negative-result analyses,
+deadline Figures F6--F7, the planned recovery-timeline Figure F8,
+independent reproduction, and external validation for \texttt{C003}. The
+canonical \texttt{05-analysis/results/exploratory-findings.csv} now
+records the four temporal Markov rows under distinct \texttt{EXPLORE-*}
+identifiers. It preserves the simulated source maturity but caps claim
+support at \texttt{V0\ ASSERTED}: each row is explicitly post-hoc,
+preauthorization-only, unauthorized, non-independent, and descriptive
+rather than confirmatory. Its conditional denominator is the number of
+trials ending in the catastrophic state, not all simulated trials. Draft
+\texttt{04-data} provenance and evidence-status ledgers hash-bind the
+source inputs; the deadline result remains explicitly \texttt{BLOCKED}
+with no executed provenance row. These ledgers improve traceability only
+and do not activate scientific support edges or advance the canonical
+\texttt{INTAKE} phase.
+
+The canonical draft \texttt{05-analysis/results/negative-findings.csv}
+now records only the interval-separated selective-withholding gap
+already present in the frozen simulation (\texttt{NEG-SW-11} through
+\texttt{NEG-SW-14}). Each row remains a preauthorization simulated
+negative finding, unauthorized, non-independent, and capped at
+\texttt{V0\ ASSERTED}. This closes a traceability gap but is not an
+authorized confirmatory result and does not provide deadline,
+production, external, field, adaptive-adversary, or universal-security
+evidence.
+
+The canonical draft
+\texttt{05-analysis/results/robustness-and-boundaries.csv} now preserves
+all 17 frozen IID outage cells and all 12 frozen matched-seed sampling
+policy cells as a deterministic traceability ledger. Every row is
+explicitly \texttt{DRAFT\_ROBUSTNESS\_BOUNDARY\_ONLY}, preauthorization,
+simulated, unauthorized, non-independent, and capped at
+\texttt{V0\ ASSERTED}. Correlated-domain output is excluded because its
+current result-ID binding is entangled with the quarantined Markov
+asset; Markov, selective-withholding, and deadline rows are also
+excluded from this ledger. The file therefore does not establish
+confirmatory robustness, policy optimality, production behavior,
+deadline performance, generality, or external validity.
+
+The future confirmatory outputs are predeclared in
+\texttt{02-feasibility/pilot-run-contract.csv}. The minimum core
+comprises the separation witness, exact static result, deterministic
+crypto and contract boundaries, and the limitation-bearing
+selective-withholding family. IID and stratification are supporting
+qualification families; correlated-domain analysis is excluded pending a
+truthful domain-label source. The included draft counts and stream
+schedule are recorded in \texttt{03-design/pc03-prospective-counts.csv}
+and \texttt{03-design/pc03-seed-schedule.csv}; these are design inputs,
+not results. The distributed deadline result remains an extended
+full-paper family and must be excluded, rather than imputed, if its
+environment and precision gates remain open.
+
+\subsubsection{7.1 Preliminary quantitative display
+map}\label{preliminary-quantitative-display-map}
+
+The five available quantitative figures are included below only to
+freeze their drafting roles and captions. Their source data, generator,
+SVG/PNG hashes, and automated visual-QA status are recorded in the
+source and figure manifests. They remain preliminary and must be
+replaced or re-authorized from canonical analysis ledgers before
+submission.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={F1. Static one-audit detection bound under uniform sampling as the sample size changes.}]{prototype/results/figures/figure_1_theoretical_detection_bound.png}}
+\caption{F1. Static one-audit detection bound under uniform sampling as
+the sample size changes.}
+\end{figure}
+
+\textbf{F1 --- Static detection bound.} Analytic one-audit probability
+under the declared fixed catastrophic state and uniform-sampling
+assumptions; not a temporal availability or field-frequency result.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={F2. Internal IID outage sweep showing reconstruction and audit-pass estimates with Wilson intervals.}]{prototype/results/figures/figure_2_iid_failure_sweep.png}}
+\caption{F2. Internal IID outage sweep showing reconstruction and
+audit-pass estimates with Wilson intervals.}
+\end{figure}
+
+\textbf{F2 --- IID failure sweep.} Internal preliminary simulation with
+the configured scenario grid and uncertainty calculation; not
+confirmatory or externally validated evidence.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={F3. Internal correlated-domain outage sweep under declared truthful domain labels.}]{prototype/results/figures/figure_3_domain_diversity.png}}
+\caption{F3. Internal correlated-domain outage sweep under declared
+truthful domain labels.}
+\end{figure}
+
+\textbf{F3 --- Correlated-domain behavior.} Internal model-bounded
+simulation; domain identity correctness and real outage structure remain
+unverified assumptions.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={F4. Selective-withholding negative-result figure showing that routine audit acceptance can coexist with failed targeted dispute reconstruction.}]{prototype/results/figures/figure_4_selective_withholding_gap.png}}
+\caption{F4. Selective-withholding negative-result figure showing that
+routine audit acceptance can coexist with failed targeted dispute
+reconstruction.}
+\end{figure}
+
+\textbf{F4 --- Selective-withholding limitation.} Preserved negative
+result that blocks an unconditional audit-to-dispute-success inference.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={F5. Matched internal comparison of uniform and domain-stratified sampling under the configured conditioned catastrophic states.}]{prototype/results/figures/figure_5_sampling_strategy.png}}
+\caption{F5. Matched internal comparison of uniform and
+domain-stratified sampling under the configured conditioned catastrophic
+states.}
+\end{figure}
+
+\textbf{F5 --- Sampling-strategy comparison.} A matched, model-specific
+internal comparison. It does not establish universal dominance, external
+validity, or production benefit.
+
+\subsubsection{7.2 Draft evidence-bound table
+map}\label{draft-evidence-bound-table-map}
+
+The editable T1--T8 package is now available in
+\texttt{paper/tables/t1\_t8\_package.md} and
+\texttt{paper/tables/t1\_t8\_package.tex}. Every table remains draft /
+pre-authorization only and inherits the canonical ceiling of the
+underlying claim or evidence source.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{T1} bounds the strongest-prior-art matrix and does not clear
+  novelty.
+\item
+  \texttt{T2} is a design-comparator registry only and makes no
+  measured-superiority claim.
+\item
+  \texttt{T3} records frozen local conditions and the still-missing
+  \texttt{RID-C003-DEADLINE-001} distributed profile.
+\item
+  \texttt{T4} displays preauthorization simulated results parsed from
+  canonical JSON outputs only, capped at \texttt{V0\ ASSERTED} for
+  manuscript claims.
+\item
+  \texttt{T5} is a planned mechanism-isolation registry; every row
+  remains \texttt{MISSING\_NOT\_EXECUTED}.
+\item
+  \texttt{T6} presents the canonical robustness ledger plus separately
+  classified exact and exploratory temporal checks;
+  selective-withholding negative findings remain in \texttt{T8}.
+\item
+  \texttt{T7} limits feasibility evidence to local timings and Foundry
+  gas while leaving distributed, operator, network, and external rows
+  blocked.
+\item
+  \texttt{T8} preserves selective withholding, synchrony limits,
+  truthful-domain-label dependency, and missing external validation as
+  explicit negative or unresolved findings.
+\end{itemize}
+
+\subsection{8. Discussion}\label{discussion}
+
+The current safe interpretation is that ciphertext availability and
+dispute-key serviceability should not be treated as interchangeable;
+routine readiness audits may characterize present serviceability only
+under stated assumptions; failure-domain modeling and sampling semantics
+affect the meaning of reported probabilities; and local prototype
+success does not establish external reproducibility, field readiness, or
+production security.
+
+Stronger interpretation must await reconciled prior art, authorized
+analysis, and claim-matched independent evidence.
+
+\subsection{9. Limitations and Future
+Work}\label{limitations-and-future-work}
+
+\begin{itemize}
+\tightlist
+\item
+  Novelty remains \texttt{UNRESOLVED}; the broad historical claim is not
+  submission-safe.
+\item
+  The canonical feasibility decision remains \texttt{UNASSESSED}; the
+  draft feasibility package recommends a blocked posture and only a
+  conditional \texttt{PILOT\_FIRST} path after prerequisites clear.
+\item
+  Current stochastic outputs are internal and mostly pre-authorization.
+\item
+  Temporal dependence is exploratory; selective withholding is a
+  preserved negative result.
+\item
+  The distributed deadline benchmark and independent external validation
+  are absent.
+\item
+  Independent threshold-cryptography and distributed-systems reviews are
+  absent.
+\item
+  No venue portfolio, current reporting checklist, hermetic PDF package,
+  rendered-page review, or accountable human approval exists.
+\end{itemize}
+
+\subsection{10. Conclusion}\label{conclusion}
+
+\texttt{PENDING\ —\ EVIDENCE-BOUND\ SYNTHESIS.} The conclusion may
+restate the distinction between ciphertext availability and dispute-key
+serviceability and the conditional nature of any audit assurance. It
+must not imply future-proof availability, external validity, production
+readiness, or publication readiness unless the corresponding canonical
+gates later pass.
+
+\subsection{Data and Code
+Availability}\label{data-and-code-availability}
+
+Current local source assets include \texttt{prototype/src/keystone/*},
+\texttt{prototype/tests/*}, \texttt{prototype/results/*},
+\texttt{contracts/src/*}, \texttt{contracts/test/*},
+\texttt{contracts/gas\_report.csv}, \texttt{paper/test\_vectors.json},
+\texttt{paper/signature\_test\_vectors.json}, \texttt{diagrams/*}, and
+the two \texttt{*/results/engineering\_qa/*-preauth-receipt.json}
+bundles. Availability does not imply evidence authorization or final
+reproducibility. The manuscript assembly inventory is tracked in
+\texttt{07-manuscript/source-manifest.json}. Draft source-to-result
+lineage is recorded in \texttt{04-data/provenance-manifest.csv} and
+\texttt{04-data/evidence-status.csv}; those files retain the
+preauthorization and same-workspace limitations of their inputs. The
+derived temporal ledger at
+\texttt{05-analysis/results/exploratory-findings.csv} is reproducible
+from the hash-bound Markov dataset through
+\texttt{scripts/export\_exploratory\_findings.py}, but is quarantined
+from confirmatory, novelty, feasibility, and external-validation claims.
+The derived robustness ledger at
+\texttt{05-analysis/results/robustness-and-boundaries.csv} is
+reproducible from the hash-bound IID and sampling-policy datasets
+through \texttt{scripts/export\_robustness\_boundaries.py}; it remains a
+draft traceability surface and cannot substitute for the missing primary
+ledger, authorized confirmatory analysis, independent reproduction, or
+external validation. The non-executable future-run contract is recorded
+in \texttt{02-feasibility/pilot-plan.md} and
+\texttt{02-feasibility/pilot-run-contract.csv}; it contains no collected
+outcome and grants no authorization. The PC03 amendment, count contract,
+and seed schedule under \texttt{03-design/} are likewise result-blind,
+non-executable planning artifacts pending independent methods
+verification.
+
+\subsection{Declarations and Pending Human
+Inputs}\label{declarations-and-pending-human-inputs}
+
+Draft author metadata inputs have been supplied for prospective authors,
+and the accountable human reported no institution, employer, funding
+agreement, NDA, venue policy, or export-control conflict with the
+current charter or study profile. At the author's request, final author
+order, corresponding-author designation, accountable metadata freeze,
+and exact affiliation wording remain deferred. Funding, conflicts of
+interest, CRediT roles, data/code release terms, AI-use disclosure, and
+venue-specific institutional checks also remain pending. No AI-generated
+text in this shell constitutes author approval or submission
+authorization.
+
+\protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-agarwal2025ttles}
+Agarwal, Amit, Kushal Babel, Sourav Das, and Babak Poorebrahim
+Gilkalaye. 2025. \emph{Time-Lock Encrypted Storage for Blockchains}.
+Cryptology {ePrint} Archive, Paper 2025/2048.
+\url{https://eprint.iacr.org/2025/2048}.
+
+\bibitem[\citeproctext]{ref-eigenai2026}
+Alves, David Ribeiro, Vishnu Patankar, Matheus Pereira, Jamie Stephens,
+Nima Vaziri, and Sreeram Kannan. 2026. {``{EigenAI: Deterministic
+Inference, Verifiable Results}.''} \emph{arXiv Preprint
+arXiv:2602.00182}. \url{https://arxiv.org/abs/2602.00182}.
+
+\bibitem[\citeproctext]{ref-bebel2022ferveo}
+Bebel, Joseph, and Dev Ojha. 2022. \emph{Ferveo: Threshold Decryption
+for Mempool Privacy in {BFT} Networks}. Cryptology {ePrint} Archive,
+Paper 2022/898. \url{https://eprint.iacr.org/2022/898}.
+
+\bibitem[\citeproctext]{ref-boneh2006threshold}
+Boneh, Dan, Xavier Boyen, and Shai Halevi. 2006. {``Chosen Ciphertext
+Secure Public Key Threshold Encryption Without Random Oracles.''}
+\emph{Topics in Cryptology --- {CT-RSA} 2006}, 226--43.
+\url{https://doi.org/10.1007/11605805_15}.
+
+\bibitem[\citeproctext]{ref-boneh2025context}
+Boneh, Dan, Benedikt Bünz, Kartik Nayak, Lior Rotem, and Victor Shoup.
+2025. \emph{Context-Dependent Threshold Decryption and Its
+Applications}. Cryptology {ePrint} Archive, Paper 2025/279; extended
+abstract in ASIACRYPT 2025. \url{https://eprint.iacr.org/2025/279}.
+
+\bibitem[\citeproctext]{ref-boneh2023accountability}
+Boneh, Dan, Aditi Partap, and Lior Rotem. 2023. \emph{Accountability for
+Misbehavior in Threshold Decryption via Threshold Traitor Tracing}.
+Cryptology {ePrint} Archive, Paper 2023/1724.
+\url{https://eprint.iacr.org/2023/1724}.
+
+\bibitem[\citeproctext]{ref-bormet2025epochless}
+Bormet, Jan, Sebastian Faust, Hussien Othman, and Ziyan Qu. 2025.
+{``{BEAT-MEV}: Epochless Approach to Batched Threshold Encryption for
+{MEV} Prevention.''} \emph{34th USENIX Security Symposium (USENIX
+Security 25)}.
+\url{https://www.usenix.org/conference/usenixsecurity25/presentation/bormet}.
+
+\bibitem[\citeproctext]{ref-cerulli2023vetkeys}
+Cerulli, Andrea, Aisling Connolly, Gregory Neven, Franz-Stefan Preiss,
+and Victor Shoup. 2023. \emph{{vetKeys}: How a Blockchain Can Keep Many
+Secrets}. Cryptology {ePrint} Archive, Paper 2023/616.
+\url{https://eprint.iacr.org/2023/616}.
+
+\bibitem[\citeproctext]{ref-chaum1992dleq}
+Chaum, David, and Torben Pryds Pedersen. 1993. {``Wallet Databases with
+Observers.''} \emph{Advances in Cryptology --- {CRYPTO} '92}, 89--105.
+\url{https://doi.org/10.1007/3-540-48071-4_7}.
+
+\bibitem[\citeproctext]{ref-choudhuri2025practical}
+Choudhuri, Arka Rai, Sanjam Garg, Guru Vamsi Policharla, and Mingyuan
+Wang. 2025. {``Practical Mempool Privacy via One-Time Setup Batched
+Threshold Encryption.''} \emph{34th {USENIX} Security Symposium
+({USENIX} Security 25)}, 3477--95.
+\url{https://www.usenix.org/conference/usenixsecurity25/presentation/choudhuri}.
+
+\bibitem[\citeproctext]{ref-rfc9380}
+Faz-Hernandez, Armando, Sam Scott, Nick Sullivan, Riad S. Wahby, and
+Christopher A. Wood. 2023. \emph{Hashing to Elliptic Curves}. RFC 9380.
+Internet Engineering Task Force. \url{https://doi.org/10.17487/RFC9380}.
+
+\bibitem[\citeproctext]{ref-herzberg1995proactive}
+Herzberg, Amir, Stanislaw Jarecki, Hugo Krawczyk, and Moti Yung. 1995.
+{``Proactive Secret Sharing or: How to Cope with Perpetual Leakage.''}
+\emph{CRYPTO}, 339--52.
+
+\bibitem[\citeproctext]{ref-lewis2025accountable}
+Lewis-Pye, Andrew, Joachim Neu, Tim Roughgarden, and Luca Zanolini.
+2025. {``Accountable Liveness.''} \emph{arXiv Preprint
+arXiv:2504.12218}. \url{https://arxiv.org/abs/2504.12218}.
+
+\bibitem[\citeproctext]{ref-liu2026uqvote}
+Liu, Jingyu, Jingjing Rao, and Tetsutaro Uehara. 2026. {``{UQ-Vote}:
+Consensus-Authorized Threshold Decryption for End-to-End Verifiable
+Elections.''} \emph{IEEE Access} 14: 128905--16.
+\url{https://doi.org/10.1109/ACCESS.2026.3725080}.
+
+\bibitem[\citeproctext]{ref-eip7594}
+Ryan, Danny, Dankrad Feist, Francesco D'Amato, Hsiao-Wei Wang, and Alex
+Stokes. 2024. \emph{{EIP-7594: PeerDAS -- Peer Data Availability
+Sampling}}. Ethereum Improvement Proposal.
+\url{https://eips.ethereum.org/EIPS/eip-7594}.
+
+\bibitem[\citeproctext]{ref-schoenmakers1999pvss}
+Schoenmakers, Berry. 1999. {``A Simple Publicly Verifiable Secret
+Sharing Scheme and Its Application to Electronic Voting.''}
+\emph{CRYPTO}, 148--64. \url{https://doi.org/10.1007/3-540-48405-1_10}.
+
+\bibitem[\citeproctext]{ref-shamir1979share}
+Shamir, Adi. 1979. {``How to Share a Secret.''} \emph{Communications of
+the ACM} 22 (11): 612--13.
+
+\bibitem[\citeproctext]{ref-stengele2021ethtid}
+Stengele, Oliver, Markus Raiber, Jörn Müller-Quade, and Hannes
+Hartenstein. 2021. {``{ETHTID}: Deployable Threshold Information
+Disclosure on {Ethereum}.''} \emph{2021 3rd International Conference on
+Blockchain Computing and Applications ({BCCA})}, 127--34.
+\url{https://doi.org/10.1109/BCCA53669.2021.9657019}.
+
+\bibitem[\citeproctext]{ref-yurek2023dpss}
+Yurek, Thomas, Zhuolun Xiang, Yu Xia, and Andrew Miller. 2023. {``Long
+Live the Honey Badger: Robust Asynchronous {DPSS} and Its
+Applications.''} \emph{32nd USENIX Security Symposium (USENIX Security
+23)}, 5413--30.
+\url{https://www.usenix.org/conference/usenixsecurity23/presentation/yurek}.
+
+\end{CSLReferences}
+
+\end{document}

@@ -1,14 +1,12 @@
 {
-  "schema_id": "KEYSTONE_MANUSCRIPT_SOURCE_MANIFEST",
-  "schema_version": 1,
-  "status": "DRAFT_PREAUTHORIZATION",
   "numbering_policy": {
-    "quantitative_figures": "F1-F8",
     "diagrams": "D1-D8",
+    "quantitative_figures": "F1-F8",
     "rule": "Quantitative figures and non-quantitative diagrams use separate namespaces; historical labels in docs/12 are not manuscript figure numbers.",
     "status": "FROZEN_FOR_DRAFT_ASSEMBLY"
   },
   "path_resolution_policy": {
+    "all_other_relative_paths": "workspace_root",
     "research_case_relative_prefixes": [
       "00-governance/",
       "01-novelty/",
@@ -21,1241 +19,1712 @@
       "08-validation/",
       "09-submission/"
     ],
-    "all_other_relative_paths": "workspace_root",
     "status": "DRAFT_EXPLICIT_PATH_POLICY"
   },
-  "visual_asset_policy": {
-    "quantitative_canonical_format": "SVG",
-    "quantitative_png_role": "DERIVATIVE_PREVIEW",
-    "diagram_canonical_source": "Mermaid .mmd",
-    "diagram_dot_role": "EDITABLE_ALTERNATE_SOURCE",
-    "rendered_diagram_role": "DERIVATIVE_REQUIRING_SOURCE_HASH_MATCH_AND_VISUAL_QA",
-    "known_stale_derivatives": [],
-    "recently_refreshed_derivatives": [
-      "diagrams/02_property_separation.svg",
-      "diagrams/02_property_separation.png"
-    ],
-    "automated_visual_qa_report": "prototype/results/engineering_qa/visual_accessibility_proxy.json",
-    "automated_visual_qa_report_sha256": "b49e6e40a9f363f80eeb4fae69e8225c12e0fb03e028de7428550edbca652534",
-    "automated_visual_qa_disposition": "INTEGRITY_PASS_PROXY_WARNINGS_REMAIN",
-    "automated_visual_qa_boundary": "Local heuristic evidence only; contextual adjacency, line thickness, redundant encoding, print conversion, assistive-technology behavior, human review, and current target-venue rules remain pending.",
-    "status": "DRAFT_PREAUTHORIZATION"
-  },
+  "schema_id": "KEYSTONE_MANUSCRIPT_SOURCE_MANIFEST",
+  "schema_version": 1,
   "sources": [
     {
-      "source_id": "SRC-ACCOUNTABLE-AUTHORITY-CONFIRMATION",
+      "category": "canonical_data_lineage",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_evidence_lineage.py",
+      "generator_sha256": "6e570667e7ac7f39f9814eefd9d44307f4467732fbbf30b213c562c3b52ff0ba",
+      "manuscript_use": "hash-bound source lineage for draft analytic, simulated, and internal engineering outputs",
+      "notes": "Traceability only; all rows preserve PREAUTHORIZATION_ONLY and NOT_SCIENTIFIC_EVIDENCE boundaries.",
+      "path": "04-data/provenance-manifest.csv",
+      "path_base": "research_case_root",
+      "sha256": "dfa3c41e4923bb9d80ac607b96087bce7cb393fa6cd84065f913307e7ed6a4ca",
+      "source_id": "SRC-EVIDENCE-LINEAGE-PROVENANCE",
+      "status": "DRAFT_PREAUTHORIZATION"
+    },
+    {
+      "category": "canonical_data_lineage",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_evidence_lineage.py",
+      "generator_sha256": "6e570667e7ac7f39f9814eefd9d44307f4467732fbbf30b213c562c3b52ff0ba",
+      "manuscript_use": "result-ID maturity, scope, authorization, independence, and blocker ledger",
+      "notes": "No current row is SUPPORTED, VERIFIED, or PASS; RID-C003-DEADLINE-001 remains BLOCKED.",
+      "path": "04-data/evidence-status.csv",
+      "path_base": "research_case_root",
+      "sha256": "7c2676af76a779b9dd9166bc810f9a55e48a525e5ac2e022d312e27fd9339a29",
+      "source_id": "SRC-EVIDENCE-LINEAGE-STATUS",
+      "status": "DRAFT_PREAUTHORIZATION"
+    },
+    {
+      "category": "lineage_generator",
+      "claim_ids": [],
+      "manuscript_use": "deterministic regeneration and drift check for the draft 04-data ledgers",
+      "notes": "Fails closed on phase drift, source-hash drift, evidence relabeling, or author-metadata freeze.",
+      "path": "scripts/export_evidence_lineage.py",
+      "path_base": "workspace_root",
+      "sha256": "6e570667e7ac7f39f9814eefd9d44307f4467732fbbf30b213c562c3b52ff0ba",
+      "source_id": "SRC-EVIDENCE-LINEAGE-EXPORTER",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "lineage_tests",
+      "claim_ids": [],
+      "manuscript_use": "regression coverage for non-authorizing evidence lineage",
+      "notes": "Tests enforce unauthorized, non-independent, non-promoting output semantics.",
+      "path": "prototype/tests/test_evidence_lineage.py",
+      "path_base": "workspace_root",
+      "sha256": "61cd988c9ca8abeb1f1f7492b5eb8ef8dced83b2bd9d04fdbef19143df2ed9d0",
+      "source_id": "SRC-EVIDENCE-LINEAGE-TESTS",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "canonical_exploratory_analysis",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "scripts/export_exploratory_findings.py",
+      "generator_sha256": "cac6eb7ede1c15304bea875e1e0bf1f60f005ff99c7c4220100b53397804099e",
+      "manuscript_use": "quarantined temporal-dependence description and explicit boundary disclosure",
+      "notes": "Distinct EXPLORE identifiers; SIMULATED source maturity; claim ceiling V0 ASSERTED; no confirmatory, novelty, feasibility, or external-validation support.",
+      "path": "05-analysis/results/exploratory-findings.csv",
+      "path_base": "research_case_root",
+      "sha256": "d37b47dc46018b72b79f37e42a859d955e700100041e42750b3e32dc2bad8ad5",
+      "source_id": "SRC-CANONICAL-EXPLORATORY-FINDINGS",
+      "status": "DRAFT_EXPLORATORY_PREAUTHORIZATION"
+    },
+    {
+      "category": "exploratory_simulation_dataset",
+      "claim_ids": [
+        "C003"
+      ],
+      "manuscript_use": "source rows for the quarantined temporal exploratory ledger",
+      "notes": "Same-workspace deterministic simulation; conditional denominator is final_catastrophic_trials; not an authorized confirmatory run.",
+      "path": "prototype/results/markov_temporal_dependence.csv",
+      "path_base": "workspace_root",
+      "sha256": "ac1bd20264a92e689de3ef074f1bfdf94cfde9c9f6dec7975a69ec22e3c7cb86",
+      "source_id": "SRC-MARKOV-TEMPORAL-DATASET",
+      "status": "PREAUTHORIZATION_ONLY_NOT_SCIENTIFIC_EVIDENCE"
+    },
+    {
+      "category": "analysis_generator",
+      "claim_ids": [],
+      "manuscript_use": "deterministic regeneration and drift checking for the exploratory ledger",
+      "notes": "Fails closed on phase, source, provenance, evidence-boundary, and author-metadata-deferral drift.",
+      "path": "scripts/export_exploratory_findings.py",
+      "path_base": "workspace_root",
+      "sha256": "cac6eb7ede1c15304bea875e1e0bf1f60f005ff99c7c4220100b53397804099e",
+      "source_id": "SRC-EXPLORATORY-FINDINGS-EXPORTER",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "analysis_generator_tests",
+      "claim_ids": [],
+      "manuscript_use": "regression coverage for exploratory quarantine and denominator integrity",
+      "notes": "Tests reject confirmatory relabeling, authorization promotion, provenance drift, and stale output.",
+      "path": "prototype/tests/test_exploratory_findings.py",
+      "path_base": "workspace_root",
+      "sha256": "4f7ad2894bc2aaea560e709e8ccc7c51318827522c626358f6a24282bfd9913f",
+      "source_id": "SRC-EXPLORATORY-FINDINGS-TESTS",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "canonical_negative_analysis",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "scripts/export_negative_findings.py",
+      "generator_sha256": "f83701a804192fdd5075278463cedb28837185d16aee2e25dc9debb8ddbf0c5d",
+      "manuscript_use": "bounded selective-withholding limitation ledger",
+      "notes": "Only NEG-SW-11 through NEG-SW-14 are exported; unauthorized, non-independent, simulated, and capped at V0 ASSERTED; no confirmatory, deadline, external, field, or universal-security support.",
+      "path": "research-case/05-analysis/results/negative-findings.csv",
+      "path_base": "workspace_root",
+      "sha256": "fda64ed1160f827a8f09e5168ce0429f740852a9bea3247fe0aa695f5f0985f7",
+      "source_id": "SRC-CANONICAL-NEGATIVE-FINDINGS",
+      "status": "DRAFT_NEGATIVE_FINDING_PREAUTHORIZATION"
+    },
+    {
+      "category": "analysis_generator",
+      "claim_ids": [],
+      "manuscript_use": "deterministic regeneration and drift checking for the bounded negative ledger",
+      "notes": "Fails closed on phase, author-metadata deferral, dataset binding, frozen parameters, source hashes, lineage, evidence maturity, authorization, independence, and stale output.",
+      "path": "scripts/export_negative_findings.py",
+      "path_base": "workspace_root",
+      "sha256": "f83701a804192fdd5075278463cedb28837185d16aee2e25dc9debb8ddbf0c5d",
+      "source_id": "SRC-NEGATIVE-FINDINGS-EXPORTER",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "analysis_generator_tests",
+      "claim_ids": [],
+      "manuscript_use": "regression coverage for bounded negative-result export semantics",
+      "notes": "Tests reject phase promotion, confirmatory relabeling, authorization or independence promotion, dataset-source drift, experiment-binding drift, and stale output.",
+      "path": "prototype/tests/test_negative_findings.py",
+      "path_base": "workspace_root",
+      "sha256": "d4c159b166ec14c2d8ecbd948fb1cd3627fc56e518cc5efd222d5c9581b8d97b",
+      "source_id": "SRC-NEGATIVE-FINDINGS-TESTS",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "canonical_draft_robustness_analysis",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "scripts/export_robustness_boundaries.py",
+      "generator_sha256": "47f8091f7a7de081c72f330759a7114ac10ec68c45b004ddf00e5e50bd13373b",
+      "manuscript_use": "bounded IID outage and matched-policy sampling traceability ledger",
+      "notes": "All 29 source cells are preserved; unauthorized, non-independent, simulated, and capped at V0 ASSERTED. Entangled correlated-domain, Markov, selective-withholding, and deadline evidence is excluded.",
+      "path": "research-case/05-analysis/results/robustness-and-boundaries.csv",
+      "path_base": "workspace_root",
+      "sha256": "da0ff36cdcf5a5165545ce9b9ff402914d76029b20c4f21982c70b2ed579c9c9",
+      "source_id": "SRC-CANONICAL-ROBUSTNESS-BOUNDARIES",
+      "status": "DRAFT_ROBUSTNESS_BOUNDARY_PREAUTHORIZATION"
+    },
+    {
+      "category": "analysis_generator",
+      "claim_ids": [],
+      "manuscript_use": "deterministic regeneration and drift checking for the bounded robustness ledger",
+      "notes": "Fails closed on phase, author-metadata deferral, source schema/hash/count, experiment binding, seed mapping, provenance, evidence maturity, authorization, independence, and stale output.",
+      "path": "scripts/export_robustness_boundaries.py",
+      "path_base": "workspace_root",
+      "sha256": "47f8091f7a7de081c72f330759a7114ac10ec68c45b004ddf00e5e50bd13373b",
+      "source_id": "SRC-ROBUSTNESS-BOUNDARIES-EXPORTER",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "analysis_generator_tests",
+      "claim_ids": [],
+      "manuscript_use": "regression coverage for bounded robustness and boundary export semantics",
+      "notes": "Tests reject phase promotion, evidence or experiment relabeling, source or manifest drift, stale output, and inclusion of excluded domain, Markov, selective-withholding, or deadline evidence.",
+      "path": "prototype/tests/test_robustness_boundaries.py",
+      "path_base": "workspace_root",
+      "sha256": "b27cb089d6ebcba441158d6256dd630b2df31d7fa00f3391c1e0b09388224cf6",
+      "source_id": "SRC-ROBUSTNESS-BOUNDARIES-TESTS",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
       "category": "governance_authority",
+      "claim_ids": [],
+      "generator": "accountable_human_confirmation_with_root_integration",
+      "manuscript_use": "draft author-governance and policy-basis disclosure only",
+      "notes": "Records the latest supplied accountable-author and prospective second-author metadata plus a no-conflict policy-basis confirmation. Final author order, corresponding-author designation, exact affiliation wording, and submission approval remain deferred; this source promotes no scientific gate.",
       "path": "00-governance/accountable-authority-confirmation.md",
       "path_base": "research_case_root",
       "sha256": "33b83fc480eed3dc5b5869454297f7bced200b1ab63afa23c119e95ab8d7cdb8",
-      "generator": "accountable_human_confirmation_with_root_integration",
-      "status": "CONFIRMED_DRAFT_AUTHORITY",
-      "claim_ids": [],
-      "manuscript_use": "draft author-governance and policy-basis disclosure only",
-      "notes": "Records the latest supplied accountable-author and prospective second-author metadata plus a no-conflict policy-basis confirmation. Final author order, corresponding-author designation, exact affiliation wording, and submission approval remain deferred; this source promotes no scientific gate."
+      "source_id": "SRC-ACCOUNTABLE-AUTHORITY-CONFIRMATION",
+      "status": "CONFIRMED_DRAFT_AUTHORITY"
     },
     {
-      "source_id": "SRC-NOVELTY-MATRIX",
       "category": "novelty",
+      "claim_ids": [
+        "C001"
+      ],
+      "generator": "canonical_novelty_reconciliation",
+      "manuscript_use": "T1 strongest prior-art table and related-work boundary",
+      "notes": "Broad novelty is rejected; only narrow REFRAME-bounded comparison is eligible.",
       "path": "01-novelty/novelty-matrix.csv",
       "path_base": "research_case_root",
       "sha256": "5692d14ace4267f949163f7f9cb2bb06daee00bffd2223b725c43157c4c1c3cd",
-      "generator": "canonical_novelty_reconciliation",
-      "status": "DRAFT",
-      "claim_ids": [
-        "C001"
-      ],
-      "manuscript_use": "T1 strongest prior-art table and related-work boundary",
-      "notes": "Broad novelty is rejected; only narrow REFRAME-bounded comparison is eligible."
+      "source_id": "SRC-NOVELTY-MATRIX",
+      "status": "DRAFT"
     },
     {
-      "source_id": "SRC-EVIDENCE-LEDGER",
       "category": "novelty",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
+      "generator": "canonical_novelty_reconciliation",
+      "manuscript_use": "source audit, related-work support, and claim/evidence mapping",
+      "notes": "Input to future claim-evidence matrix; not a manuscript by itself.",
       "path": "01-novelty/evidence-ledger.csv",
       "path_base": "research_case_root",
       "sha256": "b909f908c1ec8471f0273757776b97caa0d85aa216441b44e520fe8e99ce3080",
-      "generator": "canonical_novelty_reconciliation",
-      "status": "DRAFT",
-      "claim_ids": [
-        "C001",
-        "C003"
-      ],
-      "manuscript_use": "source audit, related-work support, and claim/evidence mapping",
-      "notes": "Input to future claim-evidence matrix; not a manuscript by itself."
+      "source_id": "SRC-EVIDENCE-LEDGER",
+      "status": "DRAFT"
     },
     {
-      "source_id": "SRC-PROPERTY-SEPARATION",
       "category": "formal_draft",
-      "path": "paper/property_separation_obligations.md",
-      "path_base": "workspace_root",
-      "sha256": "24133943af8e05d32f0b49333dd80c4c4b91785860ae6ef82a336835e3a3f903",
-      "generator": "root_formal_integration",
-      "status": "DRAFT_PREAUTHORIZATION_ANALYTIC",
       "claim_ids": [
         "C001"
       ],
+      "generator": "root_formal_integration",
       "manuscript_use": "model definitions, constructive non-implication witnesses, and formal-scope limits",
-      "notes": "Covers exactly three claim-bearing witnesses and explicitly rejects a complete pairwise-lattice claim; requires independent formal and novelty review."
+      "notes": "Covers exactly three claim-bearing witnesses and explicitly rejects a complete pairwise-lattice claim; requires independent formal and novelty review.",
+      "path": "paper/property_separation_obligations.md",
+      "path_base": "workspace_root",
+      "sha256": "24133943af8e05d32f0b49333dd80c4c4b91785860ae6ef82a336835e3a3f903",
+      "source_id": "SRC-PROPERTY-SEPARATION",
+      "status": "DRAFT_PREAUTHORIZATION_ANALYTIC"
     },
     {
-      "source_id": "SRC-FEASIBILITY-REPORT",
       "category": "feasibility",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "result_blind_feasibility_package",
+      "manuscript_use": "limitations, feasibility framing, and future T7/T8 sources",
+      "notes": "Canonical feasibility_decision remains UNASSESSED. The current DRAFT feasibility package recommends a BLOCKED posture and only a conditional PILOT_FIRST next step after prerequisites clear; that recommendation is not a canonical gate decision.",
       "path": "02-feasibility/feasibility-report.md",
       "path_base": "research_case_root",
       "sha256": "e9c7109586e2d2656e9516ed1e5d5b4ebfeceb88a5c0dbf1cbdd76727ca9a558",
-      "generator": "result_blind_feasibility_package",
-      "status": "DRAFT",
+      "source_id": "SRC-FEASIBILITY-REPORT",
+      "status": "DRAFT"
+    },
+    {
+      "category": "design",
       "claim_ids": [
+        "C001",
         "C002",
         "C003"
       ],
-      "manuscript_use": "limitations, feasibility framing, and future T7/T8 sources",
-      "notes": "Canonical feasibility_decision remains UNASSESSED. The current DRAFT feasibility package recommends a BLOCKED posture and only a conditional PILOT_FIRST next step after prerequisites clear; that recommendation is not a canonical gate decision."
-    },
-    {
-      "source_id": "SRC-PROTOCOL",
-      "category": "design",
+      "generator": "methods_design",
+      "manuscript_use": "methods, protocol diagrams, result-ID binding, and scope limits",
+      "notes": "Pre-authorization design only.",
       "path": "03-design/protocol.md",
       "path_base": "research_case_root",
       "sha256": "4ab6e396a75a6c5cab6290de681b7c3ba8de468606a591a19ee951ae6963efc3",
-      "generator": "methods_design",
-      "status": "DRAFT",
+      "source_id": "SRC-PROTOCOL",
+      "status": "DRAFT"
+    },
+    {
+      "category": "design",
       "claim_ids": [
         "C001",
         "C002",
         "C003"
       ],
-      "manuscript_use": "methods, protocol diagrams, result-ID binding, and scope limits",
-      "notes": "Pre-authorization design only."
-    },
-    {
-      "source_id": "SRC-ANALYSIS-PLAN",
-      "category": "design",
+      "generator": "methods_design",
+      "manuscript_use": "estimands, analysis rules, multiplicity, and exploratory quarantine",
+      "notes": "Frozen before confirmatory rerun.",
       "path": "03-design/analysis-plan.md",
       "path_base": "research_case_root",
-      "sha256": "ab5a01e12b8b2e65275ad9317aad219e3219c63c45395e6274f68dc049c915a1",
-      "generator": "methods_design",
-      "status": "DRAFT",
+      "sha256": "ef2c05bff11d9c7aca886737d342eaa77f5c9f26096869e9b9eba9bfb313c1ef",
+      "source_id": "SRC-ANALYSIS-PLAN",
+      "status": "DRAFT"
+    },
+    {
+      "category": "design",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "power_challenge",
+      "manuscript_use": "result-blind minimum-cell precision rationale and excluded-family boundaries",
+      "notes": "Three minimum cells have operative distribution-free counts; correlated-domain and deadline families remain excluded and all execution remains blocked.",
+      "path": "03-design/power-or-precision.md",
+      "path_base": "research_case_root",
+      "sha256": "dfb678063d914134d78950620654d8907c84784f612bc529cd53a6518886bde5",
+      "source_id": "SRC-POWER",
+      "status": "DRAFT"
+    },
+    {
+      "category": "design_amendment",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "scripts/export_pc03_design_amendment.py",
+      "generator_sha256": "de10137c57437a19ffb03f5a8fe443ec2af7cdca612bdd438fef2043197ec3d6",
+      "manuscript_use": "prospective minimum-cell design and arbitration record",
+      "notes": "Developmental design only; no independent signed verification, execution authority, phase promotion, or author-metadata freeze.",
+      "path": "03-design/pc03-prospective-amendment.md",
+      "path_base": "research_case_root",
+      "sha256": "fa92cf52c7db2bb4377bb6b94303b086ca1ec37d372b8bf9af1a23b4c47e82e0",
+      "source_id": "SRC-PC03-AMENDMENT",
+      "status": "DRAFT_PREAUTHORIZATION_NON_EXECUTABLE"
+    },
+    {
+      "category": "design_count_contract",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "scripts/export_pc03_design_amendment.py",
+      "generator_sha256": "de10137c57437a19ffb03f5a8fe443ec2af7cdca612bdd438fef2043197ec3d6",
+      "manuscript_use": "machine-readable included and excluded result-family count contract",
+      "notes": "Three included cells schedule 32 primary blocks of 4096 draws plus four reserves; CORR and DEADLINE remain excluded.",
+      "path": "03-design/pc03-prospective-counts.csv",
+      "path_base": "research_case_root",
+      "sha256": "840db07ed3f228662625beeac1d42d74cfb78dc85610f2b9ddd4a05c2f8d5a2b",
+      "source_id": "SRC-PC03-COUNTS",
+      "status": "DRAFT_PREAUTHORIZATION_NON_EXECUTABLE"
+    },
+    {
+      "category": "design_seed_schedule",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "scripts/export_pc03_design_amendment.py",
+      "generator_sha256": "de10137c57437a19ffb03f5a8fe443ec2af7cdca612bdd438fef2043197ec3d6",
+      "manuscript_use": "deterministic primary and reserve stream schedule",
+      "notes": "Reserve streams replace documented infrastructure failures only and never replace valid unfavorable blocks.",
+      "path": "03-design/pc03-seed-schedule.csv",
+      "path_base": "research_case_root",
+      "sha256": "7063adc013979905e0e296f4ace7daa5dde2053c3f78c080c586f567ac18954a",
+      "source_id": "SRC-PC03-SEEDS",
+      "status": "DRAFT_PREAUTHORIZATION_NON_EXECUTABLE"
+    },
+    {
+      "category": "developmental_methods_challenge",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "pc03_confirmatory_design_subagent",
+      "manuscript_use": "developmental challenge input to root arbitration",
+      "notes": "AI developmental review only; not an authenticated independent methods verification or scientific sign-off.",
+      "path": "03-design/pc03-independent-methods-challenge/design-assessment.md",
+      "path_base": "research_case_root",
+      "sha256": "e2759aefb89dd6e082b7db10cd8a85b75df759e91309d83e975bf85eaa5ab9f8",
+      "source_id": "SRC-PC03-CHALLENGE-ASSESSMENT",
+      "status": "DRAFT_DEVELOPMENTAL_CHALLENGE"
+    },
+    {
+      "category": "developmental_methods_challenge",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "pc03_confirmatory_design_subagent",
+      "manuscript_use": "alternative count proposal considered during root arbitration",
+      "notes": "The 97/193 proposal was not adopted because it treated aggregate seed-run proportions as Bernoulli observations.",
+      "path": "03-design/pc03-independent-methods-challenge/prospective-counts.csv",
+      "path_base": "research_case_root",
+      "sha256": "f04946b030306e376745e938dea9f1ddd11e0df6cbddbeaf54368ecb138c75e0",
+      "source_id": "SRC-PC03-CHALLENGE-COUNTS",
+      "status": "DRAFT_DEVELOPMENTAL_CHALLENGE"
+    },
+    {
+      "category": "developmental_methods_challenge",
+      "claim_ids": [
+        "C003"
+      ],
+      "generator": "pc03_confirmatory_design_subagent",
+      "manuscript_use": "developmental calculation trace considered during root arbitration",
+      "notes": "Preserved for audit history; the integrated amendment records the accepted and rejected elements.",
+      "path": "03-design/pc03-independent-methods-challenge/calculation-notes.md",
+      "path_base": "research_case_root",
+      "sha256": "365f620a5e166d429b6b805de5404e7e67cae4db361a16e6a4e880c632434696",
+      "source_id": "SRC-PC03-CHALLENGE-CALCULATIONS",
+      "status": "DRAFT_DEVELOPMENTAL_CHALLENGE"
+    },
+    {
+      "category": "design_package_tool",
+      "claim_ids": [],
+      "manuscript_use": "deterministic PC03 design generation and drift detection",
+      "notes": "Fails closed on phase, author-metadata deferral, challenge inputs, count contract, or output drift.",
+      "path": "scripts/export_pc03_design_amendment.py",
+      "path_base": "workspace_root",
+      "sha256": "de10137c57437a19ffb03f5a8fe443ec2af7cdca612bdd438fef2043197ec3d6",
+      "source_id": "SRC-PC03-EXPORTER",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "design_package_tests",
+      "claim_ids": [],
+      "manuscript_use": "PC03 fail-closed regression coverage",
+      "notes": "Covers deterministic output, included and excluded families, phase gate, challenge presence, and author-metadata deferral.",
+      "path": "prototype/tests/test_pc03_design_amendment.py",
+      "path_base": "workspace_root",
+      "sha256": "474cac685ade79e2d3e8c4b93aa2b8174be6c7a6fb83c506db2c61c93e9bb744",
+      "source_id": "SRC-PC03-TESTS",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "feasibility_pilot_design",
       "claim_ids": [
         "C001",
         "C002",
         "C003"
       ],
-      "manuscript_use": "estimands, analysis rules, multiplicity, and exploratory quarantine",
-      "notes": "Frozen before confirmatory rerun."
+      "generator": "scripts/export_confirmatory_pilot_plan.py",
+      "generator_sha256": "b92e418f28f80735d96ae54ac78023482015561b622cdcf5388da3ed3853a845",
+      "manuscript_use": "result-blind minimum and extended pilot architecture",
+      "notes": "Decision remains BLOCKED; recommended later path is PILOT_FIRST only after gate clearance; no GO, execution, result, phase promotion, or author-metadata freeze.",
+      "path": "02-feasibility/pilot-plan.md",
+      "path_base": "research_case_root",
+      "sha256": "907d9c6f954daa44216b5ee83f56bd42a7c990c2fd8d0dccaacf1f5a7e134b8a",
+      "source_id": "SRC-CONFIRMATORY-PILOT-PLAN",
+      "status": "DRAFT_PREAUTHORIZATION_NON_EXECUTABLE"
     },
     {
-      "source_id": "SRC-POWER",
-      "category": "design",
-      "path": "03-design/power-or-precision.md",
+      "category": "feasibility_pilot_contract",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_confirmatory_pilot_plan.py",
+      "generator_sha256": "b92e418f28f80735d96ae54ac78023482015561b622cdcf5388da3ed3853a845",
+      "manuscript_use": "machine-readable nine-result future-run contract and contamination barrier",
+      "notes": "All rows are unauthorized, non-independent, unexecuted, and without observed outcomes; three minimum cells have frozen draft counts while CORR and DEADLINE remain excluded.",
+      "path": "02-feasibility/pilot-run-contract.csv",
       "path_base": "research_case_root",
-      "sha256": "b8488329b5e851db18f7a8ba923c308387845772b59d3d23ea737d992ded7993",
-      "generator": "power_challenge",
-      "status": "DRAFT",
+      "sha256": "918dacfae714329d9b37a174421ee02806f3c06a2777b09de07f59c40627db95",
+      "source_id": "SRC-CONFIRMATORY-PILOT-RUN-CONTRACT",
+      "status": "BLOCKED_PENDING_GATE"
+    },
+    {
+      "category": "design_package_tool",
+      "claim_ids": [],
+      "manuscript_use": "deterministic pilot-plan generation and drift detection",
+      "notes": "Fails closed on canonical phase, authority boundary, result-ID closure, historical-output reuse, or prospective-count drift.",
+      "path": "scripts/export_confirmatory_pilot_plan.py",
+      "path_base": "workspace_root",
+      "sha256": "b92e418f28f80735d96ae54ac78023482015561b622cdcf5388da3ed3853a845",
+      "source_id": "SRC-CONFIRMATORY-PILOT-EXPORTER",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "design_package_tests",
+      "claim_ids": [],
+      "generator": "pytest",
+      "manuscript_use": "regression coverage for non-authorization, contamination, and unresolved-count boundaries",
+      "notes": "Passing tests establish mechanical integrity only; no scientific, feasibility, or independent-review gate is satisfied.",
+      "path": "prototype/tests/test_confirmatory_pilot_plan.py",
+      "path_base": "workspace_root",
+      "sha256": "62394e1b07f901630c6b830f275b45b6db6d2fbb6a883edd24fba8ae2977f37a",
+      "source_id": "SRC-CONFIRMATORY-PILOT-TESTS",
+      "status": "TESTED_INTERNAL_TOOLING"
+    },
+    {
+      "category": "simulation_summary",
       "claim_ids": [
         "C003"
       ],
-      "manuscript_use": "precision rationale and unresolved deadline/paired-discordance parameters",
-      "notes": "Numeric examples are non-binding sensitivity guidance only."
-    },
-    {
-      "source_id": "SRC-BASELINE-SUMMARY",
-      "category": "simulation_summary",
+      "generator": "prototype/scripts/run_baseline.sh",
+      "manuscript_use": "temporary source for preliminary result-table assembly only",
+      "notes": "Internal pre-authorization scenario summary; not a canonical confirmatory result ledger.",
       "path": "prototype/results/baseline.json",
       "path_base": "workspace_root",
       "sha256": "1bb15f333fe5620543ed378223dfb64c0db86bc461c59e4da2afc62877687730",
-      "generator": "prototype/scripts/run_baseline.sh",
-      "status": "PRELIMINARY",
+      "source_id": "SRC-BASELINE-SUMMARY",
+      "status": "PRELIMINARY"
+    },
+    {
+      "category": "experiment_manifest",
       "claim_ids": [
         "C003"
       ],
-      "manuscript_use": "temporary source for preliminary result-table assembly only",
-      "notes": "Internal pre-authorization scenario summary; not a canonical confirmatory result ledger."
-    },
-    {
-      "source_id": "SRC-EXPERIMENT-MANIFEST",
-      "category": "experiment_manifest",
+      "generator": "prototype/scripts/run_experiments.py",
+      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
+      "manuscript_use": "mechanical lineage record for current preliminary experiment outputs",
+      "notes": "Binds seven declared experiment configurations, seven datasets, ten figure files, source/lock hashes, row counts, runtime, and dirty-state disclosure. This revision was regenerated in manifest-only mode after deterministic semantic-SVG metadata postprocessing; no experiment or dataset was rerun. It is same-workspace, non-independent, and not scientific evidence. Baseline, crypto benchmark, gas, and deterministic fixtures remain explicit exclusions handled separately.",
       "path": "prototype/results/experiment_manifest.json",
       "path_base": "workspace_root",
       "sha256": "4fc1e392e7636bd777f5d276b3ba5431f81d0034411fe5bc625f1d10523b8de6",
-      "generator": "prototype/scripts/run_experiments.py",
-      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
-      "status": "PRELIMINARY_PREAUTHORIZATION",
-      "claim_ids": [
-        "C003"
-      ],
-      "manuscript_use": "mechanical lineage record for current preliminary experiment outputs",
-      "notes": "Binds seven declared experiment configurations, seven datasets, ten figure files, source/lock hashes, row counts, runtime, and dirty-state disclosure. This revision was regenerated in manifest-only mode after deterministic semantic-SVG metadata postprocessing; no experiment or dataset was rerun. It is same-workspace, non-independent, and not scientific evidence. Baseline, crypto benchmark, gas, and deterministic fixtures remain explicit exclusions handled separately."
+      "source_id": "SRC-EXPERIMENT-MANIFEST",
+      "status": "PRELIMINARY_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-LOCAL-VERIFICATION",
       "category": "local_reproduction_record",
-      "path": "VERIFICATION.md",
-      "path_base": "workspace_root",
-      "sha256": "c37ac303a2cbac81925fea8e49ecf8f458dcdd5a570575890f67cb1b4ea47940",
-      "generator": "workspace verification workflow",
-      "status": "QUARANTINED_LOCAL_RECORD",
       "claim_ids": [
         "C002",
         "C003"
       ],
+      "generator": "workspace verification workflow",
       "manuscript_use": "local command and artifact inventory only; never a phase or publication verdict",
-      "notes": "The historical 'GO for MPP implementation' wording is superseded for research governance by program-state.json; canonical phase remains INTAKE."
+      "notes": "The historical 'GO for MPP implementation' wording is superseded for research governance by program-state.json; canonical phase remains INTAKE.",
+      "path": "VERIFICATION.md",
+      "path_base": "workspace_root",
+      "sha256": "c37ac303a2cbac81925fea8e49ecf8f458dcdd5a570575890f67cb1b4ea47940",
+      "source_id": "SRC-LOCAL-VERIFICATION",
+      "status": "QUARANTINED_LOCAL_RECORD"
     },
     {
-      "source_id": "SRC-CRYPTO-PREAUTH-QA",
       "category": "engineering_qa_receipt",
+      "claim_ids": [
+        "C002"
+      ],
+      "generator": "prototype/scripts/export_crypto_case_receipt.py",
+      "manuscript_use": "implementation test inventory and artifact-availability disclosure only",
+      "notes": "Same-workspace non-empirical receipt; 22 mapped pytest nodes and two vector freshness checks; not scientific evidence, independent reproduction, cryptographic audit, or production validation.",
       "path": "prototype/results/engineering_qa/rid-c002-crypto-001-preauth-receipt.json",
       "path_base": "workspace_root",
       "sha256": "dd85b75928f15862fae3c338d72c3f64a809e9303fbaccc01df8701ad6971ceb",
-      "generator": "prototype/scripts/export_crypto_case_receipt.py",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA",
+      "source_id": "SRC-CRYPTO-PREAUTH-QA",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA"
+    },
+    {
+      "category": "engineering_qa_receipt",
       "claim_ids": [
         "C002"
       ],
+      "generator": "contracts/scripts/export_contract_case_receipt.py",
       "manuscript_use": "implementation test inventory and artifact-availability disclosure only",
-      "notes": "Same-workspace non-empirical receipt; 22 mapped pytest nodes and two vector freshness checks; not scientific evidence, independent reproduction, cryptographic audit, or production validation."
-    },
-    {
-      "source_id": "SRC-CONTRACT-PREAUTH-QA",
-      "category": "engineering_qa_receipt",
+      "notes": "Same-workspace non-empirical receipt; 27 mapped Foundry cases; not scientific evidence, independent reproduction, security audit, gas benchmark, or production validation.",
       "path": "contracts/results/engineering_qa/rid-c002-contract-001-preauth-receipt.json",
       "path_base": "workspace_root",
       "sha256": "dc94c19b5d0176757a36f883b8933f928decd1e92bff7a8575ed039f263c9ed5",
-      "generator": "contracts/scripts/export_contract_case_receipt.py",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA",
+      "source_id": "SRC-CONTRACT-PREAUTH-QA",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA"
+    },
+    {
+      "category": "table_bundle",
       "claim_ids": [
         "C002"
       ],
-      "manuscript_use": "implementation test inventory and artifact-availability disclosure only",
-      "notes": "Same-workspace non-empirical receipt; 27 mapped Foundry cases; not scientific evidence, independent reproduction, security audit, gas benchmark, or production validation."
-    },
-    {
-      "source_id": "SRC-PREAUTH-ENGINEERING-QA-TABLE",
-      "category": "table_bundle",
+      "generator": "scripts/export_preauth_engineering_qa_table.py",
+      "manuscript_use": "editable implementation-QA coverage disclosure only; not a canonical T-series result table",
+      "notes": "Generated from both receipt JSON files and their adjacent SHA-256 sidecars; same-workspace, non-empirical, non-independent, and not scientific evidence or a security audit.",
       "path": "paper/tables/preauthorization_engineering_qa.csv",
       "path_base": "workspace_root",
       "sha256": "7f63806e29edec711360a8b70fed227f03ec655fe14de53b6a82e7d4cf9ec865",
-      "generator": "scripts/export_preauth_engineering_qa_table.py",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA",
-      "claim_ids": [
-        "C002"
-      ],
-      "manuscript_use": "editable implementation-QA coverage disclosure only; not a canonical T-series result table",
-      "notes": "Generated from both receipt JSON files and their adjacent SHA-256 sidecars; same-workspace, non-empirical, non-independent, and not scientific evidence or a security audit."
+      "source_id": "SRC-PREAUTH-ENGINEERING-QA-TABLE",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA"
     },
     {
-      "source_id": "SRC-VISUAL-LEDGER",
       "category": "visual_governance",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "manuscript_use": "caption, accessibility, review-status, and source routing ledger",
+      "notes": "F1-F5 and D1-D8 have source-controlled semantic SVG metadata and a deterministic local visual-integrity/accessibility-proxy report. The automated proxy records warnings rather than certification; contextual human, current venue, print, calibrated CVD, assistive-technology, and independent scientific validation remain pending.",
       "path": "06-visuals/visual-ledger.csv",
       "path_base": "research_case_root",
       "sha256": "ac541a28c4246919c349105c38620f85d8f0c4dbfce2a235eb0be4300299ab64",
-      "status": "DRAFT",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "caption, accessibility, review-status, and source routing ledger",
-      "notes": "F1-F5 and D1-D8 have source-controlled semantic SVG metadata and a deterministic local visual-integrity/accessibility-proxy report. The automated proxy records warnings rather than certification; contextual human, current venue, print, calibrated CVD, assistive-technology, and independent scientific validation remain pending."
+      "source_id": "SRC-VISUAL-LEDGER",
+      "status": "DRAFT"
     },
     {
-      "source_id": "SRC-SVG-ACCESSIBILITY-POSTPROCESSOR",
       "category": "visual_accessibility_tooling",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "manuscript_use": "deterministic semantic SVG metadata postprocessing and validation for F1-F5 and D1-D8",
+      "notes": "Adds or validates root role, aria-labelledby, title, and description metadata without changing scientific geometry or evidence. It does not establish final-size, CVD, screen-reader, scientific, or venue approval.",
       "path": "scripts/annotate_svg_accessibility.py",
       "path_base": "workspace_root",
       "sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "PREAUTHORIZATION_MECHANICAL_TOOLING",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "deterministic semantic SVG metadata postprocessing and validation for F1-F5 and D1-D8",
-      "notes": "Adds or validates root role, aria-labelledby, title, and description metadata without changing scientific geometry or evidence. It does not establish final-size, CVD, screen-reader, scientific, or venue approval."
+      "source_id": "SRC-SVG-ACCESSIBILITY-POSTPROCESSOR",
+      "status": "PREAUTHORIZATION_MECHANICAL_TOOLING"
     },
     {
-      "source_id": "SRC-FIGURE-MANIFEST",
       "category": "visual_lineage",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
+      "manuscript_use": "F1-F5 source, generator, canonical SVG, and derivative PNG lineage",
+      "notes": "Identifiers are normalized to F1-F5 and canonical SVG hashes bind the deterministic accessibility postprocessor. Provisional 85 mm and 180 mm typography/PPI proxies are recorded; current venue, contextual CVD, assistive-technology, human, and independent scientific review remain pending, and no figure is confirmatory evidence.",
       "path": "06-visuals/figures/figure-manifest.csv",
       "path_base": "research_case_root",
       "sha256": "e54f33cd5e4d6d71e531c3d68588d53182d26abc2aba1a55e962fce44fa3ba39",
-      "status": "DRAFT",
-      "claim_ids": ["C001", "C003"],
-      "manuscript_use": "F1-F5 source, generator, canonical SVG, and derivative PNG lineage",
-      "notes": "Identifiers are normalized to F1-F5 and canonical SVG hashes bind the deterministic accessibility postprocessor. Provisional 85 mm and 180 mm typography/PPI proxies are recorded; current venue, contextual CVD, assistive-technology, human, and independent scientific review remain pending, and no figure is confirmatory evidence."
+      "source_id": "SRC-FIGURE-MANIFEST",
+      "status": "DRAFT"
     },
     {
-      "source_id": "SRC-D1-SYSTEM-ARCHITECTURE",
-      "category": "diagram_source",
-      "path": "diagrams/01_system_architecture.mmd",
-      "path_base": "workspace_root",
-      "sha256": "97db93e7fdbd27084d42e18a51363d6ec60aef54e1d449d301bc8502f3dcce08",
-      "companion_source": "diagrams/01_system_architecture.dot",
-      "companion_source_sha256": "8f92140474749d0c52ef6bf478922898b9d2aa5be82ed94384694b985afc38d0",
-      "renderer": "scripts/render_dense_diagrams.py",
-      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
-      "render_receipt": "diagrams/dense_diagrams.render.json",
-      "render_receipt_sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
-      "rendered_svg": "diagrams/01_system_architecture.svg",
-      "rendered_svg_sha256": "4d52a502b0511274baecbf906d9447146b0e7fa46fc71d283eb7b8004aaf6cd4",
-      "rendered_png": "diagrams/01_system_architecture.png",
-      "rendered_png_sha256": "4e73a92d8acce4121565862b99c1b4a207266b4ebf757d1d189fe687d9e400db",
       "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
       "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "DRAFT_PROTOCOL",
-      "claim_ids": ["C001", "C002", "C003"],
+      "category": "diagram_source",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "companion_source": "diagrams/01_system_architecture.dot",
+      "companion_source_sha256": "8f92140474749d0c52ef6bf478922898b9d2aa5be82ed94384694b985afc38d0",
       "manuscript_use": "D1 system architecture",
-      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
+      "path": "diagrams/01_system_architecture.mmd",
+      "path_base": "workspace_root",
+      "render_receipt": "diagrams/dense_diagrams.render.json",
+      "render_receipt_sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
+      "rendered_png": "diagrams/01_system_architecture.png",
+      "rendered_png_sha256": "4e73a92d8acce4121565862b99c1b4a207266b4ebf757d1d189fe687d9e400db",
+      "rendered_svg": "diagrams/01_system_architecture.svg",
+      "rendered_svg_sha256": "4d52a502b0511274baecbf906d9447146b0e7fa46fc71d283eb7b8004aaf6cd4",
+      "renderer": "scripts/render_dense_diagrams.py",
+      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "sha256": "97db93e7fdbd27084d42e18a51363d6ec60aef54e1d449d301bc8502f3dcce08",
+      "source_id": "SRC-D1-SYSTEM-ARCHITECTURE",
+      "status": "DRAFT_PROTOCOL"
     },
     {
-      "source_id": "SRC-D2-PROPERTY-SEPARATION",
-      "category": "diagram_source",
-      "path": "diagrams/02_property_separation.mmd",
-      "path_base": "workspace_root",
-      "sha256": "0095ad17ec7769021ea43fc507c5c8e95890646b41bc04008a76b95eaa3ed68d",
-      "companion_source": "diagrams/02_property_separation.dot",
-      "companion_source_sha256": "9304a4d8ad675677ed996000802bd196319ebb1315397132572af02c6f7db2ee",
-      "renderer": "scripts/render_property_separation_diagram.py",
-      "renderer_sha256": "86846476665d8673f5f826bf3963a7d96baa67fe7e79d02eda1278e588f143e1",
-      "render_receipt": "diagrams/02_property_separation.render.json",
-      "render_receipt_sha256": "1b81c0a1a77bdb3f435eebd407984d59307e7198a5603454624de4d91cd6e759",
-      "rendered_svg": "diagrams/02_property_separation.svg",
-      "rendered_svg_sha256": "1ea4e7a01420e4b9a3f28435ba3c14138ba59ba4c12a1971bce37e0735855c03",
       "accessibility_validator": "scripts/annotate_svg_accessibility.py",
       "accessibility_validator_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
+      "category": "diagram_source",
+      "claim_ids": [
+        "C001"
+      ],
+      "companion_source": "diagrams/02_property_separation.dot",
+      "companion_source_sha256": "9304a4d8ad675677ed996000802bd196319ebb1315397132572af02c6f7db2ee",
+      "manuscript_use": "D2 property-separation witnesses",
+      "notes": "Canonical source contains exactly three claim-bearing constructive non-implications and rejects a complete lattice. Local deterministic SVG and Chrome-captured PNG derivatives are source/hash bound; the SVG semantic metadata is validated, typography is no longer UNKNOWN, and the automated proxy measures body text above 7 pt at provisional 180 mm width while still warning at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific validation remain pending.",
+      "path": "diagrams/02_property_separation.mmd",
+      "path_base": "workspace_root",
+      "render_receipt": "diagrams/02_property_separation.render.json",
+      "render_receipt_sha256": "1b81c0a1a77bdb3f435eebd407984d59307e7198a5603454624de4d91cd6e759",
       "rendered_png": "diagrams/02_property_separation.png",
       "rendered_png_sha256": "64b8f957bd1d9a55ae5b8db0893815db7e93c3cad2ad2cceac76a42cca2880e7",
-      "status": "DRAFT_RENDERED_VISUAL_QA_WITH_WARNINGS",
-      "claim_ids": ["C001"],
-      "manuscript_use": "D2 property-separation witnesses",
-      "notes": "Canonical source contains exactly three claim-bearing constructive non-implications and rejects a complete lattice. Local deterministic SVG and Chrome-captured PNG derivatives are source/hash bound; the SVG semantic metadata is validated, typography is no longer UNKNOWN, and the automated proxy measures body text above 7 pt at provisional 180 mm width while still warning at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific validation remain pending."
+      "rendered_svg": "diagrams/02_property_separation.svg",
+      "rendered_svg_sha256": "1ea4e7a01420e4b9a3f28435ba3c14138ba59ba4c12a1971bce37e0735855c03",
+      "renderer": "scripts/render_property_separation_diagram.py",
+      "renderer_sha256": "86846476665d8673f5f826bf3963a7d96baa67fe7e79d02eda1278e588f143e1",
+      "sha256": "0095ad17ec7769021ea43fc507c5c8e95890646b41bc04008a76b95eaa3ed68d",
+      "source_id": "SRC-D2-PROPERTY-SEPARATION",
+      "status": "DRAFT_RENDERED_VISUAL_QA_WITH_WARNINGS"
     },
     {
-      "source_id": "SRC-D2-RENDER-RECEIPT",
       "category": "visual_lineage_receipt",
+      "claim_ids": [
+        "C001"
+      ],
+      "generator": "scripts/render_property_separation_diagram.py",
+      "generator_sha256": "86846476665d8673f5f826bf3963a7d96baa67fe7e79d02eda1278e588f143e1",
+      "manuscript_use": "D2 local render lineage and visual-QA disclosure",
+      "notes": "Same-workspace mechanical receipt; NOT_SCIENTIFIC_EVIDENCE and SAME_WORKSPACE_NOT_INDEPENDENT.",
       "path": "diagrams/02_property_separation.render.json",
       "path_base": "workspace_root",
       "sha256": "1b81c0a1a77bdb3f435eebd407984d59307e7198a5603454624de4d91cd6e759",
-      "generator": "scripts/render_property_separation_diagram.py",
-      "generator_sha256": "86846476665d8673f5f826bf3963a7d96baa67fe7e79d02eda1278e588f143e1",
-      "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE",
-      "claim_ids": ["C001"],
-      "manuscript_use": "D2 local render lineage and visual-QA disclosure",
-      "notes": "Same-workspace mechanical receipt; NOT_SCIENTIFIC_EVIDENCE and SAME_WORKSPACE_NOT_INDEPENDENT."
+      "source_id": "SRC-D2-RENDER-RECEIPT",
+      "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE"
     },
     {
-      "source_id": "SRC-D3-AUDIT-SEQUENCE",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "diagram_source",
-      "path": "diagrams/03_audit_sequence.mmd",
-      "path_base": "workspace_root",
-      "sha256": "7b5587be81f756084812c7a282a8bee8c82c4eed83e1e1d396e0c8b2872cfba5",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
       "companion_source": "diagrams/03_audit_sequence.dot",
       "companion_source_sha256": "92b17cdba18c78fcca2e9c8910ac895e61c51f1032b587c6fb8732bfb5dc5592",
+      "manuscript_use": "D3 readiness-audit sequence",
+      "notes": "Mermaid is the canonical editable source. The SVG derivative has source-controlled semantic metadata and local grayscale inspection; final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
+      "path": "diagrams/03_audit_sequence.mmd",
+      "path_base": "workspace_root",
       "rendered_svg": "diagrams/03_audit_sequence.svg",
       "rendered_svg_sha256": "12e8d0c51a62f32cb10c2140f245c1d1b1da84d35323fdc2b7e24b57f8baeeca",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "DRAFT_PROTOCOL",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "D3 readiness-audit sequence",
-      "notes": "Mermaid is the canonical editable source. The SVG derivative has source-controlled semantic metadata and local grayscale inspection; final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "sha256": "7b5587be81f756084812c7a282a8bee8c82c4eed83e1e1d396e0c8b2872cfba5",
+      "source_id": "SRC-D3-AUDIT-SEQUENCE",
+      "status": "DRAFT_PROTOCOL"
     },
     {
-      "source_id": "SRC-D4-DISPUTE-SEQUENCE",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "diagram_source",
-      "path": "diagrams/04_dispute_sequence.mmd",
-      "path_base": "workspace_root",
-      "sha256": "cd2654b860361ec8de099fcce629047ce55d7731cebb43737b99bc9ca6a338c8",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
       "companion_source": "diagrams/04_dispute_sequence.dot",
       "companion_source_sha256": "1187902a2ad379608368df8ee2f52054f32c8598c25898db88c5b1cb0c37fa64",
+      "manuscript_use": "D4 authorized-dispute sequence",
+      "notes": "Mermaid is the canonical editable source. The SVG derivative has source-controlled semantic metadata and local grayscale inspection; final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
+      "path": "diagrams/04_dispute_sequence.mmd",
+      "path_base": "workspace_root",
       "rendered_svg": "diagrams/04_dispute_sequence.svg",
       "rendered_svg_sha256": "aa453820ba41db63ae809b138c68d424dd6b30f76083d28f5809b71179f0bebb",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "DRAFT_PROTOCOL",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "D4 authorized-dispute sequence",
-      "notes": "Mermaid is the canonical editable source. The SVG derivative has source-controlled semantic metadata and local grayscale inspection; final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "sha256": "cd2654b860361ec8de099fcce629047ce55d7731cebb43737b99bc9ca6a338c8",
+      "source_id": "SRC-D4-DISPUTE-SEQUENCE",
+      "status": "DRAFT_PROTOCOL"
     },
     {
-      "source_id": "SRC-D5-STATE-MACHINES",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "diagram_source",
-      "path": "diagrams/05_state_machines.mmd",
-      "path_base": "workspace_root",
-      "sha256": "ffe65f9f953c11270c4e661f108eacec56e0bf430a80c89f866a94a9affd8dc0",
+      "claim_ids": [
+        "C002"
+      ],
       "companion_source": "diagrams/05_state_machines.dot",
       "companion_source_sha256": "fe0006e08ad48f5c39514b55070d7d6cd356d0aef025a12466a47ace79a4f450",
-      "renderer": "scripts/render_dense_diagrams.py",
-      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "manuscript_use": "D5 epoch, audit, and dispute state machines",
+      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
+      "path": "diagrams/05_state_machines.mmd",
+      "path_base": "workspace_root",
       "render_receipt": "diagrams/dense_diagrams.render.json",
       "render_receipt_sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
-      "rendered_svg": "diagrams/05_state_machines.svg",
-      "rendered_svg_sha256": "c7eca2df910441881e7164adc0fc84455fa0df160b17446fa66ffce452d1e39c",
       "rendered_png": "diagrams/05_state_machines.png",
       "rendered_png_sha256": "967291472c477a38aa04c2bfebcecceb8ec653795a4434be43f31ac775ff7074",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "DRAFT_APPENDIX",
-      "claim_ids": ["C002"],
-      "manuscript_use": "D5 epoch, audit, and dispute state machines",
-      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "rendered_svg": "diagrams/05_state_machines.svg",
+      "rendered_svg_sha256": "c7eca2df910441881e7164adc0fc84455fa0df160b17446fa66ffce452d1e39c",
+      "renderer": "scripts/render_dense_diagrams.py",
+      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "sha256": "ffe65f9f953c11270c4e661f108eacec56e0bf430a80c89f866a94a9affd8dc0",
+      "source_id": "SRC-D5-STATE-MACHINES",
+      "status": "DRAFT_APPENDIX"
     },
     {
-      "source_id": "SRC-D6-THREAT-MODEL",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "diagram_source",
-      "path": "diagrams/06_threat_model.mmd",
-      "path_base": "workspace_root",
-      "sha256": "7494a0ccf3d418229c66c381ad68eb5c892b394d0e04231cb44439c37122d0f0",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
       "companion_source": "diagrams/06_threat_model.dot",
       "companion_source_sha256": "70e97313dab63246a0743c2e50135ec33818bd9a227afa85429d7aca734cf79f",
-      "renderer": "scripts/render_dense_diagrams.py",
-      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "manuscript_use": "D6 threat model, controls, and residual assumptions",
+      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
+      "path": "diagrams/06_threat_model.mmd",
+      "path_base": "workspace_root",
       "render_receipt": "diagrams/dense_diagrams.render.json",
       "render_receipt_sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
-      "rendered_svg": "diagrams/06_threat_model.svg",
-      "rendered_svg_sha256": "36cd21e97d73ec79e583163e85831528d0c9db876011eca9a72a2adda4c15c33",
       "rendered_png": "diagrams/06_threat_model.png",
       "rendered_png_sha256": "a01364216990420fbaa842e77e6a3c2380665ea15f0bb337a3798ba79cc93fff",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "DRAFT_LIMITATION",
-      "claim_ids": ["C001", "C003"],
-      "manuscript_use": "D6 threat model, controls, and residual assumptions",
-      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "rendered_svg": "diagrams/06_threat_model.svg",
+      "rendered_svg_sha256": "36cd21e97d73ec79e583163e85831528d0c9db876011eca9a72a2adda4c15c33",
+      "renderer": "scripts/render_dense_diagrams.py",
+      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "sha256": "7494a0ccf3d418229c66c381ad68eb5c892b394d0e04231cb44439c37122d0f0",
+      "source_id": "SRC-D6-THREAT-MODEL",
+      "status": "DRAFT_LIMITATION"
     },
     {
-      "source_id": "SRC-D7-SAMPLING-DOMAINS",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "diagram_source",
-      "path": "diagrams/07_sampling_domains.mmd",
-      "path_base": "workspace_root",
-      "sha256": "d1d1c6ca8a5898971505901e95a9ef5dcd75424db906c583c29967cd45b09571",
+      "claim_ids": [
+        "C003"
+      ],
       "companion_source": "diagrams/07_sampling_domains.dot",
       "companion_source_sha256": "94458d1010526487f7259e0b8c32a51fced8ccd87b86415eab0f76f64fb0d87f",
-      "renderer": "scripts/render_dense_diagrams.py",
-      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "manuscript_use": "D7 illustrative sampling-domain layout",
+      "notes": "Illustrative source only; it does not constitute empirical evidence. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width while preserving the non-directional Mermaid `---` relationships; 85 mm warnings remain. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
+      "path": "diagrams/07_sampling_domains.mmd",
+      "path_base": "workspace_root",
       "render_receipt": "diagrams/dense_diagrams.render.json",
       "render_receipt_sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
-      "rendered_svg": "diagrams/07_sampling_domains.svg",
-      "rendered_svg_sha256": "8848c2fadc2926ad21094d3c026d85c58db5e94b3dd472f666ba08862ff7052a",
       "rendered_png": "diagrams/07_sampling_domains.png",
       "rendered_png_sha256": "f02c6e9eb24d265046b71c86a78f9510a96d7e8c010677d9478095443bbb8e0e",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "DRAFT_ROBUSTNESS",
-      "claim_ids": ["C003"],
-      "manuscript_use": "D7 illustrative sampling-domain layout",
-      "notes": "Illustrative source only; it does not constitute empirical evidence. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width while preserving the non-directional Mermaid `---` relationships; 85 mm warnings remain. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
-    },
-    {
-      "source_id": "SRC-D8-EXPERIMENT-PIPELINE",
-      "category": "diagram_source",
-      "path": "diagrams/08_experiment_pipeline.mmd",
-      "path_base": "workspace_root",
-      "sha256": "9c49604423fef3341b0ab25be9153a03aef9b7a0dfe14dbb4e22a7488d1406d6",
-      "companion_source": "diagrams/08_experiment_pipeline.dot",
-      "companion_source_sha256": "463772bfe0e937aecf774203601e28f61559448a50ba8532cf63fcaaa21ca96b",
+      "rendered_svg": "diagrams/07_sampling_domains.svg",
+      "rendered_svg_sha256": "8848c2fadc2926ad21094d3c026d85c58db5e94b3dd472f666ba08862ff7052a",
       "renderer": "scripts/render_dense_diagrams.py",
       "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
-      "render_receipt": "diagrams/dense_diagrams.render.json",
-      "render_receipt_sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
-      "rendered_svg": "diagrams/08_experiment_pipeline.svg",
-      "rendered_svg_sha256": "848e46beb0452838a6636bdb82720c8156047ae7cb4426c0d64177bfa1f523ed",
-      "rendered_png": "diagrams/08_experiment_pipeline.png",
-      "rendered_png_sha256": "877526f710b5470053aa25a6dda5778b6b2f284c20c04e89f3fd4603a0a29b82",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "DRAFT_REPRO",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "D8 experiment-to-paper lineage workflow",
-      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "sha256": "d1d1c6ca8a5898971505901e95a9ef5dcd75424db906c583c29967cd45b09571",
+      "source_id": "SRC-D7-SAMPLING-DOMAINS",
+      "status": "DRAFT_ROBUSTNESS"
     },
     {
-      "source_id": "SRC-F1-THEORETICAL-BOUND",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
+      "category": "diagram_source",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "companion_source": "diagrams/08_experiment_pipeline.dot",
+      "companion_source_sha256": "463772bfe0e937aecf774203601e28f61559448a50ba8532cf63fcaaa21ca96b",
+      "manuscript_use": "D8 experiment-to-paper lineage workflow",
+      "notes": "Mermaid is the canonical editable source. The deterministic local SVG and PNG derivatives are source/hash bound through the dense-diagram receipt, and the automated proxy now measures body text above 7 pt at provisional 180 mm width but still warns at 85 mm. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
+      "path": "diagrams/08_experiment_pipeline.mmd",
+      "path_base": "workspace_root",
+      "render_receipt": "diagrams/dense_diagrams.render.json",
+      "render_receipt_sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
+      "rendered_png": "diagrams/08_experiment_pipeline.png",
+      "rendered_png_sha256": "877526f710b5470053aa25a6dda5778b6b2f284c20c04e89f3fd4603a0a29b82",
+      "rendered_svg": "diagrams/08_experiment_pipeline.svg",
+      "rendered_svg_sha256": "848e46beb0452838a6636bdb82720c8156047ae7cb4426c0d64177bfa1f523ed",
+      "renderer": "scripts/render_dense_diagrams.py",
+      "renderer_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "sha256": "9c49604423fef3341b0ab25be9153a03aef9b7a0dfe14dbb4e22a7488d1406d6",
+      "source_id": "SRC-D8-EXPERIMENT-PIPELINE",
+      "status": "DRAFT_REPRO"
+    },
+    {
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "quantitative_figure",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
+      "derivative_png": "prototype/results/figures/figure_1_theoretical_detection_bound.png",
+      "derivative_png_sha256": "8b3214778ddf623592471ab68123f3f5dbeaf75dde8e29fd4f2cd319beaf6e59",
+      "generator": "prototype/scripts/run_experiments.py",
+      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
+      "manuscript_use": "F1 static catastrophic-state detection bound",
+      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending; no confirmatory upgrade before authorized analysis.",
       "path": "prototype/results/figures/figure_1_theoretical_detection_bound.svg",
       "path_base": "workspace_root",
       "sha256": "f81fd84542d02b57bf2ebafc787285d5fc0b9675262570fc5f90d7f228a0a78f",
       "source_data": "prototype/results/theoretical_bound.csv",
       "source_data_sha256": "9c5a4cedbe22dddf9c1863f9546b22e232bd6b531b3437e695b828b65f2b1d02",
-      "derivative_png": "prototype/results/figures/figure_1_theoretical_detection_bound.png",
-      "derivative_png_sha256": "8b3214778ddf623592471ab68123f3f5dbeaf75dde8e29fd4f2cd319beaf6e59",
-      "generator": "prototype/scripts/run_experiments.py",
-      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "PRELIMINARY",
-      "claim_ids": ["C001", "C003"],
-      "manuscript_use": "F1 static catastrophic-state detection bound",
-      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending; no confirmatory upgrade before authorized analysis."
+      "source_id": "SRC-F1-THEORETICAL-BOUND",
+      "status": "PRELIMINARY"
     },
     {
-      "source_id": "SRC-F2-IID-FAILURE",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "quantitative_figure",
+      "claim_ids": [
+        "C003"
+      ],
+      "derivative_png": "prototype/results/figures/figure_2_iid_failure_sweep.png",
+      "derivative_png_sha256": "87fc3153486c2a3ba1f518465fa0be259bf76972472adf6671c80a9d28cc2e2a",
+      "generator": "prototype/scripts/run_experiments.py",
+      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
+      "manuscript_use": "F2 IID outage sweep with Wilson intervals",
+      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending; no confirmatory upgrade before authorized analysis.",
       "path": "prototype/results/figures/figure_2_iid_failure_sweep.svg",
       "path_base": "workspace_root",
       "sha256": "ab5fc73fa7adfabad682a00f31f9ed590505e939cf701ff8dd71b5bafd5dc3a8",
       "source_data": "prototype/results/iid_failure_sweep.csv",
       "source_data_sha256": "decaa9e3d709f16bc1fb3fc534327028adf0d8a54bdfaca2e89f4f0d6a95ca56",
-      "derivative_png": "prototype/results/figures/figure_2_iid_failure_sweep.png",
-      "derivative_png_sha256": "87fc3153486c2a3ba1f518465fa0be259bf76972472adf6671c80a9d28cc2e2a",
-      "generator": "prototype/scripts/run_experiments.py",
-      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "PRELIMINARY",
-      "claim_ids": ["C003"],
-      "manuscript_use": "F2 IID outage sweep with Wilson intervals",
-      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending; no confirmatory upgrade before authorized analysis."
+      "source_id": "SRC-F2-IID-FAILURE",
+      "status": "PRELIMINARY"
     },
     {
-      "source_id": "SRC-F3-DOMAIN-DIVERSITY",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "quantitative_figure",
+      "claim_ids": [
+        "C003"
+      ],
+      "derivative_png": "prototype/results/figures/figure_3_domain_diversity.png",
+      "derivative_png_sha256": "91222f77c3206a5498854b2b8aa2890782db88e81b89f8ed4eca621d530701c6",
+      "generator": "prototype/scripts/run_experiments.py",
+      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
+      "manuscript_use": "F3 correlated-domain diversity study",
+      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Truthful domain labels are an assumption, and local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
       "path": "prototype/results/figures/figure_3_domain_diversity.svg",
       "path_base": "workspace_root",
       "sha256": "5d82b4f4d91a90768f1c2835eaa52f00904efa0d2eeec6a67dc21561962ca1b0",
       "source_data": "prototype/results/domain_diversity.csv",
       "source_data_sha256": "9ad3b9da81e4a9169481645d853742997303da3fadd5f885c4eb02f131d33e0e",
-      "derivative_png": "prototype/results/figures/figure_3_domain_diversity.png",
-      "derivative_png_sha256": "91222f77c3206a5498854b2b8aa2890782db88e81b89f8ed4eca621d530701c6",
-      "generator": "prototype/scripts/run_experiments.py",
-      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "PRELIMINARY",
-      "claim_ids": ["C003"],
-      "manuscript_use": "F3 correlated-domain diversity study",
-      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Truthful domain labels are an assumption, and local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "source_id": "SRC-F3-DOMAIN-DIVERSITY",
+      "status": "PRELIMINARY"
     },
     {
-      "source_id": "SRC-F4-SELECTIVE-WITHHOLDING",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "quantitative_figure",
+      "claim_ids": [
+        "C003"
+      ],
+      "derivative_png": "prototype/results/figures/figure_4_selective_withholding_gap.png",
+      "derivative_png_sha256": "9d59193bb164a744d26d7a509b2c698c6a3a2a7beefbecb03fc185c742b08cac",
+      "generator": "prototype/scripts/run_experiments.py",
+      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
+      "manuscript_use": "F4 selective-withholding negative result",
+      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. This figure limits audit-to-dispute inference, and local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
       "path": "prototype/results/figures/figure_4_selective_withholding_gap.svg",
       "path_base": "workspace_root",
       "sha256": "b92cf8b90c7c56151daa305fb670f4f49fbf74cf6ae8e0abc916ea3943b1aad9",
       "source_data": "prototype/results/selective_withholding.csv",
       "source_data_sha256": "f97239e8cb8bf22dbdd3d3713b33680cb75ccd37b9d731dae2dc21239c1bf8b7",
-      "derivative_png": "prototype/results/figures/figure_4_selective_withholding_gap.png",
-      "derivative_png_sha256": "9d59193bb164a744d26d7a509b2c698c6a3a2a7beefbecb03fc185c742b08cac",
-      "generator": "prototype/scripts/run_experiments.py",
-      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "PRELIMINARY_LIMITATION",
-      "claim_ids": ["C003"],
-      "manuscript_use": "F4 selective-withholding negative result",
-      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. This figure limits audit-to-dispute inference, and local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "source_id": "SRC-F4-SELECTIVE-WITHHOLDING",
+      "status": "PRELIMINARY_LIMITATION"
     },
     {
-      "source_id": "SRC-F5-SAMPLING-STRATEGY",
+      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
+      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
       "category": "quantitative_figure",
+      "claim_ids": [
+        "C003"
+      ],
+      "derivative_png": "prototype/results/figures/figure_5_sampling_strategy.png",
+      "derivative_png_sha256": "7e5a7e0fc80fd08a44e5dec49ac8a3eae0e2064bd59d641cef6e52b61cc6ace5",
+      "generator": "prototype/scripts/run_experiments.py",
+      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
+      "manuscript_use": "F5 matched uniform-versus-stratified comparison",
+      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Strategy semantics remain model-specific, and local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending.",
       "path": "prototype/results/figures/figure_5_sampling_strategy.svg",
       "path_base": "workspace_root",
       "sha256": "c4a7261da2b9ace64bdb0369c72940f74c28842902d3db8c7812dc8bea47531a",
       "source_data": "prototype/results/sampling_strategy.csv",
       "source_data_sha256": "8accd8b37dd007f4090a8cc5d1e57ed8cb5259a52177b6c5c4da5deaa87ae068",
-      "derivative_png": "prototype/results/figures/figure_5_sampling_strategy.png",
-      "derivative_png_sha256": "7e5a7e0fc80fd08a44e5dec49ac8a3eae0e2064bd59d641cef6e52b61cc6ace5",
-      "generator": "prototype/scripts/run_experiments.py",
-      "generator_sha256": "4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424",
-      "accessibility_postprocessor": "scripts/annotate_svg_accessibility.py",
-      "accessibility_postprocessor_sha256": "a3f4c1cf6ebaaf447c2ad62b9a2dacafe70374c6e4fdbd1f50f92ef816473dfd",
-      "status": "PRELIMINARY",
-      "claim_ids": ["C003"],
-      "manuscript_use": "F5 matched uniform-versus-stratified comparison",
-      "notes": "SVG is canonical and has source-controlled semantic metadata; PNG is a derivative preview. Strategy semantics remain model-specific, and local grayscale inspection is partial only. Final venue-size, calibrated CVD, assistive-technology, and independent scientific review remain pending."
+      "source_id": "SRC-F5-SAMPLING-STRATEGY",
+      "status": "PRELIMINARY"
     },
     {
-      "source_id": "SRC-T1-T8-EXPORTER",
       "category": "table_bundle_tool",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "subagent_driven_tdd_with_root_integration_qa",
+      "manuscript_use": "deterministic editable T1-T8 paper-table export from bounded canonical inputs",
+      "notes": "Fail-closed exporter writes per-table CSV files plus combined Markdown, LaTeX, and manifest outputs. It does not create scientific evidence or raise claim maturity.",
       "path": "scripts/export_t1_t8_tables.py",
       "path_base": "workspace_root",
-      "sha256": "c1c199948eaef0a12bda6468859413ce5ea6910a4cc3a038584ebd2345f9e870",
-      "generator": "subagent_driven_tdd_with_root_integration_qa",
-      "status": "PREAUTHORIZATION_ENGINEERING_TOOLING",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "deterministic editable T1-T8 paper-table export from bounded canonical inputs",
-      "notes": "Fail-closed exporter writes per-table CSV files plus combined Markdown, LaTeX, and manifest outputs. It does not create scientific evidence or raise claim maturity."
+      "sha256": "8f98ea70fcbccf171e08825c8681436707f516e1e416c3ace8c48397fd2fd07b",
+      "source_id": "SRC-T1-T8-EXPORTER",
+      "status": "PREAUTHORIZATION_ENGINEERING_TOOLING"
     },
     {
-      "source_id": "SRC-T1-T8-TESTS",
       "category": "table_bundle_tests",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "pytest",
+      "manuscript_use": "regression coverage for deterministic T1-T8 schema, boundary, and drift checks",
+      "notes": "Focused tests cover exact table IDs, allowed evidence stages, numeric source binding, LaTeX escaping, determinism, and fail-closed check mode. Passing tests are not scientific verification.",
       "path": "prototype/tests/test_t1_t8_tables.py",
       "path_base": "workspace_root",
-      "sha256": "cf5422482d863e682f41e3719831687f9076c328e0c26fb2b3a9389d12f7402d",
-      "generator": "pytest",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "regression coverage for deterministic T1-T8 schema, boundary, and drift checks",
-      "notes": "Focused tests cover exact table IDs, allowed evidence stages, numeric source binding, LaTeX escaping, determinism, and fail-closed check mode. Passing tests are not scientific verification."
+      "sha256": "a745141841b409cce149a2c4147d1bd84455641bbe3d8bd291fd17db3a373f21",
+      "source_id": "SRC-T1-T8-TESTS",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA"
     },
     {
-      "source_id": "SRC-T1-T8-PACKAGE-MD",
       "category": "table_bundle",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_t1_t8_tables.py",
+      "generator_sha256": "8f98ea70fcbccf171e08825c8681436707f516e1e416c3ace8c48397fd2fd07b",
+      "manuscript_use": "editable draft evidence-bound T1-T8 display map for the current manuscript shell",
+      "notes": "Combined Markdown package preserves bounded novelty, design, preliminary, exploratory, blocked, and missing dispositions. It is not canonical confirmatory evidence or independent reproduction.",
       "path": "paper/tables/t1_t8_package.md",
       "path_base": "workspace_root",
-      "sha256": "0876dd9fe3fec6256a8b11dbdfbcadad8e66a0f6a9855a43a6819afdd6045d51",
-      "generator": "scripts/export_t1_t8_tables.py",
-      "generator_sha256": "c1c199948eaef0a12bda6468859413ce5ea6910a4cc3a038584ebd2345f9e870",
-      "status": "DRAFT_PREAUTHORIZATION",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "editable draft evidence-bound T1-T8 display map for the current manuscript shell",
-      "notes": "Combined Markdown package preserves bounded novelty, design, preliminary, exploratory, blocked, and missing dispositions. It is not canonical confirmatory evidence or independent reproduction."
+      "sha256": "6935c20dbb3326cec0b0809d0dcac7b846737b70b3142ae651dc1792edcdeaba",
+      "source_id": "SRC-T1-T8-PACKAGE-MD",
+      "status": "DRAFT_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-T1-T8-PACKAGE-TEX",
       "category": "table_bundle_editable_latex",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_t1_t8_tables.py",
+      "generator_sha256": "8f98ea70fcbccf171e08825c8681436707f516e1e416c3ace8c48397fd2fd07b",
+      "manuscript_use": "editable LaTeX source for T1-T8 submission drafting",
+      "notes": "Longtable-based editable source retains the per-table draft banner and machine-readable row content. Venue-specific column tuning remains future work.",
       "path": "paper/tables/t1_t8_package.tex",
       "path_base": "workspace_root",
-      "sha256": "8b7088f63f36c57c5b1dba8ccdadb20b8ff2aa3a449d0673b0603e1d4ca38e8c",
-      "generator": "scripts/export_t1_t8_tables.py",
-      "generator_sha256": "c1c199948eaef0a12bda6468859413ce5ea6910a4cc3a038584ebd2345f9e870",
-      "status": "DRAFT_PREAUTHORIZATION",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "editable LaTeX source for T1-T8 submission drafting",
-      "notes": "Longtable-based editable source retains the per-table draft banner and machine-readable row content. Venue-specific column tuning remains future work."
+      "sha256": "b4f0415ac0decbc091ee0502ca92d2bb683d7c48310adb6924919d7f36acba82",
+      "source_id": "SRC-T1-T8-PACKAGE-TEX",
+      "status": "DRAFT_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-T1-T8-MANIFEST",
       "category": "table_lineage_manifest",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_t1_t8_tables.py",
+      "generator_sha256": "8f98ea70fcbccf171e08825c8681436707f516e1e416c3ace8c48397fd2fd07b",
+      "manuscript_use": "hash-bound table lineage for T1-T8 inputs, outputs, and missing required evidence",
+      "notes": "Per-table CSV hashes are recorded inside this manifest. The manifest remains a mechanical provenance aid only and does not promote any scientific gate.",
       "path": "paper/tables/t1_t8_manifest.json",
       "path_base": "workspace_root",
-      "sha256": "babefc2c0eacb4a0a85b72d5d19117ce75de2790d36a88733fdd02ddd3a5f1fb",
-      "generator": "scripts/export_t1_t8_tables.py",
-      "generator_sha256": "c1c199948eaef0a12bda6468859413ce5ea6910a4cc3a038584ebd2345f9e870",
-      "status": "DRAFT_PREAUTHORIZATION_LINEAGE",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "hash-bound table lineage for T1-T8 inputs, outputs, and missing required evidence",
-      "notes": "Per-table CSV hashes are recorded inside this manifest. The manifest remains a mechanical provenance aid only and does not promote any scientific gate."
+      "sha256": "e4382349bb1a45745cb3588cb124d9ac25973e40376bd47c8d182ba60298b252",
+      "source_id": "SRC-T1-T8-MANIFEST",
+      "status": "DRAFT_PREAUTHORIZATION_LINEAGE"
     },
     {
-      "source_id": "SRC-GAS",
       "category": "contract",
+      "claim_ids": [
+        "C002"
+      ],
+      "generator": "contracts/scripts/export_gas_snapshot.py",
+      "manuscript_use": "implementation overhead table",
+      "notes": "Test-body gas only; setup excluded and small harness overhead may remain.",
       "path": "contracts/gas_report.csv",
       "path_base": "workspace_root",
       "sha256": "7431faffe73379a745204bf480f48172fb4c8e96546b562c81e898bfd8ca2cc1",
-      "generator": "contracts/scripts/export_gas_snapshot.py",
-      "status": "PRELIMINARY",
+      "source_id": "SRC-GAS",
+      "status": "PRELIMINARY"
+    },
+    {
+      "category": "benchmark",
       "claim_ids": [
         "C002"
       ],
-      "manuscript_use": "implementation overhead table",
-      "notes": "Test-body gas only; setup excluded and small harness overhead may remain."
-    },
-    {
-      "source_id": "SRC-CRYPTO-BENCH",
-      "category": "benchmark",
+      "generator": "prototype/scripts/benchmark_crypto.py",
+      "manuscript_use": "local overhead table and implementation appendix",
+      "notes": "Single-host local timings do not establish production throughput.",
       "path": "prototype/results/crypto_benchmark.csv",
       "path_base": "workspace_root",
       "sha256": "1c5efa4d13d46ed3f31d77c6c2f2a70adf848429d500197a5f1d1a378fd9a5ce",
-      "generator": "prototype/scripts/benchmark_crypto.py",
-      "status": "PRELIMINARY",
+      "source_id": "SRC-CRYPTO-BENCH",
+      "status": "PRELIMINARY"
+    },
+    {
+      "category": "fixture",
       "claim_ids": [
         "C002"
       ],
-      "manuscript_use": "local overhead table and implementation appendix",
-      "notes": "Single-host local timings do not establish production throughput."
-    },
-    {
-      "source_id": "SRC-TEST-VECTORS",
-      "category": "fixture",
+      "generator": "prototype/scripts/export_test_vectors.py",
+      "manuscript_use": "appendix and artifact package",
+      "notes": "Deterministic interoperability fixture; not empirical evidence.",
       "path": "paper/test_vectors.json",
       "path_base": "workspace_root",
       "sha256": "e5bd17d6f0645e1f2c40789ad503d608aecdbe779f306ee29cedb806e78c5a1d",
-      "generator": "prototype/scripts/export_test_vectors.py",
-      "status": "DRAFT",
+      "source_id": "SRC-TEST-VECTORS",
+      "status": "DRAFT"
+    },
+    {
+      "category": "fixture",
       "claim_ids": [
         "C002"
       ],
+      "generator": "prototype/scripts/export_signature_vectors.py",
       "manuscript_use": "appendix and artifact package",
-      "notes": "Deterministic interoperability fixture; not empirical evidence."
-    },
-    {
-      "source_id": "SRC-SIGNATURE-VECTORS",
-      "category": "fixture",
+      "notes": "Test-only seed fixture; must remain explicitly disclosed.",
       "path": "paper/signature_test_vectors.json",
       "path_base": "workspace_root",
       "sha256": "4ed621a3db759a7958c3398e94a133136a60d78852990275da1a80f97af766b5",
-      "generator": "prototype/scripts/export_signature_vectors.py",
-      "status": "DRAFT",
-      "claim_ids": [
-        "C002"
-      ],
-      "manuscript_use": "appendix and artifact package",
-      "notes": "Test-only seed fixture; must remain explicitly disclosed."
+      "source_id": "SRC-SIGNATURE-VECTORS",
+      "status": "DRAFT"
     },
     {
-      "source_id": "SRC-DENSE-DIAGRAM-RENDERER",
       "category": "visual_derivative_tool",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "subagent_driven_tdd_with_root_integration_qa",
+      "manuscript_use": "deterministic source-bound SVG and PNG derivatives for D1 and D5-D8",
+      "notes": "Renderer is bound to canonical Mermaid hashes and preserves declared directional versus non-directional relationships. It generates method/protocol visuals only and is not scientific evidence.",
       "path": "scripts/render_dense_diagrams.py",
       "path_base": "workspace_root",
       "sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
-      "generator": "subagent_driven_tdd_with_root_integration_qa",
-      "status": "PREAUTHORIZATION_ENGINEERING_TOOLING",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "deterministic source-bound SVG and PNG derivatives for D1 and D5-D8",
-      "notes": "Renderer is bound to canonical Mermaid hashes and preserves declared directional versus non-directional relationships. It generates method/protocol visuals only and is not scientific evidence."
+      "source_id": "SRC-DENSE-DIAGRAM-RENDERER",
+      "status": "PREAUTHORIZATION_ENGINEERING_TOOLING"
     },
     {
-      "source_id": "SRC-DENSE-DIAGRAM-RECEIPT",
       "category": "visual_lineage_receipt",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/render_dense_diagrams.py",
+      "generator_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
+      "manuscript_use": "D1 and D5-D8 local render lineage",
+      "notes": "Same-workspace mechanical receipt; NOT_SCIENTIFIC_EVIDENCE and SAME_WORKSPACE_NOT_INDEPENDENT.",
       "path": "diagrams/dense_diagrams.render.json",
       "path_base": "workspace_root",
       "sha256": "2de31be32524cba648ee53d23f43608830efe34e3fc638d091ff5c7912a52872",
-      "generator": "scripts/render_dense_diagrams.py",
-      "generator_sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f",
-      "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "D1 and D5-D8 local render lineage",
-      "notes": "Same-workspace mechanical receipt; NOT_SCIENTIFIC_EVIDENCE and SAME_WORKSPACE_NOT_INDEPENDENT."
+      "source_id": "SRC-DENSE-DIAGRAM-RECEIPT",
+      "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE"
     },
     {
-      "source_id": "SRC-DIAGRAM-PREVIEW-SHEET",
       "category": "visual_navigation_preview",
-      "path": "diagrams/preview_sheet.png",
-      "path_base": "workspace_root",
-      "sha256": "6133609eeecde837ceb9c21cb405af655a8590700488216fc6b3ce8793dde703",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
       "generator": "scripts/render_diagram_preview_sheet.py",
       "generator_sha256": "52762ccb255d0f9c7aa0bb3beb5d3bca9457c1acbe3e8bc46cf007ab542af9aa",
+      "manuscript_use": "navigation and visual-inspection overview for D1-D8; not a manuscript evidentiary figure",
+      "notes": "Deterministic contact sheet in fixed D1-D8 order. It does not replace individual-diagram final-size review and is NOT_SCIENTIFIC_EVIDENCE and SAME_WORKSPACE_NOT_INDEPENDENT.",
+      "path": "diagrams/preview_sheet.png",
+      "path_base": "workspace_root",
       "render_receipt": "diagrams/preview_sheet.render.json",
       "render_receipt_sha256": "0d2a4caf2c93fd3abe91dcb3b096de36c14a071007b42329b2d68758008fbbfd",
-      "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "navigation and visual-inspection overview for D1-D8; not a manuscript evidentiary figure",
-      "notes": "Deterministic contact sheet in fixed D1-D8 order. It does not replace individual-diagram final-size review and is NOT_SCIENTIFIC_EVIDENCE and SAME_WORKSPACE_NOT_INDEPENDENT."
+      "sha256": "6133609eeecde837ceb9c21cb405af655a8590700488216fc6b3ce8793dde703",
+      "source_id": "SRC-DIAGRAM-PREVIEW-SHEET",
+      "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE"
     },
     {
-      "source_id": "SRC-VISUAL-QA-TOOL",
       "category": "visual_qa_tool",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
+      "generator": "subagent_driven_tdd_with_independent_spec_and_quality_review",
+      "manuscript_use": "visual integrity and accessibility-proxy audit support only",
+      "notes": "Deterministic local heuristic validator; it does not certify scientific correctness, accessibility, CVD safety, final-size suitability, or venue compliance.",
       "path": "scripts/validate_visual_accessibility.py",
       "path_base": "workspace_root",
       "sha256": "ff3df2c46114325ca60b33c6ab0ae04d3be36de641c6b07c2ed50195725ab983",
-      "generator": "subagent_driven_tdd_with_independent_spec_and_quality_review",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA",
-      "claim_ids": ["C001", "C003"],
-      "manuscript_use": "visual integrity and accessibility-proxy audit support only",
-      "notes": "Deterministic local heuristic validator; it does not certify scientific correctness, accessibility, CVD safety, final-size suitability, or venue compliance."
+      "source_id": "SRC-VISUAL-QA-TOOL",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA"
     },
     {
-      "source_id": "SRC-VISUAL-QA-TESTS",
       "category": "visual_qa_tests",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
+      "generator": "pytest",
+      "manuscript_use": "regression coverage for the local visual-QA validator",
+      "notes": "Seventeen focused tests cover fail-closed inventory, geometry, typography projection, and deterministic reporting; passing tests are not scientific verification.",
       "path": "prototype/tests/test_visual_accessibility.py",
       "path_base": "workspace_root",
       "sha256": "f1cc9b2f95da9ef230f88d107d0eb2e88edf8ec1fb9b10c5fde3624b1417295f",
-      "generator": "pytest",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA",
-      "claim_ids": ["C001", "C003"],
-      "manuscript_use": "regression coverage for the local visual-QA validator",
-      "notes": "Seventeen focused tests cover fail-closed inventory, geometry, typography projection, and deterministic reporting; passing tests are not scientific verification."
+      "source_id": "SRC-VISUAL-QA-TESTS",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA"
     },
     {
-      "source_id": "SRC-VISUAL-QA-REPORT",
       "category": "visual_qa_report",
+      "claim_ids": [
+        "C001",
+        "C003"
+      ],
+      "generator": "scripts/validate_visual_accessibility.py",
+      "generator_sha256": "ff3df2c46114325ca60b33c6ab0ae04d3be36de641c6b07c2ed50195725ab983",
+      "manuscript_use": "automated visual-integrity evidence and remediation planning",
+      "notes": "All 13 declared SVG/PNG pairs pass integrity and aspect checks. The report emits 160 conservative proxy warnings, all at the provisional 85 mm target and not as independent defect counts. F1-F5 and D1-D8 now pass the 7 pt typography proxy at provisional 180 mm width; contextual human, venue, CVD, print, and assistive-technology review remain pending.",
       "path": "prototype/results/engineering_qa/visual_accessibility_proxy.json",
       "path_base": "workspace_root",
       "sha256": "b49e6e40a9f363f80eeb4fae69e8225c12e0fb03e028de7428550edbca652534",
-      "generator": "scripts/validate_visual_accessibility.py",
-      "generator_sha256": "ff3df2c46114325ca60b33c6ab0ae04d3be36de641c6b07c2ed50195725ab983",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA_WITH_WARNINGS",
-      "claim_ids": ["C001", "C003"],
-      "manuscript_use": "automated visual-integrity evidence and remediation planning",
-      "notes": "All 13 declared SVG/PNG pairs pass integrity and aspect checks. The report emits 160 conservative proxy warnings, all at the provisional 85 mm target and not as independent defect counts. F1-F5 and D1-D8 now pass the 7 pt typography proxy at provisional 180 mm width; contextual human, venue, CVD, print, and assistive-technology review remain pending."
+      "source_id": "SRC-VISUAL-QA-REPORT",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA_WITH_WARNINGS"
     },
     {
-      "source_id": "SRC-DEADLINE-PILOT-PLAN",
       "category": "design_execution_plan",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "root_integration_owner",
+      "manuscript_use": "design provenance and execution-blocking contract",
+      "notes": "Subagent-driven TDD plan only; it authorizes no execution and promotes no scientific gate.",
       "path": "docs/superpowers/plans/2026-08-29-deadline-pilot-start-package.md",
       "path_base": "workspace_root",
       "sha256": "ebfd972421ca512c9e44065ac9958b140ff9bb7177a36407a2f2ce97ecd439dc",
-      "generator": "root_integration_owner",
-      "status": "DRAFT_PREAUTHORIZATION",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "design provenance and execution-blocking contract",
-      "notes": "Subagent-driven TDD plan only; it authorizes no execution and promotes no scientific gate."
+      "source_id": "SRC-DEADLINE-PILOT-PLAN",
+      "status": "DRAFT_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-DEADLINE-PILOT-EXPORTER",
       "category": "design_package_tool",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "subagent_driven_tdd_with_independent_spec_review",
+      "manuscript_use": "deterministic deadline/T5/reproduction design-package generation",
+      "notes": "Fail-closed mechanical tooling; not confirmatory evidence or independent scientific verification.",
       "path": "scripts/export_deadline_pilot_start_package.py",
       "path_base": "workspace_root",
       "sha256": "f5b38d0f95ad0ad2a6c7b7652491a475b6b364c15d59e713b6339924dbc892a4",
-      "generator": "subagent_driven_tdd_with_independent_spec_review",
-      "status": "PREAUTHORIZATION_ENGINEERING_TOOLING",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "deterministic deadline/T5/reproduction design-package generation",
-      "notes": "Fail-closed mechanical tooling; not confirmatory evidence or independent scientific verification."
+      "source_id": "SRC-DEADLINE-PILOT-EXPORTER",
+      "status": "PREAUTHORIZATION_ENGINEERING_TOOLING"
     },
     {
-      "source_id": "SRC-DEADLINE-PILOT-TESTS",
       "category": "design_package_tests",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "pytest",
+      "manuscript_use": "regression coverage for fail-closed design-package boundaries",
+      "notes": "Passing tests establish mechanical behavior only; they do not validate the scientific design.",
       "path": "prototype/tests/test_deadline_pilot_start_package.py",
       "path_base": "workspace_root",
       "sha256": "37277febd046b0a7cdbd20d69f313d8db8e25c09a822fd5f060969820cb5d517",
-      "generator": "pytest",
-      "status": "PREAUTHORIZATION_ENGINEERING_QA",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "regression coverage for fail-closed design-package boundaries",
-      "notes": "Passing tests establish mechanical behavior only; they do not validate the scientific design."
+      "source_id": "SRC-DEADLINE-PILOT-TESTS",
+      "status": "PREAUTHORIZATION_ENGINEERING_QA"
     },
     {
-      "source_id": "SRC-DEADLINE-ENVIRONMENT-PROFILES",
       "category": "design_registry",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_deadline_pilot_start_package.py",
+      "manuscript_use": "future synthetic deadline-pilot environment registry",
+      "notes": "All execution-bearing numeric and blocking parameters remain unresolved; no run is authorized.",
       "path": "03-design/deadline-environment-profiles.csv",
       "path_base": "research_case_root",
       "sha256": "353f5bd7448aa76762f78729701d99c26c243c333787da324d986787846b9b14",
-      "generator": "scripts/export_deadline_pilot_start_package.py",
-      "status": "BLOCKED_UNRESOLVED_DESIGN",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "future synthetic deadline-pilot environment registry",
-      "notes": "All execution-bearing numeric and blocking parameters remain unresolved; no run is authorized."
+      "source_id": "SRC-DEADLINE-ENVIRONMENT-PROFILES",
+      "status": "BLOCKED_UNRESOLVED_DESIGN"
     },
     {
-      "source_id": "SRC-T5-ABLATION-RUN-MATRIX",
       "category": "design_registry",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_deadline_pilot_start_package.py",
+      "manuscript_use": "future T5 mechanism-isolation design",
+      "notes": "Four planned ablations only; no estimates or confirmatory results exist.",
       "path": "03-design/t5-ablation-run-matrix.csv",
       "path_base": "research_case_root",
       "sha256": "5174403ee52e22b8b58cdca44fd4615221f1957a1dbc80635644dee7a80d6236",
-      "generator": "scripts/export_deadline_pilot_start_package.py",
-      "status": "DESIGN_ONLY_NOT_EXECUTED",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "future T5 mechanism-isolation design",
-      "notes": "Four planned ablations only; no estimates or confirmatory results exist."
+      "source_id": "SRC-T5-ABLATION-RUN-MATRIX",
+      "status": "DESIGN_ONLY_NOT_EXECUTED"
     },
     {
-      "source_id": "SRC-DEADLINE-PILOT-EXECUTION-CONTRACT",
       "category": "design_contract",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_deadline_pilot_start_package.py",
+      "manuscript_use": "future RID-C003-DEADLINE-001 protocol boundary",
+      "notes": "Execution authorization is NOT_AUTHORIZED and only integrity/completeness checks are permitted.",
       "path": "03-design/deadline-pilot-execution-contract.md",
       "path_base": "research_case_root",
       "sha256": "8910b88a6214e01d1c038f390d9588211dc258b8c5f838e870aeba27167ecfda",
-      "generator": "scripts/export_deadline_pilot_start_package.py",
-      "status": "DRAFT_PREAUTHORIZATION",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "future RID-C003-DEADLINE-001 protocol boundary",
-      "notes": "Execution authorization is NOT_AUTHORIZED and only integrity/completeness checks are permitted."
+      "source_id": "SRC-DEADLINE-PILOT-EXECUTION-CONTRACT",
+      "status": "DRAFT_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-INDEPENDENT-REPRODUCTION-HANDOFF",
       "category": "reproducibility_handoff",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_deadline_pilot_start_package.py",
+      "manuscript_use": "future clean-machine mechanical reproduction handoff",
+      "notes": "No independent reproduction has occurred; external sharing remains accountable-human gated.",
       "path": "03-design/independent-reproduction-handoff.md",
       "path_base": "research_case_root",
       "sha256": "93b2b9e61dd45a3be94bd47bd9538b224412f3f71c7e56e0f313ec058039b346",
-      "generator": "scripts/export_deadline_pilot_start_package.py",
-      "status": "DRAFT_PREAUTHORIZATION",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "future clean-machine mechanical reproduction handoff",
-      "notes": "No independent reproduction has occurred; external sharing remains accountable-human gated."
+      "source_id": "SRC-INDEPENDENT-REPRODUCTION-HANDOFF",
+      "status": "DRAFT_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-DEADLINE-PILOT-MANIFEST",
       "category": "design_package_manifest",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ],
+      "generator": "scripts/export_deadline_pilot_start_package.py",
+      "manuscript_use": "input/content-output lineage for the design-only package",
+      "notes": "Sidecar binds the final manifest; integrity artifacts make no self-referential hash claim.",
       "path": "03-design/deadline-pilot-start-package-manifest.json",
       "path_base": "research_case_root",
-      "sha256": "93746a918e80f91ee4c1f7a0d211b69f96e4c9862286588f1cf3c2dcdb4890c1",
-      "generator": "scripts/export_deadline_pilot_start_package.py",
-      "status": "DRAFT_PREAUTHORIZATION",
-      "claim_ids": ["C002", "C003"],
-      "manuscript_use": "input/content-output lineage for the design-only package",
-      "notes": "Sidecar binds the final manifest; integrity artifacts make no self-referential hash claim."
+      "sha256": "dab527053344db77b9187c1d97144ca758784ceb8d89d1aa9bdc1eb17d0b3bab",
+      "source_id": "SRC-DEADLINE-PILOT-MANIFEST",
+      "status": "DRAFT_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-DEADLINE-PILOT-MANIFEST-SIDECAR",
       "category": "integrity_sidecar",
+      "claim_ids": [],
+      "generator": "scripts/export_deadline_pilot_start_package.py",
+      "manuscript_use": "final manifest hash binding",
+      "notes": "Mechanical tamper evidence only; not external notarization or scientific verification.",
       "path": "03-design/deadline-pilot-start-package-manifest.json.sha256",
       "path_base": "research_case_root",
-      "sha256": "c7fe1f0e154ee30747531a83d623eb1fcac26770f992a3f76e7cca81a3829b65",
-      "generator": "scripts/export_deadline_pilot_start_package.py",
-      "status": "MECHANICAL_INTEGRITY_ONLY",
-      "claim_ids": [],
-      "manuscript_use": "final manifest hash binding",
-      "notes": "Mechanical tamper evidence only; not external notarization or scientific verification."
+      "sha256": "654eaebac655a714d5104be745397e7fe683145502cc068fe821ebb3b4c69463",
+      "source_id": "SRC-DEADLINE-PILOT-MANIFEST-SIDECAR",
+      "status": "MECHANICAL_INTEGRITY_ONLY"
     },
     {
-      "source_id": "SRC-FEASIBILITY-RISK-REGISTER",
       "category": "feasibility_risk",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "result_blind_feasibility_alignment",
+      "manuscript_use": "T8 unresolved-risk and governance-boundary source",
+      "notes": "R001 verifies only draft/design authority; novelty, execution, evidence, and submission gates remain open.",
       "path": "02-feasibility/risk-register.csv",
       "path_base": "research_case_root",
       "sha256": "075ac5ee2fd9bcf0424ec17501d4c1784586bbb47edef9a35028053ef49921a6",
-      "generator": "result_blind_feasibility_alignment",
-      "status": "DRAFT",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "T8 unresolved-risk and governance-boundary source",
-      "notes": "R001 verifies only draft/design authority; novelty, execution, evidence, and submission gates remain open."
+      "source_id": "SRC-FEASIBILITY-RISK-REGISTER",
+      "status": "DRAFT"
     },
     {
-      "source_id": "SRC-PREREGISTRATION-DEVIATIONS",
       "category": "design_preregistration",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "generator": "methods_design_alignment",
+      "manuscript_use": "prospective design freeze and deviation boundary",
+      "notes": "Execution remains prohibited until unresolved design parameters, novelty, and approval dependencies are prospectively resolved.",
       "path": "03-design/preregistration-and-deviations.md",
       "path_base": "research_case_root",
-      "sha256": "42e93bfcc06f4b57f9849540a1ca59c43bad74f66d86582c94ca9dda6c77438c",
-      "generator": "methods_design_alignment",
-      "status": "DRAFT_PREAUTHORIZATION",
-      "claim_ids": ["C001", "C002", "C003"],
-      "manuscript_use": "prospective design freeze and deviation boundary",
-      "notes": "Execution remains prohibited until unresolved design parameters, novelty, and approval dependencies are prospectively resolved."
+      "sha256": "b82ac6378281ce132bf8ae763128e83af02d7267f38216bbcfd1f475ccc0c71d",
+      "source_id": "SRC-PREREGISTRATION-DEVIATIONS",
+      "status": "DRAFT_PREAUTHORIZATION"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-PLAN",
       "category": "reproducibility_plan",
-      "path": "docs/superpowers/plans/2026-08-30-isolated-mechanical-reproduction.md",
-      "sha256": "67bac734866a255078de1e588cc14ca422b5ea483ad494406364c3feb6ecc487",
+      "claim_ids": [],
       "generator": "root_integration_owner",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "MECHANICAL_PREAUTHORIZATION_ONLY",
       "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval."
+      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval.",
+      "path": "docs/superpowers/plans/2026-08-30-isolated-mechanical-reproduction.md",
+      "path_base": "workspace_root",
+      "sha256": "67bac734866a255078de1e588cc14ca422b5ea483ad494406364c3feb6ecc487",
+      "source_id": "SRC-ISOLATED-REPRODUCTION-PLAN",
+      "status": "MECHANICAL_PREAUTHORIZATION_ONLY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-HARNESS",
       "category": "reproducibility_harness",
+      "claim_ids": [],
+      "generator": "subagent_tdd_with_independent_spec_and_quality_review",
+      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
+      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval.",
       "path": "scripts/run_isolated_mechanical_reproduction.py",
+      "path_base": "workspace_root",
       "sha256": "b8086c018c2a6f0d3b6afbddf521744b9f24c2a09a77f57c804ded95e8a0f460",
-      "generator": "subagent_tdd_with_independent_spec_and_quality_review",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "MECHANICAL_PREAUTHORIZATION_ONLY",
-      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-HARNESS",
+      "status": "MECHANICAL_PREAUTHORIZATION_ONLY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-TESTS",
       "category": "reproducibility_tests",
-      "path": "prototype/tests/test_isolated_mechanical_reproduction.py",
-      "sha256": "6266538d466c17de1c1e865307bc9217b3e9317a83d921ac95b05b413f414c65",
+      "claim_ids": [],
       "generator": "subagent_tdd_with_independent_spec_and_quality_review",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "MECHANICAL_PREAUTHORIZATION_ONLY",
       "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval."
+      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval.",
+      "path": "prototype/tests/test_isolated_mechanical_reproduction.py",
+      "path_base": "workspace_root",
+      "sha256": "6266538d466c17de1c1e865307bc9217b3e9317a83d921ac95b05b413f414c65",
+      "source_id": "SRC-ISOLATED-REPRODUCTION-TESTS",
+      "status": "MECHANICAL_PREAUTHORIZATION_ONLY"
     },
     {
-      "source_id": "SRC-MANUSCRIPT-ALIGNMENT-CHECKER",
       "category": "manuscript_alignment_harness",
-      "path": "scripts/check_manuscript_alignment.py",
-      "sha256": "acbbd0171456d4569369ea7ad3c3f285773f3c1bef9f10db9295ca407aaf9dd0",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
       "generator": "root_integration_owner_tdd",
-      "path_base": "workspace_root",
-      "claim_ids": ["C001", "C002", "C003"],
-      "status": "MECHANICAL_PREAUTHORIZATION_ONLY",
       "manuscript_use": "fail-closed cross-artifact alignment and source-lineage validation",
-      "notes": "Mechanical validation only; it cannot verify novelty, feasibility, scientific evidence, author approval, or publication readiness."
+      "notes": "Mechanical validation only; it cannot verify novelty, feasibility, scientific evidence, author approval, or publication readiness.",
+      "path": "scripts/check_manuscript_alignment.py",
+      "path_base": "workspace_root",
+      "sha256": "b22cac71ff0e606fbeb9c9ce1b6fb002843272685e11466c9fee61b4f7a42ff4",
+      "source_id": "SRC-MANUSCRIPT-ALIGNMENT-CHECKER",
+      "status": "MECHANICAL_PREAUTHORIZATION_ONLY"
     },
     {
-      "source_id": "SRC-MANUSCRIPT-ALIGNMENT-TESTS",
       "category": "manuscript_alignment_tests",
-      "path": "prototype/tests/test_manuscript_alignment.py",
-      "sha256": "e69ff2a9460d163c71dd9a8f5f2f9195637c3c5b2a2875b18f38eb7863661c2c",
+      "claim_ids": [],
       "generator": "root_integration_owner_tdd",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "MECHANICAL_PREAUTHORIZATION_ONLY",
       "manuscript_use": "regression coverage for the fail-closed alignment contract",
-      "notes": "Mechanical validation only; it cannot verify novelty, feasibility, scientific evidence, author approval, or publication readiness."
+      "notes": "Mechanical validation only; it cannot verify novelty, feasibility, scientific evidence, author approval, or publication readiness.",
+      "path": "prototype/tests/test_manuscript_alignment.py",
+      "path_base": "workspace_root",
+      "sha256": "3f7d3b0ef162b78568c8f3d55a438eb79e52bec7b9b202eee2dc4c93a161f7b6",
+      "source_id": "SRC-MANUSCRIPT-ALIGNMENT-TESTS",
+      "status": "MECHANICAL_PREAUTHORIZATION_ONLY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-RECEIPT",
       "category": "mechanical_reproduction_receipt",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
+      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/receipt.json",
+      "path_base": "workspace_root",
       "sha256": "8915e50a5ffef2f68c2cdbf38887c57e77971b1174b837791c6de3f42817b9ea",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "MECHANICAL_PASS_SAME_HOST_ONLY",
-      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-RECEIPT",
+      "status": "MECHANICAL_PASS_SAME_HOST_ONLY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-RECEIPT-SIDECAR",
       "category": "integrity_sidecar",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
+      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/receipt.json.sha256",
+      "path_base": "workspace_root",
       "sha256": "66afcc205237a52a8bb39b52450f8f3c775ad445264dcb3c0866b7245246deca",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "MECHANICAL_INTEGRITY_ONLY",
-      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-RECEIPT-SIDECAR",
+      "status": "MECHANICAL_INTEGRITY_ONLY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-FAILURE-RECEIPT",
       "category": "mechanical_reproduction_failure_receipt",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
+      "notes": "Preserved first fresh run: Foundry rejected FOUNDRY_OFFLINE=1. This is remediation history, not evidence of scientific failure.",
       "path": "prototype/results/engineering_qa/isolated_reproduction_failure_20260830T044840Z/receipt.json",
+      "path_base": "workspace_root",
       "sha256": "bdeeb59d76cbb689138d6e767e3e3335979d1c24cc0634711243978dbec60428",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "PRESERVED_MECHANICAL_FAIL",
-      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Preserved first fresh run: Foundry rejected FOUNDRY_OFFLINE=1. This is remediation history, not evidence of scientific failure."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-FAILURE-RECEIPT",
+      "status": "PRESERVED_MECHANICAL_FAIL"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-FAILURE-SIDECAR",
       "category": "integrity_sidecar",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
+      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval.",
       "path": "prototype/results/engineering_qa/isolated_reproduction_failure_20260830T044840Z/receipt.json.sha256",
+      "path_base": "workspace_root",
       "sha256": "13b76bd4b80b0a17894166866f73b205a43b2e35615c03bd17903455b7627e0f",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "MECHANICAL_INTEGRITY_ONLY",
-      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-FAILURE-SIDECAR",
+      "status": "MECHANICAL_INTEGRITY_ONLY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-UNACCEPTED-RECEIPT",
       "category": "mechanical_reproduction_unaccepted_receipt",
+      "claim_ids": [],
+      "generator": "prior_unassigned_execution",
+      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
+      "notes": "Pre-existing pass receipt was preserved but not accepted because it was not produced by the designated post-review reproduction operator.",
       "path": "prototype/results/engineering_qa/isolated_reproduction_unaccepted_20260830T042510Z/receipt.json",
+      "path_base": "workspace_root",
       "sha256": "91901f02374a7a5baa70cfda2863b39f1551f0cf14ed25b72cbfc4275859209d",
-      "generator": "prior_unassigned_execution",
-      "path_base": "workspace_root",
-      "claim_ids": [],
-      "status": "UNACCEPTED_MECHANICAL_HISTORY",
-      "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Pre-existing pass receipt was preserved but not accepted because it was not produced by the designated post-review reproduction operator."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-UNACCEPTED-RECEIPT",
+      "status": "UNACCEPTED_MECHANICAL_HISTORY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-UNACCEPTED-SIDECAR",
       "category": "integrity_sidecar",
-      "path": "prototype/results/engineering_qa/isolated_reproduction_unaccepted_20260830T042510Z/receipt.json.sha256",
-      "sha256": "43481d7a2f5ce6db21e5a652c3ae55829004896e9dfe335a4b555138e7b420a3",
-      "generator": "prior_unassigned_execution",
-      "path_base": "workspace_root",
       "claim_ids": [],
-      "status": "MECHANICAL_INTEGRITY_ONLY",
+      "generator": "prior_unassigned_execution",
       "manuscript_use": "same-host isolated-copy mechanical reproducibility trace",
-      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval."
+      "notes": "Mechanical provenance only; not external reproduction, independent scientific verification, deadline evidence, or venue approval.",
+      "path": "prototype/results/engineering_qa/isolated_reproduction_unaccepted_20260830T042510Z/receipt.json.sha256",
+      "path_base": "workspace_root",
+      "sha256": "43481d7a2f5ce6db21e5a652c3ae55829004896e9dfe335a4b555138e7b420a3",
+      "source_id": "SRC-ISOLATED-REPRODUCTION-UNACCEPTED-SIDECAR",
+      "status": "MECHANICAL_INTEGRITY_ONLY"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-DEADLINE-PACKAGE-CHECK-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/deadline_package_check.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-DEADLINE-PACKAGE-CHECK-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-DEADLINE-PACKAGE-CHECK-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/deadline_package_check.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-DEADLINE-PACKAGE-CHECK-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-FOUNDRY-TEST-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/foundry_test.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-FOUNDRY-TEST-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-FOUNDRY-TEST-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/foundry_test.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "8f363afb629d7d3b7f9795086b5aefc52087d2a273a001ed6d354ae84a5e98fc",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-FOUNDRY-TEST-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-REPORT-CHECK-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/gas_report_check.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-REPORT-CHECK-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-REPORT-CHECK-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/gas_report_check.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "a0e74a3f61d806e693b2bba4afe162a92ea6fdde8a66e90b56178c8e9d109eed",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-REPORT-CHECK-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-SNAPSHOT-CHECK-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/gas_snapshot_check.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-SNAPSHOT-CHECK-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-SNAPSHOT-CHECK-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/gas_snapshot_check.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "c169d218877e5a9926e98b1afb30176b50814668524a502ff4608e3f1bc89aa9",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-GAS-SNAPSHOT-CHECK-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PAPER-TABLES-CHECK-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/paper_tables_check.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PAPER-TABLES-CHECK-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PAPER-TABLES-CHECK-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/paper_tables_check.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "3d6bf46f254231bb3b5932ae35c06a9d8f41452c1288601d10ad084994fc6f8b",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PAPER-TABLES-CHECK-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PYTHON-SUITE-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/python_suite.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "6526d6989fc55c66637812bca975d625e4e7c85ce0b2c13c7cc94318760eac0d",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PYTHON-SUITE-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PYTHON-SUITE-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/python_suite.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "91dcb8076ccd39d3b7c026c953d5a5e2a9df3a2cebbe5c2c4aab69bb5eb45838",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-PYTHON-SUITE-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-SIGNATURE-VECTORS-CHECK-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/signature_vectors_check.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-SIGNATURE-VECTORS-CHECK-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-SIGNATURE-VECTORS-CHECK-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/signature_vectors_check.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "878b0ac4b8bc90c10470503fd07276a2fe248592c09e1f75673df1f0afa97fad",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-SIGNATURE-VECTORS-CHECK-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-STRICT-RESEARCH-CASE-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/strict_research_case.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-STRICT-RESEARCH-CASE-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-STRICT-RESEARCH-CASE-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/strict_research_case.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "3a277c06cbe5a48e328c4642f984ad40e4f9c95806815a2ac5f62ee47e7f14db",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-STRICT-RESEARCH-CASE-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-T1-T8-CHECK-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/t1_t8_check.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-T1-T8-CHECK-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-T1-T8-CHECK-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/t1_t8_check.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "6d23778a7c1b40affb667b33e520f13e6e700f05692064cbb90e0280b6d17cca",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-T1-T8-CHECK-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-TEST-VECTORS-CHECK-STDERR-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/test_vectors_check.stderr.txt",
       "path_base": "workspace_root",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-TEST-VECTORS-CHECK-STDERR-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     },
     {
-      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-TEST-VECTORS-CHECK-STDOUT-TXT",
       "category": "mechanical_command_log",
+      "claim_ids": [],
+      "generator": "scripts/run_isolated_mechanical_reproduction.py",
+      "manuscript_use": "accepted same-host isolated-copy command trace",
+      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file.",
       "path": "prototype/results/engineering_qa/isolated_reproduction/commands/test_vectors_check.stdout.txt",
       "path_base": "workspace_root",
       "sha256": "f08b9a21d5b3d548871e0019e5a9a51d9a7e68fa9cf0cef0402f4104e08e938b",
-      "generator": "scripts/run_isolated_mechanical_reproduction.py",
-      "status": "MECHANICAL_COMMAND_LOG",
-      "claim_ids": [],
-      "manuscript_use": "accepted same-host isolated-copy command trace",
-      "notes": "Captured command output bound by the accepted receipt; empty logs are represented by the SHA-256 of an empty file."
+      "source_id": "SRC-ISOLATED-REPRODUCTION-LOG-TEST-VECTORS-CHECK-STDOUT-TXT",
+      "status": "MECHANICAL_COMMAND_LOG"
     }
-  ]
+  ],
+  "status": "DRAFT_PREAUTHORIZATION",
+  "visual_asset_policy": {
+    "automated_visual_qa_boundary": "Local heuristic evidence only; contextual adjacency, line thickness, redundant encoding, print conversion, assistive-technology behavior, human review, and current target-venue rules remain pending.",
+    "automated_visual_qa_disposition": "INTEGRITY_PASS_PROXY_WARNINGS_REMAIN",
+    "automated_visual_qa_report": "prototype/results/engineering_qa/visual_accessibility_proxy.json",
+    "automated_visual_qa_report_sha256": "b49e6e40a9f363f80eeb4fae69e8225c12e0fb03e028de7428550edbca652534",
+    "diagram_canonical_source": "Mermaid .mmd",
+    "diagram_dot_role": "EDITABLE_ALTERNATE_SOURCE",
+    "known_stale_derivatives": [],
+    "quantitative_canonical_format": "SVG",
+    "quantitative_png_role": "DERIVATIVE_PREVIEW",
+    "recently_refreshed_derivatives": [
+      "diagrams/02_property_separation.svg",
+      "diagrams/02_property_separation.png"
+    ],
+    "rendered_diagram_role": "DERIVATIVE_REQUIRING_SOURCE_HASH_MATCH_AND_VISUAL_QA",
+    "status": "DRAFT_PREAUTHORIZATION"
+  }
 }
