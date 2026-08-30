@@ -11,7 +11,8 @@
 - generated hashes, Python/OS/CPU metadata record করা;
 - failed install/run steps issue log-এ লেখা।
 
-**Exit gate:** clean machine-এ 17 tests pass এবং five figures regenerate।
+**Exit gate:** clean machine-এ 35 tests pass, five figures regenerate, এবং exact
+stratified/Wilson uncertainty ও canonical signature evidence regenerate।
 
 ## Day 2 — Formal model lock
 

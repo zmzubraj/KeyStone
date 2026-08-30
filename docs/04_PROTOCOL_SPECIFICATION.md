@@ -165,3 +165,36 @@ The implementation uses separate transcript domains for:
 - canonical canary hash-to-group derivation.
 
 Production code must additionally bind chain ID, contract address, epoch, record/audit identifier, verifier policy, and protocol version.
+
+## 12. Canonical public transcript encoding
+
+The MPP now fixes a version-1 interoperability format for the public audit
+request and partial-response transcript. Every integer is big-endian; UTF-8 and
+group/scalar byte strings use a two-byte length prefix; unsigned integers reject
+redundant leading zero bytes. The header is `KSTN || version || message_kind`.
+
+Audit requests bind chain ID, contract address, epoch ID, request ID, audit slot,
+beacon hash, canonical canary, sample bitmap, required-valid count, and deadline.
+Partial responses bind the same chain/contract/epoch/request context, the full
+request transcript hash, member index, partial element, DLEQ values, and response
+time. The signature task signs the complete encoded response; it must not invent
+a second serialization.
+
+Transcript hashes are
+`SHA-256("KEYSTONE-TRANSCRIPT-HASH-v1" || encoded_message)`. Golden vectors live
+in `paper/test_vectors.json`. This is an integration format, not a novelty claim
+or empirical result.
+
+The MPP identity adapter uses Ed25519 directly over the complete canonical
+`PartialResponseTranscript.to_bytes()` payload. A signature is therefore bound
+to chain, contract, epoch, request, request transcript hash, member, DLEQ values,
+and response time. Deterministic test-only vectors live in
+`paper/signature_test_vectors.json`; production key generation, storage,
+rotation, revocation, and custodian identity binding remain outside this MPP.
+
+The experimental share-refresh adapter adds a zero-constant polynomial to the
+current dealer-generated shares. It preserves the epoch public key while
+incrementing `refresh_generation`; canary derivation and proof/request contexts
+bind that generation. Old partials therefore do not verify against refreshed
+member commitments. This is not a distributed proactive refresh protocol and
+must be replaced by authenticated DPSS/DKG in a production design.

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Test run" tests="27" failures="0" errors="0" timestamp="2026-08-29T03:27:34.980+00:00" time="0.245">
+    <testsuite name="test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardInvariantTest" tests="2" disabled="0" errors="0" failures="0" time="0.123">
+        <testcase name="invariant_AdminRemainsNonzero()" time="0.050">
+            <system-out>[PASS] invariant_AdminRemainsNonzero() (runs: 64, calls: 2048, reverts: 0)</system-out>
+        </testcase>
+        <testcase name="invariant_ResponseAndOutcomeBitmapsRemainConsistent()" time="0.120">
+            <system-out>[PASS] invariant_ResponseAndOutcomeBitmapsRemainConsistent() (runs: 64, calls: 2048, reverts: 0)</system-out>
+        </testcase>
+        <system-out>Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 122.54ms (169.97ms CPU time)</system-out>
+    </testsuite>
+    <testsuite name="test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest" tests="25" disabled="0" errors="0" failures="0" time="0.123">
+        <testcase name="testAuditFinalizesPassingWithCompleteSample()" time="0.002">
+            <system-out>[PASS] testAuditFinalizesPassingWithCompleteSample() (gas: 284061)</system-out>
+        </testcase>
+        <testcase name="testAuditFinalizesWithMissingBitmap()" time="0.001">
+            <system-out>[PASS] testAuditFinalizesWithMissingBitmap() (gas: 246412)</system-out>
+        </testcase>
+        <testcase name="testCancelledRequestRejectsSubmissionAndFinalization()" time="0.002">
+            <system-out>[PASS] testCancelledRequestRejectsSubmissionAndFinalization() (gas: 144265)</system-out>
+        </testcase>
+        <testcase name="testDeadlineEqualityAcceptsResponseButRejectsFinalization()" time="0.002">
+            <system-out>[PASS] testDeadlineEqualityAcceptsResponseButRejectsFinalization() (gas: 215052)</system-out>
+        </testcase>
+        <testcase name="testDisputeCompletesThresholdResponseLifecycle()" time="0.000">
+            <system-out>[PASS] testDisputeCompletesThresholdResponseLifecycle() (gas: 323008)</system-out>
+        </testcase>
+        <testcase name="testEquivocationExcludesResponse()" time="0.000">
+            <system-out>[PASS] testEquivocationExcludesResponse() (gas: 241057)</system-out>
+        </testcase>
+        <testcase name="testFinalizeRejectsTooEarlyAndAfterFinalization()" time="0.002">
+            <system-out>[PASS] testFinalizeRejectsTooEarlyAndAfterFinalization() (gas: 156399)</system-out>
+        </testcase>
+        <testcase name="testFuzzAuditRejectsThresholdAboveSample(uint256)" time="0.009">
+            <system-out>[PASS] testFuzzAuditRejectsThresholdAboveSample(uint256) (runs: 512, μ: 22156, ~: 21979)</system-out>
+        </testcase>
+        <testcase name="testFuzzRegisterEpochRejectsDuplicateCustodianIdentity(uint8)" time="0.012">
+            <system-out>[PASS] testFuzzRegisterEpochRejectsDuplicateCustodianIdentity(uint8) (runs: 512, μ: 111453, ~: 111316)</system-out>
+        </testcase>
+        <testcase name="testFuzzUnauthorizedCallerCannotOpenAudit(address)" time="0.007">
+            <system-out>[PASS] testFuzzUnauthorizedCallerCannotOpenAudit(address) (runs: 512, μ: 12437, ~: 12437)</system-out>
+        </testcase>
+        <testcase name="testGas_CancelRequest()" time="0.001">
+            <system-out>[PASS] testGas_CancelRequest() (gas: 5709)</system-out>
+        </testcase>
+        <testcase name="testGas_FinalizeAudit()" time="0.000">
+            <system-out>[PASS] testGas_FinalizeAudit() (gas: 29142)</system-out>
+        </testcase>
+        <testcase name="testGas_MarkInvalidResponse()" time="0.002">
+            <system-out>[PASS] testGas_MarkInvalidResponse() (gas: 27704)</system-out>
+        </testcase>
+        <testcase name="testGas_OpenAuditThreeMembers()" time="0.000">
+            <system-out>[PASS] testGas_OpenAuditThreeMembers() (gas: 125107)</system-out>
+        </testcase>
+        <testcase name="testGas_OpenDispute()" time="0.000">
+            <system-out>[PASS] testGas_OpenDispute() (gas: 144149)</system-out>
+        </testcase>
+        <testcase name="testGas_RecordEquivocation()" time="0.002">
+            <system-out>[PASS] testGas_RecordEquivocation() (gas: 51710)</system-out>
+        </testcase>
+        <testcase name="testGas_RegisterEpochFiveMembers()" time="0.000">
+            <system-out>[PASS] testGas_RegisterEpochFiveMembers() (gas: 223629)</system-out>
+        </testcase>
+        <testcase name="testGas_SubmitAuditResponse()" time="0.000">
+            <system-out>[PASS] testGas_SubmitAuditResponse() (gas: 57882)</system-out>
+        </testcase>
+        <testcase name="testInvalidResponseRequiresEvidenceBinding()" time="0.002">
+            <system-out>[PASS] testInvalidResponseRequiresEvidenceBinding() (gas: 184630)</system-out>
+        </testcase>
+        <testcase name="testRegisterEpochRejectsDuplicateCustodianIdentity()" time="0.000">
+            <system-out>[PASS] testRegisterEpochRejectsDuplicateCustodianIdentity() (gas: 61604)</system-out>
+        </testcase>
+        <testcase name="testRegisterEpochRejectsZeroDescriptorCommitments()" time="0.000">
+            <system-out>[PASS] testRegisterEpochRejectsZeroDescriptorCommitments() (gas: 21958)</system-out>
+        </testcase>
+        <testcase name="testRequestIdentifierCannotBeReusedAfterFinalizationOrCancellation()" time="0.000">
+            <system-out>[PASS] testRequestIdentifierCannotBeReusedAfterFinalizationOrCancellation() (gas: 273320)</system-out>
+        </testcase>
+        <testcase name="testRequestIdentifiersRejectZeroAndDuplicateOpenRequest()" time="0.000">
+            <system-out>[PASS] testRequestIdentifiersRejectZeroAndDuplicateOpenRequest() (gas: 146841)</system-out>
+        </testcase>
+        <testcase name="testRequestRejectsZeroSubjectBinding()" time="0.000">
+            <system-out>[PASS] testRequestRejectsZeroSubjectBinding() (gas: 38544)</system-out>
+        </testcase>
+        <testcase name="testResponseAfterDeadlineIsRejectedAndFinalizationRecordsMissing()" time="0.000">
+            <system-out>[PASS] testResponseAfterDeadlineIsRejectedAndFinalizationRecordsMissing() (gas: 164679)</system-out>
+        </testcase>
+        <system-out>Suite result: ok. 25 passed; 0 failed; 0 skipped; finished in 122.54ms (43.26ms CPU time)</system-out>
+    </testsuite>
+</testsuites>
+

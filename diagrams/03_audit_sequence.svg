@@ -5,7 +5,9 @@
  -->
 <!-- Title: G Pages: 1 -->
 <svg width="453pt" height="527pt"
- viewBox="0.00 0.00 453.00 527.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ viewBox="0.00 0.00 453.00 527.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="d3-title d3-desc">
+<title id="d3-title">D3. Readiness audit sequence</title>
+<desc id="d3-desc">Protocol-sequence diagram for the readiness audit path: commit the epoch roster and labels, sample from beacon randomness, collect canary responses and proofs before the deadline, and publish the resulting evidence.</desc>
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 509)">
 <title>G</title>
 <polygon fill="white" stroke="transparent" points="-18,18 -18,-509 435,-509 435,18 -18,18"/>

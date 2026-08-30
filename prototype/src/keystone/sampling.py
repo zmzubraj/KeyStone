@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
 import hashlib
-from math import comb
+from math import comb, fsum
 import random
 
 
@@ -79,6 +79,63 @@ def hypergeometric_tail_probability(
             continue
         total += comb(successes, observed) * comb(population - successes, failures_drawn)
     return total / denominator
+
+
+def stratified_success_distribution(
+    strata: Sequence[tuple[int, int, int]],
+) -> dict[int, float]:
+    """Return the exact success-count PMF for fixed draws in independent strata.
+
+    Each tuple is ``(population, successes, draws)``. Sampling is without
+    replacement inside each stratum; strata are disjoint, so their
+    hypergeometric PMFs can be convolved.
+    """
+
+    distribution = {0: 1.0}
+    for population, successes, draws in strata:
+        _validate_sampling(population, draws)
+        if not 0 <= successes <= population:
+            raise ValueError("successes must satisfy 0 <= successes <= population")
+
+        denominator = comb(population, draws)
+        lower = max(0, draws - (population - successes))
+        upper = min(draws, successes)
+        stratum_pmf = {
+            observed: comb(successes, observed)
+            * comb(population - successes, draws - observed)
+            / denominator
+            for observed in range(lower, upper + 1)
+        }
+
+        convolved: dict[int, float] = defaultdict(float)
+        for prior_successes, prior_probability in distribution.items():
+            for observed, probability in stratum_pmf.items():
+                convolved[prior_successes + observed] += prior_probability * probability
+        distribution = dict(sorted(convolved.items()))
+
+    total = fsum(distribution.values())
+    if total == 0.0:
+        raise ValueError("stratified distribution has zero probability mass")
+    return {observed: probability / total for observed, probability in distribution.items()}
+
+
+def stratified_tail_probability(
+    strata: Sequence[tuple[int, int, int]],
+    required_successes: int,
+) -> float:
+    """Return P[X >= required_successes] for fixed per-stratum draws."""
+
+    if required_successes < 0:
+        raise ValueError("required_successes cannot be negative")
+    total_draws = sum(draws for _, _, draws in strata)
+    if required_successes > total_draws:
+        raise ValueError("required_successes cannot exceed total draws")
+    distribution = stratified_success_distribution(strata)
+    return fsum(
+        probability
+        for observed, probability in distribution.items()
+        if observed >= required_successes
+    )
 
 
 def catastrophic_false_accept_probability(

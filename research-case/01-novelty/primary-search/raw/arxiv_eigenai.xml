@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/mXBCXMQnB89xHQjIDoBVXJqaEP0</id>
+  <title>arXiv Query: search_query=ti:"EigenAI"&amp;id_list=&amp;start=0&amp;max_results=3</title>
+  <updated>2026-08-28T21:43:46Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=ti:%22EigenAI%22&amp;start=0&amp;max_results=3&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>3</opensearch:itemsPerPage>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2602.00182v1</id>
+    <title>EigenAI: Deterministic Inference, Verifiable Results</title>
+    <updated>2026-01-30T04:46:22Z</updated>
+    <link href="https://arxiv.org/abs/2602.00182v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.00182v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>EigenAI is a verifiable AI platform built on top of the EigenLayer restaking ecosystem. At a high level, it combines a deterministic large-language model (LLM) inference engine with a cryptoeconomically secured optimistic re-execution protocol so that every inference result can be publicly audited, reproduced, and, if necessary, economically enforced. An untrusted operator runs inference on a fixed GPU architecture, signs and encrypts the request and response, and publishes the encrypted log to EigenDA. During a challenge window, any watcher may request re-execution through EigenVerify; the result is then deterministically recomputed inside a trusted execution environment (TEE) with a threshold-released decryption key, allowing a public challenge with private data. Because inference itself is bit-exact, verification reduces to a byte-equality check, and a single honest replica suffices to detect fraud. We show how this architecture yields sovereign agents -- prediction-market judges, trading bots, and scientific assistants -- that enjoy state-of-the-art performance while inheriting security from Ethereum's validator base.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-30T04:46:22Z</published>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>David Ribeiro Alves</name>
+    </author>
+    <author>
+      <name>Vishnu Patankar</name>
+    </author>
+    <author>
+      <name>Matheus Pereira</name>
+    </author>
+    <author>
+      <name>Jamie Stephens</name>
+    </author>
+    <author>
+      <name>Nima Vaziri</name>
+    </author>
+    <author>
+      <name>Sreeram Kannan</name>
+    </author>
+  </entry>
+</feed>

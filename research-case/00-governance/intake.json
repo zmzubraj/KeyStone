@@ -1,0 +1,19 @@
+{
+  "schema_version": 4,
+  "run_id": "keystone-mpp-f1-20260828T211430Z-6f21c82e-5e0f10",
+  "input_revision": 1,
+  "raw_sha256": "6f21c82ed0fe6c2933e689ab22750ee838e88b75e564eb985da119faf22a5ddd",
+  "captured_at": "2026-08-28T21:14:30Z",
+  "fields": {
+    "system_name": "KEYSTONE-MPP-F1",
+    "research_topic_name": "KEYSTONE: Auditable Dispute-Key Availability for Encrypted AI Rollups",
+    "core_research_question": "How can an encrypted AI rollup obtain publicly auditable, non-revealing evidence that at least t valid threshold-decryption contributions are currently serviceable for an authorized dispute before deadline Delta, under explicit churn and correlated-failure assumptions, without releasing a production key or plaintext before authorization?",
+    "novelty_statement": "We formalize dispute-key availability as deadline-bounded, authorized reconstructability distinct from ciphertext data availability, and instantiate it with non-revealing canary partial-decryption sampling, explicit false-accept bounds, correlation-aware committee audits, and public deadline evidence.",
+    "target_contribution": "A formal DKA property suite; a canonical non-production canary audit with context-bound DLEQ proofs; static and repeated-audit probability analysis with explicit temporal assumptions; failure-domain-aware placement and stratified sampling; a public deadline-accountability interface; and a reproducible threshold-KEM prototype, adversarial simulator, datasets, figures, tests, and bulletin-board contract boundary, without claiming a new cryptographic primitive or production security.",
+    "possible_feasibility": "The workspace already contains a reproducible Python threshold-KEM and DLEQ prototype, 17 passing tests, deterministic simulations and datasets, five quantitative figures, eight editable diagrams, a compiling Solidity bulletin-board skeleton with two passing tests and gas snapshots, locked dependencies, and a one-command verification path; remaining constraints are expanded exact and stochastic experiment coverage, fuzz and invariant contract tests, complete performance and deadline measurements, formal proof completion, a distributed testbed, production DKG or PVSS substitution for a full-paper claim, current prior-art and venue verification, independent cryptography and systems review, and accountable human submission approval."
+  },
+  "assertion_policy": {
+    "novelty_statement": "E1 ASSERTED; novelty remains UNRESOLVED",
+    "possible_feasibility": "E1 ASSERTED; feasibility remains UNASSESSED"
+  }
+}

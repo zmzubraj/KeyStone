@@ -1,0 +1,247 @@
+{
+  "acceptance_readiness": "NOT_ASSESSABLE",
+  "canonical_phase": "INTAKE",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "scripts/export_deadline_pilot_start_package.py",
+        "--check"
+      ],
+      "argv_sha256": "62224da34f823d12de2285aa47544458a6643fd68afbfb0241ba1717be79e547",
+      "command_id": "deadline_package_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/deadline_package_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/deadline_package_check.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/export_t1_t8_tables.py",
+        "--check"
+      ],
+      "argv_sha256": "b1e3962ed1441e4ba361bf484c58d6917bab2de75c78eec65b4ab09d5dc18074",
+      "command_id": "t1_t8_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/t1_t8_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/t1_t8_check.stdout.txt",
+      "stdout_sha256": "6d23778a7c1b40affb667b33e520f13e6e700f05692064cbb90e0280b6d17cca"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/export_paper_tables.py",
+        "--check"
+      ],
+      "argv_sha256": "7b6b4be4f3866e65afc85de66e1989a145e24c048860a304915c80cf482ed220",
+      "command_id": "paper_tables_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/paper_tables_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/paper_tables_check.stdout.txt",
+      "stdout_sha256": "3d6bf46f254231bb3b5932ae35c06a9d8f41452c1288601d10ad084994fc6f8b"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--offline",
+        "--locked",
+        "--extra",
+        "dev",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "argv_sha256": "83691d354286c65b2fbc221e8a4333d322e725f28ed1c8788ce3ae4195886881",
+      "command_id": "python_suite",
+      "cwd": "prototype",
+      "cwd_sha256": "b34563e2ebeb771708ba0648c9385383f61cc11e86af6076848433059c14b2df",
+      "returncode": 0,
+      "stderr_path": "commands/python_suite.stderr.txt",
+      "stderr_sha256": "71f50e7008b4fba378ba2da71803d661c5ea4845a7d4a4e12f242fe73d9d2626",
+      "stdout_path": "commands/python_suite.stdout.txt",
+      "stdout_sha256": "3ca63df1dde3ba9e2d2084a8facf905367fe65246c76bc33b3d06e0024ecdfa9"
+    },
+    {
+      "argv": [
+        "forge",
+        "test",
+        "--root",
+        "contracts",
+        "--offline"
+      ],
+      "argv_sha256": "efc767977900405ef6fc2570de4e685a5076100d741f21aea7c8d086d1b35b88",
+      "command_id": "foundry_test",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/foundry_test.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/foundry_test.stdout.txt",
+      "stdout_sha256": "41723618ce82da3349cbcaf194063a525621679414df6b050bc5eacba5af8c6e"
+    },
+    {
+      "argv": [
+        "forge",
+        "snapshot",
+        "--root",
+        "contracts",
+        "--offline",
+        "--match-test",
+        "^testGas_",
+        "--check",
+        ".gas-snapshot"
+      ],
+      "argv_sha256": "f5de0aea7ef64b6bebd80ae411414cce0a1e9e63c32cbc997b2c3a96c8aaa6a7",
+      "command_id": "gas_snapshot_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/gas_snapshot_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/gas_snapshot_check.stdout.txt",
+      "stdout_sha256": "0ec48ceb6432e50d6819d09ea6a88f00be0a91a7ee5853b9be3feacd8f03b651"
+    },
+    {
+      "argv": [
+        "python3",
+        "contracts/scripts/export_gas_snapshot.py",
+        "--check",
+        ".gas-snapshot",
+        "contracts/gas_report.csv"
+      ],
+      "argv_sha256": "1faf4ab0e401ae4375df555730833b952da473a27977409ae815fad24eef8b34",
+      "command_id": "gas_report_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/gas_report_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/gas_report_check.stdout.txt",
+      "stdout_sha256": "a0e74a3f61d806e693b2bba4afe162a92ea6fdde8a66e90b56178c8e9d109eed"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--offline",
+        "--locked",
+        "--extra",
+        "dev",
+        "python",
+        "scripts/export_test_vectors.py",
+        "--check"
+      ],
+      "argv_sha256": "1e8ca69b9c9a09e6bab2430956023d2c1a972e650ecf0f971086b642148848b7",
+      "command_id": "test_vectors_check",
+      "cwd": "prototype",
+      "cwd_sha256": "b34563e2ebeb771708ba0648c9385383f61cc11e86af6076848433059c14b2df",
+      "returncode": 0,
+      "stderr_path": "commands/test_vectors_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/test_vectors_check.stdout.txt",
+      "stdout_sha256": "f08b9a21d5b3d548871e0019e5a9a51d9a7e68fa9cf0cef0402f4104e08e938b"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--offline",
+        "--locked",
+        "--extra",
+        "dev",
+        "python",
+        "scripts/export_signature_vectors.py",
+        "--check"
+      ],
+      "argv_sha256": "61e95bf3fe62ffa02386eff71912d94c00c2d24e7be526623ef15070c610f823",
+      "command_id": "signature_vectors_check",
+      "cwd": "prototype",
+      "cwd_sha256": "b34563e2ebeb771708ba0648c9385383f61cc11e86af6076848433059c14b2df",
+      "returncode": 0,
+      "stderr_path": "commands/signature_vectors_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/signature_vectors_check.stdout.txt",
+      "stdout_sha256": "878b0ac4b8bc90c10470503fd07276a2fe248592c09e1f75673df1f0afa97fad"
+    },
+    {
+      "argv": [
+        "python3",
+        "/Users/rainbow/.codex/skills/orchestrate-top-journal-research/scripts/check_research_case.py",
+        "research-case",
+        "--strict"
+      ],
+      "argv_sha256": "2db2a7ac88abae9ce94fcc7e5cebc6a043daae29f6948755663ddc35b6f9a96b",
+      "command_id": "strict_research_case",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/strict_research_case.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/strict_research_case.stdout.txt",
+      "stdout_sha256": "33a4895143c88c4356a58287d34680eec7aa7fd7179672c5b98d467633c4f4ff"
+    }
+  ],
+  "executor_class": "SECOND_AGENT_SAME_HOST_ISOLATED_COPY",
+  "external_sharing": "NOT_PERFORMED",
+  "failure_reason": null,
+  "feasibility_decision": "UNASSESSED",
+  "generated_at": "2026-08-30T04:25:10Z",
+  "inventoried_file_count": 344,
+  "isolated_copy_unchanged": true,
+  "network_isolation": "TOOL_FLAGS_ONLY_NOT_KERNEL_ENFORCED",
+  "novelty_status": "UNRESOLVED",
+  "package_manifest_sha256": "c346cb888f536efdbef4919766b12699936ab6b2c3c8984fab1545a3687f905f",
+  "post_execution_isolated_copy_inventory_sha256": "9465f78f0001cafce83622c9a6f90e64c44f433decd227ad908485288dd7151f",
+  "post_execution_source_inventory_sha256": "9465f78f0001cafce83622c9a6f90e64c44f433decd227ad908485288dd7151f",
+  "pre_execution_isolated_copy_inventory_sha256": "9465f78f0001cafce83622c9a6f90e64c44f433decd227ad908485288dd7151f",
+  "pre_execution_source_inventory_sha256": "9465f78f0001cafce83622c9a6f90e64c44f433decd227ad908485288dd7151f",
+  "program_state_sha256": "e1a8185c07a300a6b3d1c61f50d7f4ada9ddabffdcccabd52505b4645fda040a",
+  "residual_limitations": [
+    "same host and potentially shared host-level caches",
+    "no external operator identity binding",
+    "tool offline flags are not kernel-enforced network isolation",
+    "no scientific independence or independent scientific verification",
+    "no distributed deadline execution",
+    "no venue or institutional approval"
+  ],
+  "schema_id": "KEYSTONE_ISOLATED_MECHANICAL_REPRODUCTION_RECEIPT",
+  "schema_version": 1,
+  "scientific_evidence_status": "NOT_INDEPENDENT_SCIENTIFIC_VERIFICATION",
+  "sha256sums_sha256": "bd455060612de1fc61b38a0ad0be404811a7abb1688fe0f55b6923c138e64474",
+  "solution_viability": "ASSERTED_ONLY",
+  "source_manifest_sha256": "ac4b88086b7978a76e46385a2d5353b629862d1edfa1d7b599275b78f0257c92",
+  "source_manifest_sources_verified": 57,
+  "source_tree_unchanged": true,
+  "status": "MECHANICAL_PASS",
+  "system": "KEYSTONE-MPP-F1",
+  "tools_platform": {
+    "command_environment_overrides": {
+      "CARGO_NET_OFFLINE": "true",
+      "FOUNDRY_OFFLINE": "true",
+      "NO_COLOR": "1",
+      "PYTEST_ADDOPTS": "-p no:cacheprovider",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "UV_OFFLINE": "1"
+    },
+    "platform": "macOS-15.1-arm64-arm-64bit-Mach-O",
+    "python_executable": "python3.14",
+    "versions": {
+      "forge": "forge Version: 1.5.1-stable\nCommit SHA: b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2\nBuild Timestamp: 2025-12-22T11:41:09.812070000Z (1766403669)\nBuild Profile: maxperf",
+      "python": "3.14.6",
+      "uv": "uv 0.11.8 (0e961dd9a 2026-04-27 aarch64-apple-darwin)"
+    }
+  },
+  "tools_platform_sha256": "3dc0db6bb816fc943515913c68463f726b69a2ff940373d80971d08fc0d280c8"
+}

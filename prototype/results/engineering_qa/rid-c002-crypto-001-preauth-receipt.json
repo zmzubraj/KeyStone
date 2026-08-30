@@ -1,0 +1,979 @@
+{
+  "authorization_boundary": "PREAUTHORIZATION_ONLY",
+  "completed_at_utc": "2026-08-29T01:05:32.034563Z",
+  "evidence_origin": "INTERNAL_NON_EMPIRICAL_ENGINEERING_QA",
+  "fatal_errors": [],
+  "fixture_freshness_checks": [
+    {
+      "check_id": "C002-INTEROP-PROTOCOL-VECTOR-FRESHNESS-001",
+      "command_argv": [
+        "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/prototype/.venv/bin/python3",
+        "scripts/export_test_vectors.py",
+        "--check"
+      ],
+      "expected_status": "PASS",
+      "observed_status": "PASS",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: protocol test vectors match serialization implementation"
+    },
+    {
+      "check_id": "C002-INTEROP-SIGNATURE-VECTOR-FRESHNESS-001",
+      "command_argv": [
+        "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/prototype/.venv/bin/python3",
+        "scripts/export_signature_vectors.py",
+        "--check"
+      ],
+      "expected_status": "PASS",
+      "observed_status": "PASS",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: signature test vectors match signature implementation"
+    }
+  ],
+  "independence_status": "SAME_WORKSPACE_NOT_INDEPENDENT",
+  "limitations": [
+    "This receipt is preauthorization engineering QA, not scientific evidence.",
+    "It is not an independent reproduction or cryptographic audit.",
+    "Bundled-outcome test nodes do not prove separately manifested subcases.",
+    "The receipt makes no claim that cryptographic randomness is deterministic.",
+    "The MPP uses dealer-based sharing/refresh and a non-standardized research group.",
+    "The audit challenge is derived internally from public beacon/context inputs; this local test is not a production misuse-resistance audit.",
+    "The response request_hash field is serialized and signed but not end-to-end matched to a supplied request by the inspected helper."
+  ],
+  "manifest_binding": {
+    "allowed_binding_types": [
+      "exact",
+      "bundled",
+      "alias",
+      "unmapped"
+    ],
+    "bindings": [
+      {
+        "binding_note": "exact receipt case ID",
+        "binding_type": "exact",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "randomness block is not fully frozen; negative vector and independent reproduction missing",
+        "manifest_case_id": "C002-CRYPTO-T-OPEN-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "exactly t valid partials recover the expected plaintext",
+        "manifest_source_ref": "prototype/tests/test_threshold_kem.py:20",
+        "receipt_case_ids": [
+          "C002-CRYPTO-T-OPEN-001"
+        ]
+      },
+      {
+        "binding_note": "exact receipt case ID",
+        "binding_type": "exact",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "negative vector and independent reproduction missing",
+        "manifest_case_id": "C002-CRYPTO-TMINUS1-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "t-1 valid partials raise InsufficientValidShares",
+        "manifest_source_ref": "prototype/tests/test_threshold_kem.py:40",
+        "receipt_case_ids": [
+          "C002-CRYPTO-TMINUS1-REJECT-001"
+        ]
+      },
+      {
+        "binding_note": "exact receipt case ID",
+        "binding_type": "exact",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "negative vector and independent reproduction missing",
+        "manifest_case_id": "C002-CRYPTO-INVALID-PARTIAL-EXCLUDE-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "corrupted partial is excluded before threshold counting and opening fails",
+        "manifest_source_ref": "prototype/tests/test_threshold_kem.py:53",
+        "receipt_case_ids": [
+          "C002-CRYPTO-INVALID-PARTIAL-EXCLUDE-001"
+        ]
+      },
+      {
+        "binding_note": "one receipt node bundles valid and wrong-context outcomes",
+        "binding_type": "bundled",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "shared receipt node also covers wrong-context rejection; independent vector/reproduction missing",
+        "manifest_case_id": "C002-CRYPTO-DLEQ-VALID-CONTEXT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "valid context-bound DLEQ proof verifies",
+        "manifest_source_ref": "prototype/tests/test_dleq.py:7",
+        "receipt_case_ids": [
+          "C002-CRYPTO-DLEQ-CONTEXT-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "one receipt node bundles valid and wrong-context outcomes",
+        "binding_type": "bundled",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "distinct one-row receipt and negative vector missing",
+        "manifest_case_id": "C002-CRYPTO-DLEQ-WRONG-CONTEXT-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "proof replayed under a different context is rejected",
+        "manifest_source_ref": "prototype/tests/test_dleq.py:7",
+        "receipt_case_ids": [
+          "C002-CRYPTO-DLEQ-CONTEXT-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "exact receipt case ID",
+        "binding_type": "exact",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "malformed-proof vectors and independent reproduction missing",
+        "manifest_case_id": "C002-CRYPTO-DLEQ-TAMPER-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "proof fails for tampered claimed partial or public value",
+        "manifest_source_ref": "prototype/tests/test_dleq.py:45",
+        "receipt_case_ids": [
+          "C002-CRYPTO-DLEQ-TAMPER-REJECT-001"
+        ]
+      },
+      {
+        "binding_note": "exact receipt case ID; its test node has bundled assertions",
+        "binding_type": "exact",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "refresh is experimental centralized dealer-side logic; distinct negative vector missing",
+        "manifest_case_id": "C002-CRYPTO-STALE-PARTIAL-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "old-generation partial fails and mixed old/new set remains below threshold",
+        "manifest_source_ref": "prototype/tests/test_refresh.py:64",
+        "receipt_case_ids": [
+          "C002-CRYPTO-STALE-PARTIAL-REJECT-001"
+        ]
+      },
+      {
+        "binding_note": "exact receipt case ID; its test node has bundled assertions",
+        "binding_type": "exact",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "multi-generation boundary and independent reproduction missing",
+        "manifest_case_id": "C002-CRYPTO-REFRESH-CONTEXT-ROTATION-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "refresh generation changes proof context and derived canary",
+        "manifest_source_ref": "prototype/tests/test_refresh.py:100",
+        "receipt_case_ids": [
+          "C002-CRYPTO-REFRESH-CONTEXT-ROTATION-001"
+        ]
+      },
+      {
+        "binding_note": "one receipt node bundles deterministic, separation, and subgroup outcomes",
+        "binding_type": "bundled",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "distinct vector and independent implementation missing",
+        "manifest_case_id": "C002-CRYPTO-CANARY-DETERMINISM-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "identical public inputs yield identical valid subgroup canary",
+        "manifest_source_ref": "prototype/tests/test_protocol.py:17",
+        "receipt_case_ids": [
+          "C002-CRYPTO-CANARY-CONTEXT-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "one receipt node bundles deterministic, separation, and subgroup outcomes",
+        "binding_type": "bundled",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "distinct one-row receipt and vector missing",
+        "manifest_case_id": "C002-CRYPTO-CANARY-CONTEXT-SEPARATION-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "beacon or slot change yields a different canary",
+        "manifest_source_ref": "prototype/tests/test_protocol.py:17",
+        "receipt_case_ids": [
+          "C002-CRYPTO-CANARY-CONTEXT-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "receipt node checks subgroup/non-identity behavior; unknown discrete log remains an assumption",
+        "binding_type": "bundled",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "the former unrelated known-exponent comparison was removed; formal assumption and independent cryptographic review remain",
+        "manifest_case_id": "C002-CRYPTO-CANARY-NONTRIVIAL-MAP-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "hash-to-group output is a valid subgroup element while unknown discrete log remains an explicit cryptographic assumption",
+        "manifest_source_ref": "prototype/src/keystone/protocol.py:69",
+        "receipt_case_ids": [
+          "C002-CRYPTO-CANARY-CONTEXT-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "manifest row bundles evidence attribution and internal challenge derivation across two receipt nodes",
+        "binding_type": "bundled",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "internal-derivation and evidence tests are separate receipt nodes but this manifest row bundles both claims; independent review missing",
+        "manifest_case_id": "C002-CRYPTO-ROUTINE-AUDIT-EVIDENCE-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "execute_audit derives the challenge internally from epoch beacon and context; audit failure records exact NON_RESPONSE and INVALID_PARTIAL evidence",
+        "manifest_source_ref": "prototype/tests/test_protocol.py:30",
+        "receipt_case_ids": [
+          "C002-CRYPTO-ROUTINE-AUDIT-EVIDENCE-001",
+          "C002-CRYPTO-AUDIT-INTERNAL-CANARY-DERIVATION-001"
+        ]
+      },
+      {
+        "binding_note": "exact receipt case ID",
+        "binding_type": "exact",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "randomness block is not fully frozen; independent reproduction missing",
+        "manifest_case_id": "C002-CRYPTO-DISPUTE-T-OPEN-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "authorized dispute with at least t valid responses returns exact plaintext",
+        "manifest_source_ref": "prototype/tests/test_protocol.py:80",
+        "receipt_case_ids": [
+          "C002-CRYPTO-DISPUTE-T-OPEN-001"
+        ]
+      },
+      {
+        "binding_note": "manifest CRYPTO namespace aliases the receipt INTEROP namespace",
+        "binding_type": "alias",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "receipt uses C002-INTEROP namespace; test-only disclosed seed and independent implementation remain",
+        "manifest_case_id": "C002-CRYPTO-SIGN-CANONICAL-RESPONSE-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "exact Ed25519 signature over canonical response bytes matches golden and verifies",
+        "manifest_source_ref": "prototype/tests/test_signatures.py:84",
+        "receipt_case_ids": [
+          "C002-INTEROP-SIGN-CANONICAL-RESPONSE-001"
+        ]
+      },
+      {
+        "binding_note": "namespace alias to a receipt node with bundled negative outcomes",
+        "binding_type": "alias",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "receipt uses one interop negative-matrix ID; distinct negative vector missing",
+        "manifest_case_id": "C002-CRYPTO-SIGN-WRONG-MESSAGE-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "signature replayed on changed message is rejected",
+        "manifest_source_ref": "prototype/tests/test_signatures.py:93",
+        "receipt_case_ids": [
+          "C002-INTEROP-SIGN-NEGATIVE-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "namespace alias to a receipt node with bundled negative outcomes",
+        "binding_type": "alias",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "receipt uses one interop negative-matrix ID; distinct negative vector missing",
+        "manifest_case_id": "C002-CRYPTO-SIGN-WRONG-KEY-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "signature checked under wrong public key is rejected",
+        "manifest_source_ref": "prototype/tests/test_signatures.py:93",
+        "receipt_case_ids": [
+          "C002-INTEROP-SIGN-NEGATIVE-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "namespace alias to a receipt node with bundled negative outcomes",
+        "binding_type": "alias",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "receipt uses one interop negative-matrix ID; distinct negative vector missing",
+        "manifest_case_id": "C002-CRYPTO-SIGN-TAMPER-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "tampered signature is rejected",
+        "manifest_source_ref": "prototype/tests/test_signatures.py:93",
+        "receipt_case_ids": [
+          "C002-INTEROP-SIGN-NEGATIVE-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "namespace alias to a receipt node with bundled replay outcomes",
+        "binding_type": "alias",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "receipt uses one interop replay-matrix ID; distinct negative vector missing",
+        "manifest_case_id": "C002-CRYPTO-SIGN-CROSSCHAIN-REPLAY-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "signature replay across chain identifiers is rejected",
+        "manifest_source_ref": "prototype/tests/test_signatures.py:110",
+        "receipt_case_ids": [
+          "C002-INTEROP-SIGN-REPLAY-MATRIX-001"
+        ]
+      },
+      {
+        "binding_note": "namespace alias to a receipt node with bundled replay outcomes",
+        "binding_type": "alias",
+        "manifest_authorization_state": "NOT_AUTHORIZED",
+        "manifest_blocking_gap": "receipt uses one interop replay-matrix ID; distinct negative vector missing",
+        "manifest_case_id": "C002-CRYPTO-SIGN-CROSSCONTRACT-REPLAY-REJECT-001",
+        "manifest_evidence_origin": "NON_EMPIRICAL_INTERNAL_FIXTURE",
+        "manifest_expected_outcome": "signature replay across contract addresses is rejected",
+        "manifest_source_ref": "prototype/tests/test_signatures.py:110",
+        "receipt_case_ids": [
+          "C002-INTEROP-SIGN-REPLAY-MATRIX-001"
+        ]
+      }
+    ],
+    "manifest_path": ".superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv",
+    "manifest_result_id": "RID-C002-CRYPTO-001",
+    "manifest_row_count": 19
+  },
+  "overall_status": "PASS",
+  "production_security_status": "NOT_ASSESSED",
+  "pytest": {
+    "cases": [
+      {
+        "case_id": "C002-CRYPTO-T-OPEN-001",
+        "case_role": "direct_boundary",
+        "detail": null,
+        "duration_seconds": 0.012,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_threshold_kem.py::test_threshold_partials_open_encrypted_record"
+      },
+      {
+        "case_id": "C002-CRYPTO-TMINUS1-REJECT-001",
+        "case_role": "direct_boundary",
+        "detail": null,
+        "duration_seconds": 0.009,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_threshold_kem.py::test_fewer_than_threshold_valid_partials_cannot_open_record"
+      },
+      {
+        "case_id": "C002-CRYPTO-INVALID-PARTIAL-EXCLUDE-001",
+        "case_role": "direct_boundary",
+        "detail": null,
+        "duration_seconds": 0.011,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_threshold_kem.py::test_invalid_partial_is_excluded_before_threshold_counting"
+      },
+      {
+        "case_id": "C002-CRYPTO-DLEQ-CONTEXT-MATRIX-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_dleq.py::test_valid_dleq_proof_verifies_and_is_context_bound"
+      },
+      {
+        "case_id": "C002-CRYPTO-DLEQ-TAMPER-REJECT-001",
+        "case_role": "direct_boundary",
+        "detail": null,
+        "duration_seconds": 0.001,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_dleq.py::test_tampered_partial_decryption_fails_dleq_verification"
+      },
+      {
+        "case_id": "C002-COMPONENT-SHAMIR-T-SUBSET-001",
+        "case_role": "supporting_component",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_shamir.py::test_any_threshold_subset_reconstructs_secret"
+      },
+      {
+        "case_id": "C002-COMPONENT-FELDMAN-CORRUPT-REJECT-001",
+        "case_role": "supporting_component_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.001,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_shamir.py::test_feldman_commitments_reject_corrupted_share"
+      },
+      {
+        "case_id": "C002-INTEROP-AUDIT-REQUEST-GOLDEN-001",
+        "case_role": "interoperability",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_serialization.py::test_audit_request_encoding_matches_independent_golden_layout"
+      },
+      {
+        "case_id": "C002-INTEROP-PARTIAL-RESPONSE-HASH-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_serialization.py::test_partial_response_round_trips_and_binds_request_hash"
+      },
+      {
+        "case_id": "C002-INTEROP-DECODER-NEGATIVE-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_serialization.py::test_decoder_rejects_trailing_bytes_wrong_kind_and_noncanonical_integer"
+      },
+      {
+        "case_id": "C002-INTEROP-PUBKEY-GOLDEN-001",
+        "case_role": "interoperability",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_signatures.py::test_public_key_derivation_from_fixed_seed_is_deterministic"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-CANONICAL-RESPONSE-001",
+        "case_role": "interoperability",
+        "detail": null,
+        "duration_seconds": 0.001,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_signatures.py::test_signs_exact_canonical_partial_response_bytes"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-NEGATIVE-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.001,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_signatures.py::test_verification_rejects_wrong_message_signature_or_key"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-REPLAY-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.001,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_signatures.py::test_context_change_cannot_replay_across_chain_or_contract"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-LENGTH-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_signatures.py::test_key_and_signature_lengths_are_validated"
+      },
+      {
+        "case_id": "C002-CRYPTO-REFRESH-PRESERVE-OPEN-001",
+        "case_role": "supporting_component_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.009,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_refresh.py::test_zero_polynomial_refresh_preserves_public_key_and_authorized_opening"
+      },
+      {
+        "case_id": "C002-CRYPTO-STALE-PARTIAL-REJECT-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.009,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_refresh.py::test_old_and_new_partials_cannot_be_mixed_under_refreshed_epoch"
+      },
+      {
+        "case_id": "C002-CRYPTO-REFRESH-CONTEXT-ROTATION-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.004,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_refresh.py::test_refresh_generation_changes_canary_and_proof_context"
+      },
+      {
+        "case_id": "C002-CRYPTO-CANARY-CONTEXT-MATRIX-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.005,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_protocol.py::test_canary_is_publicly_deterministic_context_separated_and_in_group"
+      },
+      {
+        "case_id": "C002-CRYPTO-ROUTINE-AUDIT-EVIDENCE-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.008,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_protocol.py::test_audit_produces_objective_invalid_and_nonresponse_evidence"
+      },
+      {
+        "case_id": "C002-CRYPTO-AUDIT-INTERNAL-CANARY-DERIVATION-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "detail": null,
+        "duration_seconds": 0.006,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_protocol.py::test_audit_derives_challenge_internally_from_beacon"
+      },
+      {
+        "case_id": "C002-CRYPTO-DISPUTE-T-OPEN-001",
+        "case_role": "direct_boundary",
+        "detail": null,
+        "duration_seconds": 0.019,
+        "expected_status": "PASS",
+        "status": "PASS",
+        "test_node_id": "tests/test_protocol.py::test_dispute_decrypts_when_threshold_valid_responses_arrive"
+      }
+    ],
+    "command_argv": [
+      "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/prototype/.venv/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--junitxml=/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/prototype/results/engineering_qa/rid-c002-crypto-001-pytest.xml",
+      "tests/test_threshold_kem.py::test_threshold_partials_open_encrypted_record",
+      "tests/test_threshold_kem.py::test_fewer_than_threshold_valid_partials_cannot_open_record",
+      "tests/test_threshold_kem.py::test_invalid_partial_is_excluded_before_threshold_counting",
+      "tests/test_dleq.py::test_valid_dleq_proof_verifies_and_is_context_bound",
+      "tests/test_dleq.py::test_tampered_partial_decryption_fails_dleq_verification",
+      "tests/test_shamir.py::test_any_threshold_subset_reconstructs_secret",
+      "tests/test_shamir.py::test_feldman_commitments_reject_corrupted_share",
+      "tests/test_serialization.py::test_audit_request_encoding_matches_independent_golden_layout",
+      "tests/test_serialization.py::test_partial_response_round_trips_and_binds_request_hash",
+      "tests/test_serialization.py::test_decoder_rejects_trailing_bytes_wrong_kind_and_noncanonical_integer",
+      "tests/test_signatures.py::test_public_key_derivation_from_fixed_seed_is_deterministic",
+      "tests/test_signatures.py::test_signs_exact_canonical_partial_response_bytes",
+      "tests/test_signatures.py::test_verification_rejects_wrong_message_signature_or_key",
+      "tests/test_signatures.py::test_context_change_cannot_replay_across_chain_or_contract",
+      "tests/test_signatures.py::test_key_and_signature_lengths_are_validated",
+      "tests/test_refresh.py::test_zero_polynomial_refresh_preserves_public_key_and_authorized_opening",
+      "tests/test_refresh.py::test_old_and_new_partials_cannot_be_mixed_under_refreshed_epoch",
+      "tests/test_refresh.py::test_refresh_generation_changes_canary_and_proof_context",
+      "tests/test_protocol.py::test_canary_is_publicly_deterministic_context_separated_and_in_group",
+      "tests/test_protocol.py::test_audit_produces_objective_invalid_and_nonresponse_evidence",
+      "tests/test_protocol.py::test_audit_derives_challenge_internally_from_beacon",
+      "tests/test_protocol.py::test_dispute_decrypts_when_threshold_valid_responses_arrive"
+    ],
+    "returncode": 0,
+    "working_directory": "prototype"
+  },
+  "randomness_claim": "NONE; receipt records only the tested pass/fail invariants",
+  "receipt_type": "PREAUTHORIZATION_ENGINEERING_QA",
+  "result_id": "RID-C002-CRYPTO-001",
+  "runtime": {
+    "git": {
+      "available": true,
+      "commit": "e13f329d95f1b75ea417e0c392cb1458a0ffe828",
+      "scoped_worktree_dirty": true
+    },
+    "platform_machine": "arm64",
+    "platform_release": "24.1.0",
+    "platform_system": "Darwin",
+    "pytest_version": "9.1.1",
+    "python_executable": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/prototype/.venv/bin/python3",
+    "python_implementation": "CPython",
+    "python_version": "3.13.13"
+  },
+  "schema_version": 1,
+  "scientific_evidence_status": "NOT_SCIENTIFIC_EVIDENCE",
+  "scope": {
+    "case_mapping": [
+      {
+        "case_id": "C002-CRYPTO-T-OPEN-001",
+        "case_role": "direct_boundary",
+        "test_node_id": "tests/test_threshold_kem.py::test_threshold_partials_open_encrypted_record"
+      },
+      {
+        "case_id": "C002-CRYPTO-TMINUS1-REJECT-001",
+        "case_role": "direct_boundary",
+        "test_node_id": "tests/test_threshold_kem.py::test_fewer_than_threshold_valid_partials_cannot_open_record"
+      },
+      {
+        "case_id": "C002-CRYPTO-INVALID-PARTIAL-EXCLUDE-001",
+        "case_role": "direct_boundary",
+        "test_node_id": "tests/test_threshold_kem.py::test_invalid_partial_is_excluded_before_threshold_counting"
+      },
+      {
+        "case_id": "C002-CRYPTO-DLEQ-CONTEXT-MATRIX-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "test_node_id": "tests/test_dleq.py::test_valid_dleq_proof_verifies_and_is_context_bound"
+      },
+      {
+        "case_id": "C002-CRYPTO-DLEQ-TAMPER-REJECT-001",
+        "case_role": "direct_boundary",
+        "test_node_id": "tests/test_dleq.py::test_tampered_partial_decryption_fails_dleq_verification"
+      },
+      {
+        "case_id": "C002-COMPONENT-SHAMIR-T-SUBSET-001",
+        "case_role": "supporting_component",
+        "test_node_id": "tests/test_shamir.py::test_any_threshold_subset_reconstructs_secret"
+      },
+      {
+        "case_id": "C002-COMPONENT-FELDMAN-CORRUPT-REJECT-001",
+        "case_role": "supporting_component_bundled_outcomes",
+        "test_node_id": "tests/test_shamir.py::test_feldman_commitments_reject_corrupted_share"
+      },
+      {
+        "case_id": "C002-INTEROP-AUDIT-REQUEST-GOLDEN-001",
+        "case_role": "interoperability",
+        "test_node_id": "tests/test_serialization.py::test_audit_request_encoding_matches_independent_golden_layout"
+      },
+      {
+        "case_id": "C002-INTEROP-PARTIAL-RESPONSE-HASH-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "test_node_id": "tests/test_serialization.py::test_partial_response_round_trips_and_binds_request_hash"
+      },
+      {
+        "case_id": "C002-INTEROP-DECODER-NEGATIVE-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "test_node_id": "tests/test_serialization.py::test_decoder_rejects_trailing_bytes_wrong_kind_and_noncanonical_integer"
+      },
+      {
+        "case_id": "C002-INTEROP-PUBKEY-GOLDEN-001",
+        "case_role": "interoperability",
+        "test_node_id": "tests/test_signatures.py::test_public_key_derivation_from_fixed_seed_is_deterministic"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-CANONICAL-RESPONSE-001",
+        "case_role": "interoperability",
+        "test_node_id": "tests/test_signatures.py::test_signs_exact_canonical_partial_response_bytes"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-NEGATIVE-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "test_node_id": "tests/test_signatures.py::test_verification_rejects_wrong_message_signature_or_key"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-REPLAY-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "test_node_id": "tests/test_signatures.py::test_context_change_cannot_replay_across_chain_or_contract"
+      },
+      {
+        "case_id": "C002-INTEROP-SIGN-LENGTH-MATRIX-001",
+        "case_role": "interoperability_bundled_outcomes",
+        "test_node_id": "tests/test_signatures.py::test_key_and_signature_lengths_are_validated"
+      },
+      {
+        "case_id": "C002-CRYPTO-REFRESH-PRESERVE-OPEN-001",
+        "case_role": "supporting_component_bundled_outcomes",
+        "test_node_id": "tests/test_refresh.py::test_zero_polynomial_refresh_preserves_public_key_and_authorized_opening"
+      },
+      {
+        "case_id": "C002-CRYPTO-STALE-PARTIAL-REJECT-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "test_node_id": "tests/test_refresh.py::test_old_and_new_partials_cannot_be_mixed_under_refreshed_epoch"
+      },
+      {
+        "case_id": "C002-CRYPTO-REFRESH-CONTEXT-ROTATION-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "test_node_id": "tests/test_refresh.py::test_refresh_generation_changes_canary_and_proof_context"
+      },
+      {
+        "case_id": "C002-CRYPTO-CANARY-CONTEXT-MATRIX-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "test_node_id": "tests/test_protocol.py::test_canary_is_publicly_deterministic_context_separated_and_in_group"
+      },
+      {
+        "case_id": "C002-CRYPTO-ROUTINE-AUDIT-EVIDENCE-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "test_node_id": "tests/test_protocol.py::test_audit_produces_objective_invalid_and_nonresponse_evidence"
+      },
+      {
+        "case_id": "C002-CRYPTO-AUDIT-INTERNAL-CANARY-DERIVATION-001",
+        "case_role": "direct_boundary_bundled_outcomes",
+        "test_node_id": "tests/test_protocol.py::test_audit_derives_challenge_internally_from_beacon"
+      },
+      {
+        "case_id": "C002-CRYPTO-DISPUTE-T-OPEN-001",
+        "case_role": "direct_boundary",
+        "test_node_id": "tests/test_protocol.py::test_dispute_decrypts_when_threshold_valid_responses_arrive"
+      }
+    ],
+    "direct_and_supporting_cases_are_not_a_scientific_denominator": true,
+    "mapped_case_count": 22,
+    "observed_case_count": 22
+  },
+  "sha256": {
+    "execution_outputs": [
+      {
+        "path": "prototype/results/engineering_qa/rid-c002-crypto-001-pytest.xml",
+        "sha256": "1e2ee7fcb2772ed54e67a29dfe16f0e19a6062832d108646a1af70bda9afdcf3"
+      },
+      {
+        "path": "prototype/results/engineering_qa/rid-c002-crypto-001-pytest.stdout.txt",
+        "sha256": "e2289c230135b682d66e48107f8caab30f5b37878e8daf2e9fb92df9aebb1375"
+      },
+      {
+        "path": "prototype/results/engineering_qa/rid-c002-crypto-001-pytest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "inputs": [
+      {
+        "path": "prototype/pyproject.toml",
+        "sha256": "dd7e4533503723ce5d8cf4804ea269c0f967a4954a6b7b9503e82426da955eb8"
+      },
+      {
+        "path": "prototype/uv.lock",
+        "sha256": "3783b5e5ed7beaecd2de44ea40bf7de0616e60e292c7169a0d808beecaffbb8b"
+      },
+      {
+        "path": "prototype/requirements-lock.txt",
+        "sha256": "274087de523420adb0c0522e2715a686d4586ed14c0dbd9ac9d6c040147bc0a2"
+      },
+      {
+        "path": "prototype/scripts/export_crypto_case_receipt.py",
+        "sha256": "8cc8d97ac9a1e5936ca8a43c6fb6aec508dfb15e40be3140392fd79c760bed81"
+      },
+      {
+        "path": "prototype/scripts/export_test_vectors.py",
+        "sha256": "706d5ceadd304048ff7ed2ce6469689fcdc26b6c26db273b53193f1c94f8a0cb"
+      },
+      {
+        "path": "prototype/scripts/export_signature_vectors.py",
+        "sha256": "2e8ed561ffb591f0cb0ee982c44ae43938fc537ab4b87c803de1e9068e9a34f0"
+      },
+      {
+        "path": "prototype/src/keystone/group.py",
+        "sha256": "3bf615f858cbe88cc1efdfd32d57d15e5df16240cc2d93676c1be8176864ac23"
+      },
+      {
+        "path": "prototype/src/keystone/shamir.py",
+        "sha256": "7181560e6e7d179aec8deb5a7494fda85bd967d1d859052ad941b9d9e85fdba3"
+      },
+      {
+        "path": "prototype/src/keystone/dleq.py",
+        "sha256": "e3aba3428f17932d9865ef5cec91fbeac6352b7db45d104c9f02a6f42c21f164"
+      },
+      {
+        "path": "prototype/src/keystone/threshold_kem.py",
+        "sha256": "098e1ade52a9b56e2022e5887cf8f4dd35e8de0964f4dfffd2d6abd65c59d288"
+      },
+      {
+        "path": "prototype/src/keystone/serialization.py",
+        "sha256": "a2b4cd6c61ea0845a1615184b944454c58965a6af0539c3c1d57975c6ca7c551"
+      },
+      {
+        "path": "prototype/src/keystone/signatures.py",
+        "sha256": "57cd71df152fba89cdea8f21dce4a66881279f69efe5befb3483151ffd80e426"
+      },
+      {
+        "path": "prototype/src/keystone/protocol.py",
+        "sha256": "c88d8d2314d584e458a5b73ad6525fb018ab25c84dade2c3d745626a7f681381"
+      },
+      {
+        "path": "prototype/tests/test_threshold_kem.py",
+        "sha256": "4b025a5a14827eeef636bf7b97e634537fd9ed45be962a4ba87ca52629c88dc7"
+      },
+      {
+        "path": "prototype/tests/test_dleq.py",
+        "sha256": "eca2caaafbd07492dd7159b68ca0da2b58141008b315f7ad874388ec03c80b0a"
+      },
+      {
+        "path": "prototype/tests/test_shamir.py",
+        "sha256": "b8f546d5480060d1211a10ba1986a7d434562c53dc40bf745ed4c4098dd13662"
+      },
+      {
+        "path": "prototype/tests/test_serialization.py",
+        "sha256": "54e4a1e22f48d925ec5e091e3acf6aa8ef09d294b8100cad38c481daf47ea968"
+      },
+      {
+        "path": "prototype/tests/test_signatures.py",
+        "sha256": "4b0b49ae4a8386dc93591fd174e26d2ce5f46184d53d81b68a936fe17aa673b1"
+      },
+      {
+        "path": "prototype/tests/test_refresh.py",
+        "sha256": "ded5014da312e0f8ecf6ae2107a0ef6cce037818057c706620d247d35feb386c"
+      },
+      {
+        "path": "prototype/tests/test_protocol.py",
+        "sha256": "1578a75543c65d82a5ba2d97c46c1c14197d93cd7d12210dcce83e633f7595cc"
+      },
+      {
+        "path": "paper/test_vectors.json",
+        "sha256": "e5bd17d6f0645e1f2c40789ad503d608aecdbe779f306ee29cedb806e78c5a1d"
+      },
+      {
+        "path": "paper/signature_test_vectors.json",
+        "sha256": "4ed621a3db759a7958c3398e94a133136a60d78852990275da1a80f97af766b5"
+      },
+      {
+        "path": ".superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv",
+        "sha256": "bed6406fe33ab4efd994f11a2d2834fd663493e244a3704bdb760d94c3c5b713"
+      }
+    ],
+    "inputs_after_execution": [
+      {
+        "path": "prototype/pyproject.toml",
+        "sha256": "dd7e4533503723ce5d8cf4804ea269c0f967a4954a6b7b9503e82426da955eb8"
+      },
+      {
+        "path": "prototype/uv.lock",
+        "sha256": "3783b5e5ed7beaecd2de44ea40bf7de0616e60e292c7169a0d808beecaffbb8b"
+      },
+      {
+        "path": "prototype/requirements-lock.txt",
+        "sha256": "274087de523420adb0c0522e2715a686d4586ed14c0dbd9ac9d6c040147bc0a2"
+      },
+      {
+        "path": "prototype/scripts/export_crypto_case_receipt.py",
+        "sha256": "8cc8d97ac9a1e5936ca8a43c6fb6aec508dfb15e40be3140392fd79c760bed81"
+      },
+      {
+        "path": "prototype/scripts/export_test_vectors.py",
+        "sha256": "706d5ceadd304048ff7ed2ce6469689fcdc26b6c26db273b53193f1c94f8a0cb"
+      },
+      {
+        "path": "prototype/scripts/export_signature_vectors.py",
+        "sha256": "2e8ed561ffb591f0cb0ee982c44ae43938fc537ab4b87c803de1e9068e9a34f0"
+      },
+      {
+        "path": "prototype/src/keystone/group.py",
+        "sha256": "3bf615f858cbe88cc1efdfd32d57d15e5df16240cc2d93676c1be8176864ac23"
+      },
+      {
+        "path": "prototype/src/keystone/shamir.py",
+        "sha256": "7181560e6e7d179aec8deb5a7494fda85bd967d1d859052ad941b9d9e85fdba3"
+      },
+      {
+        "path": "prototype/src/keystone/dleq.py",
+        "sha256": "e3aba3428f17932d9865ef5cec91fbeac6352b7db45d104c9f02a6f42c21f164"
+      },
+      {
+        "path": "prototype/src/keystone/threshold_kem.py",
+        "sha256": "098e1ade52a9b56e2022e5887cf8f4dd35e8de0964f4dfffd2d6abd65c59d288"
+      },
+      {
+        "path": "prototype/src/keystone/serialization.py",
+        "sha256": "a2b4cd6c61ea0845a1615184b944454c58965a6af0539c3c1d57975c6ca7c551"
+      },
+      {
+        "path": "prototype/src/keystone/signatures.py",
+        "sha256": "57cd71df152fba89cdea8f21dce4a66881279f69efe5befb3483151ffd80e426"
+      },
+      {
+        "path": "prototype/src/keystone/protocol.py",
+        "sha256": "c88d8d2314d584e458a5b73ad6525fb018ab25c84dade2c3d745626a7f681381"
+      },
+      {
+        "path": "prototype/tests/test_threshold_kem.py",
+        "sha256": "4b025a5a14827eeef636bf7b97e634537fd9ed45be962a4ba87ca52629c88dc7"
+      },
+      {
+        "path": "prototype/tests/test_dleq.py",
+        "sha256": "eca2caaafbd07492dd7159b68ca0da2b58141008b315f7ad874388ec03c80b0a"
+      },
+      {
+        "path": "prototype/tests/test_shamir.py",
+        "sha256": "b8f546d5480060d1211a10ba1986a7d434562c53dc40bf745ed4c4098dd13662"
+      },
+      {
+        "path": "prototype/tests/test_serialization.py",
+        "sha256": "54e4a1e22f48d925ec5e091e3acf6aa8ef09d294b8100cad38c481daf47ea968"
+      },
+      {
+        "path": "prototype/tests/test_signatures.py",
+        "sha256": "4b0b49ae4a8386dc93591fd174e26d2ce5f46184d53d81b68a936fe17aa673b1"
+      },
+      {
+        "path": "prototype/tests/test_refresh.py",
+        "sha256": "ded5014da312e0f8ecf6ae2107a0ef6cce037818057c706620d247d35feb386c"
+      },
+      {
+        "path": "prototype/tests/test_protocol.py",
+        "sha256": "1578a75543c65d82a5ba2d97c46c1c14197d93cd7d12210dcce83e633f7595cc"
+      },
+      {
+        "path": "paper/test_vectors.json",
+        "sha256": "e5bd17d6f0645e1f2c40789ad503d608aecdbe779f306ee29cedb806e78c5a1d"
+      },
+      {
+        "path": "paper/signature_test_vectors.json",
+        "sha256": "4ed621a3db759a7958c3398e94a133136a60d78852990275da1a80f97af766b5"
+      },
+      {
+        "path": ".superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv",
+        "sha256": "bed6406fe33ab4efd994f11a2d2834fd663493e244a3704bdb760d94c3c5b713"
+      }
+    ],
+    "inputs_before_execution": [
+      {
+        "path": "prototype/pyproject.toml",
+        "sha256": "dd7e4533503723ce5d8cf4804ea269c0f967a4954a6b7b9503e82426da955eb8"
+      },
+      {
+        "path": "prototype/uv.lock",
+        "sha256": "3783b5e5ed7beaecd2de44ea40bf7de0616e60e292c7169a0d808beecaffbb8b"
+      },
+      {
+        "path": "prototype/requirements-lock.txt",
+        "sha256": "274087de523420adb0c0522e2715a686d4586ed14c0dbd9ac9d6c040147bc0a2"
+      },
+      {
+        "path": "prototype/scripts/export_crypto_case_receipt.py",
+        "sha256": "8cc8d97ac9a1e5936ca8a43c6fb6aec508dfb15e40be3140392fd79c760bed81"
+      },
+      {
+        "path": "prototype/scripts/export_test_vectors.py",
+        "sha256": "706d5ceadd304048ff7ed2ce6469689fcdc26b6c26db273b53193f1c94f8a0cb"
+      },
+      {
+        "path": "prototype/scripts/export_signature_vectors.py",
+        "sha256": "2e8ed561ffb591f0cb0ee982c44ae43938fc537ab4b87c803de1e9068e9a34f0"
+      },
+      {
+        "path": "prototype/src/keystone/group.py",
+        "sha256": "3bf615f858cbe88cc1efdfd32d57d15e5df16240cc2d93676c1be8176864ac23"
+      },
+      {
+        "path": "prototype/src/keystone/shamir.py",
+        "sha256": "7181560e6e7d179aec8deb5a7494fda85bd967d1d859052ad941b9d9e85fdba3"
+      },
+      {
+        "path": "prototype/src/keystone/dleq.py",
+        "sha256": "e3aba3428f17932d9865ef5cec91fbeac6352b7db45d104c9f02a6f42c21f164"
+      },
+      {
+        "path": "prototype/src/keystone/threshold_kem.py",
+        "sha256": "098e1ade52a9b56e2022e5887cf8f4dd35e8de0964f4dfffd2d6abd65c59d288"
+      },
+      {
+        "path": "prototype/src/keystone/serialization.py",
+        "sha256": "a2b4cd6c61ea0845a1615184b944454c58965a6af0539c3c1d57975c6ca7c551"
+      },
+      {
+        "path": "prototype/src/keystone/signatures.py",
+        "sha256": "57cd71df152fba89cdea8f21dce4a66881279f69efe5befb3483151ffd80e426"
+      },
+      {
+        "path": "prototype/src/keystone/protocol.py",
+        "sha256": "c88d8d2314d584e458a5b73ad6525fb018ab25c84dade2c3d745626a7f681381"
+      },
+      {
+        "path": "prototype/tests/test_threshold_kem.py",
+        "sha256": "4b025a5a14827eeef636bf7b97e634537fd9ed45be962a4ba87ca52629c88dc7"
+      },
+      {
+        "path": "prototype/tests/test_dleq.py",
+        "sha256": "eca2caaafbd07492dd7159b68ca0da2b58141008b315f7ad874388ec03c80b0a"
+      },
+      {
+        "path": "prototype/tests/test_shamir.py",
+        "sha256": "b8f546d5480060d1211a10ba1986a7d434562c53dc40bf745ed4c4098dd13662"
+      },
+      {
+        "path": "prototype/tests/test_serialization.py",
+        "sha256": "54e4a1e22f48d925ec5e091e3acf6aa8ef09d294b8100cad38c481daf47ea968"
+      },
+      {
+        "path": "prototype/tests/test_signatures.py",
+        "sha256": "4b0b49ae4a8386dc93591fd174e26d2ce5f46184d53d81b68a936fe17aa673b1"
+      },
+      {
+        "path": "prototype/tests/test_refresh.py",
+        "sha256": "ded5014da312e0f8ecf6ae2107a0ef6cce037818057c706620d247d35feb386c"
+      },
+      {
+        "path": "prototype/tests/test_protocol.py",
+        "sha256": "1578a75543c65d82a5ba2d97c46c1c14197d93cd7d12210dcce83e633f7595cc"
+      },
+      {
+        "path": "paper/test_vectors.json",
+        "sha256": "e5bd17d6f0645e1f2c40789ad503d608aecdbe779f306ee29cedb806e78c5a1d"
+      },
+      {
+        "path": "paper/signature_test_vectors.json",
+        "sha256": "4ed621a3db759a7958c3398e94a133136a60d78852990275da1a80f97af766b5"
+      },
+      {
+        "path": ".superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv",
+        "sha256": "bed6406fe33ab4efd994f11a2d2834fd663493e244a3704bdb760d94c3c5b713"
+      }
+    ],
+    "inputs_verified_unchanged": true,
+    "receipt_hash_location": "prototype/results/engineering_qa/rid-c002-crypto-001-preauth-receipt.json.sha256"
+  },
+  "started_at_utc": "2026-08-29T01:05:31.760691Z"
+}

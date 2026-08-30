@@ -1,0 +1,49 @@
+{
+  "canonical_authority": "Mermaid source only; rendered files are derivatives",
+  "evidence_classification": "NOT_SCIENTIFIC_EVIDENCE",
+  "generated_at": "2026-08-29T03:41:26.746982Z",
+  "independence": "SAME_WORKSPACE_NOT_INDEPENDENT",
+  "outputs": {
+    "png": {
+      "dimensions": [
+        1600,
+        1450
+      ],
+      "path": "diagrams/02_property_separation.png",
+      "role": "RASTER_PREVIEW_DERIVATIVE",
+      "sha256": "64b8f957bd1d9a55ae5b8db0893815db7e93c3cad2ad2cceac76a42cca2880e7"
+    },
+    "svg": {
+      "path": "diagrams/02_property_separation.svg",
+      "role": "ACCESSIBLE_VECTOR_DERIVATIVE",
+      "sha256": "1ea4e7a01420e4b9a3f28435ba3c14138ba59ba4c12a1971bce37e0735855c03"
+    }
+  },
+  "renderer": {
+    "chrome_version": "Google Chrome 151.0.7922.175",
+    "mode": "deterministic local SVG plus existing local Chrome PNG capture",
+    "network": "DISABLED_BY_COMMAND_AND_LOCAL_FILE_INPUT",
+    "path": "scripts/render_property_separation_diagram.py",
+    "sha256": "86846476665d8673f5f826bf3963a7d96baa67fe7e79d02eda1278e588f143e1"
+  },
+  "schema_id": "KEYSTONE_D2_RENDER_RECEIPT",
+  "schema_version": 1,
+  "source": {
+    "path": "diagrams/02_property_separation.mmd",
+    "semantic_contract": [
+      "W1: ciphertext availability does not imply DKA",
+      "W2: routine audit acceptance does not unconditionally imply targeted dispute success",
+      "W3: finite audits do not guarantee unconditional future DKA",
+      "not a complete pairwise lattice"
+    ],
+    "sha256": "0095ad17ec7769021ea43fc507c5c8e95890646b41bc04008a76b95eaa3ed68d"
+  },
+  "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE",
+  "visual_qa": {
+    "accessibility": "PARTIAL_REDUNDANT_LABEL_AND_LINE_STYLE; GRAYSCALE_AND_CVD_REVIEW_PENDING",
+    "label_clipping": "PASS_MANUAL_LOCAL_INSPECTION",
+    "layout_readability": "PASS_MANUAL_LOCAL_INSPECTION",
+    "relationship_direction": "PASS_MANUAL_LOCAL_INSPECTION",
+    "scientific_claim_validation": "NOT_PERFORMED"
+  }
+}

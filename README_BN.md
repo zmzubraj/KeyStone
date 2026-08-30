@@ -82,11 +82,13 @@ pip install -e '.[dev]'
 
 ## Verification status
 
-- Python crypto/simulator: **17/17 tests pass**।
+- Python crypto/simulator: **35/35 tests pass**; exact stratified probability,
+  canonical transcript/test-vector, Ed25519 canonical-response signature,
+  এবং Monte Carlo 95% Wilson interval coverage অন্তর্ভুক্ত।
 - End-to-end encrypted receipt demo: successful।
 - Frozen bound ও Monte Carlo datasets/figures: regenerated।
-- Solidity bulletin-board source: **Solc 0.8.24 দিয়ে compile হয়েছে; বর্তমান Foundry tests 2/2 pass**।
-- Baseline gas snapshot generated; fuzz/invariant tests এবং full contract-overhead table এখনও pending, তাই Day-4 research gate আংশিক complete।
+- Solidity bulletin-board source: **Solc 0.8.24 দিয়ে compile হয়েছে; বর্তমান Foundry tests 19/19 pass**।
+- তিনটি 512-run fuzz property, দুইটি stateful invariant, এবং আটটি operation-level gas measurement internal MPP gate pass করেছে; independent audit এখনও pending।
 - Reproducible workspace setup: root থেকে `make setup`, `make verify`, এবং `make reproduce`।
 - পূর্ণ executed evidence: `VERIFICATION.md`।
 - সর্বশেষ 2026 prior-art boundary: `docs/18_LATEST_PRIOR_ART_WATCH_2026-08-29.md`।

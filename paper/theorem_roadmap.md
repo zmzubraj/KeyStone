@@ -18,3 +18,10 @@
 - **Proposition 2:** Single-domain placement cap.
 - **Counterexample 1:** Selective audit/dispute withholding separation.
 - **Optional Theorem 4:** Exact stratified acceptance distribution by convolution.
+
+The current constructive separation obligations are enumerated in
+`paper/property_separation_obligations.md`. They cover only: ciphertext
+availability not implying deadline-bounded dispute-key availability, routine
+audit acceptance not implying targeted authorized decryptability under
+selective withholding, and finite audit observations not implying unconditional
+future availability. A complete pairwise property lattice is not claimed.

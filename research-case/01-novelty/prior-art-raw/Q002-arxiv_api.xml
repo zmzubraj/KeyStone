@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/TQ7vJUdOR1scb6z/gqb+9O7xhcA</id>
+  <title>arXiv Query: search_query=all:pre OR all:authorization OR all:threshold OR all:decryption OR all:readiness OR all:audit OR all:canary&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-08-28T22:06:40Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:pre+OR+(all:authorization+OR+(all:threshold+OR+(all:decryption+OR+(all:readiness+OR+(all:audit+OR+all:canary)))))&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>201451</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2306.00133v2</id>
+    <title>A Note On Interpreting Canary Exposure</title>
+    <updated>2023-06-02T14:48:38Z</updated>
+    <link href="https://arxiv.org/abs/2306.00133v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2306.00133v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Canary exposure, introduced in Carlini et al. is frequently used to empirically evaluate, or audit, the privacy of machine learning model training. The goal of this note is to provide some intuition on how to interpret canary exposure, including by relating it to membership inference attacks and differential privacy.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-05-31T19:18:24Z</published>
+    <arxiv:comment>short note, edited to add a sentence on independence of canary losses, including adding Pillutla et al</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Matthew Jagielski</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1401.3662v1</id>
+    <title>Quasiconformal homogeneity after Gehring and Palks</title>
+    <updated>2014-01-15T16:53:21Z</updated>
+    <link href="https://arxiv.org/abs/1401.3662v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1401.3662v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In a very influential paper Gehring and Palka introduced the notions of quasiconformally homogeneous and uniformly quasiconformally homogeneous subsets of Euclidean space. Their motivation was to provide a characterization of quasi-disks, i.e. domains which are quasiconformally homeomorphic to the unit disk. As a generalization, Bonfert-Taylor, Canary, Martin and Taylor initiated the study of uniformly quasiconformally homogeneous hyperbolic manifolds. In this paper, we review the theory of quasiconformally homogeneous subsets of Euclidean and uniformly quasiconformally homogeneous hyperbolic manifolds. We finish with a discussion of open problems in the theory.</summary>
+    <category term="math.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2014-01-15T16:53:21Z</published>
+    <arxiv:comment>To be published in a volume of Computational Methods and Function Theory dedicated to the memory of Fred Gehring</arxiv:comment>
+    <arxiv:primary_category term="math.CV"/>
+    <author>
+      <name>Petra Bonfert-Taylor</name>
+    </author>
+    <author>
+      <name>Richard Canary</name>
+    </author>
+    <author>
+      <name>Edward Taylor</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1306.5832v1</id>
+    <title>Dynamics on character varieties: a survey</title>
+    <updated>2013-06-25T02:14:27Z</updated>
+    <link href="https://arxiv.org/abs/1306.5832v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1306.5832v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We survey recent work on the dynamics of the outer automorphism group of a word hyperbolic group on spaces of (conjugacy classes of) representations ofthe group into a semi-simple Lie group G. All these results are motivated by the fact that the mapping class group of a closed surface acts properly discontinuously on the Teichmuller space of the surface.
+  We explore two settings. 1) The work of Guichard, Labourie and Wienhard establishing the proper discontinuity of the action of outer automorphism groups on spaces of Anosov representations. 2) The work of Canary, Gelander, Lee, Magid, Minsky and Storm on the case where the domain group is the fundamental group of a compact 3-manifold with boundary and G=PSL(2,C).</summary>
+    <category term="math.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2013-06-25T02:14:27Z</published>
+    <arxiv:primary_category term="math.GT"/>
+    <author>
+      <name>Richard D. Canary</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2506.23033v5</id>
+    <title>What Must a Fairness Audit Report When Demographic Data Is Incomplete?</title>
+    <updated>2026-07-30T14:31:03Z</updated>
+    <link href="https://arxiv.org/abs/2506.23033v5" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2506.23033v5" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fairness audits are a key component of responsible machine-learning deployment. Yet what such an audit must disclose, when the protected labels it depends on are incomplete, remains unsettled. In this work, we focused on the rates a fairness audit publishes and on what an oversight reader needs beside them. We paired every published rate with a matched baseline drawn from the same audit, one hiding protected labels and one varying only the run seed. Across ACS/Folktables tasks, missingness settings that kept some protected labels moved the selected mitigation less than an ordinary rerun did. At zero protected-label access, candidates collapsed to empirical risk minimization, so the apparent exception there reflected the candidate set's composition. Equalized-odds threshold optimization most often regressed an intersectional subgroup, but that rate fell back to its baseline once we kept only the configurations an auditor would accept. Any accuracy it lost fell on the population as heavily as on the worst-off cell, so the mechanism is levelling down. The one effect that survived was a change in which cell is worst-off. Overall, our results highlight that a published audit rate should be reported with the baseline needed to interpret it, the candidate set it came from, and its intersectional effects, before it is treated as evidence about a deployed model.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="stat.ML" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-06-28T23:12:59Z</published>
+    <arxiv:comment>Code is available: https://github.com/YTomar79/fairmix-audit</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Yash Vardhan Tomar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2507.15836v1</id>
+    <title>Optimizing Canaries for Privacy Auditing with Metagradient Descent</title>
+    <updated>2025-07-21T17:47:33Z</updated>
+    <link href="https://arxiv.org/abs/2507.15836v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2507.15836v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this work we study black-box privacy auditing, where the goal is to lower bound the privacy parameter of a differentially private learning algorithm using only the algorithm's outputs (i.e., final trained model). For DP-SGD (the most successful method for training differentially private deep learning models), the canonical approach auditing uses membership inference-an auditor comes with a small set of special "canary" examples, inserts a random subset of them into the training set, and then tries to discern which of their canaries were included in the training set (typically via a membership inference attack). The auditor's success rate then provides a lower bound on the privacy parameters of the learning algorithm. Our main contribution is a method for optimizing the auditor's canary set to improve privacy auditing, leveraging recent work on metagradient optimization. Our empirical evaluation demonstrates that by using such optimized canaries, we can improve empirical lower bounds for differentially private image classification models by over 2x in certain instances. Furthermore, we demonstrate that our method is transferable and efficient: canaries optimized for non-private SGD with a small model architecture remain effective when auditing larger models trained with DP-SGD.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-07-21T17:47:33Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Matteo Boglioni</name>
+    </author>
+    <author>
+      <name>Terrance Liu</name>
+    </author>
+    <author>
+      <name>Andrew Ilyas</name>
+    </author>
+    <author>
+      <name>Zhiwei Steven Wu</name>
+    </author>
+  </entry>
+</feed>

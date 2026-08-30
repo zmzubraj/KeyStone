@@ -42,7 +42,7 @@ Primary source: Dan Boneh et al., “Context-Dependent Threshold Decryption and 
 
 A surfaced 2026 IEEE Access accepted-version paper, **UQ-Vote**, couples a PBFT-finalized bulletin board with consensus-authorized threshold decryption and explicit liveness/fault scenarios for voting. Consequently, authorization by finalized state, a public request log, and a decryption deadline are not independently claimable as new ideas. KEYSTONE's claim must remain the rollup-specific DKA property, pre-dispute confidential readiness sampling, false-accept/correlation analysis, and the separation between ciphertext DA and decryption-service availability.
 
-Citation metadata to verify against the final IEEE record before submission: Jingyu Liu, Jingjing Rao, and Tetsutaro Uehara, “UQ-Vote: Consensus-Authorized Threshold Decryption for End-to-End Verifiable Elections,” DOI 10.1109/ACCESS.2026.3725080.
+Public-registry metadata verified on 2026-08-29: Jingyu Liu, Jingjing Rao, and Tetsutaro Uehara, “UQ-Vote: Consensus-Authorized Threshold Decryption for End-to-End Verifiable Elections,” IEEE Access 14 (2026), 128905--128916, DOI 10.1109/ACCESS.2026.3725080. Refresh the publisher record before submission.
 
 ### Accountability in threshold decryption
 

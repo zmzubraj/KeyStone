@@ -48,9 +48,11 @@ Current state: passed; automated test and Figure 4.
 
 Pass condition: median/p95 proof generation, verification, combination/opening, network deadline, and contract overhead reported with hardware/software metadata.
 
-Current state: single-machine crypto baseline and a two-test Foundry gas
-snapshot are included; distributed-network measurements, fuzz/invariant
-coverage, and a complete contract-overhead table remain.
+Current state: single-machine crypto baseline, 19 passing Foundry tests, three
+512-run fuzz properties, two stateful invariants (64 runs × 32 calls), and an
+eight-operation gas snapshot/CSV table are included. Distributed-network
+measurements, multi-machine crypto measurements, and independent contract audit
+remain.
 
 ## Gate G7 — Reproducibility
 

@@ -1,0 +1,347 @@
+{
+  "schema_version": 4,
+  "allowed_relation_types": [
+    "SUPPORTS",
+    "REFUTES",
+    "QUALIFIES",
+    "REQUIRES",
+    "REPLICATES",
+    "CONTRADICTS",
+    "LIMITS_SCOPE",
+    "DERIVED_FROM"
+  ],
+  "claims": {
+    "C001": {
+      "claim_id": "C001",
+      "exact_claim": "We formalize dispute-key availability as deadline-bounded, authorized reconstructability distinct from ciphertext data availability, and instantiate it with non-revealing canary partial-decryption sampling, explicit false-accept bounds, correlation-aware committee audits, and public deadline evidence.",
+      "claim_type": "novelty hypothesis",
+      "required_maturity": "V1 ANALYTIC",
+      "current_maturity": "V0 ASSERTED",
+      "status": "BLOCKED",
+      "excluded_generality": "",
+      "evidence_ids": [],
+      "artifact_paths": [],
+      "claim_scope": "ANALYTIC",
+      "central": true,
+      "refuted": false,
+      "maturity_ceiling_rank": 0,
+      "maturity_ceiling": "V0 ASSERTED",
+      "scope_ceiling_rank": 0,
+      "scope_ceiling": "ASSERTED",
+      "required_maturity_rank": 1,
+      "supports_claim": false,
+      "external_validation_required": false
+    },
+    "C002": {
+      "claim_id": "C002",
+      "exact_claim": "The workspace already contains a reproducible Python threshold-KEM and DLEQ prototype, 17 passing tests, deterministic simulations and datasets, five quantitative figures, eight editable diagrams, a compiling Solidity bulletin-board skeleton with two passing tests and gas snapshots, locked dependencies, and a one-command verification path; remaining constraints are expanded exact and stochastic experiment coverage, fuzz and invariant contract tests, complete performance and deadline measurements, formal proof completion, a distributed testbed, production DKG or PVSS substitution for a full-paper claim, current prior-art and venue verification, independent cryptography and systems review, and accountable human submission approval.",
+      "claim_type": "feasibility hypothesis",
+      "required_maturity": "V3 INTERNAL",
+      "current_maturity": "V3 INTERNAL",
+      "status": "AT RISK",
+      "excluded_generality": "",
+      "evidence_ids": [],
+      "artifact_paths": [],
+      "claim_scope": "INTERNAL",
+      "central": true,
+      "refuted": false,
+      "maturity_ceiling_rank": 3,
+      "maturity_ceiling": "V3 INTERNAL",
+      "scope_ceiling_rank": 0,
+      "scope_ceiling": "ASSERTED",
+      "required_maturity_rank": 3,
+      "supports_claim": false,
+      "external_validation_required": false
+    },
+    "C003": {
+      "claim_id": "C003",
+      "exact_claim": "A formal DKA property suite; a canonical non-production canary audit with context-bound DLEQ proofs; static and repeated-audit probability analysis with explicit temporal assumptions; failure-domain-aware placement and stratified sampling; a public deadline-accountability interface; and a reproducible threshold-KEM prototype, adversarial simulator, datasets, figures, tests, and bulletin-board contract boundary, without claiming a new cryptographic primitive or production security.",
+      "claim_type": "solution-viability hypothesis",
+      "required_maturity": "V4 EXTERNAL",
+      "current_maturity": "V3 INTERNAL",
+      "status": "AT RISK",
+      "excluded_generality": "",
+      "evidence_ids": [],
+      "artifact_paths": [],
+      "claim_scope": "EXTERNAL",
+      "central": true,
+      "refuted": false,
+      "maturity_ceiling_rank": 3,
+      "maturity_ceiling": "V3 INTERNAL",
+      "scope_ceiling_rank": 0,
+      "scope_ceiling": "ASSERTED",
+      "required_maturity_rank": 4,
+      "supports_claim": false,
+      "external_validation_required": true
+    }
+  },
+  "evidence": {},
+  "artifact_to_claims": {},
+  "evidence_to_claims": {},
+  "edges": [
+    {
+      "edge_id": "EDGE-qualifies-C001",
+      "source": "artifact:07-manuscript/claim-evidence-matrix.csv",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Claim uncertainty or alternative explanation narrows interpretation."
+    },
+    {
+      "edge_id": "EDGE-qualifies-C002",
+      "source": "artifact:07-manuscript/claim-evidence-matrix.csv",
+      "target": "claim:C002",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Claim uncertainty or alternative explanation narrows interpretation."
+    },
+    {
+      "edge_id": "EDGE-qualifies-C003",
+      "source": "artifact:07-manuscript/claim-evidence-matrix.csv",
+      "target": "claim:C003",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Claim uncertainty or alternative explanation narrows interpretation."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C001",
+      "source": "predecessor:EIP-7594",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C001",
+      "source": "predecessor:EIP-7594",
+      "target": "claim:C001",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "PeerDAS already occupies probabilistic public rollup/blob data availability and defeats any broad DA novelty wording."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C001",
+      "source": "predecessor:EIP-7594",
+      "target": "claim:C001",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "PeerDAS already occupies probabilistic public rollup/blob data availability and defeats any broad DA novelty wording."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C001",
+      "source": "predecessor:ETHTID+tTLES",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C001",
+      "source": "predecessor:ETHTID+tTLES",
+      "target": "claim:C001",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "ETHTID and tTLES already formalize scheduled or condition-dependent threshold release on chain."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C001",
+      "source": "predecessor:ETHTID+tTLES",
+      "target": "claim:C001",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "ETHTID and tTLES already formalize scheduled or condition-dependent threshold release on chain."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C001",
+      "source": "predecessor:Context-Dependent-Threshold-Decryption",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C001",
+      "source": "predecessor:Context-Dependent-Threshold-Decryption",
+      "target": "claim:C001",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "Context-dependent threshold decryption already makes decryption context and share isolation explicit prior art."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C001",
+      "source": "predecessor:Context-Dependent-Threshold-Decryption",
+      "target": "claim:C001",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "Context-dependent threshold decryption already makes decryption context and share isolation explicit prior art."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C001",
+      "source": "predecessor:UQ-Vote+Accountability+Accountable-Liveness",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C001",
+      "source": "predecessor:UQ-Vote+Accountability+Accountable-Liveness",
+      "target": "claim:C001",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "UQ-Vote, threshold-decryption accountability, and Accountable Liveness already occupy authorization, public workflow, accountability, and timing-qualified liveness limits."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C001",
+      "source": "predecessor:UQ-Vote+Accountability+Accountable-Liveness",
+      "target": "claim:C001",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "UQ-Vote, threshold-decryption accountability, and Accountable Liveness already occupy authorization, public workflow, accountability, and timing-qualified liveness limits."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C001",
+      "source": "predecessor:Ferveo+BEAT-MEV+EigenAI",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C001",
+      "source": "predecessor:Ferveo+BEAT-MEV+EigenAI",
+      "target": "claim:C001",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "These systems already show threshold decryption in encrypted transaction or encrypted AI settings with liveness after ordering or challenge windows."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C001",
+      "source": "predecessor:Ferveo+BEAT-MEV+EigenAI",
+      "target": "claim:C001",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "These systems already show threshold decryption in encrypted transaction or encrypted AI settings with liveness after ordering or challenge windows."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C001",
+      "source": "predecessor:EP3811560B1+US20170005797A1+US20240354753A1",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C001",
+      "source": "predecessor:EP3811560B1+US20170005797A1+US20240354753A1",
+      "target": "claim:C001",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "Patent closure shows audit-triggered threshold-share release, secret-share retrievability checks, and proof-like can-decrypt pressure, especially from US20240354753A1."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C001",
+      "source": "predecessor:EP3811560B1+US20170005797A1+US20240354753A1",
+      "target": "claim:C001",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "Patent closure shows audit-triggered threshold-share release, secret-share retrievability checks, and proof-like can-decrypt pressure, especially from US20240354753A1."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C001",
+      "source": "predecessor:Shutter+Fhenix+Optimism",
+      "target": "claim:C001",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C001",
+      "source": "predecessor:Shutter+Fhenix+Optimism",
+      "target": "claim:C001",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "Public Shutter, Fhenix, and Optimism documents already crowd trigger-based threshold release, threshold-decryption networks, and dispute-game context."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C001",
+      "source": "predecessor:Shutter+Fhenix+Optimism",
+      "target": "claim:C001",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "Public Shutter, Fhenix, and Optimism documents already crowd trigger-based threshold release, threshold-decryption networks, and dispute-game context."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C002",
+      "source": "predecessor:NOVELTY_SURFACE_NOT_APPLICABLE",
+      "target": "claim:C002",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C002",
+      "source": "predecessor:NOVELTY_SURFACE_NOT_APPLICABLE",
+      "target": "claim:C002",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "No predecessor mapping in this folder can verify the workspace prototype, tests, measurements, or remaining execution constraints described in C002."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C002",
+      "source": "predecessor:NOVELTY_SURFACE_NOT_APPLICABLE",
+      "target": "claim:C002",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "No predecessor mapping in this folder can verify the workspace prototype, tests, measurements, or remaining execution constraints described in C002."
+    },
+    {
+      "edge_id": "EDGE-qualifies-novelty-C003",
+      "source": "predecessor:Composite-Predecessor-Cluster",
+      "target": "claim:C003",
+      "relation_type": "QUALIFIES",
+      "active": true,
+      "basis": "Novelty matrix qualification or residual uncertainty."
+    },
+    {
+      "edge_id": "EDGE-refutes-C003",
+      "source": "predecessor:Composite-Predecessor-Cluster",
+      "target": "claim:C003",
+      "relation_type": "REFUTES",
+      "active": false,
+      "basis": "PeerDAS, Ferveo, BEAT-MEV, Context-Dependent Threshold Decryption, UQ-Vote, Long Live The Honey Badger, classical threshold-decryption proofs, patents, and design docs collectively defeat any primitive, first-system, or broad architecture reading."
+    },
+    {
+      "edge_id": "EDGE-contradicts-C003",
+      "source": "predecessor:Composite-Predecessor-Cluster",
+      "target": "claim:C003",
+      "relation_type": "CONTRADICTS",
+      "active": false,
+      "basis": "PeerDAS, Ferveo, BEAT-MEV, Context-Dependent Threshold Decryption, UQ-Vote, Long Live The Honey Badger, classical threshold-decryption proofs, patents, and design docs collectively defeat any primitive, first-system, or broad architecture reading."
+    },
+    {
+      "edge_id": "EDGE-limits-scope-C001",
+      "source": "claim:C001",
+      "target": "claim:C001",
+      "relation_type": "LIMITS_SCOPE",
+      "active": true,
+      "basis": "Claim scope exceeds supported evidence scope."
+    },
+    {
+      "edge_id": "EDGE-limits-scope-C002",
+      "source": "claim:C002",
+      "target": "claim:C002",
+      "relation_type": "LIMITS_SCOPE",
+      "active": true,
+      "basis": "Claim scope exceeds supported evidence scope."
+    },
+    {
+      "edge_id": "EDGE-limits-scope-C003",
+      "source": "claim:C003",
+      "target": "claim:C003",
+      "relation_type": "LIMITS_SCOPE",
+      "active": true,
+      "basis": "Claim scope exceeds supported evidence scope."
+    }
+  ]
+}

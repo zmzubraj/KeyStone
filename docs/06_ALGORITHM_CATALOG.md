@@ -184,3 +184,6 @@ Return rates, confidence intervals, and raw seed/configuration.
 | A10/A11 | `threshold_kem.py`, `protocol.py` |
 | A12 | `protocol.py` and contract events |
 | A14 | `simulation.py`, `scripts/run_experiments.py` |
+| Canonical request/response transcript | `serialization.py`, `paper/test_vectors.json` |
+| Canonical response signature | `signatures.py`, `paper/signature_test_vectors.json` |
+| Experimental zero-polynomial share refresh | `threshold_kem.py:refresh_epoch_shares`, `tests/test_refresh.py` |

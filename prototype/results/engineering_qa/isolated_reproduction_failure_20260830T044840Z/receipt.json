@@ -1,0 +1,148 @@
+{
+  "acceptance_readiness": "NOT_ASSESSABLE",
+  "canonical_phase": "INTAKE",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "scripts/export_deadline_pilot_start_package.py",
+        "--check"
+      ],
+      "argv_sha256": "62224da34f823d12de2285aa47544458a6643fd68afbfb0241ba1717be79e547",
+      "command_id": "deadline_package_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/deadline_package_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/deadline_package_check.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/export_t1_t8_tables.py",
+        "--check"
+      ],
+      "argv_sha256": "b1e3962ed1441e4ba361bf484c58d6917bab2de75c78eec65b4ab09d5dc18074",
+      "command_id": "t1_t8_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/t1_t8_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/t1_t8_check.stdout.txt",
+      "stdout_sha256": "6d23778a7c1b40affb667b33e520f13e6e700f05692064cbb90e0280b6d17cca"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/export_paper_tables.py",
+        "--check"
+      ],
+      "argv_sha256": "7b6b4be4f3866e65afc85de66e1989a145e24c048860a304915c80cf482ed220",
+      "command_id": "paper_tables_check",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 0,
+      "stderr_path": "commands/paper_tables_check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "commands/paper_tables_check.stdout.txt",
+      "stdout_sha256": "3d6bf46f254231bb3b5932ae35c06a9d8f41452c1288601d10ad084994fc6f8b"
+    },
+    {
+      "argv": [
+        "uv",
+        "run",
+        "--offline",
+        "--locked",
+        "--extra",
+        "dev",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "argv_sha256": "83691d354286c65b2fbc221e8a4333d322e725f28ed1c8788ce3ae4195886881",
+      "command_id": "python_suite",
+      "cwd": "prototype",
+      "cwd_sha256": "b34563e2ebeb771708ba0648c9385383f61cc11e86af6076848433059c14b2df",
+      "returncode": 0,
+      "stderr_path": "commands/python_suite.stderr.txt",
+      "stderr_sha256": "7dbbe56eae5437c6908085fa3a11b913de1c7f7bde57f2836bbc9e11a761b02d",
+      "stdout_path": "commands/python_suite.stdout.txt",
+      "stdout_sha256": "91dcb8076ccd39d3b7c026c953d5a5e2a9df3a2cebbe5c2c4aab69bb5eb45838"
+    },
+    {
+      "argv": [
+        "forge",
+        "test",
+        "--root",
+        "contracts",
+        "--offline"
+      ],
+      "argv_sha256": "efc767977900405ef6fc2570de4e685a5076100d741f21aea7c8d086d1b35b88",
+      "command_id": "foundry_test",
+      "cwd": ".",
+      "cwd_sha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8",
+      "returncode": 1,
+      "stderr_path": "commands/foundry_test.stderr.txt",
+      "stderr_sha256": "2921cbf8242a4112bb05d3da8188d0bb6d8b7aab7bf6e2c2f037f88cef3a1f47",
+      "stdout_path": "commands/foundry_test.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "executor_class": "SECOND_AGENT_SAME_HOST_ISOLATED_COPY",
+  "external_sharing": "NOT_PERFORMED",
+  "failure_reason": "command foundry_test returned 1",
+  "feasibility_decision": "UNASSESSED",
+  "generated_at": "2026-08-30T04:48:40Z",
+  "inventoried_file_count": 366,
+  "isolated_copy_inventory_verification_error": null,
+  "isolated_copy_unchanged": true,
+  "network_isolation": "TOOL_FLAGS_ONLY_NOT_KERNEL_ENFORCED",
+  "novelty_status": "UNRESOLVED",
+  "package_manifest_sha256": "d171f8626ffcc06c240603573cc9cd788a9c739880833edc7c5c4c0b87d07c93",
+  "post_execution_isolated_copy_inventory_sha256": "458c58011b0c122d8b573ba95e4bf58c0501e09c5c4b0aff07df588c21fa8060",
+  "post_execution_source_inventory_sha256": "458c58011b0c122d8b573ba95e4bf58c0501e09c5c4b0aff07df588c21fa8060",
+  "pre_execution_isolated_copy_inventory_sha256": "458c58011b0c122d8b573ba95e4bf58c0501e09c5c4b0aff07df588c21fa8060",
+  "pre_execution_source_inventory_sha256": "458c58011b0c122d8b573ba95e4bf58c0501e09c5c4b0aff07df588c21fa8060",
+  "program_state_sha256": "e1a8185c07a300a6b3d1c61f50d7f4ada9ddabffdcccabd52505b4645fda040a",
+  "residual_limitations": [
+    "same host and potentially shared host-level caches",
+    "no external operator identity binding",
+    "tool offline flags are not kernel-enforced network isolation",
+    "no scientific independence or independent scientific verification",
+    "no distributed deadline execution",
+    "no venue or institutional approval"
+  ],
+  "schema_id": "KEYSTONE_ISOLATED_MECHANICAL_REPRODUCTION_RECEIPT",
+  "schema_version": 1,
+  "scientific_evidence_status": "NOT_INDEPENDENT_SCIENTIFIC_VERIFICATION",
+  "sha256sums_sha256": "22304c1998e0857275dc2f32f7c20130ef58ddc57fc2171a163c727212ba1acf",
+  "solution_viability": "ASSERTED_ONLY",
+  "source_inventory_verification_error": null,
+  "source_manifest_sha256": "ac4b88086b7978a76e46385a2d5353b629862d1edfa1d7b599275b78f0257c92",
+  "source_manifest_sources_verified": 57,
+  "source_tree_unchanged": true,
+  "status": "MECHANICAL_FAIL",
+  "system": "KEYSTONE-MPP-F1",
+  "tools_platform": {
+    "command_environment_overrides": {
+      "CARGO_NET_OFFLINE": "true",
+      "FOUNDRY_OFFLINE": "1",
+      "NO_COLOR": "1",
+      "PYTEST_ADDOPTS": "-p no:cacheprovider",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "UV_OFFLINE": "1"
+    },
+    "platform": "macOS-15.1-arm64-arm-64bit-Mach-O",
+    "python_executable": "python3.14",
+    "versions": {
+      "forge": "forge Version: 1.5.1-stable\nCommit SHA: b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2\nBuild Timestamp: 2025-12-22T11:41:09.812070000Z (1766403669)\nBuild Profile: maxperf",
+      "python": "3.14.6",
+      "uv": "uv 0.11.8 (0e961dd9a 2026-04-27 aarch64-apple-darwin)"
+    }
+  },
+  "tools_platform_sha256": "85900f45383d70e636cf859ca0a553e90aa74389b48ba1bd18acd0f6509f739b"
+}

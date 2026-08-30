@@ -1,0 +1,8 @@
+{
+  "policy_version": 1,
+  "external_processing": "allow-approved",
+  "allowed_channels": [
+    "public_web"
+  ],
+  "notes": "Public web search, official public documentation, public metadata APIs, and public literature retrieval are approved for the publication goal. Do not upload unpublished local artifacts, source files, private keys, credentials, or sensitive data to third-party services."
+}

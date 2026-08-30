@@ -1,0 +1,14 @@
+No files changed, compilation skipped
+
+Ran 8 tests for test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest
+[PASS] testGas_CancelRequest() (gas: 5709)
+[PASS] testGas_FinalizeAudit() (gas: 29142)
+[PASS] testGas_MarkInvalidResponse() (gas: 27704)
+[PASS] testGas_OpenAuditThreeMembers() (gas: 125107)
+[PASS] testGas_OpenDispute() (gas: 144149)
+[PASS] testGas_RecordEquivocation() (gas: 51710)
+[PASS] testGas_RegisterEpochFiveMembers() (gas: 223629)
+[PASS] testGas_SubmitAuditResponse() (gas: 57882)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 1.73ms (5.30ms CPU time)
+
+Ran 1 test suite in 2.76ms (1.73ms CPU time): 8 tests passed, 0 failed, 0 skipped (8 total tests)

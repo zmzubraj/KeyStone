@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-08-30T05:20:17Z",
+  "phase": "INTAKE",
+  "cell_id": "intake_integration",
+  "agent_type": "root-integration-owner",
+  "available_agent_types": [
+    "research-analyst"
+  ],
+  "available_tools": [
+    "exec_command",
+    "apply_patch",
+    "update_plan",
+    "web.run",
+    "collaboration.spawn_agent",
+    "collaboration.wait_agent",
+    "collaboration.followup_task",
+    "collaboration.list_agents"
+  ],
+  "delegation_allowed": true,
+  "required_channels": [],
+  "egress_policy": {
+    "policy_version": 1,
+    "external_processing": "allow-approved",
+    "allowed_channels": [
+      "public_web"
+    ],
+    "notes": "Public web search, official public documentation, public metadata APIs, and public literature retrieval are approved for the publication goal. Do not upload unpublished local artifacts, source files, private keys, credentials, or sensitive data to third-party services."
+  },
+  "capability_source": "research-case/00-governance/capability-preflight.json",
+  "issues": [],
+  "ready_for_delegation": true,
+  "notes": "Python control-plane code cannot call Codex collaboration tools. Only the root model may choose a model-only collaboration action or direct root execution."
+}

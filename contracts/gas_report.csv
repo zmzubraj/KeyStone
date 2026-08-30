@@ -1,0 +1,9 @@
+operation,test,gas,measurement_scope,notes
+register_epoch,testGas_RegisterEpochFiveMembers,223629,Foundry test-body gas; setup excluded; small harness overhead may remain,"n=5, t=3; duplicate-identity validation enabled"
+open_audit,testGas_OpenAuditThreeMembers,125107,Foundry test-body gas; setup excluded; small harness overhead may remain,three sampled members; q=3
+submit_audit_response,testGas_SubmitAuditResponse,57882,Foundry test-body gas; setup excluded; small harness overhead may remain,first commitment from one sampled custodian
+mark_invalid_response,testGas_MarkInvalidResponse,27704,Foundry test-body gas; setup excluded; small harness overhead may remain,admin records a non-zero evidence hash
+record_equivocation,testGas_RecordEquivocation,51710,Foundry test-body gas; setup excluded; small harness overhead may remain,second conflicting commitment from one custodian
+finalize_audit,testGas_FinalizeAudit,29142,Foundry test-body gas; setup excluded; small harness overhead may remain,two responses for a three-member sample after deadline
+open_dispute,testGas_OpenDispute,144149,Foundry test-body gas; setup excluded; small harness overhead may remain,"n=5, t=3; all members eligible"
+cancel_request,testGas_CancelRequest,5709,Foundry test-body gas; setup excluded; small harness overhead may remain,admin cancels one open audit

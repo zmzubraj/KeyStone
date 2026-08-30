@@ -1,0 +1,16 @@
+flowchart LR
+  W[Inference worker\nAEAD-encrypt record with K_r] -->|ciphertext record| DA[Ciphertext DA layer]
+  W -. record key encapsulated under epoch PK_e .-> C[Threshold custodian committee]
+  B[Unpredictable beacon] --> P[Policy and bulletin board]
+  P -->|sampled canary challenge| C
+  C -->|partial and DLEQ proof| A[Readiness audit verifier]
+  A -->|valid, invalid, or timeout evidence| P
+  DA --> V[Authorized verifier set]
+  P -->|authorization and deadline| V
+  V -->|confidential release request| C
+  C -->|at least t verified partials| T[Threshold combiner]
+  DA --> T
+  T -->|recovered record key| R[Private re-execution]
+  DA --> R
+  R --> O[Dispute verdict]
+  P --> O

@@ -12,6 +12,7 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from .dleq import DLEQProof, prove_equal_discrete_logs, verify_equal_discrete_logs
 from .group import GroupParameters, RESEARCH_GROUP, encode_int
 from .shamir import (
+    evaluate_polynomial,
     feldman_commitments,
     lagrange_coefficient_at_zero,
     share_secret,
@@ -46,6 +47,7 @@ class EpochKey:
     public_key: int
     commitments: tuple[int, ...]
     members: dict[int, MemberShare]
+    refresh_generation: int = 0
     group: GroupParameters = RESEARCH_GROUP
 
     @property
@@ -129,7 +131,70 @@ def dealer_keygen(
         public_key=pow(group.g, secret, group.p),
         commitments=commitments,
         members=members,
+        refresh_generation=0,
         group=group,
+    )
+
+
+def refresh_epoch_shares(
+    epoch: EpochKey,
+    *,
+    randbelow: RandBelow = secrets.randbelow,
+) -> EpochKey:
+    """Refresh experimental dealer-generated shares with a zero polynomial.
+
+    The constant term is zero, so the threshold secret and epoch public key do
+    not change.  This is an MPP experiment boundary, not a distributed proactive
+    refresh protocol; production must replace it with an authenticated DPSS/DKG
+    flow and independently reviewed key-management procedures.
+    """
+
+    if epoch.refresh_generation < 0:
+        raise ValueError("refresh_generation must not be negative")
+
+    while True:
+        coefficients = [0]
+        coefficients.extend(
+            randbelow(epoch.group.q) % epoch.group.q
+            for _ in range(epoch.threshold - 1)
+        )
+        deltas = {
+            index: evaluate_polynomial(coefficients, index, epoch.group.q)
+            for index in epoch.members
+        }
+        refreshed_values = {
+            index: (member.share + deltas[index]) % epoch.group.q
+            for index, member in epoch.members.items()
+        }
+        if all(value != 0 for value in refreshed_values.values()):
+            break
+
+    refresh_commitments = feldman_commitments(coefficients, epoch.group)
+    combined_commitments = tuple(
+        (current * delta) % epoch.group.p
+        for current, delta in zip(epoch.commitments, refresh_commitments, strict=True)
+    )
+    members: dict[int, MemberShare] = {}
+    for index, member in epoch.members.items():
+        share = refreshed_values[index]
+        if not verify_share(index, share, combined_commitments, epoch.group):
+            raise RuntimeError("internal refreshed-share consistency failure")
+        members[index] = MemberShare(
+            member_id=member.member_id,
+            index=member.index,
+            domain=member.domain,
+            share=share,
+            public_share=pow(epoch.group.g, share, epoch.group.p),
+        )
+
+    return EpochKey(
+        epoch_id=epoch.epoch_id,
+        threshold=epoch.threshold,
+        public_key=epoch.public_key,
+        commitments=combined_commitments,
+        members=members,
+        refresh_generation=epoch.refresh_generation + 1,
+        group=epoch.group,
     )
 
 

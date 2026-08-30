@@ -1,6 +1,6 @@
 import random
 
-from keystone.group import hash_to_scalar
+import keystone.protocol as protocol_module
 from keystone.protocol import CustodianBehavior, derive_canary, execute_audit, execute_dispute
 from keystone.threshold_kem import dealer_keygen, seal_record
 
@@ -14,7 +14,7 @@ def _setup():
 
 
 
-def test_canary_is_publicly_deterministic_and_context_separated() -> None:
+def test_canary_is_publicly_deterministic_context_separated_and_in_group() -> None:
     epoch, _ = _setup()
 
     first = derive_canary(epoch, b"beacon-finalized", b"audit-slot-9")
@@ -27,26 +27,15 @@ def test_canary_is_publicly_deterministic_and_context_separated() -> None:
     assert first != other_beacon
     assert epoch.group.validate_element(first)
 
-    known_exponent = hash_to_scalar(
-        epoch.group,
-        b"KEYSTONE-CANARY-v1",
-        epoch.epoch_id.encode("utf-8"),
-        b"beacon-finalized",
-        b"audit-slot-9",
-        0,
-    )
-    assert first != pow(epoch.group.g, known_exponent, epoch.group.p)
-
 def test_audit_produces_objective_invalid_and_nonresponse_evidence() -> None:
     epoch, _ = _setup()
-    canary = derive_canary(epoch, b"beacon-43", b"audit-12")
     behaviors = {i: CustodianBehavior() for i in epoch.members}
     behaviors[2] = CustodianBehavior(latency_ms=900)
     behaviors[4] = CustodianBehavior(invalid_partial=True)
 
     result = execute_audit(
         epoch=epoch,
-        canary_c1=canary,
+        beacon=b"beacon-43",
         sampled_indices=[1, 2, 3, 4],
         behaviors=behaviors,
         deadline_ms=500,
@@ -60,6 +49,32 @@ def test_audit_produces_objective_invalid_and_nonresponse_evidence() -> None:
         (2, "NON_RESPONSE"),
         (4, "INVALID_PARTIAL"),
     }
+
+
+def test_audit_derives_challenge_internally_from_beacon(monkeypatch) -> None:
+    epoch, _ = _setup()
+    beacon = b"beacon-internal-derivation"
+    context = b"audit-internal-derivation"
+    expected = derive_canary(epoch, beacon, context)
+    observed: list[tuple[object, bytes, bytes]] = []
+
+    def recording_derive_canary(epoch_arg, beacon_arg: bytes, context_arg: bytes) -> int:
+        observed.append((epoch_arg, beacon_arg, context_arg))
+        return expected
+
+    monkeypatch.setattr(protocol_module, "derive_canary", recording_derive_canary)
+    result = execute_audit(
+        epoch,
+        beacon,
+        sampled_indices=[1],
+        behaviors={1: CustodianBehavior()},
+        deadline_ms=500,
+        required_valid=1,
+        context=context,
+    )
+
+    assert result.passed
+    assert observed == [(epoch, beacon, context)]
 
 
 def test_dispute_decrypts_when_threshold_valid_responses_arrive() -> None:
@@ -85,10 +100,9 @@ def test_selective_withholding_can_pass_audit_but_fail_targeted_dispute() -> Non
     for i in [4, 5, 6]:
         behaviors[i] = CustodianBehavior(ready_for_audit=True, ready_for_dispute=False)
 
-    canary = derive_canary(epoch, b"beacon-47", b"audit-before-target")
     audit = execute_audit(
         epoch,
-        canary,
+        b"beacon-47",
         sampled_indices=[1, 4, 6],
         behaviors=behaviors,
         deadline_ms=500,

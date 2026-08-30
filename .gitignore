@@ -22,3 +22,5 @@ contracts/broadcast/
 *.swp
 *.tmp
 
+# Research-case transient lock (authoritative state remains in the case ledgers)
+research-case/.control/runtime.lock
