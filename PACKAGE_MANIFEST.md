@@ -9,7 +9,7 @@ virtual environments, caches, Foundry build output, OS metadata, and the transie
 research-case runtime lock. Presence in this manifest does not make a scientific
 artifact independently verified.
 
-**Inventoried files:** 486 plus `PACKAGE_MANIFEST.md`; `SHA256SUMS` is excluded from its own checksum set.
+**Inventoried files:** 488 plus `PACKAGE_MANIFEST.md`; `SHA256SUMS` is excluded from its own checksum set.
 
 ## Entry points
 
@@ -112,6 +112,8 @@ artifact independently verified.
 - `./docs/22_PC03_METHODS_VERIFIER_HANDOFF.md` (7807 bytes)
 - `./docs/23_INDEPENDENT_INTAKE_HUMAN_VERIFICATION_SOP_BN.md` (29904 bytes)
 - `./docs/24_INVALID_AI_INTAKE_VERIFICATION_QUARANTINE.md` (1607 bytes)
+- `./docs/25_REM001_EXECUTOR_BRIEF_BN.md` (5759 bytes)
+- `./docs/26_PARALLEL_EXECUTION_BOARD_BN.md` (4897 bytes)
 - `./docs/superpowers/plans/2026-08-29-automated-visual-qa.md` (7310 bytes)
 - `./docs/superpowers/plans/2026-08-29-deadline-pilot-start-package.md` (13111 bytes)
 - `./docs/superpowers/plans/2026-08-29-dense-diagram-legibility.md` (4915 bytes)
