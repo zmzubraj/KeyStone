@@ -1,0 +1,6249 @@
+{
+  "assets": [
+    {
+      "aspect_ratio_agrees": true,
+      "code": "F1",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.735429
+            },
+            {
+              "colors": [
+                "#000000",
+                "#2ca02c"
+              ],
+              "delta_e": 71.529916
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835968
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045764
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 101.605913
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 99.999976
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#2ca02c"
+              ],
+              "delta_e": 87.282257
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 49.981367
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 55.959691
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 118.064702
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 68.926905
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#b0b0b0"
+              ],
+              "delta_e": 46.662362
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#cccccc"
+              ],
+              "delta_e": 50.963858
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#ff7f0e"
+              ],
+              "delta_e": 32.253957
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#ffffff"
+              ],
+              "delta_e": 61.979405
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209796
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 72.856657
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164008
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 73.70823
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 78.473185
+            }
+          ],
+          "protanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.698693
+            },
+            {
+              "colors": [
+                "#000000",
+                "#2ca02c"
+              ],
+              "delta_e": 84.5758
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835993
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045792
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 87.933461
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#2ca02c"
+              ],
+              "delta_e": 96.382408
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 41.920625
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 47.812728
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 100.967495
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 61.003972
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#b0b0b0"
+              ],
+              "delta_e": 60.837122
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#cccccc"
+              ],
+              "delta_e": 63.625612
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#ff7f0e"
+              ],
+              "delta_e": 4.642871
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#ffffff"
+              ],
+              "delta_e": 71.862384
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209799
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 65.362495
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164011
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 67.957073
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.710742
+            }
+          ],
+          "tritanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 58.944193
+            },
+            {
+              "colors": [
+                "#000000",
+                "#2ca02c"
+              ],
+              "delta_e": 69.195944
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835987
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045785
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 90.881381
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#2ca02c"
+              ],
+              "delta_e": 17.931462
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 36.906518
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 43.583762
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 96.938458
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 57.88207
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#b0b0b0"
+              ],
+              "delta_e": 41.245618
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#cccccc"
+              ],
+              "delta_e": 45.827337
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#ff7f0e"
+              ],
+              "delta_e": 102.900655
+            },
+            {
+              "colors": [
+                "#2ca02c",
+                "#ffffff"
+              ],
+              "delta_e": 57.509665
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209798
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 66.685487
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164017
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 68.867785
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954219
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.951553
+            }
+          ]
+        },
+        "grayscale_pairs": [
+          {
+            "colors": [
+              "#000000",
+              "#1f77b4"
+            ],
+            "delta_l": 47.979499
+          },
+          {
+            "colors": [
+              "#000000",
+              "#2ca02c"
+            ],
+            "delta_l": 57.901422
+          },
+          {
+            "colors": [
+              "#000000",
+              "#b0b0b0"
+            ],
+            "delta_l": 71.835987
+          },
+          {
+            "colors": [
+              "#000000",
+              "#cccccc"
+            ],
+            "delta_l": 82.045785
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ff7f0e"
+            ],
+            "delta_l": 66.882573
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ffffff"
+            ],
+            "delta_l": 100.000004
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#2ca02c"
+            ],
+            "delta_l": 9.921922
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#b0b0b0"
+            ],
+            "delta_l": 23.856488
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#cccccc"
+            ],
+            "delta_l": 34.066286
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ff7f0e"
+            ],
+            "delta_l": 18.903074
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ffffff"
+            ],
+            "delta_l": 52.020505
+          },
+          {
+            "colors": [
+              "#2ca02c",
+              "#b0b0b0"
+            ],
+            "delta_l": 13.934565
+          },
+          {
+            "colors": [
+              "#2ca02c",
+              "#cccccc"
+            ],
+            "delta_l": 24.144363
+          },
+          {
+            "colors": [
+              "#2ca02c",
+              "#ff7f0e"
+            ],
+            "delta_l": 8.981152
+          },
+          {
+            "colors": [
+              "#2ca02c",
+              "#ffffff"
+            ],
+            "delta_l": 42.098582
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#cccccc"
+            ],
+            "delta_l": 10.209798
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ff7f0e"
+            ],
+            "delta_l": 4.953413
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ffffff"
+            ],
+            "delta_l": 28.164017
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ff7f0e"
+            ],
+            "delta_l": 15.163211
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ffffff"
+            ],
+            "delta_l": 17.954219
+          },
+          {
+            "colors": [
+              "#ff7f0e",
+              "#ffffff"
+            ],
+            "delta_l": 33.11743
+          }
+        ],
+        "literal_colors": [
+          "#000000",
+          "#1f77b4",
+          "#2ca02c",
+          "#b0b0b0",
+          "#cccccc",
+          "#ff7f0e",
+          "#ffffff"
+        ],
+        "white_contrast": {
+          "#000000": 21.0,
+          "#1f77b4": 4.820882,
+          "#2ca02c": 3.40258,
+          "#b0b0b0": 2.168733,
+          "#cccccc": 1.605929,
+          "#ff7f0e": 2.531923,
+          "#ffffff": 1.0
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 203.2,
+        "85_mm": 430.305882
+      },
+      "png": {
+        "has_alpha": true,
+        "height_px": 900,
+        "mode": "RGBA",
+        "path": "prototype/results/figures/figure_1_theoretical_detection_bound.png",
+        "sha256": "8b3214778ddf623592471ab68123f3f5dbeaf75dde8e29fd4f2cd319beaf6e59",
+        "width_px": 1440
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 360,
+        "height_raw": "360pt",
+        "path": "prototype/results/figures/figure_1_theoretical_detection_bound.svg",
+        "sha256": "f81fd84542d02b57bf2ebafc787285d5fc0b9675262570fc5f90d7f228a0a78f",
+        "viewBox": [
+          0,
+          0,
+          576,
+          360
+        ],
+        "width": 576,
+        "width_raw": "576pt"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 8.858268,
+          "85_mm": 4.183071
+        },
+        "smallest_source_pt": 10,
+        "sources": [
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 10.0
+          },
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 12.0
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "F2",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.735429
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835968
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045764
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 101.605913
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 99.999976
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 49.981367
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 55.959691
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 118.064702
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 68.926905
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209796
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 72.856657
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164008
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 73.70823
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 78.473185
+            }
+          ],
+          "protanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.698693
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835993
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045792
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 87.933461
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 41.920625
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 47.812728
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 100.967495
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 61.003972
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209799
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 65.362495
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164011
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 67.957073
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.710742
+            }
+          ],
+          "tritanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 58.944193
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835987
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045785
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 90.881381
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 36.906518
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 43.583762
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 96.938458
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 57.88207
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209798
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 66.685487
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164017
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 68.867785
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954219
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.951553
+            }
+          ]
+        },
+        "grayscale_pairs": [
+          {
+            "colors": [
+              "#000000",
+              "#1f77b4"
+            ],
+            "delta_l": 47.979499
+          },
+          {
+            "colors": [
+              "#000000",
+              "#b0b0b0"
+            ],
+            "delta_l": 71.835987
+          },
+          {
+            "colors": [
+              "#000000",
+              "#cccccc"
+            ],
+            "delta_l": 82.045785
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ff7f0e"
+            ],
+            "delta_l": 66.882573
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ffffff"
+            ],
+            "delta_l": 100.000004
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#b0b0b0"
+            ],
+            "delta_l": 23.856488
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#cccccc"
+            ],
+            "delta_l": 34.066286
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ff7f0e"
+            ],
+            "delta_l": 18.903074
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ffffff"
+            ],
+            "delta_l": 52.020505
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#cccccc"
+            ],
+            "delta_l": 10.209798
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ff7f0e"
+            ],
+            "delta_l": 4.953413
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ffffff"
+            ],
+            "delta_l": 28.164017
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ff7f0e"
+            ],
+            "delta_l": 15.163211
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ffffff"
+            ],
+            "delta_l": 17.954219
+          },
+          {
+            "colors": [
+              "#ff7f0e",
+              "#ffffff"
+            ],
+            "delta_l": 33.11743
+          }
+        ],
+        "literal_colors": [
+          "#000000",
+          "#1f77b4",
+          "#b0b0b0",
+          "#cccccc",
+          "#ff7f0e",
+          "#ffffff"
+        ],
+        "white_contrast": {
+          "#000000": 21.0,
+          "#1f77b4": 4.820882,
+          "#b0b0b0": 2.168733,
+          "#cccccc": 1.605929,
+          "#ff7f0e": 2.531923,
+          "#ffffff": 1.0
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 203.2,
+        "85_mm": 430.305882
+      },
+      "png": {
+        "has_alpha": true,
+        "height_px": 900,
+        "mode": "RGBA",
+        "path": "prototype/results/figures/figure_2_iid_failure_sweep.png",
+        "sha256": "87fc3153486c2a3ba1f518465fa0be259bf76972472adf6671c80a9d28cc2e2a",
+        "width_px": 1440
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 360,
+        "height_raw": "360pt",
+        "path": "prototype/results/figures/figure_2_iid_failure_sweep.svg",
+        "sha256": "ab5fc73fa7adfabad682a00f31f9ed590505e939cf701ff8dd71b5bafd5dc3a8",
+        "viewBox": [
+          0,
+          0,
+          576,
+          360
+        ],
+        "width": 576,
+        "width_raw": "576pt"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 8.858268,
+          "85_mm": 4.183071
+        },
+        "smallest_source_pt": 10,
+        "sources": [
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 10.0
+          },
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 12.0
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "F3",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.735429
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835968
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 99.999976
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 49.981367
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 68.926905
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164008
+            }
+          ],
+          "protanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.698693
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835993
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 41.920625
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 61.003972
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164011
+            }
+          ],
+          "tritanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 58.944193
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835987
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 36.906518
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 57.88207
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164017
+            }
+          ]
+        },
+        "grayscale_pairs": [
+          {
+            "colors": [
+              "#000000",
+              "#1f77b4"
+            ],
+            "delta_l": 47.979499
+          },
+          {
+            "colors": [
+              "#000000",
+              "#b0b0b0"
+            ],
+            "delta_l": 71.835987
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ffffff"
+            ],
+            "delta_l": 100.000004
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#b0b0b0"
+            ],
+            "delta_l": 23.856488
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ffffff"
+            ],
+            "delta_l": 52.020505
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ffffff"
+            ],
+            "delta_l": 28.164017
+          }
+        ],
+        "literal_colors": [
+          "#000000",
+          "#1f77b4",
+          "#b0b0b0",
+          "#ffffff"
+        ],
+        "white_contrast": {
+          "#000000": 21.0,
+          "#1f77b4": 4.820882,
+          "#b0b0b0": 2.168733,
+          "#ffffff": 1.0
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 203.2,
+        "85_mm": 430.305882
+      },
+      "png": {
+        "has_alpha": true,
+        "height_px": 900,
+        "mode": "RGBA",
+        "path": "prototype/results/figures/figure_3_domain_diversity.png",
+        "sha256": "91222f77c3206a5498854b2b8aa2890782db88e81b89f8ed4eca621d530701c6",
+        "width_px": 1440
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 360,
+        "height_raw": "360pt",
+        "path": "prototype/results/figures/figure_3_domain_diversity.svg",
+        "sha256": "5d82b4f4d91a90768f1c2835eaa52f00904efa0d2eeec6a67dc21561962ca1b0",
+        "viewBox": [
+          0,
+          0,
+          576,
+          360
+        ],
+        "width": 576,
+        "width_raw": "576pt"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 8.858268,
+          "85_mm": 4.183071
+        },
+        "smallest_source_pt": 10,
+        "sources": [
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 10.0
+          },
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 12.0
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "F4",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.735429
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835968
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045764
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 101.605913
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 99.999976
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 49.981367
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 55.959691
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 118.064702
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 68.926905
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209796
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 72.856657
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164008
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 73.70823
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 78.473185
+            }
+          ],
+          "protanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.698693
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835993
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045792
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 87.933461
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 41.920625
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 47.812728
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 100.967495
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 61.003972
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209799
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 65.362495
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164011
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 67.957073
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.710742
+            }
+          ],
+          "tritanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 58.944193
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835987
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045785
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 90.881381
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 36.906518
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 43.583762
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 96.938458
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 57.88207
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209798
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 66.685487
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164017
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 68.867785
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954219
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.951553
+            }
+          ]
+        },
+        "grayscale_pairs": [
+          {
+            "colors": [
+              "#000000",
+              "#1f77b4"
+            ],
+            "delta_l": 47.979499
+          },
+          {
+            "colors": [
+              "#000000",
+              "#b0b0b0"
+            ],
+            "delta_l": 71.835987
+          },
+          {
+            "colors": [
+              "#000000",
+              "#cccccc"
+            ],
+            "delta_l": 82.045785
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ff7f0e"
+            ],
+            "delta_l": 66.882573
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ffffff"
+            ],
+            "delta_l": 100.000004
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#b0b0b0"
+            ],
+            "delta_l": 23.856488
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#cccccc"
+            ],
+            "delta_l": 34.066286
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ff7f0e"
+            ],
+            "delta_l": 18.903074
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ffffff"
+            ],
+            "delta_l": 52.020505
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#cccccc"
+            ],
+            "delta_l": 10.209798
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ff7f0e"
+            ],
+            "delta_l": 4.953413
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ffffff"
+            ],
+            "delta_l": 28.164017
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ff7f0e"
+            ],
+            "delta_l": 15.163211
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ffffff"
+            ],
+            "delta_l": 17.954219
+          },
+          {
+            "colors": [
+              "#ff7f0e",
+              "#ffffff"
+            ],
+            "delta_l": 33.11743
+          }
+        ],
+        "literal_colors": [
+          "#000000",
+          "#1f77b4",
+          "#b0b0b0",
+          "#cccccc",
+          "#ff7f0e",
+          "#ffffff"
+        ],
+        "white_contrast": {
+          "#000000": 21.0,
+          "#1f77b4": 4.820882,
+          "#b0b0b0": 2.168733,
+          "#cccccc": 1.605929,
+          "#ff7f0e": 2.531923,
+          "#ffffff": 1.0
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 203.2,
+        "85_mm": 430.305882
+      },
+      "png": {
+        "has_alpha": true,
+        "height_px": 900,
+        "mode": "RGBA",
+        "path": "prototype/results/figures/figure_4_selective_withholding_gap.png",
+        "sha256": "9d59193bb164a744d26d7a509b2c698c6a3a2a7beefbecb03fc185c742b08cac",
+        "width_px": 1440
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 360,
+        "height_raw": "360pt",
+        "path": "prototype/results/figures/figure_4_selective_withholding_gap.svg",
+        "sha256": "b92cf8b90c7c56151daa305fb670f4f49fbf74cf6ae8e0abc916ea3943b1aad9",
+        "viewBox": [
+          0,
+          0,
+          576,
+          360
+        ],
+        "width": 576,
+        "width_raw": "576pt"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 8.858268,
+          "85_mm": 4.183071
+        },
+        "smallest_source_pt": 10,
+        "sources": [
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 10.0
+          },
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 12.0
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "F5",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.735429
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835968
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045764
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 101.605913
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 99.999976
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 49.981367
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 55.959691
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 118.064702
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 68.926905
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209796
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 72.856657
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164008
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 73.70823
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 78.473185
+            }
+          ],
+          "protanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 62.698693
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835993
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045792
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 87.933461
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 41.920625
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 47.812728
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 100.967495
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 61.003972
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209799
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 65.362495
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164011
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 67.957073
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954212
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.710742
+            }
+          ],
+          "tritanopia": [
+            {
+              "colors": [
+                "#000000",
+                "#1f77b4"
+              ],
+              "delta_e": 58.944193
+            },
+            {
+              "colors": [
+                "#000000",
+                "#b0b0b0"
+              ],
+              "delta_e": 71.835987
+            },
+            {
+              "colors": [
+                "#000000",
+                "#cccccc"
+              ],
+              "delta_e": 82.045785
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ff7f0e"
+              ],
+              "delta_e": 90.881381
+            },
+            {
+              "colors": [
+                "#000000",
+                "#ffffff"
+              ],
+              "delta_e": 100.000004
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#b0b0b0"
+              ],
+              "delta_e": 36.906518
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#cccccc"
+              ],
+              "delta_e": 43.583762
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ff7f0e"
+              ],
+              "delta_e": 96.938458
+            },
+            {
+              "colors": [
+                "#1f77b4",
+                "#ffffff"
+              ],
+              "delta_e": 57.88207
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#cccccc"
+              ],
+              "delta_e": 10.209798
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ff7f0e"
+              ],
+              "delta_e": 66.685487
+            },
+            {
+              "colors": [
+                "#b0b0b0",
+                "#ffffff"
+              ],
+              "delta_e": 28.164017
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ff7f0e"
+              ],
+              "delta_e": 68.867785
+            },
+            {
+              "colors": [
+                "#cccccc",
+                "#ffffff"
+              ],
+              "delta_e": 17.954219
+            },
+            {
+              "colors": [
+                "#ff7f0e",
+                "#ffffff"
+              ],
+              "delta_e": 75.951553
+            }
+          ]
+        },
+        "grayscale_pairs": [
+          {
+            "colors": [
+              "#000000",
+              "#1f77b4"
+            ],
+            "delta_l": 47.979499
+          },
+          {
+            "colors": [
+              "#000000",
+              "#b0b0b0"
+            ],
+            "delta_l": 71.835987
+          },
+          {
+            "colors": [
+              "#000000",
+              "#cccccc"
+            ],
+            "delta_l": 82.045785
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ff7f0e"
+            ],
+            "delta_l": 66.882573
+          },
+          {
+            "colors": [
+              "#000000",
+              "#ffffff"
+            ],
+            "delta_l": 100.000004
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#b0b0b0"
+            ],
+            "delta_l": 23.856488
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#cccccc"
+            ],
+            "delta_l": 34.066286
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ff7f0e"
+            ],
+            "delta_l": 18.903074
+          },
+          {
+            "colors": [
+              "#1f77b4",
+              "#ffffff"
+            ],
+            "delta_l": 52.020505
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#cccccc"
+            ],
+            "delta_l": 10.209798
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ff7f0e"
+            ],
+            "delta_l": 4.953413
+          },
+          {
+            "colors": [
+              "#b0b0b0",
+              "#ffffff"
+            ],
+            "delta_l": 28.164017
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ff7f0e"
+            ],
+            "delta_l": 15.163211
+          },
+          {
+            "colors": [
+              "#cccccc",
+              "#ffffff"
+            ],
+            "delta_l": 17.954219
+          },
+          {
+            "colors": [
+              "#ff7f0e",
+              "#ffffff"
+            ],
+            "delta_l": 33.11743
+          }
+        ],
+        "literal_colors": [
+          "#000000",
+          "#1f77b4",
+          "#b0b0b0",
+          "#cccccc",
+          "#ff7f0e",
+          "#ffffff"
+        ],
+        "white_contrast": {
+          "#000000": 21.0,
+          "#1f77b4": 4.820882,
+          "#b0b0b0": 2.168733,
+          "#cccccc": 1.605929,
+          "#ff7f0e": 2.531923,
+          "#ffffff": 1.0
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 203.2,
+        "85_mm": 430.305882
+      },
+      "png": {
+        "has_alpha": true,
+        "height_px": 900,
+        "mode": "RGBA",
+        "path": "prototype/results/figures/figure_5_sampling_strategy.png",
+        "sha256": "7e5a7e0fc80fd08a44e5dec49ac8a3eae0e2064bd59d641cef6e52b61cc6ace5",
+        "width_px": 1440
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 360,
+        "height_raw": "360pt",
+        "path": "prototype/results/figures/figure_5_sampling_strategy.svg",
+        "sha256": "c4a7261da2b9ace64bdb0369c72940f74c28842902d3db8c7812dc8bea47531a",
+        "viewBox": [
+          0,
+          0,
+          576,
+          360
+        ],
+        "width": 576,
+        "width_raw": "576pt"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 8.858268,
+          "85_mm": 4.183071
+        },
+        "smallest_source_pt": 10,
+        "sources": [
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 10.0
+          },
+          {
+            "method": "matplotlib_transform",
+            "source_pt": 12.0
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D1",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [],
+          "protanopia": [],
+          "tritanopia": []
+        },
+        "grayscale_pairs": [],
+        "literal_colors": [
+          "#555555"
+        ],
+        "white_contrast": {
+          "#555555": 7.455178
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 225.777778,
+        "85_mm": 478.117647
+      },
+      "png": {
+        "has_alpha": false,
+        "height_px": 1320,
+        "mode": "RGB",
+        "path": "diagrams/01_system_architecture.png",
+        "sha256": "4e73a92d8acce4121565862b99c1b4a207266b4ebf757d1d189fe687d9e400db",
+        "width_px": 1600
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 1320,
+        "height_raw": "1320",
+        "path": "diagrams/01_system_architecture.svg",
+        "sha256": "4d52a502b0511274baecbf906d9447146b0e7fa46fc71d283eb7b8004aaf6cd4",
+        "viewBox": [
+          0,
+          0,
+          1600,
+          1320
+        ],
+        "width": 1600,
+        "width_raw": "1600"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 7.653543,
+          "85_mm": 3.614173
+        },
+        "smallest_source_pt": 18,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 18.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 28.5
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D2",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [],
+          "protanopia": [],
+          "tritanopia": []
+        },
+        "grayscale_pairs": [],
+        "literal_colors": [
+          "#24364b"
+        ],
+        "white_contrast": {
+          "#24364b": 12.321917
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 225.777778,
+        "85_mm": 478.117647
+      },
+      "png": {
+        "has_alpha": false,
+        "height_px": 1450,
+        "mode": "RGB",
+        "path": "diagrams/02_property_separation.png",
+        "sha256": "64b8f957bd1d9a55ae5b8db0893815db7e93c3cad2ad2cceac76a42cca2880e7",
+        "width_px": 1600
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 1450,
+        "height_raw": "1450",
+        "path": "diagrams/02_property_separation.svg",
+        "sha256": "1ea4e7a01420e4b9a3f28435ba3c14138ba59ba4c12a1971bce37e0735855c03",
+        "viewBox": [
+          0,
+          0,
+          1600,
+          1450
+        ],
+        "width": 1600,
+        "width_raw": "1600"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 7.653543,
+          "85_mm": 3.614173
+        },
+        "smallest_source_pt": 18,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 18.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 27.0
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D3",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [
+            {
+              "colors": [
+                "#444444",
+                "#555555"
+              ],
+              "delta_e": 7.293947
+            },
+            {
+              "colors": [
+                "#444444",
+                "#e9f1ff"
+              ],
+              "delta_e": 66.291139
+            },
+            {
+              "colors": [
+                "#444444",
+                "#eaf8ea"
+              ],
+              "delta_e": 67.309032
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f7f7f7"
+              ],
+              "delta_e": 68.380185
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffe9e9"
+              ],
+              "delta_e": 65.82
+            },
+            {
+              "colors": [
+                "#444444",
+                "#fff4d6"
+              ],
+              "delta_e": 69.774894
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffffff"
+              ],
+              "delta_e": 71.148082
+            },
+            {
+              "colors": [
+                "#555555",
+                "#e9f1ff"
+              ],
+              "delta_e": 59.056098
+            },
+            {
+              "colors": [
+                "#555555",
+                "#eaf8ea"
+              ],
+              "delta_e": 60.034533
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f7f7f7"
+              ],
+              "delta_e": 61.086238
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffe9e9"
+              ],
+              "delta_e": 58.537695
+            },
+            {
+              "colors": [
+                "#555555",
+                "#fff4d6"
+              ],
+              "delta_e": 62.699714
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffffff"
+              ],
+              "delta_e": 63.854135
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#eaf8ea"
+              ],
+              "delta_e": 12.644965
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 8.340115
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 11.44157
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#fff4d6"
+              ],
+              "delta_e": 24.101432
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffffff"
+              ],
+              "delta_e": 9.561542
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f7f7f7"
+              ],
+              "delta_e": 4.799421
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffe9e9"
+              ],
+              "delta_e": 1.818599
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#fff4d6"
+              ],
+              "delta_e": 11.462198
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffffff"
+              ],
+              "delta_e": 6.124607
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffe9e9"
+              ],
+              "delta_e": 4.396744
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#fff4d6"
+              ],
+              "delta_e": 16.08358
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffffff"
+              ],
+              "delta_e": 2.767897
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#fff4d6"
+              ],
+              "delta_e": 12.756934
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#ffffff"
+              ],
+              "delta_e": 6.456164
+            },
+            {
+              "colors": [
+                "#fff4d6",
+                "#ffffff"
+              ],
+              "delta_e": 16.401597
+            }
+          ],
+          "protanopia": [
+            {
+              "colors": [
+                "#444444",
+                "#555555"
+              ],
+              "delta_e": 7.293949
+            },
+            {
+              "colors": [
+                "#444444",
+                "#e9f1ff"
+              ],
+              "delta_e": 66.85982
+            },
+            {
+              "colors": [
+                "#444444",
+                "#eaf8ea"
+              ],
+              "delta_e": 67.980942
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f7f7f7"
+              ],
+              "delta_e": 68.380204
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffe9e9"
+              ],
+              "delta_e": 64.438744
+            },
+            {
+              "colors": [
+                "#444444",
+                "#fff4d6"
+              ],
+              "delta_e": 68.637678
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffffff"
+              ],
+              "delta_e": 71.148097
+            },
+            {
+              "colors": [
+                "#555555",
+                "#e9f1ff"
+              ],
+              "delta_e": 59.61165
+            },
+            {
+              "colors": [
+                "#555555",
+                "#eaf8ea"
+              ],
+              "delta_e": 60.720501
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f7f7f7"
+              ],
+              "delta_e": 61.086255
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffe9e9"
+              ],
+              "delta_e": 57.146862
+            },
+            {
+              "colors": [
+                "#555555",
+                "#fff4d6"
+              ],
+              "delta_e": 61.562703
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffffff"
+              ],
+              "delta_e": 63.854148
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#eaf8ea"
+              ],
+              "delta_e": 13.269016
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 7.31165
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 8.753291
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#fff4d6"
+              ],
+              "delta_e": 22.870875
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffffff"
+              ],
+              "delta_e": 8.462166
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f7f7f7"
+              ],
+              "delta_e": 6.188466
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffe9e9"
+              ],
+              "delta_e": 5.736427
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#fff4d6"
+              ],
+              "delta_e": 9.698567
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffffff"
+              ],
+              "delta_e": 7.050702
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffe9e9"
+              ],
+              "delta_e": 4.213098
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#fff4d6"
+              ],
+              "delta_e": 15.886365
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffffff"
+              ],
+              "delta_e": 2.767892
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#fff4d6"
+              ],
+              "delta_e": 14.556494
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#ffffff"
+              ],
+              "delta_e": 6.878967
+            },
+            {
+              "colors": [
+                "#fff4d6",
+                "#ffffff"
+              ],
+              "delta_e": 16.395907
+            }
+          ],
+          "tritanopia": [
+            {
+              "colors": [
+                "#444444",
+                "#555555"
+              ],
+              "delta_e": 7.293949
+            },
+            {
+              "colors": [
+                "#444444",
+                "#e9f1ff"
+              ],
+              "delta_e": 66.39392
+            },
+            {
+              "colors": [
+                "#444444",
+                "#eaf8ea"
+              ],
+              "delta_e": 67.507592
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f7f7f7"
+              ],
+              "delta_e": 68.3802
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffe9e9"
+              ],
+              "delta_e": 65.34537
+            },
+            {
+              "colors": [
+                "#444444",
+                "#fff4d6"
+              ],
+              "delta_e": 67.001111
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffffff"
+              ],
+              "delta_e": 71.1481
+            },
+            {
+              "colors": [
+                "#555555",
+                "#e9f1ff"
+              ],
+              "delta_e": 59.127577
+            },
+            {
+              "colors": [
+                "#555555",
+                "#eaf8ea"
+              ],
+              "delta_e": 60.238367
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f7f7f7"
+              ],
+              "delta_e": 61.086251
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffe9e9"
+              ],
+              "delta_e": 58.123932
+            },
+            {
+              "colors": [
+                "#555555",
+                "#fff4d6"
+              ],
+              "delta_e": 59.740363
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffffff"
+              ],
+              "delta_e": 63.854151
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#eaf8ea"
+              ],
+              "delta_e": 2.771307
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 5.877241
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 14.079642
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#fff4d6"
+              ],
+              "delta_e": 11.451356
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffffff"
+              ],
+              "delta_e": 7.378169
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f7f7f7"
+              ],
+              "delta_e": 5.355365
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffe9e9"
+              ],
+              "delta_e": 14.061027
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#fff4d6"
+              ],
+              "delta_e": 10.723813
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffffff"
+              ],
+              "delta_e": 6.503989
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffe9e9"
+              ],
+              "delta_e": 9.390613
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#fff4d6"
+              ],
+              "delta_e": 6.251473
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffffff"
+              ],
+              "delta_e": 2.7679
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#fff4d6"
+              ],
+              "delta_e": 4.423987
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#ffffff"
+              ],
+              "delta_e": 10.762982
+            },
+            {
+              "colors": [
+                "#fff4d6",
+                "#ffffff"
+              ],
+              "delta_e": 7.475392
+            }
+          ]
+        },
+        "grayscale_pairs": [
+          {
+            "colors": [
+              "#444444",
+              "#555555"
+            ],
+            "delta_l": 7.293949
+          },
+          {
+            "colors": [
+              "#444444",
+              "#e9f1ff"
+            ],
+            "delta_l": 66.078434
+          },
+          {
+            "colors": [
+              "#444444",
+              "#eaf8ea"
+            ],
+            "delta_l": 67.379647
+          },
+          {
+            "colors": [
+              "#444444",
+              "#f7f7f7"
+            ],
+            "delta_l": 68.3802
+          },
+          {
+            "colors": [
+              "#444444",
+              "#ffe9e9"
+            ],
+            "delta_l": 65.212919
+          },
+          {
+            "colors": [
+              "#444444",
+              "#fff4d6"
+            ],
+            "delta_l": 67.483023
+          },
+          {
+            "colors": [
+              "#444444",
+              "#ffffff"
+            ],
+            "delta_l": 71.1481
+          },
+          {
+            "colors": [
+              "#555555",
+              "#e9f1ff"
+            ],
+            "delta_l": 58.784485
+          },
+          {
+            "colors": [
+              "#555555",
+              "#eaf8ea"
+            ],
+            "delta_l": 60.085698
+          },
+          {
+            "colors": [
+              "#555555",
+              "#f7f7f7"
+            ],
+            "delta_l": 61.086251
+          },
+          {
+            "colors": [
+              "#555555",
+              "#ffe9e9"
+            ],
+            "delta_l": 57.918971
+          },
+          {
+            "colors": [
+              "#555555",
+              "#fff4d6"
+            ],
+            "delta_l": 60.189075
+          },
+          {
+            "colors": [
+              "#555555",
+              "#ffffff"
+            ],
+            "delta_l": 63.854151
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#eaf8ea"
+            ],
+            "delta_l": 1.301213
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#f7f7f7"
+            ],
+            "delta_l": 2.301766
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#ffe9e9"
+            ],
+            "delta_l": 0.865514
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#fff4d6"
+            ],
+            "delta_l": 1.40459
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#ffffff"
+            ],
+            "delta_l": 5.069666
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#f7f7f7"
+            ],
+            "delta_l": 1.000553
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#ffe9e9"
+            ],
+            "delta_l": 2.166727
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#fff4d6"
+            ],
+            "delta_l": 0.103377
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#ffffff"
+            ],
+            "delta_l": 3.768453
+          },
+          {
+            "colors": [
+              "#f7f7f7",
+              "#ffe9e9"
+            ],
+            "delta_l": 3.16728
+          },
+          {
+            "colors": [
+              "#f7f7f7",
+              "#fff4d6"
+            ],
+            "delta_l": 0.897176
+          },
+          {
+            "colors": [
+              "#f7f7f7",
+              "#ffffff"
+            ],
+            "delta_l": 2.7679
+          },
+          {
+            "colors": [
+              "#ffe9e9",
+              "#fff4d6"
+            ],
+            "delta_l": 2.270104
+          },
+          {
+            "colors": [
+              "#ffe9e9",
+              "#ffffff"
+            ],
+            "delta_l": 5.935181
+          },
+          {
+            "colors": [
+              "#fff4d6",
+              "#ffffff"
+            ],
+            "delta_l": 3.665077
+          }
+        ],
+        "literal_colors": [
+          "#444444",
+          "#555555",
+          "#e9f1ff",
+          "#eaf8ea",
+          "#f7f7f7",
+          "#ffe9e9",
+          "#fff4d6",
+          "#ffffff"
+        ],
+        "white_contrast": {
+          "#444444": 9.739769,
+          "#555555": 7.455178,
+          "#e9f1ff": 1.135697,
+          "#eaf8ea": 1.098697,
+          "#f7f7f7": 1.071307,
+          "#ffe9e9": 1.161234,
+          "#fff4d6": 1.095846,
+          "#ffffff": 1.0
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 159.737778,
+        "85_mm": 338.268235
+      },
+      "png": {
+        "has_alpha": true,
+        "height_px": 1318,
+        "mode": "RGBA",
+        "path": "diagrams/03_audit_sequence.png",
+        "sha256": "5e867f1a1fcc392552427ea7642a21de8068f0e1399d8d1bdc568636ed8092af",
+        "width_px": 1132
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 527,
+        "height_raw": "527pt",
+        "path": "diagrams/03_audit_sequence.svg",
+        "sha256": "12e8d0c51a62f32cb10c2140f245c1d1b1da84d35323fdc2b7e24b57f8baeeca",
+        "viewBox": [
+          0,
+          0,
+          453,
+          527
+        ],
+        "width": 453,
+        "width_raw": "453pt"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 8.44762,
+          "85_mm": 3.989154
+        },
+        "smallest_source_pt": 7.5,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 7.5
+          },
+          {
+            "method": "attribute",
+            "source_pt": 13.5
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D4",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [
+            {
+              "colors": [
+                "#444444",
+                "#555555"
+              ],
+              "delta_e": 7.293947
+            },
+            {
+              "colors": [
+                "#444444",
+                "#e9f1ff"
+              ],
+              "delta_e": 66.291139
+            },
+            {
+              "colors": [
+                "#444444",
+                "#eaf8ea"
+              ],
+              "delta_e": 67.309032
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f5e9ff"
+              ],
+              "delta_e": 65.717612
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f7f7f7"
+              ],
+              "delta_e": 68.380185
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffe9e9"
+              ],
+              "delta_e": 65.82
+            },
+            {
+              "colors": [
+                "#444444",
+                "#fff4d6"
+              ],
+              "delta_e": 69.774894
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffffff"
+              ],
+              "delta_e": 71.148082
+            },
+            {
+              "colors": [
+                "#555555",
+                "#e9f1ff"
+              ],
+              "delta_e": 59.056098
+            },
+            {
+              "colors": [
+                "#555555",
+                "#eaf8ea"
+              ],
+              "delta_e": 60.034533
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f5e9ff"
+              ],
+              "delta_e": 58.496589
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f7f7f7"
+              ],
+              "delta_e": 61.086238
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffe9e9"
+              ],
+              "delta_e": 58.537695
+            },
+            {
+              "colors": [
+                "#555555",
+                "#fff4d6"
+              ],
+              "delta_e": 62.699714
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffffff"
+              ],
+              "delta_e": 63.854135
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#eaf8ea"
+              ],
+              "delta_e": 12.644965
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f5e9ff"
+              ],
+              "delta_e": 1.058185
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 8.340115
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 11.44157
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#fff4d6"
+              ],
+              "delta_e": 24.101432
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffffff"
+              ],
+              "delta_e": 9.561542
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f5e9ff"
+              ],
+              "delta_e": 13.534937
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f7f7f7"
+              ],
+              "delta_e": 4.799421
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffe9e9"
+              ],
+              "delta_e": 1.818599
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#fff4d6"
+              ],
+              "delta_e": 11.462198
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffffff"
+              ],
+              "delta_e": 6.124607
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 9.328647
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 12.265236
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#fff4d6"
+              ],
+              "delta_e": 24.974256
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#ffffff"
+              ],
+              "delta_e": 10.614185
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffe9e9"
+              ],
+              "delta_e": 4.396744
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#fff4d6"
+              ],
+              "delta_e": 16.08358
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffffff"
+              ],
+              "delta_e": 2.767897
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#fff4d6"
+              ],
+              "delta_e": 12.756934
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#ffffff"
+              ],
+              "delta_e": 6.456164
+            },
+            {
+              "colors": [
+                "#fff4d6",
+                "#ffffff"
+              ],
+              "delta_e": 16.401597
+            }
+          ],
+          "protanopia": [
+            {
+              "colors": [
+                "#444444",
+                "#555555"
+              ],
+              "delta_e": 7.293949
+            },
+            {
+              "colors": [
+                "#444444",
+                "#e9f1ff"
+              ],
+              "delta_e": 66.85982
+            },
+            {
+              "colors": [
+                "#444444",
+                "#eaf8ea"
+              ],
+              "delta_e": 67.980942
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f5e9ff"
+              ],
+              "delta_e": 65.507861
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f7f7f7"
+              ],
+              "delta_e": 68.380204
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffe9e9"
+              ],
+              "delta_e": 64.438744
+            },
+            {
+              "colors": [
+                "#444444",
+                "#fff4d6"
+              ],
+              "delta_e": 68.637678
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffffff"
+              ],
+              "delta_e": 71.148097
+            },
+            {
+              "colors": [
+                "#555555",
+                "#e9f1ff"
+              ],
+              "delta_e": 59.61165
+            },
+            {
+              "colors": [
+                "#555555",
+                "#eaf8ea"
+              ],
+              "delta_e": 60.720501
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f5e9ff"
+              ],
+              "delta_e": 58.30328
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f7f7f7"
+              ],
+              "delta_e": 61.086255
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffe9e9"
+              ],
+              "delta_e": 57.146862
+            },
+            {
+              "colors": [
+                "#555555",
+                "#fff4d6"
+              ],
+              "delta_e": 61.562703
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffffff"
+              ],
+              "delta_e": 63.854148
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#eaf8ea"
+              ],
+              "delta_e": 13.269016
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f5e9ff"
+              ],
+              "delta_e": 3.087078
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 7.31165
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 8.753291
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#fff4d6"
+              ],
+              "delta_e": 22.870875
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffffff"
+              ],
+              "delta_e": 8.462166
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f5e9ff"
+              ],
+              "delta_e": 16.060856
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f7f7f7"
+              ],
+              "delta_e": 6.188466
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffe9e9"
+              ],
+              "delta_e": 5.736427
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#fff4d6"
+              ],
+              "delta_e": 9.698567
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffffff"
+              ],
+              "delta_e": 7.050702
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 10.289375
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 11.095103
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#fff4d6"
+              ],
+              "delta_e": 25.529385
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#ffffff"
+              ],
+              "delta_e": 11.54922
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffe9e9"
+              ],
+              "delta_e": 4.213098
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#fff4d6"
+              ],
+              "delta_e": 15.886365
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffffff"
+              ],
+              "delta_e": 2.767892
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#fff4d6"
+              ],
+              "delta_e": 14.556494
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#ffffff"
+              ],
+              "delta_e": 6.878967
+            },
+            {
+              "colors": [
+                "#fff4d6",
+                "#ffffff"
+              ],
+              "delta_e": 16.395907
+            }
+          ],
+          "tritanopia": [
+            {
+              "colors": [
+                "#444444",
+                "#555555"
+              ],
+              "delta_e": 7.293949
+            },
+            {
+              "colors": [
+                "#444444",
+                "#e9f1ff"
+              ],
+              "delta_e": 66.39392
+            },
+            {
+              "colors": [
+                "#444444",
+                "#eaf8ea"
+              ],
+              "delta_e": 67.507592
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f5e9ff"
+              ],
+              "delta_e": 65.239116
+            },
+            {
+              "colors": [
+                "#444444",
+                "#f7f7f7"
+              ],
+              "delta_e": 68.3802
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffe9e9"
+              ],
+              "delta_e": 65.34537
+            },
+            {
+              "colors": [
+                "#444444",
+                "#fff4d6"
+              ],
+              "delta_e": 67.001111
+            },
+            {
+              "colors": [
+                "#444444",
+                "#ffffff"
+              ],
+              "delta_e": 71.1481
+            },
+            {
+              "colors": [
+                "#555555",
+                "#e9f1ff"
+              ],
+              "delta_e": 59.127577
+            },
+            {
+              "colors": [
+                "#555555",
+                "#eaf8ea"
+              ],
+              "delta_e": 60.238367
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f5e9ff"
+              ],
+              "delta_e": 57.959568
+            },
+            {
+              "colors": [
+                "#555555",
+                "#f7f7f7"
+              ],
+              "delta_e": 61.086251
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffe9e9"
+              ],
+              "delta_e": 58.123932
+            },
+            {
+              "colors": [
+                "#555555",
+                "#fff4d6"
+              ],
+              "delta_e": 59.740363
+            },
+            {
+              "colors": [
+                "#555555",
+                "#ffffff"
+              ],
+              "delta_e": 63.854151
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#eaf8ea"
+              ],
+              "delta_e": 2.771307
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f5e9ff"
+              ],
+              "delta_e": 8.671408
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 5.877241
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 14.079642
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#fff4d6"
+              ],
+              "delta_e": 11.451356
+            },
+            {
+              "colors": [
+                "#e9f1ff",
+                "#ffffff"
+              ],
+              "delta_e": 7.378169
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f5e9ff"
+              ],
+              "delta_e": 9.256965
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#f7f7f7"
+              ],
+              "delta_e": 5.355365
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffe9e9"
+              ],
+              "delta_e": 14.061027
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#fff4d6"
+              ],
+              "delta_e": 10.723813
+            },
+            {
+              "colors": [
+                "#eaf8ea",
+                "#ffffff"
+              ],
+              "delta_e": 6.503989
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#f7f7f7"
+              ],
+              "delta_e": 5.051158
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#ffe9e9"
+              ],
+              "delta_e": 5.731214
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#fff4d6"
+              ],
+              "delta_e": 5.191398
+            },
+            {
+              "colors": [
+                "#f5e9ff",
+                "#ffffff"
+              ],
+              "delta_e": 7.155227
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffe9e9"
+              ],
+              "delta_e": 9.390613
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#fff4d6"
+              ],
+              "delta_e": 6.251473
+            },
+            {
+              "colors": [
+                "#f7f7f7",
+                "#ffffff"
+              ],
+              "delta_e": 2.7679
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#fff4d6"
+              ],
+              "delta_e": 4.423987
+            },
+            {
+              "colors": [
+                "#ffe9e9",
+                "#ffffff"
+              ],
+              "delta_e": 10.762982
+            },
+            {
+              "colors": [
+                "#fff4d6",
+                "#ffffff"
+              ],
+              "delta_e": 7.475392
+            }
+          ]
+        },
+        "grayscale_pairs": [
+          {
+            "colors": [
+              "#444444",
+              "#555555"
+            ],
+            "delta_l": 7.293949
+          },
+          {
+            "colors": [
+              "#444444",
+              "#e9f1ff"
+            ],
+            "delta_l": 66.078434
+          },
+          {
+            "colors": [
+              "#444444",
+              "#eaf8ea"
+            ],
+            "delta_l": 67.379647
+          },
+          {
+            "colors": [
+              "#444444",
+              "#f5e9ff"
+            ],
+            "delta_l": 64.99266
+          },
+          {
+            "colors": [
+              "#444444",
+              "#f7f7f7"
+            ],
+            "delta_l": 68.3802
+          },
+          {
+            "colors": [
+              "#444444",
+              "#ffe9e9"
+            ],
+            "delta_l": 65.212919
+          },
+          {
+            "colors": [
+              "#444444",
+              "#fff4d6"
+            ],
+            "delta_l": 67.483023
+          },
+          {
+            "colors": [
+              "#444444",
+              "#ffffff"
+            ],
+            "delta_l": 71.1481
+          },
+          {
+            "colors": [
+              "#555555",
+              "#e9f1ff"
+            ],
+            "delta_l": 58.784485
+          },
+          {
+            "colors": [
+              "#555555",
+              "#eaf8ea"
+            ],
+            "delta_l": 60.085698
+          },
+          {
+            "colors": [
+              "#555555",
+              "#f5e9ff"
+            ],
+            "delta_l": 57.698711
+          },
+          {
+            "colors": [
+              "#555555",
+              "#f7f7f7"
+            ],
+            "delta_l": 61.086251
+          },
+          {
+            "colors": [
+              "#555555",
+              "#ffe9e9"
+            ],
+            "delta_l": 57.918971
+          },
+          {
+            "colors": [
+              "#555555",
+              "#fff4d6"
+            ],
+            "delta_l": 60.189075
+          },
+          {
+            "colors": [
+              "#555555",
+              "#ffffff"
+            ],
+            "delta_l": 63.854151
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#eaf8ea"
+            ],
+            "delta_l": 1.301213
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#f5e9ff"
+            ],
+            "delta_l": 1.085774
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#f7f7f7"
+            ],
+            "delta_l": 2.301766
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#ffe9e9"
+            ],
+            "delta_l": 0.865514
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#fff4d6"
+            ],
+            "delta_l": 1.40459
+          },
+          {
+            "colors": [
+              "#e9f1ff",
+              "#ffffff"
+            ],
+            "delta_l": 5.069666
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#f5e9ff"
+            ],
+            "delta_l": 2.386987
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#f7f7f7"
+            ],
+            "delta_l": 1.000553
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#ffe9e9"
+            ],
+            "delta_l": 2.166727
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#fff4d6"
+            ],
+            "delta_l": 0.103377
+          },
+          {
+            "colors": [
+              "#eaf8ea",
+              "#ffffff"
+            ],
+            "delta_l": 3.768453
+          },
+          {
+            "colors": [
+              "#f5e9ff",
+              "#f7f7f7"
+            ],
+            "delta_l": 3.38754
+          },
+          {
+            "colors": [
+              "#f5e9ff",
+              "#ffe9e9"
+            ],
+            "delta_l": 0.22026
+          },
+          {
+            "colors": [
+              "#f5e9ff",
+              "#fff4d6"
+            ],
+            "delta_l": 2.490364
+          },
+          {
+            "colors": [
+              "#f5e9ff",
+              "#ffffff"
+            ],
+            "delta_l": 6.15544
+          },
+          {
+            "colors": [
+              "#f7f7f7",
+              "#ffe9e9"
+            ],
+            "delta_l": 3.16728
+          },
+          {
+            "colors": [
+              "#f7f7f7",
+              "#fff4d6"
+            ],
+            "delta_l": 0.897176
+          },
+          {
+            "colors": [
+              "#f7f7f7",
+              "#ffffff"
+            ],
+            "delta_l": 2.7679
+          },
+          {
+            "colors": [
+              "#ffe9e9",
+              "#fff4d6"
+            ],
+            "delta_l": 2.270104
+          },
+          {
+            "colors": [
+              "#ffe9e9",
+              "#ffffff"
+            ],
+            "delta_l": 5.935181
+          },
+          {
+            "colors": [
+              "#fff4d6",
+              "#ffffff"
+            ],
+            "delta_l": 3.665077
+          }
+        ],
+        "literal_colors": [
+          "#444444",
+          "#555555",
+          "#e9f1ff",
+          "#eaf8ea",
+          "#f5e9ff",
+          "#f7f7f7",
+          "#ffe9e9",
+          "#fff4d6",
+          "#ffffff"
+        ],
+        "white_contrast": {
+          "#444444": 9.739769,
+          "#555555": 7.455178,
+          "#e9f1ff": 1.135697,
+          "#eaf8ea": 1.098697,
+          "#f5e9ff": 1.167831,
+          "#f7f7f7": 1.071307,
+          "#ffe9e9": 1.161234,
+          "#fff4d6": 1.095846,
+          "#ffffff": 1.0
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 143.651111,
+        "85_mm": 304.202353
+      },
+      "png": {
+        "has_alpha": true,
+        "height_px": 1318,
+        "mode": "RGBA",
+        "path": "diagrams/04_dispute_sequence.png",
+        "sha256": "b835231559b9d58f810e06d2357aad460e3b48d36d5e41016ccc41a38f1cf258",
+        "width_px": 1018
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 527,
+        "height_raw": "527pt",
+        "path": "diagrams/04_dispute_sequence.svg",
+        "sha256": "aa453820ba41db63ae809b138c68d424dd6b30f76083d28f5809b71179f0bebb",
+        "viewBox": [
+          0,
+          0,
+          407,
+          527
+        ],
+        "width": 407,
+        "width_raw": "407pt"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 9.402387,
+          "85_mm": 4.440016
+        },
+        "smallest_source_pt": 7.5,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 7.5
+          },
+          {
+            "method": "attribute",
+            "source_pt": 13.5
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D5",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [],
+          "protanopia": [],
+          "tritanopia": []
+        },
+        "grayscale_pairs": [],
+        "literal_colors": [
+          "#24364b"
+        ],
+        "white_contrast": {
+          "#24364b": 12.321917
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 225.777778,
+        "85_mm": 478.117647
+      },
+      "png": {
+        "has_alpha": false,
+        "height_px": 1440,
+        "mode": "RGB",
+        "path": "diagrams/05_state_machines.png",
+        "sha256": "967291472c477a38aa04c2bfebcecceb8ec653795a4434be43f31ac775ff7074",
+        "width_px": 1600
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 1440,
+        "height_raw": "1440",
+        "path": "diagrams/05_state_machines.svg",
+        "sha256": "c7eca2df910441881e7164adc0fc84455fa0df160b17446fa66ffce452d1e39c",
+        "viewBox": [
+          0,
+          0,
+          1600,
+          1440
+        ],
+        "width": 1600,
+        "width_raw": "1600"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 7.653543,
+          "85_mm": 3.614173
+        },
+        "smallest_source_pt": 18,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 18.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 21.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 28.5
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D6",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [],
+          "protanopia": [],
+          "tritanopia": []
+        },
+        "grayscale_pairs": [],
+        "literal_colors": [
+          "#24364b"
+        ],
+        "white_contrast": {
+          "#24364b": 12.321917
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 225.777778,
+        "85_mm": 478.117647
+      },
+      "png": {
+        "has_alpha": false,
+        "height_px": 1390,
+        "mode": "RGB",
+        "path": "diagrams/06_threat_model.png",
+        "sha256": "a01364216990420fbaa842e77e6a3c2380665ea15f0bb337a3798ba79cc93fff",
+        "width_px": 1600
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 1390,
+        "height_raw": "1390",
+        "path": "diagrams/06_threat_model.svg",
+        "sha256": "36cd21e97d73ec79e583163e85831528d0c9db876011eca9a72a2adda4c15c33",
+        "viewBox": [
+          0,
+          0,
+          1600,
+          1390
+        ],
+        "width": 1600,
+        "width_raw": "1600"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 7.653543,
+          "85_mm": 3.614173
+        },
+        "smallest_source_pt": 18,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 18.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 21.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 28.5
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D7",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [],
+          "protanopia": [],
+          "tritanopia": []
+        },
+        "grayscale_pairs": [],
+        "literal_colors": [
+          "#24364b"
+        ],
+        "white_contrast": {
+          "#24364b": 12.321917
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 225.777778,
+        "85_mm": 478.117647
+      },
+      "png": {
+        "has_alpha": false,
+        "height_px": 1080,
+        "mode": "RGB",
+        "path": "diagrams/07_sampling_domains.png",
+        "sha256": "f02c6e9eb24d265046b71c86a78f9510a96d7e8c010677d9478095443bbb8e0e",
+        "width_px": 1600
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 1080,
+        "height_raw": "1080",
+        "path": "diagrams/07_sampling_domains.svg",
+        "sha256": "8848c2fadc2926ad21094d3c026d85c58db5e94b3dd472f666ba08862ff7052a",
+        "viewBox": [
+          0,
+          0,
+          1600,
+          1080
+        ],
+        "width": 1600,
+        "width_raw": "1600"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 7.653543,
+          "85_mm": 3.614173
+        },
+        "smallest_source_pt": 18,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 18.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 28.5
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    },
+    {
+      "aspect_ratio_agrees": true,
+      "code": "D8",
+      "colors": {
+        "cvd_pairs": {
+          "deuteranopia": [],
+          "protanopia": [],
+          "tritanopia": []
+        },
+        "grayscale_pairs": [],
+        "literal_colors": [
+          "#24364b"
+        ],
+        "white_contrast": {
+          "#24364b": 12.321917
+        }
+      },
+      "effective_raster_ppi": {
+        "180_mm": 225.777778,
+        "85_mm": 478.117647
+      },
+      "png": {
+        "has_alpha": false,
+        "height_px": 1260,
+        "mode": "RGB",
+        "path": "diagrams/08_experiment_pipeline.png",
+        "sha256": "877526f710b5470053aa25a6dda5778b6b2f284c20c04e89f3fd4603a0a29b82",
+        "width_px": 1600
+      },
+      "svg": {
+        "geometry_basis": "explicit_dimensions",
+        "height": 1260,
+        "height_raw": "1260",
+        "path": "diagrams/08_experiment_pipeline.svg",
+        "sha256": "848e46beb0452838a6636bdb82720c8156047ae7cb4426c0d64177bfa1f523ed",
+        "viewBox": [
+          0,
+          0,
+          1600,
+          1260
+        ],
+        "width": 1600,
+        "width_raw": "1600"
+      },
+      "typography": {
+        "measurement_basis": "physical_width_points",
+        "projected_smallest_pt": {
+          "180_mm": 7.653543,
+          "85_mm": 3.614173
+        },
+        "smallest_source_pt": 18,
+        "sources": [
+          {
+            "method": "attribute",
+            "source_pt": 18.0
+          },
+          {
+            "method": "attribute",
+            "source_pt": 28.5
+          }
+        ],
+        "status": "MEASURED_PROXY"
+      }
+    }
+  ],
+  "integrity_failures": [],
+  "inventory": [
+    {
+      "code": "F1",
+      "png": "prototype/results/figures/figure_1_theoretical_detection_bound.png",
+      "svg": "prototype/results/figures/figure_1_theoretical_detection_bound.svg"
+    },
+    {
+      "code": "F2",
+      "png": "prototype/results/figures/figure_2_iid_failure_sweep.png",
+      "svg": "prototype/results/figures/figure_2_iid_failure_sweep.svg"
+    },
+    {
+      "code": "F3",
+      "png": "prototype/results/figures/figure_3_domain_diversity.png",
+      "svg": "prototype/results/figures/figure_3_domain_diversity.svg"
+    },
+    {
+      "code": "F4",
+      "png": "prototype/results/figures/figure_4_selective_withholding_gap.png",
+      "svg": "prototype/results/figures/figure_4_selective_withholding_gap.svg"
+    },
+    {
+      "code": "F5",
+      "png": "prototype/results/figures/figure_5_sampling_strategy.png",
+      "svg": "prototype/results/figures/figure_5_sampling_strategy.svg"
+    },
+    {
+      "code": "D1",
+      "png": "diagrams/01_system_architecture.png",
+      "svg": "diagrams/01_system_architecture.svg"
+    },
+    {
+      "code": "D2",
+      "png": "diagrams/02_property_separation.png",
+      "svg": "diagrams/02_property_separation.svg"
+    },
+    {
+      "code": "D3",
+      "png": "diagrams/03_audit_sequence.png",
+      "svg": "diagrams/03_audit_sequence.svg"
+    },
+    {
+      "code": "D4",
+      "png": "diagrams/04_dispute_sequence.png",
+      "svg": "diagrams/04_dispute_sequence.svg"
+    },
+    {
+      "code": "D5",
+      "png": "diagrams/05_state_machines.png",
+      "svg": "diagrams/05_state_machines.svg"
+    },
+    {
+      "code": "D6",
+      "png": "diagrams/06_threat_model.png",
+      "svg": "diagrams/06_threat_model.svg"
+    },
+    {
+      "code": "D7",
+      "png": "diagrams/07_sampling_domains.png",
+      "svg": "diagrams/07_sampling_domains.svg"
+    },
+    {
+      "code": "D8",
+      "png": "diagrams/08_experiment_pipeline.png",
+      "svg": "diagrams/08_experiment_pipeline.svg"
+    }
+  ],
+  "limitations": [
+    "adjacency",
+    "line_thickness",
+    "redundant_encoding",
+    "print_conversion",
+    "contextual_semantics",
+    "assistive_technology",
+    "human_review",
+    "target_venue_current_rules",
+    "stylesheet_selector_resolution"
+  ],
+  "methodology": {
+    "classification": "conservative_engineering_heuristics_not_standards",
+    "declared_widths_mm": [
+      85,
+      180
+    ],
+    "notes": [
+      "Widths, 300 PPI, 7 pt, 3:1, delta-L 10, and delta-E 10 are provisional screening parameters.",
+      "Results are engineering QA proxies, not accessibility certification or venue compliance.",
+      "CVD screening uses deterministic severity-100 matrices and CIE76 pairwise distance."
+    ],
+    "thresholds": {
+      "cvd_delta_e": 10,
+      "grayscale_delta_l": 10,
+      "minimum_contrast": 3,
+      "minimum_projected_font_pt": 7,
+      "raster_ppi": 300
+    },
+    "typography_projection_bases": {
+      "physical_width_points": "Source font sizes are normalized to points and scaled from the declared physical SVG width.",
+      "viewBox_user_coordinates": "Source font sizes are SVG user units scaled from the resolved viewBox width to the provisional target width; the percentage viewport is not treated as a physical point width."
+    }
+  },
+  "proxy_warnings": [
+    {
+      "code": "F1",
+      "projected_pt": 4.183071,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "F1",
+      "color": "#b0b0b0",
+      "ratio": 2.168733,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F1",
+      "color": "#cccccc",
+      "ratio": 1.605929,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F1",
+      "color": "#ff7f0e",
+      "ratio": 2.531923,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F1",
+      "color": "#ffffff",
+      "ratio": 1.0,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F1",
+      "colors": [
+        "#1f77b4",
+        "#2ca02c"
+      ],
+      "delta_l": 9.921922,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "F1",
+      "colors": [
+        "#2ca02c",
+        "#ff7f0e"
+      ],
+      "delta_l": 8.981152,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "F1",
+      "colors": [
+        "#b0b0b0",
+        "#ff7f0e"
+      ],
+      "delta_l": 4.953413,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "F1",
+      "colors": [
+        "#2ca02c",
+        "#ff7f0e"
+      ],
+      "delta_e": 4.642871,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "F2",
+      "projected_pt": 4.183071,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "F2",
+      "color": "#b0b0b0",
+      "ratio": 2.168733,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F2",
+      "color": "#cccccc",
+      "ratio": 1.605929,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F2",
+      "color": "#ff7f0e",
+      "ratio": 2.531923,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F2",
+      "color": "#ffffff",
+      "ratio": 1.0,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F2",
+      "colors": [
+        "#b0b0b0",
+        "#ff7f0e"
+      ],
+      "delta_l": 4.953413,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "F3",
+      "projected_pt": 4.183071,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "F3",
+      "color": "#b0b0b0",
+      "ratio": 2.168733,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F3",
+      "color": "#ffffff",
+      "ratio": 1.0,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F4",
+      "projected_pt": 4.183071,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "F4",
+      "color": "#b0b0b0",
+      "ratio": 2.168733,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F4",
+      "color": "#cccccc",
+      "ratio": 1.605929,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F4",
+      "color": "#ff7f0e",
+      "ratio": 2.531923,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F4",
+      "color": "#ffffff",
+      "ratio": 1.0,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F4",
+      "colors": [
+        "#b0b0b0",
+        "#ff7f0e"
+      ],
+      "delta_l": 4.953413,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "F5",
+      "projected_pt": 4.183071,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "F5",
+      "color": "#b0b0b0",
+      "ratio": 2.168733,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F5",
+      "color": "#cccccc",
+      "ratio": 1.605929,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F5",
+      "color": "#ff7f0e",
+      "ratio": 2.531923,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F5",
+      "color": "#ffffff",
+      "ratio": 1.0,
+      "type": "low_contrast"
+    },
+    {
+      "code": "F5",
+      "colors": [
+        "#b0b0b0",
+        "#ff7f0e"
+      ],
+      "delta_l": 4.953413,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D1",
+      "projected_pt": 3.614173,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "D2",
+      "projected_pt": 3.614173,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "D3",
+      "projected_pt": 3.989154,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "D3",
+      "color": "#e9f1ff",
+      "ratio": 1.135697,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D3",
+      "color": "#eaf8ea",
+      "ratio": 1.098697,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D3",
+      "color": "#f7f7f7",
+      "ratio": 1.071307,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D3",
+      "color": "#ffe9e9",
+      "ratio": 1.161234,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D3",
+      "color": "#fff4d6",
+      "ratio": 1.095846,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D3",
+      "color": "#ffffff",
+      "ratio": 1.0,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_l": 7.293949,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#eaf8ea"
+      ],
+      "delta_l": 1.301213,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_l": 2.301766,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#ffe9e9"
+      ],
+      "delta_l": 0.865514,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#fff4d6"
+      ],
+      "delta_l": 1.40459,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_l": 5.069666,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_l": 1.000553,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#ffe9e9"
+      ],
+      "delta_l": 2.166727,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#fff4d6"
+      ],
+      "delta_l": 0.103377,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_l": 3.768453,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_l": 3.16728,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#fff4d6"
+      ],
+      "delta_l": 0.897176,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_l": 2.7679,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#ffe9e9",
+        "#fff4d6"
+      ],
+      "delta_l": 2.270104,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#ffe9e9",
+        "#ffffff"
+      ],
+      "delta_l": 5.935181,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#fff4d6",
+        "#ffffff"
+      ],
+      "delta_l": 3.665077,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_e": 7.293949,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 7.31165,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#ffe9e9"
+      ],
+      "delta_e": 8.753291,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_e": 8.462166,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_e": 6.188466,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#ffe9e9"
+      ],
+      "delta_e": 5.736427,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#fff4d6"
+      ],
+      "delta_e": 9.698567,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_e": 7.050702,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_e": 4.213098,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_e": 2.767892,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#ffe9e9",
+        "#ffffff"
+      ],
+      "delta_e": 6.878967,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_e": 7.293947,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 8.340115,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_e": 9.561542,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_e": 4.799421,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#ffe9e9"
+      ],
+      "delta_e": 1.818599,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_e": 6.124607,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_e": 4.396744,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_e": 2.767897,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#ffe9e9",
+        "#ffffff"
+      ],
+      "delta_e": 6.456164,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_e": 7.293949,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#eaf8ea"
+      ],
+      "delta_e": 2.771307,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 5.877241,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_e": 7.378169,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_e": 5.355365,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_e": 6.503989,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_e": 9.390613,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#fff4d6"
+      ],
+      "delta_e": 6.251473,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_e": 2.7679,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#ffe9e9",
+        "#fff4d6"
+      ],
+      "delta_e": 4.423987,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D3",
+      "colors": [
+        "#fff4d6",
+        "#ffffff"
+      ],
+      "delta_e": 7.475392,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "projected_pt": 4.440016,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "D4",
+      "color": "#e9f1ff",
+      "ratio": 1.135697,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D4",
+      "color": "#eaf8ea",
+      "ratio": 1.098697,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D4",
+      "color": "#f5e9ff",
+      "ratio": 1.167831,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D4",
+      "color": "#f7f7f7",
+      "ratio": 1.071307,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D4",
+      "color": "#ffe9e9",
+      "ratio": 1.161234,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D4",
+      "color": "#fff4d6",
+      "ratio": 1.095846,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D4",
+      "color": "#ffffff",
+      "ratio": 1.0,
+      "type": "low_contrast"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_l": 7.293949,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#eaf8ea"
+      ],
+      "delta_l": 1.301213,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f5e9ff"
+      ],
+      "delta_l": 1.085774,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_l": 2.301766,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#ffe9e9"
+      ],
+      "delta_l": 0.865514,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#fff4d6"
+      ],
+      "delta_l": 1.40459,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_l": 5.069666,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#f5e9ff"
+      ],
+      "delta_l": 2.386987,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_l": 1.000553,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#ffe9e9"
+      ],
+      "delta_l": 2.166727,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#fff4d6"
+      ],
+      "delta_l": 0.103377,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_l": 3.768453,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#f7f7f7"
+      ],
+      "delta_l": 3.38754,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#ffe9e9"
+      ],
+      "delta_l": 0.22026,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#fff4d6"
+      ],
+      "delta_l": 2.490364,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#ffffff"
+      ],
+      "delta_l": 6.15544,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_l": 3.16728,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#fff4d6"
+      ],
+      "delta_l": 0.897176,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_l": 2.7679,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#ffe9e9",
+        "#fff4d6"
+      ],
+      "delta_l": 2.270104,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#ffe9e9",
+        "#ffffff"
+      ],
+      "delta_l": 5.935181,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#fff4d6",
+        "#ffffff"
+      ],
+      "delta_l": 3.665077,
+      "type": "low_grayscale_separation"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_e": 7.293949,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f5e9ff"
+      ],
+      "delta_e": 3.087078,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 7.31165,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#ffe9e9"
+      ],
+      "delta_e": 8.753291,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_e": 8.462166,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_e": 6.188466,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#ffe9e9"
+      ],
+      "delta_e": 5.736427,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#fff4d6"
+      ],
+      "delta_e": 9.698567,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_e": 7.050702,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_e": 4.213098,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_e": 2.767892,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#ffe9e9",
+        "#ffffff"
+      ],
+      "delta_e": 6.878967,
+      "mode": "protanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_e": 7.293947,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f5e9ff"
+      ],
+      "delta_e": 1.058185,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 8.340115,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_e": 9.561542,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_e": 4.799421,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#ffe9e9"
+      ],
+      "delta_e": 1.818599,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_e": 6.124607,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 9.328647,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_e": 4.396744,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_e": 2.767897,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#ffe9e9",
+        "#ffffff"
+      ],
+      "delta_e": 6.456164,
+      "mode": "deuteranopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#444444",
+        "#555555"
+      ],
+      "delta_e": 7.293949,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#eaf8ea"
+      ],
+      "delta_e": 2.771307,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f5e9ff"
+      ],
+      "delta_e": 8.671408,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 5.877241,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#e9f1ff",
+        "#ffffff"
+      ],
+      "delta_e": 7.378169,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#f5e9ff"
+      ],
+      "delta_e": 9.256965,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#f7f7f7"
+      ],
+      "delta_e": 5.355365,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#eaf8ea",
+        "#ffffff"
+      ],
+      "delta_e": 6.503989,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#f7f7f7"
+      ],
+      "delta_e": 5.051158,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#ffe9e9"
+      ],
+      "delta_e": 5.731214,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#fff4d6"
+      ],
+      "delta_e": 5.191398,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f5e9ff",
+        "#ffffff"
+      ],
+      "delta_e": 7.155227,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffe9e9"
+      ],
+      "delta_e": 9.390613,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#fff4d6"
+      ],
+      "delta_e": 6.251473,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "delta_e": 2.7679,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#ffe9e9",
+        "#fff4d6"
+      ],
+      "delta_e": 4.423987,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D4",
+      "colors": [
+        "#fff4d6",
+        "#ffffff"
+      ],
+      "delta_e": 7.475392,
+      "mode": "tritanopia",
+      "type": "cvd_collision"
+    },
+    {
+      "code": "D5",
+      "projected_pt": 3.614173,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "D6",
+      "projected_pt": 3.614173,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "D7",
+      "projected_pt": 3.614173,
+      "type": "small_text",
+      "width": "85_mm"
+    },
+    {
+      "code": "D8",
+      "projected_pt": 3.614173,
+      "type": "small_text",
+      "width": "85_mm"
+    }
+  ],
+  "schema_version": "1.0",
+  "summary": {
+    "expected_pairs": 13,
+    "integrity_failure_count": 0,
+    "proxy_warning_count": 160
+  },
+  "tool_version": "1.0"
+}

@@ -1,0 +1,1 @@
+PASS: gas report matches .gas-snapshot

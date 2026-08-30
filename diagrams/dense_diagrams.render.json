@@ -1,0 +1,120 @@
+{
+  "assets": {
+    "D1": {
+      "png": {
+        "dimensions": [
+          1600,
+          1320
+        ],
+        "path": "diagrams/01_system_architecture.png",
+        "sha256": "4e73a92d8acce4121565862b99c1b4a207266b4ebf757d1d189fe687d9e400db"
+      },
+      "source": {
+        "path": "diagrams/01_system_architecture.mmd",
+        "sha256": "97db93e7fdbd27084d42e18a51363d6ec60aef54e1d449d301bc8502f3dcce08"
+      },
+      "svg": {
+        "path": "diagrams/01_system_architecture.svg",
+        "sha256": "4d52a502b0511274baecbf906d9447146b0e7fa46fc71d283eb7b8004aaf6cd4"
+      }
+    },
+    "D5": {
+      "png": {
+        "dimensions": [
+          1600,
+          1440
+        ],
+        "path": "diagrams/05_state_machines.png",
+        "sha256": "967291472c477a38aa04c2bfebcecceb8ec653795a4434be43f31ac775ff7074"
+      },
+      "source": {
+        "path": "diagrams/05_state_machines.mmd",
+        "sha256": "ffe65f9f953c11270c4e661f108eacec56e0bf430a80c89f866a94a9affd8dc0"
+      },
+      "svg": {
+        "path": "diagrams/05_state_machines.svg",
+        "sha256": "c7eca2df910441881e7164adc0fc84455fa0df160b17446fa66ffce452d1e39c"
+      }
+    },
+    "D6": {
+      "png": {
+        "dimensions": [
+          1600,
+          1390
+        ],
+        "path": "diagrams/06_threat_model.png",
+        "sha256": "a01364216990420fbaa842e77e6a3c2380665ea15f0bb337a3798ba79cc93fff"
+      },
+      "source": {
+        "path": "diagrams/06_threat_model.mmd",
+        "sha256": "7494a0ccf3d418229c66c381ad68eb5c892b394d0e04231cb44439c37122d0f0"
+      },
+      "svg": {
+        "path": "diagrams/06_threat_model.svg",
+        "sha256": "36cd21e97d73ec79e583163e85831528d0c9db876011eca9a72a2adda4c15c33"
+      }
+    },
+    "D7": {
+      "png": {
+        "dimensions": [
+          1600,
+          1080
+        ],
+        "path": "diagrams/07_sampling_domains.png",
+        "sha256": "f02c6e9eb24d265046b71c86a78f9510a96d7e8c010677d9478095443bbb8e0e"
+      },
+      "source": {
+        "path": "diagrams/07_sampling_domains.mmd",
+        "sha256": "d1d1c6ca8a5898971505901e95a9ef5dcd75424db906c583c29967cd45b09571"
+      },
+      "svg": {
+        "path": "diagrams/07_sampling_domains.svg",
+        "sha256": "8848c2fadc2926ad21094d3c026d85c58db5e94b3dd472f666ba08862ff7052a"
+      }
+    },
+    "D8": {
+      "png": {
+        "dimensions": [
+          1600,
+          1260
+        ],
+        "path": "diagrams/08_experiment_pipeline.png",
+        "sha256": "877526f710b5470053aa25a6dda5778b6b2f284c20c04e89f3fd4603a0a29b82"
+      },
+      "source": {
+        "path": "diagrams/08_experiment_pipeline.mmd",
+        "sha256": "9c49604423fef3341b0ab25be9153a03aef9b7a0dfe14dbb4e22a7488d1406d6"
+      },
+      "svg": {
+        "path": "diagrams/08_experiment_pipeline.svg",
+        "sha256": "848e46beb0452838a6636bdb82720c8156047ae7cb4426c0d64177bfa1f523ed"
+      }
+    }
+  },
+  "canonical_authority": "Mermaid sources only; rendered files are derivatives",
+  "evidence_classification": "NOT_SCIENTIFIC_EVIDENCE",
+  "generated_at": "2026-08-29T03:55:47.502958Z",
+  "independence": "SAME_WORKSPACE_NOT_INDEPENDENT",
+  "inventory": [
+    "D1",
+    "D5",
+    "D6",
+    "D7",
+    "D8"
+  ],
+  "renderer": {
+    "chrome_version": "Google Chrome 151.0.7922.175",
+    "mode": "deterministic standard-library SVG plus reviewed local Chrome PNG capture",
+    "network": "DISABLED_BY_COMMAND_AND_LOCAL_FILE_INPUT",
+    "path": "scripts/render_dense_diagrams.py",
+    "sha256": "65e96280aa03cc68ca41f24fa860486896a1b01b3cafc90b0811001d1685a11f"
+  },
+  "schema_id": "KEYSTONE_DENSE_DIAGRAM_RENDER_RECEIPT",
+  "schema_version": 1,
+  "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE",
+  "visual_qa": {
+    "human_visual_review": "PENDING",
+    "scientific_claim_validation": "NOT_PERFORMED",
+    "typography": "AUTOMATED_180MM_PROXY_PENDING_OR_SEPARATELY_RECORDED"
+  }
+}

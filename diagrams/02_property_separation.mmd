@@ -1,10 +1,37 @@
 flowchart TB
-  CA[Ciphertext Availability] --> DKA[Dispute-Key Availability]
-  VSR[Valid-Share Readiness] --> AD[Authorized Decryptability]
-  AKR[Authorized Key Release] --> AD
-  AD --> DKA
-  DDL[Dispute-Deadline Liveness] --> DKA
-  PAC[Public Accountability] -. detects and attributes failures .-> DKA
-  N1[CA does not imply DKA] -.-> CA
-  N2[PVSS correctness does not imply deadline response] -.-> VSR
-  L[Sampling is conditional evidence, not unconditional future proof] -.-> DKA
+  T["Property separation: three claim-bearing witnesses<br/>not a complete pairwise lattice"]
+
+  W1["W1: ciphertext remains retrievable;<br/>only t-1 valid dispute responses arrive by the deadline"]
+  H1["CA holds"]
+  F1["AD, DDL, and deadline-bounded DKA fail"]
+  C1["CA does not imply DKA"]
+  W1 --> H1
+  W1 --> F1
+  H1 -. constructive non-implication .-> C1
+  F1 -. constructive non-implication .-> C1
+
+  W2["W2: at least q_accept sampled canary responses;<br/>target-selective withholding leaves fewer than t record responses"]
+  H2["AKR holds"]
+  F2["Target-record AD and DDL fail"]
+  C2["A passed routine audit does not unconditionally imply targeted dispute success"]
+  W2 --> H2
+  W2 --> F2
+  H2 -. constructive non-implication .-> C2
+  F2 -. constructive non-implication .-> C2
+
+  W3["W3: two executions share the same finite audit prefix;<br/>later readiness diverges"]
+  H3["Finite audit observations are identical"]
+  F3["Unconditional future AD/DDL fails in one continuation"]
+  C3["Finite audits do not guarantee unconditional future DKA"]
+  W3 --> H3
+  W3 --> F3
+  H3 -. constructive non-implication .-> C3
+  F3 -. constructive non-implication .-> C3
+
+  B["Boundary: DKA is conditional and deadline-bounded;<br/>PAC and declared readiness/network assumptions remain separate obligations"]
+  T --> W1
+  T --> W2
+  T --> W3
+  C1 --> B
+  C2 --> B
+  C3 --> B

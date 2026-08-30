@@ -1,0 +1,245 @@
+{
+  "generated_at": "2026-08-28T22:06:49Z",
+  "run_id": "keystone-mpp-f1-20260828T211430Z-6f21c82e-5e0f10",
+  "adapter_id": "generic_research_v1",
+  "fixture_set": "LIVE_SNAPSHOT",
+  "offline_only": false,
+  "live_network_permitted": true,
+  "may_assert_novelty": false,
+  "query_metadata_schema": {
+    "version": 1,
+    "required_keys": [
+      "query_id",
+      "source",
+      "endpoint",
+      "params",
+      "checked_date"
+    ]
+  },
+  "live_sources": [
+    {
+      "source_id": "crossref_rest_v1",
+      "endpoint": "https://api.crossref.org/works",
+      "documentation_url": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/",
+      "checked_date": "2026-08-01",
+      "network_policy": "explicit_egress_authorized_only",
+      "offline_test_mode": "fixture_only",
+      "cache_required": true,
+      "user_agent_required": true,
+      "mailto_required": true,
+      "status_backoff_policy": "respect_http_status_retry_after_and_exponential_backoff"
+    },
+    {
+      "source_id": "openalex_works",
+      "endpoint": "https://api.openalex.org/works",
+      "documentation_url": "https://developers.openalex.org/",
+      "checked_date": "2026-08-01",
+      "network_policy": "explicit_egress_authorized_only",
+      "offline_test_mode": "fixture_only"
+    },
+    {
+      "source_id": "ncbi_eutils",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+      "documentation_url": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+      "checked_date": "2026-08-01",
+      "network_policy": "explicit_egress_authorized_only",
+      "offline_test_mode": "fixture_only"
+    },
+    {
+      "source_id": "arxiv_api",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "documentation_url": "https://info.arxiv.org/help/api/index.html",
+      "checked_date": "2026-08-01",
+      "network_policy": "explicit_egress_authorized_only",
+      "offline_test_mode": "fixture_only"
+    }
+  ],
+  "queries": [
+    {
+      "query_id": "Q001-arxiv_api",
+      "source": "arxiv_api",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "params": {
+        "search_query": "all:dispute key availability threshold decryption rollup",
+        "start": 0,
+        "max_results": 5
+      },
+      "request_url": "https://export.arxiv.org/api/query?search_query=all%3Adispute+key+availability+threshold+decryption+rollup&start=0&max_results=5",
+      "checked_date": "2026-08-28T22:06:38Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "caecc04dedef3adee4eac0217e7d8837794c6891ddefbba954f8599a112b2443",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q001-arxiv_api.xml"
+    },
+    {
+      "query_id": "Q001-openalex_works",
+      "source": "openalex_works",
+      "endpoint": "https://api.openalex.org/works",
+      "params": {
+        "search": "dispute key availability threshold decryption rollup",
+        "per-page": 5
+      },
+      "request_url": "https://api.openalex.org/works?search=dispute+key+availability+threshold+decryption+rollup&per-page=5",
+      "checked_date": "2026-08-28T22:06:37Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "4c0602b9a49bf67f7be8d951c1f2a35de417b5138ca3190964d9d132aa03de76",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q001-openalex_works.json"
+    },
+    {
+      "query_id": "Q002-arxiv_api",
+      "source": "arxiv_api",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "params": {
+        "search_query": "all:pre authorization threshold decryption readiness audit canary",
+        "start": 0,
+        "max_results": 5
+      },
+      "request_url": "https://export.arxiv.org/api/query?search_query=all%3Apre+authorization+threshold+decryption+readiness+audit+canary&start=0&max_results=5",
+      "checked_date": "2026-08-28T22:06:41Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "9d7bffebbd39451b7b55284834d2c2c90fbe6f93e3e41dd779d24d0fc88b731e",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q002-arxiv_api.xml"
+    },
+    {
+      "query_id": "Q002-openalex_works",
+      "source": "openalex_works",
+      "endpoint": "https://api.openalex.org/works",
+      "params": {
+        "search": "pre authorization threshold decryption readiness audit canary",
+        "per-page": 5
+      },
+      "request_url": "https://api.openalex.org/works?search=pre+authorization+threshold+decryption+readiness+audit+canary&per-page=5",
+      "checked_date": "2026-08-28T22:06:40Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "c6b7a95f1a9653098cee94b3aed896362482350e93211790d300bc328296552d",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q002-openalex_works.json"
+    },
+    {
+      "query_id": "Q003-arxiv_api",
+      "source": "arxiv_api",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "params": {
+        "search_query": "all:threshold decryption liveness blockchain",
+        "start": 0,
+        "max_results": 5
+      },
+      "request_url": "https://export.arxiv.org/api/query?search_query=all%3Athreshold+decryption+liveness+blockchain&start=0&max_results=5",
+      "checked_date": "2026-08-28T22:06:42Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "863d499043d2d081ccda967b9c1762630810612f9faaf1534b819c926d46a3ab",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q003-arxiv_api.xml"
+    },
+    {
+      "query_id": "Q003-openalex_works",
+      "source": "openalex_works",
+      "endpoint": "https://api.openalex.org/works",
+      "params": {
+        "search": "threshold decryption liveness blockchain",
+        "per-page": 5
+      },
+      "request_url": "https://api.openalex.org/works?search=threshold+decryption+liveness+blockchain&per-page=5",
+      "checked_date": "2026-08-28T22:06:42Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "020fbfdfe34f456cf5e490e19218da68370df64d19e5f36fe4a504ae4709f8ca",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q003-openalex_works.json"
+    },
+    {
+      "query_id": "Q004-arxiv_api",
+      "source": "arxiv_api",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "params": {
+        "search_query": "all:secret share retrievability audit",
+        "start": 0,
+        "max_results": 5
+      },
+      "request_url": "https://export.arxiv.org/api/query?search_query=all%3Asecret+share+retrievability+audit&start=0&max_results=5",
+      "checked_date": "2026-08-28T22:06:45Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "536d2da7fd6439b6709fe90e24695f2e3711a7601df24893a7e275b925f61a01",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q004-arxiv_api.xml"
+    },
+    {
+      "query_id": "Q004-openalex_works",
+      "source": "openalex_works",
+      "endpoint": "https://api.openalex.org/works",
+      "params": {
+        "search": "secret share retrievability audit",
+        "per-page": 5
+      },
+      "request_url": "https://api.openalex.org/works?search=secret+share+retrievability+audit&per-page=5",
+      "checked_date": "2026-08-28T22:06:44Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "3ad39f73091f8359d3ec85de99fa5158adfe9dc346a2ddca41caf28ae8c59600",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q004-openalex_works.json"
+    },
+    {
+      "query_id": "Q005-arxiv_api",
+      "source": "arxiv_api",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "params": {
+        "search_query": "all:context dependent threshold decryption",
+        "start": 0,
+        "max_results": 5
+      },
+      "request_url": "https://export.arxiv.org/api/query?search_query=all%3Acontext+dependent+threshold+decryption&start=0&max_results=5",
+      "checked_date": "2026-08-28T22:06:47Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "cdaa9035d8439f839e3eb4c2c2cd988ae8ff75b30f1aa3a7eaa0d034deccf50b",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q005-arxiv_api.xml"
+    },
+    {
+      "query_id": "Q005-openalex_works",
+      "source": "openalex_works",
+      "endpoint": "https://api.openalex.org/works",
+      "params": {
+        "search": "context dependent threshold decryption",
+        "per-page": 5
+      },
+      "request_url": "https://api.openalex.org/works?search=context+dependent+threshold+decryption&per-page=5",
+      "checked_date": "2026-08-28T22:06:47Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "f3315504bd480d182b96d3ecf59dde9295c61b90d8eb7bda2a81ea5b19a1627d",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q005-openalex_works.json"
+    },
+    {
+      "query_id": "Q006-arxiv_api",
+      "source": "arxiv_api",
+      "endpoint": "https://export.arxiv.org/api/query",
+      "params": {
+        "search_query": "all:accountable liveness threshold decryption",
+        "start": 0,
+        "max_results": 5
+      },
+      "request_url": "https://export.arxiv.org/api/query?search_query=all%3Aaccountable+liveness+threshold+decryption&start=0&max_results=5",
+      "checked_date": "2026-08-28T22:06:49Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "e0704a0e397fb2b65284379c09701aa701d65c61faa004509693bf1009d7a191",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q006-arxiv_api.xml"
+    },
+    {
+      "query_id": "Q006-openalex_works",
+      "source": "openalex_works",
+      "endpoint": "https://api.openalex.org/works",
+      "params": {
+        "search": "accountable liveness threshold decryption",
+        "per-page": 5
+      },
+      "request_url": "https://api.openalex.org/works?search=accountable+liveness+threshold+decryption&per-page=5",
+      "checked_date": "2026-08-28T22:06:49Z",
+      "cache_hit": false,
+      "status": 200,
+      "response_sha256": "9201088e702c4797f6b5e42776ad601f55c1d55d0d7dda2d7c1cb062464e6d12",
+      "raw_path": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0/research-case/01-novelty/prior-art-raw/Q006-openalex_works.json"
+    }
+  ]
+}

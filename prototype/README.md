@@ -26,7 +26,9 @@ This executes:
 3. baseline Monte Carlo scenarios;
 4. CSV/SVG/PNG figure generation;
 5. cryptographic microbenchmarks;
-6. all 17 tests.
+6. all 35 tests, including exact stratified-distribution, Wilson-interval,
+   canonical transcript, Ed25519 signature/golden-vector, and experimental
+   share-refresh generation oracles.
 
 ## Individual commands
 
@@ -42,6 +44,7 @@ pytest -q
 ## What the cryptographic demo implements
 
 - dealer-based Shamir shares with Feldman commitments;
+- dealer-based zero-polynomial share refresh for controlled experiments only;
 - public per-member share commitments;
 - deterministic beacon/context-derived hash-to-group canaries;
 - Chaum–Pedersen/DLEQ proofs of equal discrete logs;
@@ -54,7 +57,7 @@ pytest -q
 
 - production DKG/PVSS or proactive resharing;
 - standardized curve/library-grade threshold cryptography;
-- network transport, signatures, stake, or a TEE;
+- network transport, production key management, stake, or a TEE;
 - proof that audit success guarantees future dispute cooperation;
 - security against `t` compromised shares;
 - cryptographic audit or production hardening.
@@ -68,3 +71,5 @@ pytest -q
 - `results/experiment_manifest.json` — frozen parameters/seeds.
 
 All reported performance numbers are environment-specific research baselines, not production capacity claims.
+The Ed25519 response-signature helper signs the exact canonical transcript bytes;
+its fixed-seed vector is test-only interoperability data, not secure key generation.

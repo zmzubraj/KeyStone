@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/XeWkHrpzn7geoDnPrLzAygy2uco</id>
+  <title>arXiv Query: search_query=all:accountable OR all:liveness OR all:threshold OR all:decryption&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-08-28T22:06:49Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:accountable+OR+(all:liveness+OR+(all:threshold+OR+all:decryption))&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>220075</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2504.12218v2</id>
+    <title>Accountable Liveness</title>
+    <updated>2025-09-11T04:16:44Z</updated>
+    <link href="https://arxiv.org/abs/2504.12218v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.12218v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Safety and liveness are the two classical security properties of consensus protocols. Recent works have strengthened safety with accountability: should any safety violation occur, a sizable fraction of adversary nodes can be proven to be protocol violators. This paper studies to what extent analogous accountability guarantees are achievable for liveness. To reveal the full complexity of this question, we introduce an interpolation between the classical synchronous and partially-synchronous models that we call the $x$-partially-synchronous network model in which, intuitively, at most an $x$ fraction of the time steps in any sufficiently long interval are asynchronous (and, as with a partially-synchronous network, all time steps are synchronous following the passage of an unknown "global stablization time"). We prove a precise characterization of the parameter regime in which accountable liveness is achievable: if and only if $x &lt; 1/2$ and $f &lt; n/2$, where $n$ denotes the number of nodes and $f$ the number of nodes controlled by an adversary. We further refine the problem statement and our analysis by parameterizing by the number of violating nodes identified following a liveness violation, and provide evidence that the guarantees achieved by our protocol are near-optimal (as a function of $x$ and $f$). Our results provide rigorous foundations for liveness-accountability heuristics such as the "inactivity leaks" employed in Ethereum.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-16T16:13:09Z</published>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Andrew Lewis-Pye</name>
+    </author>
+    <author>
+      <name>Joachim Neu</name>
+    </author>
+    <author>
+      <name>Tim Roughgarden</name>
+    </author>
+    <author>
+      <name>Luca Zanolini</name>
+    </author>
+    <arxiv:doi>10.1145/3719027.3765032</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3719027.3765032" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.07358v1</id>
+    <title>No Threshold graphs are cospectral</title>
+    <updated>2018-06-19T17:40:23Z</updated>
+    <link href="https://arxiv.org/abs/1806.07358v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1806.07358v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A threshold graph G on n vertices is defined by binary sequence of length n. In this paper we present an explicit formula for computing the characteristic polynomial of a threshold graph from its binary sequence. Applications include obtaining a formula for the determinant of adjacency matrix of a threshold graph and showing that no two nonisomorphic threshold graphs are cospectral.</summary>
+    <category term="math.CO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2018-06-19T17:40:23Z</published>
+    <arxiv:comment>threshold graph, characteristic polynomial, cospectral graphs</arxiv:comment>
+    <arxiv:primary_category term="math.CO"/>
+    <author>
+      <name>J. Lazzarin</name>
+    </author>
+    <author>
+      <name>O. F. Márquez</name>
+    </author>
+    <author>
+      <name>F. Tura</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1907.10835v1</id>
+    <title>Decrypting live SSH traffic in virtual environments</title>
+    <updated>2019-07-25T04:40:20Z</updated>
+    <link href="https://arxiv.org/abs/1907.10835v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1907.10835v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Decrypting and inspecting encrypted malicious communications may assist crime detection and prevention. Access to client or server memory enables the discovery of artefacts required for decrypting secure communications. This paper develops the MemDecrypt framework to investigate the discovery of encrypted artefacts in memory and applies the methodology to decrypting the secure communications of virtual machines. For Secure Shell, used for secure remote server management, file transfer, and tunnelling inter alia, MemDecrypt experiments rapidly yield AES-encrypted details for a live secure file transfer including remote user credentials, transmitted file name and file contents. Thus, MemDecrypt discovers cryptographic artefacts and quickly decrypts live SSH malicious communications including the detection and interception of data exfiltration of confidential data.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-07-25T04:40:20Z</published>
+    <arxiv:primary_category term="cs.CR"/>
+    <arxiv:journal_ref>Digital Investigation, Volume 29, June 2019, Pages 109-117</arxiv:journal_ref>
+    <author>
+      <name>Peter McLaren</name>
+    </author>
+    <author>
+      <name>Gordon Russell</name>
+    </author>
+    <author>
+      <name>William J. Buchanan</name>
+    </author>
+    <author>
+      <name>Zhiyuan Tan</name>
+    </author>
+    <arxiv:doi>10.1016/j.diin.2019.03.010</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1016/j.diin.2019.03.010" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.19338v1</id>
+    <title>Privacy-preserving server-supported decryption</title>
+    <updated>2024-10-25T06:47:53Z</updated>
+    <link href="https://arxiv.org/abs/2410.19338v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2410.19338v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we consider encryption systems with two-out-of-two threshold decryption, where one of the parties (the client) initiates the decryption and the other one (the server) assists. Existing threshold decryption schemes disclose to the server the ciphertext that is being decrypted. We give a construction, where the identity of the ciphertext is not leaked to the server, and the client's privacy is thus preserved. While showing the security of this construction, we run into the issue of defining the security of a scheme with blindly assisted decryption. We discuss previously proposed security definitions for similar cryptographic functionalities and argue why they do not capture the expected meaning of security. We propose an ideal functionality for the encryption with server-supported blind threshold decryption in the universal composability model, carefully balancing between the meaning of privacy, and the ability to implement it. We construct a protocol and show that it is a secure implementation of the proposed functionality in the random oracle model.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-10-25T06:47:53Z</published>
+    <arxiv:comment>To appear at Computer Security Foundations Symposium, CSF 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Peeter Laud</name>
+    </author>
+    <author>
+      <name>Alisa Pankova</name>
+    </author>
+    <author>
+      <name>Jelizaveta Vakarjuk</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.12936v1</id>
+    <title>Privacy-Preserving Federated Learning from Partial Decryption Verifiable Threshold Multi-Client Functional Encryption</title>
+    <updated>2025-11-17T03:44:47Z</updated>
+    <link href="https://arxiv.org/abs/2511.12936v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.12936v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In federated learning, multiple parties can cooperate to train the model without directly exchanging their own private data, but the gradient leakage problem still threatens the privacy security and model integrity. Although the existing scheme uses threshold cryptography to mitigate the inference attack, it can not guarantee the verifiability of the aggregation results, making the system vulnerable to the threat of poisoning attack. We construct a partial decryption verifiable threshold multi client function encryption scheme, and apply it to Federated learning to implement the federated learning verifiable threshold security aggregation protocol (VTSAFL). VTSAFL empowers clients to verify aggregation results, concurrently minimizing both computational and communication overhead. The size of the functional key and partial decryption results of the scheme are constant, which provides efficiency guarantee for large-scale deployment. The experimental results on MNIST dataset show that vtsafl can achieve the same accuracy as the existing scheme, while reducing the total training time by more than 40%, and reducing the communication overhead by up to 50%. This efficiency is critical for overcoming the resource constraints inherent in Internet of Things (IoT) devices.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-17T03:44:47Z</published>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Minjie Wang</name>
+    </author>
+    <author>
+      <name>Jinguang Han</name>
+    </author>
+    <author>
+      <name>Weizhi Meng</name>
+    </author>
+  </entry>
+</feed>

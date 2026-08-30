@@ -51,10 +51,8 @@ contract KeystoneBulletinBoard {
     mapping(uint64 epochId => Epoch) public epochs;
     mapping(uint64 epochId => mapping(uint16 index => address custodian)) public custodians;
     mapping(bytes32 requestId => Request) private requests;
-    mapping(bytes32 requestId => mapping(uint16 index => bytes32 commitment))
-        public responseCommitments;
-    mapping(bytes32 requestId => mapping(uint16 index => bytes32 secondCommitment))
-        public equivocationCommitments;
+    mapping(bytes32 requestId => mapping(uint16 index => bytes32 commitment)) public responseCommitments;
+    mapping(bytes32 requestId => mapping(uint16 index => bytes32 secondCommitment)) public equivocationCommitments;
 
     event AdminTransferred(address indexed oldAdmin, address indexed newAdmin);
     event EpochRegistered(
@@ -84,16 +82,9 @@ contract KeystoneBulletinBoard {
         uint64 submittedAt
     );
     event EquivocationObserved(
-        bytes32 indexed requestId,
-        uint16 indexed memberIndex,
-        bytes32 firstCommitment,
-        bytes32 secondCommitment
+        bytes32 indexed requestId, uint16 indexed memberIndex, bytes32 firstCommitment, bytes32 secondCommitment
     );
-    event ResponseMarkedInvalid(
-        bytes32 indexed requestId,
-        uint16 indexed memberIndex,
-        bytes32 evidenceHash
-    );
+    event ResponseMarkedInvalid(bytes32 indexed requestId, uint16 indexed memberIndex, bytes32 evidenceHash);
     event RequestFinalized(
         bytes32 indexed requestId,
         bool passed,
@@ -147,8 +138,8 @@ contract KeystoneBulletinBoard {
     ) external onlyAdmin {
         uint256 n = memberAddresses.length;
         if (
-            epochs[epochId].exists || n == 0 || n > 256 || threshold == 0
-                || threshold > n || activeUntil <= activeFrom
+            epochs[epochId].exists || n == 0 || n > 256 || threshold == 0 || threshold > n
+                || publicKeyHash == bytes32(0) || membersRoot == bytes32(0) || activeUntil <= activeFrom
         ) revert InvalidMemberSet();
 
         // The preceding n <= 256 check makes this narrowing conversion safe.
@@ -158,6 +149,9 @@ contract KeystoneBulletinBoard {
         for (uint16 i = 1; i <= n; i++) {
             address member = memberAddresses[i - 1];
             if (member == address(0)) revert InvalidMemberSet();
+            for (uint16 j = 1; j < i; j++) {
+                if (memberAddresses[j - 1] == member) revert InvalidMemberSet();
+            }
             custodians[epochId][i] = member;
         }
 
@@ -171,15 +165,7 @@ contract KeystoneBulletinBoard {
             activeUntil: activeUntil
         });
 
-        emit EpochRegistered(
-            epochId,
-            memberCount,
-            threshold,
-            publicKeyHash,
-            membersRoot,
-            activeFrom,
-            activeUntil
-        );
+        emit EpochRegistered(epochId, memberCount, threshold, publicKeyHash, membersRoot, activeFrom, activeUntil);
     }
 
     function openAudit(
@@ -197,14 +183,7 @@ contract KeystoneBulletinBoard {
         uint16 sampleCount = _popcount(sampledBitmap);
         if (requiredValid == 0 || requiredValid > sampleCount) revert InvalidRequest();
         _openRequest(
-            requestId,
-            RequestKind.Audit,
-            epochId,
-            canaryHash,
-            bytes32(0),
-            sampledBitmap,
-            requiredValid,
-            deadline
+            requestId, RequestKind.Audit, epochId, canaryHash, bytes32(0), sampledBitmap, requiredValid, deadline
         );
     }
 
@@ -217,9 +196,7 @@ contract KeystoneBulletinBoard {
     ) external onlyAdmin {
         Epoch memory epoch = _activeEpoch(epochId);
         if (verifierSetHash == bytes32(0)) revert InvalidRequest();
-        uint256 allMembers = epoch.n == 256
-            ? type(uint256).max
-            : (uint256(1) << epoch.n) - 1;
+        uint256 allMembers = epoch.n == 256 ? type(uint256).max : (uint256(1) << epoch.n) - 1;
         _openRequest(
             requestId,
             RequestKind.Dispute,
@@ -232,11 +209,7 @@ contract KeystoneBulletinBoard {
         );
     }
 
-    function submitResponse(
-        bytes32 requestId,
-        uint16 memberIndex,
-        bytes32 responseCommitment
-    ) external {
+    function submitResponse(bytes32 requestId, uint16 memberIndex, bytes32 responseCommitment) external {
         Request storage request = requests[requestId];
         if (request.status != RequestStatus.Open || block.timestamp > request.deadline) {
             revert RequestClosed();
@@ -252,13 +225,7 @@ contract KeystoneBulletinBoard {
         if (first == bytes32(0)) {
             responseCommitments[requestId][memberIndex] = responseCommitment;
             request.responseBitmap |= bit;
-            emit ResponseCommitted(
-                requestId,
-                memberIndex,
-                msg.sender,
-                responseCommitment,
-                uint64(block.timestamp)
-            );
+            emit ResponseCommitted(requestId, memberIndex, msg.sender, responseCommitment, uint64(block.timestamp));
             return;
         }
         if (first == responseCommitment) revert DuplicateResponse();
@@ -273,15 +240,12 @@ contract KeystoneBulletinBoard {
     /// @notice Records the outcome of deterministic off-chain proof verification.
     /// @dev A production design can replace admin adjudication with a proof verifier,
     ///      optimistic challenge, or governance process.
-    function markInvalidResponse(
-        bytes32 requestId,
-        uint16 memberIndex,
-        bytes32 evidenceHash
-    ) external onlyAdmin {
+    function markInvalidResponse(bytes32 requestId, uint16 memberIndex, bytes32 evidenceHash) external onlyAdmin {
         Request storage request = requests[requestId];
         if (request.status != RequestStatus.Open) revert RequestClosed();
         Epoch memory epoch = epochs[request.epochId];
         if (memberIndex == 0 || memberIndex > epoch.n) revert InvalidRequest();
+        if (evidenceHash == bytes32(0)) revert InvalidRequest();
         uint256 bit = uint256(1) << (memberIndex - 1);
         if ((request.responseBitmap & bit) == 0) revert InvalidRequest();
         request.invalidBitmap |= bit;
@@ -304,12 +268,7 @@ contract KeystoneBulletinBoard {
         request.passed = valid >= request.requiredValid;
 
         emit RequestFinalized(
-            requestId,
-            request.passed,
-            valid,
-            missing,
-            request.invalidBitmap,
-            request.equivocationBitmap
+            requestId, request.passed, valid, missing, request.invalidBitmap, request.equivocationBitmap
         );
     }
 
@@ -332,10 +291,9 @@ contract KeystoneBulletinBoard {
 
     function _activeEpoch(uint64 epochId) internal view returns (Epoch memory epoch) {
         epoch = epochs[epochId];
-        if (
-            !epoch.exists || block.timestamp < epoch.activeFrom
-                || block.timestamp > epoch.activeUntil
-        ) revert InvalidEpoch();
+        if (!epoch.exists || block.timestamp < epoch.activeFrom || block.timestamp > epoch.activeUntil) {
+            revert InvalidEpoch();
+        }
     }
 
     function _openRequest(
@@ -348,7 +306,7 @@ contract KeystoneBulletinBoard {
         uint16 requiredValid,
         uint64 deadline
     ) internal {
-        if (requests[requestId].status != RequestStatus.None || requestId == bytes32(0)) {
+        if (requests[requestId].status != RequestStatus.None || requestId == bytes32(0) || subjectHash == bytes32(0)) {
             revert InvalidRequest();
         }
         if (deadline <= block.timestamp) revert InvalidDeadline();
@@ -372,14 +330,7 @@ contract KeystoneBulletinBoard {
         });
 
         emit RequestOpened(
-            requestId,
-            kind,
-            epochId,
-            subjectHash,
-            verifierSetHash,
-            deadline,
-            requiredValid,
-            sampledBitmap
+            requestId, kind, epochId, subjectHash, verifierSetHash, deadline, requiredValid, sampledBitmap
         );
     }
 

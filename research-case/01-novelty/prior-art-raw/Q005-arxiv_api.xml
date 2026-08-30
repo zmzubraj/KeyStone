@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/wcvbC2pm8efEGAkGrV2jgDVTLtA</id>
+  <title>arXiv Query: search_query=all:context OR all:dependent OR all:threshold OR all:decryption&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-08-28T22:06:47Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:context+OR+(all:dependent+OR+(all:threshold+OR+all:decryption))&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>586388</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/cmp-lg/9701001v1</id>
+    <title>Exploiting Context to Identify Lexical Atoms -- A Statistical View of Linguistic Context</title>
+    <updated>1997-01-02T16:35:24Z</updated>
+    <link href="https://arxiv.org/abs/cmp-lg/9701001v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/cmp-lg/9701001v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>  Interpretation of natural language is inherently context-sensitive. Most words in natural language are ambiguous and their meanings are heavily dependent on the linguistic context in which they are used. The study of lexical semantics can not be separated from the notion of context. This paper takes a contextual approach to lexical semantics and studies the linguistic context of lexical atoms, or "sticky" phrases such as "hot dog". Since such lexical atoms may occur frequently in unrestricted natural language text, recognizing them is crucial for understanding naturally-occurring text. The paper proposes several heuristic approaches to exploiting the linguistic context to identify lexical atoms from arbitrary natural language text.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>1997-01-02T16:35:24Z</published>
+    <arxiv:comment>10 pages, postscript file, to appear in Proceedings of International and Interdisciplinary Conference on Modelling and Using Context (CONTEXT-97)</arxiv:comment>
+    <arxiv:primary_category term="cs.CL"/>
+    <arxiv:journal_ref>Proceedings of the International and Interdisciplinary Conference on Modelling and Using Context (CONTEXT-97), Rio de Janeiro, Brzil, Feb. 4-6, 1997. 119-129.</arxiv:journal_ref>
+    <author>
+      <name>Chengxiang Zhai</name>
+      <arxiv:affiliation>Carnegie Mellon University</arxiv:affiliation>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1805.09012v1</id>
+    <title>An Ontology-Based Reasoning Framework for Context-Aware Applications</title>
+    <updated>2018-05-23T08:36:28Z</updated>
+    <link href="https://arxiv.org/abs/1805.09012v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1805.09012v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Context-aware applications process context information to support users in their daily tasks and routines. These applications can adapt their functionalities by aggregating context information through machine-learning and data processing algorithms, supporting users with recommendations or services based on their current needs. In the last years, smartphones have been used in the field of context-awareness due to their embedded sensors and various communication interfaces such as Bluetooth, WiFi, NFC or cellular. However, building context-aware applications for smartphones can be a challenging and time-consuming task. In this paper, we describe an ontology-based reasoning framework to create context-aware applications. The framework is based on an ontology as well as micro-services to aggregate, process and represent context information.</summary>
+    <category term="cs.HC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2018-05-23T08:36:28Z</published>
+    <arxiv:comment>6 pages, 1 figure, International and Interdisciplinary Conference on Modeling and Using Context</arxiv:comment>
+    <arxiv:primary_category term="cs.HC"/>
+    <arxiv:journal_ref>Modeling and Using Context, H. Christiansen, I. Stojanovic, and G. A. Papadopoulos, Eds. Cham, Switzerland: Springer International Publishing, 2015, pp. 471-476</arxiv:journal_ref>
+    <author>
+      <name>Christoph Anderson</name>
+    </author>
+    <author>
+      <name>Isabel Suarez</name>
+    </author>
+    <author>
+      <name>Yaqian Xu</name>
+    </author>
+    <author>
+      <name>Klaus David</name>
+    </author>
+    <arxiv:doi>10.1007/978-3-319-25591-0_34</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/978-3-319-25591-0_34" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/1806.07358v1</id>
+    <title>No Threshold graphs are cospectral</title>
+    <updated>2018-06-19T17:40:23Z</updated>
+    <link href="https://arxiv.org/abs/1806.07358v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1806.07358v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A threshold graph G on n vertices is defined by binary sequence of length n. In this paper we present an explicit formula for computing the characteristic polynomial of a threshold graph from its binary sequence. Applications include obtaining a formula for the determinant of adjacency matrix of a threshold graph and showing that no two nonisomorphic threshold graphs are cospectral.</summary>
+    <category term="math.CO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2018-06-19T17:40:23Z</published>
+    <arxiv:comment>threshold graph, characteristic polynomial, cospectral graphs</arxiv:comment>
+    <arxiv:primary_category term="math.CO"/>
+    <author>
+      <name>J. Lazzarin</name>
+    </author>
+    <author>
+      <name>O. F. Márquez</name>
+    </author>
+    <author>
+      <name>F. Tura</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/0805.4444v2</id>
+    <title>Action potential restitution and hysteresis in a reaction-diffusion system with pacing rate dependent excitation threshold</title>
+    <updated>2008-08-14T18:35:02Z</updated>
+    <link href="https://arxiv.org/abs/0805.4444v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/0805.4444v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>  We have demonstrated that rate dependent restitution and action potential duration-refractory period hysteresis can be reproduced in a one-dimensional two-variable Chernyak-Starobin-Cohen reaction-diffusion medium with variable excitation threshold. We show that restitution and hysteresis depend on the relationship between pacing period and steady state excitation threshold and also on the rate of excitation threshold adaptation after an abrupt change in pacing period. It was also observed that the onset of action potential duration alternans is determined by the minimal stable wavefront speed, which could be approximated by the analytical critical speed of a stable solitary pulse. This approximation was suitably accurate regardless of the adaptation constant of excitation threshold, its dependence on pacing interval, or magnitude of the slopes of restitution curves.</summary>
+    <category term="physics.bio-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.comp-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2008-05-28T22:23:24Z</published>
+    <arxiv:comment>16 pages, 7 figures, and appendix. In v2: Appendix B removed, Eq. (4) corrected, Fig. 6 replaced, and "resting potential" replaced everywhere with "excitation threshold."</arxiv:comment>
+    <arxiv:primary_category term="physics.bio-ph"/>
+    <author>
+      <name>Joseph M. Starobin</name>
+    </author>
+    <author>
+      <name>Christopher P. Danford</name>
+    </author>
+    <author>
+      <name>Vivek Varadarajan</name>
+    </author>
+    <author>
+      <name>Andrei J. Starobin</name>
+    </author>
+    <author>
+      <name>Vladimir N. Polotski</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.19338v1</id>
+    <title>Privacy-preserving server-supported decryption</title>
+    <updated>2024-10-25T06:47:53Z</updated>
+    <link href="https://arxiv.org/abs/2410.19338v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2410.19338v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In this paper, we consider encryption systems with two-out-of-two threshold decryption, where one of the parties (the client) initiates the decryption and the other one (the server) assists. Existing threshold decryption schemes disclose to the server the ciphertext that is being decrypted. We give a construction, where the identity of the ciphertext is not leaked to the server, and the client's privacy is thus preserved. While showing the security of this construction, we run into the issue of defining the security of a scheme with blindly assisted decryption. We discuss previously proposed security definitions for similar cryptographic functionalities and argue why they do not capture the expected meaning of security. We propose an ideal functionality for the encryption with server-supported blind threshold decryption in the universal composability model, carefully balancing between the meaning of privacy, and the ability to implement it. We construct a protocol and show that it is a secure implementation of the proposed functionality in the random oracle model.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-10-25T06:47:53Z</published>
+    <arxiv:comment>To appear at Computer Security Foundations Symposium, CSF 2025</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Peeter Laud</name>
+    </author>
+    <author>
+      <name>Alisa Pankova</name>
+    </author>
+    <author>
+      <name>Jelizaveta Vakarjuk</name>
+    </author>
+  </entry>
+</feed>

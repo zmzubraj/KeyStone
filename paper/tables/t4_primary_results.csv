@@ -1,0 +1,5 @@
+result_id,condition_id,estimand,estimate,ci_low,ci_high,denominator,trials,claim_ids,source_path,evidence_stage,claim_ceiling
+RID-C003-IID-001,iid-10pct-uniform,catastrophic_false_pass_rate_conditional_on_catastrophic_trials,0.0,0.0,0.43448246478317465,5,20000,C003,prototype/results/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL
+RID-C003-CORR-001,domain-20pct-uniform,catastrophic_false_pass_rate_conditional_on_catastrophic_trials,0.0024141630901287556,0.0012706393262721957,0.004582090234108508,3728,20000,C003,prototype/results/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL
+RID-C003-STRAT-001,domain-20pct-stratified,catastrophic_false_pass_rate_conditional_on_catastrophic_trials,0.0,0.0,0.0010332497668990544,3714,20000,C003,prototype/results/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL
+RID-C003-SW-001,selective-withholding-11,catastrophic_false_pass_rate_conditional_on_catastrophic_trials,1.0,0.9998079639438954,1.0,20000,20000,C003,prototype/results/baseline.json,PRELIMINARY_INTERNAL,V3_INTERNAL

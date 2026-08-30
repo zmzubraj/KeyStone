@@ -16,11 +16,14 @@ KEYSTONE is **not** presented as a new threshold-encryption, VSS, PVSS, proactiv
 - `PACKAGE_MANIFEST.md` — complete archive inventory and entry points.
 - `README_BN.md` — Bangla executive guide and quick-start.
 - `WORKSPACE.md` — reproducible local workspace setup and verification commands.
+- `RESEARCH_INTAKE.md` — canonical six-field research-program intake.
+- `research-case/` — schema-v4 evidence, claim, provenance, review, and submission spine.
 - `docs/` — complete research, protocol, algorithm, role, TDD, evaluation, and paper guidance.
 - `prototype/` — runnable Python cryptographic core, simulator, tests, datasets, and figures.
 - `contracts/` — Solidity bulletin-board skeleton for epoch, audit, dispute, and response evidence.
 - `diagrams/` — editable Graphviz/Mermaid sources plus rendered PNG/SVG figures.
-- `paper/` — paper outline, claims, theorem roadmap, LaTeX snippets, and BibTeX.
+- `paper/` — paper outline, claims, theorem roadmap, BibTeX, and deterministic
+  preliminary Markdown/LaTeX tables generated from canonical results.
 
 ## Quick start
 
@@ -35,10 +38,15 @@ make reproduce
 
 Expected verification:
 
-- 17 Python tests pass.
+- 35 Python tests pass.
 - End-to-end threshold KEM/DEM demo opens an encrypted inference receipt with threshold-valid partial decryptions.
 - The frozen `n=32, t=22, s=8, q=8` static catastrophic-state bound reports false accept `0.01934628219389065`, or detection `0.9806537178061093`.
-- Monte Carlo datasets and five paper-oriented figures are regenerated.
+- Monte Carlo datasets with raw counts and 95% Wilson intervals, an exact
+  stratified-validation dataset, and five paper-oriented figures are regenerated.
+- Versioned canonical request/response bytes and transcript hashes reproduce
+  `paper/test_vectors.json` exactly.
+- Ed25519 signatures over the exact canonical partial-response bytes reproduce
+  `paper/signature_test_vectors.json` and reject tampered or cross-context replay.
 
 ## Research status
 
@@ -54,8 +62,11 @@ The prototype uses a generated 256-bit safe-prime subgroup, deterministic hash-t
 
 ## Verification status
 
-The Python cryptographic/simulation artifact and all 17 tests were reproduced
+The Python cryptographic/simulation artifact and all 35 tests were reproduced
 successfully on macOS/Apple Silicon on 2026-08-29. The Solidity source compiles
-with Solc 0.8.24 and its two current Foundry tests pass; a baseline gas snapshot
-is checked in. Fuzz/invariant coverage, distributed-network measurements, and a
-cryptographic audit remain pending. See `VERIFICATION.md` for exact evidence.
+with Solc 0.8.24; 19 unit, fuzz, gas, and stateful-invariant tests pass. Eight
+dedicated operation-level Foundry gas snapshots and a generated CSV report are
+checked in. Distributed-network measurements, formal-proof completion, and an
+independent cryptographic audit remain pending. The Ed25519 adapter is test and
+interoperability scaffolding, not production key management. See `VERIFICATION.md` for exact
+evidence and `docs/19_MPP_TO_PUBLISHABLE_PAPER_PLAN_BN.md` for the active plan.

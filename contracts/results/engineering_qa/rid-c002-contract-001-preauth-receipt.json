@@ -1,0 +1,976 @@
+{
+  "authorization_boundary": "PREAUTHORIZATION_ONLY",
+  "completed_at_utc": "2026-08-29T03:27:35.006581Z",
+  "evidence_origin": "INTERNAL_NON_EMPIRICAL_ENGINEERING_QA",
+  "execution": {
+    "cases": [
+      {
+        "case_id": "KBB-D01-AUDIT-MISSING-FAIL",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.001,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testAuditFinalizesWithMissingBitmap() (gas: 246412)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 246412,
+        "test_name": "testAuditFinalizesWithMissingBitmap()"
+      },
+      {
+        "case_id": "KBB-D02-EQUIVOCATION-EXCLUSION",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testEquivocationExcludesResponse() (gas: 241057)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 241057,
+        "test_name": "testEquivocationExcludesResponse()"
+      },
+      {
+        "case_id": "KBB-D03-EPOCH-DUPLICATE-IDENTITY",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testRegisterEpochRejectsDuplicateCustodianIdentity() (gas: 61604)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 61604,
+        "test_name": "testRegisterEpochRejectsDuplicateCustodianIdentity()"
+      },
+      {
+        "case_id": "KBB-D04-EPOCH-ZERO-DESCRIPTORS",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testRegisterEpochRejectsZeroDescriptorCommitments() (gas: 21958)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 21958,
+        "test_name": "testRegisterEpochRejectsZeroDescriptorCommitments()"
+      },
+      {
+        "case_id": "KBB-D05-ZERO-SUBJECT-BINDING",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testRequestRejectsZeroSubjectBinding() (gas: 38544)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 38544,
+        "test_name": "testRequestRejectsZeroSubjectBinding()"
+      },
+      {
+        "case_id": "KBB-D06-INVALID-EVIDENCE-NONZERO",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testInvalidResponseRequiresEvidenceBinding() (gas: 184630)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 184630,
+        "test_name": "testInvalidResponseRequiresEvidenceBinding()"
+      },
+      {
+        "case_id": "KBB-D07-AUDIT-COMPLETE-PASS",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testAuditFinalizesPassingWithCompleteSample() (gas: 284061)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 284061,
+        "test_name": "testAuditFinalizesPassingWithCompleteSample()"
+      },
+      {
+        "case_id": "KBB-D08-FINALIZE-STATE-BOUNDARIES",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testFinalizeRejectsTooEarlyAndAfterFinalization() (gas: 156399)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 156399,
+        "test_name": "testFinalizeRejectsTooEarlyAndAfterFinalization()"
+      },
+      {
+        "case_id": "KBB-D09-DEADLINE-EQUALITY",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testDeadlineEqualityAcceptsResponseButRejectsFinalization() (gas: 215052)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 215052,
+        "test_name": "testDeadlineEqualityAcceptsResponseButRejectsFinalization()"
+      },
+      {
+        "case_id": "KBB-D10-DEADLINE-PLUS-ONE",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testResponseAfterDeadlineIsRejectedAndFinalizationRecordsMissing() (gas: 164679)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 164679,
+        "test_name": "testResponseAfterDeadlineIsRejectedAndFinalizationRecordsMissing()"
+      },
+      {
+        "case_id": "KBB-D11-REQUEST-ID-OPEN-UNIQUENESS",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testRequestIdentifiersRejectZeroAndDuplicateOpenRequest() (gas: 146841)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 146841,
+        "test_name": "testRequestIdentifiersRejectZeroAndDuplicateOpenRequest()"
+      },
+      {
+        "case_id": "KBB-D12-REQUEST-ID-TERMINAL-NONREUSE",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testRequestIdentifierCannotBeReusedAfterFinalizationOrCancellation() (gas: 273320)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 273320,
+        "test_name": "testRequestIdentifierCannotBeReusedAfterFinalizationOrCancellation()"
+      },
+      {
+        "case_id": "KBB-D13-CANCELLED-CLOSED",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testCancelledRequestRejectsSubmissionAndFinalization() (gas: 144265)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 144265,
+        "test_name": "testCancelledRequestRejectsSubmissionAndFinalization()"
+      },
+      {
+        "case_id": "KBB-D14-DISPUTE-THRESHOLD-PASS",
+        "case_role": "deterministic_boundary",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testDisputeCompletesThresholdResponseLifecycle() (gas: 323008)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 323008,
+        "test_name": "testDisputeCompletesThresholdResponseLifecycle()"
+      },
+      {
+        "case_id": "KBB-F01-FUZZ-DUPLICATE-IDENTITY",
+        "case_role": "fuzz_boundary",
+        "detail": null,
+        "duration_seconds": 0.012,
+        "execution_configuration": {
+          "availability": "REPORTED_IN_JUNIT_SYSTEM_OUT",
+          "gas_scope": "Foundry fuzz-test body statistic; not production gas evidence",
+          "kind": "fuzz",
+          "mean_gas": 111453,
+          "median_gas": 111316,
+          "runs": 512
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testFuzzRegisterEpochRejectsDuplicateCustodianIdentity(uint8) (runs: 512, \u03bc: 111453, ~: 111316)",
+        "gas_scope": "NOT_REPORTED",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": null,
+        "test_name": "testFuzzRegisterEpochRejectsDuplicateCustodianIdentity(uint8)"
+      },
+      {
+        "case_id": "KBB-F02-FUZZ-REQUIRED-ABOVE-SAMPLE",
+        "case_role": "fuzz_boundary",
+        "detail": null,
+        "duration_seconds": 0.009,
+        "execution_configuration": {
+          "availability": "REPORTED_IN_JUNIT_SYSTEM_OUT",
+          "gas_scope": "Foundry fuzz-test body statistic; not production gas evidence",
+          "kind": "fuzz",
+          "mean_gas": 22156,
+          "median_gas": 21979,
+          "runs": 512
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testFuzzAuditRejectsThresholdAboveSample(uint256) (runs: 512, \u03bc: 22156, ~: 21979)",
+        "gas_scope": "NOT_REPORTED",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": null,
+        "test_name": "testFuzzAuditRejectsThresholdAboveSample(uint256)"
+      },
+      {
+        "case_id": "KBB-F03-FUZZ-UNAUTHORIZED-OPEN-AUDIT",
+        "case_role": "fuzz_boundary",
+        "detail": null,
+        "duration_seconds": 0.007,
+        "execution_configuration": {
+          "availability": "REPORTED_IN_JUNIT_SYSTEM_OUT",
+          "gas_scope": "Foundry fuzz-test body statistic; not production gas evidence",
+          "kind": "fuzz",
+          "mean_gas": 12437,
+          "median_gas": 12437,
+          "runs": 512
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testFuzzUnauthorizedCallerCannotOpenAudit(address) (runs: 512, \u03bc: 12437, ~: 12437)",
+        "gas_scope": "NOT_REPORTED",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": null,
+        "test_name": "testFuzzUnauthorizedCallerCannotOpenAudit(address)"
+      },
+      {
+        "case_id": "KBB-G01-REGISTER-EPOCH-5",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_RegisterEpochFiveMembers() (gas: 223629)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 223629,
+        "test_name": "testGas_RegisterEpochFiveMembers()"
+      },
+      {
+        "case_id": "KBB-G02-OPEN-AUDIT-3",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_OpenAuditThreeMembers() (gas: 125107)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 125107,
+        "test_name": "testGas_OpenAuditThreeMembers()"
+      },
+      {
+        "case_id": "KBB-G03-SUBMIT-FIRST-RESPONSE",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_SubmitAuditResponse() (gas: 57882)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 57882,
+        "test_name": "testGas_SubmitAuditResponse()"
+      },
+      {
+        "case_id": "KBB-G04-MARK-INVALID",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_MarkInvalidResponse() (gas: 27704)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 27704,
+        "test_name": "testGas_MarkInvalidResponse()"
+      },
+      {
+        "case_id": "KBB-G05-RECORD-EQUIVOCATION",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.002,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_RecordEquivocation() (gas: 51710)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 51710,
+        "test_name": "testGas_RecordEquivocation()"
+      },
+      {
+        "case_id": "KBB-G06-FINALIZE-AUDIT-2-OF-3",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_FinalizeAudit() (gas: 29142)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 29142,
+        "test_name": "testGas_FinalizeAudit()"
+      },
+      {
+        "case_id": "KBB-G07-OPEN-DISPUTE",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.0,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_OpenDispute() (gas: 144149)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 144149,
+        "test_name": "testGas_OpenDispute()"
+      },
+      {
+        "case_id": "KBB-G08-CANCEL-OPEN-REQUEST",
+        "case_role": "gas_test_body",
+        "detail": null,
+        "duration_seconds": 0.001,
+        "execution_configuration": {
+          "availability": "NOT_APPLICABLE",
+          "kind": "fixed"
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] testGas_CancelRequest() (gas: 5709)",
+        "gas_scope": "Foundry test-body gas with possible harness/setup effects; not production deployment or transaction cost",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_body_gas": 5709,
+        "test_name": "testGas_CancelRequest()"
+      },
+      {
+        "case_id": "KBB-I01-ADMIN-NONZERO",
+        "case_role": "stateful_invariant",
+        "detail": null,
+        "duration_seconds": 0.05,
+        "execution_configuration": {
+          "availability": "REPORTED_IN_JUNIT_SYSTEM_OUT",
+          "calls": 2048,
+          "kind": "invariant",
+          "reverts": 0,
+          "runs": 64
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] invariant_AdminRemainsNonzero() (runs: 64, calls: 2048, reverts: 0)",
+        "gas_scope": "NOT_REPORTED",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardInvariantTest",
+        "test_body_gas": null,
+        "test_name": "invariant_AdminRemainsNonzero()"
+      },
+      {
+        "case_id": "KBB-I02-BITMAP-OUTCOME-CONSISTENCY",
+        "case_role": "stateful_invariant",
+        "detail": null,
+        "duration_seconds": 0.12,
+        "execution_configuration": {
+          "availability": "REPORTED_IN_JUNIT_SYSTEM_OUT",
+          "calls": 2048,
+          "kind": "invariant",
+          "reverts": 0,
+          "runs": 64
+        },
+        "expected_status": "PASS",
+        "foundry_system_out": "[PASS] invariant_ResponseAndOutcomeBitmapsRemainConsistent() (runs: 64, calls: 2048, reverts: 0)",
+        "gas_scope": "NOT_REPORTED",
+        "status": "PASS",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardInvariantTest",
+        "test_body_gas": null,
+        "test_name": "invariant_ResponseAndOutcomeBitmapsRemainConsistent()"
+      }
+    ],
+    "command_argv": [
+      "forge",
+      "test",
+      "--root",
+      "contracts",
+      "--match-path",
+      "test/KeystoneBulletinBoard.t.sol",
+      "--junit"
+    ],
+    "configuration_availability_note": "Per-case fuzz/invariant run metadata is parsed from JUnit system-out when present; otherwise it is explicitly marked unavailable. Effective configuration is parsed from forge config --json.",
+    "effective_foundry_configuration": {
+      "fuzz": {
+        "runs": 512,
+        "seed": null
+      },
+      "invariant": {
+        "depth": 32,
+        "fail_on_revert": false,
+        "runs": 64
+      },
+      "optimizer": true,
+      "optimizer_runs": 200,
+      "solc": "0.8.24"
+    },
+    "machine_readable_format": "Foundry JUnit XML from --junit",
+    "returncode": 0,
+    "working_directory": "."
+  },
+  "gas_claim": "Foundry test-body observations only; not production deployment or transaction costs",
+  "git": {
+    "after": {
+      "available": true,
+      "commit": "e13f329d95f1b75ea417e0c392cb1458a0ffe828",
+      "scoped_status_porcelain": [
+        " M contracts/foundry.toml",
+        " M contracts/src/KeystoneBulletinBoard.sol",
+        " M contracts/test/KeystoneBulletinBoard.t.sol",
+        "?? contracts/scripts/export_contract_case_receipt.py"
+      ],
+      "scoped_worktree_dirty": true,
+      "status_porcelain": [
+        " M .gas-snapshot",
+        " M .gitignore",
+        " M CHANGELOG.md",
+        " M MASTER_GUIDE_BN.md",
+        " M Makefile",
+        " M PACKAGE_MANIFEST.md",
+        " M README.md",
+        " M README_BN.md",
+        " M SHA256SUMS",
+        " M VERIFICATION.md",
+        " M WORKSPACE.md",
+        " M contracts/README.md",
+        " M contracts/foundry.toml",
+        " M contracts/src/KeystoneBulletinBoard.sol",
+        " M contracts/test/KeystoneBulletinBoard.t.sol",
+        " M diagrams/01_system_architecture.svg",
+        " M diagrams/02_property_separation.dot",
+        " M diagrams/02_property_separation.mmd",
+        " M diagrams/02_property_separation.png",
+        " M diagrams/02_property_separation.svg",
+        " M diagrams/03_audit_sequence.svg",
+        " M diagrams/04_dispute_sequence.svg",
+        " M diagrams/05_state_machines.svg",
+        " M diagrams/06_threat_model.svg",
+        " M diagrams/07_sampling_domains.svg",
+        " M diagrams/08_experiment_pipeline.svg",
+        " M docs/03_FORMAL_SECURITY_MODEL.md",
+        " M docs/04_PROTOCOL_SPECIFICATION.md",
+        " M docs/06_ALGORITHM_CATALOG.md",
+        " M docs/09_TDD_IMPLEMENTATION_ROADMAP.md",
+        " M docs/14_PUBLICATION_SUCCESS_GATES.md",
+        " M docs/15_PRIOR_ART_BOUNDARY.md",
+        " M docs/17_7_DAY_MVP_SPRINT_BN.md",
+        " M docs/18_LATEST_PRIOR_ART_WATCH_2026-08-29.md",
+        " M paper/references.bib",
+        " M paper/theorem_roadmap.md",
+        " M prototype/README.md",
+        " M prototype/results/baseline.json",
+        " M prototype/results/crypto_benchmark.csv",
+        " M prototype/results/domain_diversity.csv",
+        " M prototype/results/experiment_manifest.json",
+        " M prototype/results/figures/figure_1_theoretical_detection_bound.svg",
+        " M prototype/results/figures/figure_2_iid_failure_sweep.png",
+        " M prototype/results/figures/figure_2_iid_failure_sweep.svg",
+        " M prototype/results/figures/figure_3_domain_diversity.png",
+        " M prototype/results/figures/figure_3_domain_diversity.svg",
+        " M prototype/results/figures/figure_4_selective_withholding_gap.svg",
+        " M prototype/results/figures/figure_5_sampling_strategy.png",
+        " M prototype/results/figures/figure_5_sampling_strategy.svg",
+        " M prototype/results/iid_failure_sweep.csv",
+        " M prototype/results/sampling_strategy.csv",
+        " M prototype/results/selective_withholding.csv",
+        " M prototype/results/theoretical_bound.csv",
+        " M prototype/scripts/benchmark_crypto.py",
+        " M prototype/scripts/run_experiments.py",
+        " M prototype/src/keystone/cli.py",
+        " M prototype/src/keystone/protocol.py",
+        " M prototype/src/keystone/sampling.py",
+        " M prototype/src/keystone/simulation.py",
+        " M prototype/src/keystone/threshold_kem.py",
+        " M prototype/tests/test_protocol.py",
+        " M prototype/tests/test_sampling.py",
+        " M prototype/tests/test_simulation.py",
+        "?? RESEARCH_INTAKE.md",
+        "?? contracts/gas_report.csv",
+        "?? contracts/results/",
+        "?? contracts/scripts/",
+        "?? diagrams/02_property_separation.render.json",
+        "?? diagrams/02_property_separation.render.json.sha256",
+        "?? docs/19_MPP_TO_PUBLISHABLE_PAPER_PLAN_BN.md",
+        "?? docs/superpowers/plans/2026-08-29-automated-visual-qa.md",
+        "?? docs/superpowers/plans/keystone_mpp_goal_plan.md",
+        "?? paper/property_separation_obligations.md",
+        "?? paper/signature_test_vectors.json",
+        "?? paper/tables/",
+        "?? paper/test_vectors.json",
+        "?? prototype/results/engineering_qa/",
+        "?? prototype/results/exact_stratified_validation.csv",
+        "?? prototype/results/markov_temporal_dependence.csv",
+        "?? prototype/scripts/export_crypto_case_receipt.py",
+        "?? prototype/scripts/export_signature_vectors.py",
+        "?? prototype/scripts/export_test_vectors.py",
+        "?? prototype/src/keystone/serialization.py",
+        "?? prototype/src/keystone/signatures.py",
+        "?? prototype/tests/test_crypto_case_receipt.py",
+        "?? prototype/tests/test_experiment_manifest.py",
+        "?? prototype/tests/test_preauth_engineering_qa_table.py",
+        "?? prototype/tests/test_preliminary_table_lineage_receipt.py",
+        "?? prototype/tests/test_property_separation_render.py",
+        "?? prototype/tests/test_refresh.py",
+        "?? prototype/tests/test_serialization.py",
+        "?? prototype/tests/test_signatures.py",
+        "?? prototype/tests/test_svg_accessibility.py",
+        "?? prototype/tests/test_visual_accessibility.py",
+        "?? research-case/",
+        "?? scripts/"
+      ],
+      "worktree_dirty": true
+    },
+    "before": {
+      "available": true,
+      "commit": "e13f329d95f1b75ea417e0c392cb1458a0ffe828",
+      "scoped_status_porcelain": [
+        " M contracts/foundry.toml",
+        " M contracts/src/KeystoneBulletinBoard.sol",
+        " M contracts/test/KeystoneBulletinBoard.t.sol",
+        "?? contracts/scripts/export_contract_case_receipt.py"
+      ],
+      "scoped_worktree_dirty": true,
+      "status_porcelain": [
+        " M .gas-snapshot",
+        " M .gitignore",
+        " M CHANGELOG.md",
+        " M MASTER_GUIDE_BN.md",
+        " M Makefile",
+        " M PACKAGE_MANIFEST.md",
+        " M README.md",
+        " M README_BN.md",
+        " M SHA256SUMS",
+        " M VERIFICATION.md",
+        " M WORKSPACE.md",
+        " M contracts/README.md",
+        " M contracts/foundry.toml",
+        " M contracts/src/KeystoneBulletinBoard.sol",
+        " M contracts/test/KeystoneBulletinBoard.t.sol",
+        " M diagrams/01_system_architecture.svg",
+        " M diagrams/02_property_separation.dot",
+        " M diagrams/02_property_separation.mmd",
+        " M diagrams/02_property_separation.png",
+        " M diagrams/02_property_separation.svg",
+        " M diagrams/03_audit_sequence.svg",
+        " M diagrams/04_dispute_sequence.svg",
+        " M diagrams/05_state_machines.svg",
+        " M diagrams/06_threat_model.svg",
+        " M diagrams/07_sampling_domains.svg",
+        " M diagrams/08_experiment_pipeline.svg",
+        " M docs/03_FORMAL_SECURITY_MODEL.md",
+        " M docs/04_PROTOCOL_SPECIFICATION.md",
+        " M docs/06_ALGORITHM_CATALOG.md",
+        " M docs/09_TDD_IMPLEMENTATION_ROADMAP.md",
+        " M docs/14_PUBLICATION_SUCCESS_GATES.md",
+        " M docs/15_PRIOR_ART_BOUNDARY.md",
+        " M docs/17_7_DAY_MVP_SPRINT_BN.md",
+        " M docs/18_LATEST_PRIOR_ART_WATCH_2026-08-29.md",
+        " M paper/references.bib",
+        " M paper/theorem_roadmap.md",
+        " M prototype/README.md",
+        " M prototype/results/baseline.json",
+        " M prototype/results/crypto_benchmark.csv",
+        " M prototype/results/domain_diversity.csv",
+        " M prototype/results/experiment_manifest.json",
+        " M prototype/results/figures/figure_1_theoretical_detection_bound.svg",
+        " M prototype/results/figures/figure_2_iid_failure_sweep.png",
+        " M prototype/results/figures/figure_2_iid_failure_sweep.svg",
+        " M prototype/results/figures/figure_3_domain_diversity.png",
+        " M prototype/results/figures/figure_3_domain_diversity.svg",
+        " M prototype/results/figures/figure_4_selective_withholding_gap.svg",
+        " M prototype/results/figures/figure_5_sampling_strategy.png",
+        " M prototype/results/figures/figure_5_sampling_strategy.svg",
+        " M prototype/results/iid_failure_sweep.csv",
+        " M prototype/results/sampling_strategy.csv",
+        " M prototype/results/selective_withholding.csv",
+        " M prototype/results/theoretical_bound.csv",
+        " M prototype/scripts/benchmark_crypto.py",
+        " M prototype/scripts/run_experiments.py",
+        " M prototype/src/keystone/cli.py",
+        " M prototype/src/keystone/protocol.py",
+        " M prototype/src/keystone/sampling.py",
+        " M prototype/src/keystone/simulation.py",
+        " M prototype/src/keystone/threshold_kem.py",
+        " M prototype/tests/test_protocol.py",
+        " M prototype/tests/test_sampling.py",
+        " M prototype/tests/test_simulation.py",
+        "?? RESEARCH_INTAKE.md",
+        "?? contracts/gas_report.csv",
+        "?? contracts/results/",
+        "?? contracts/scripts/",
+        "?? diagrams/02_property_separation.render.json",
+        "?? diagrams/02_property_separation.render.json.sha256",
+        "?? docs/19_MPP_TO_PUBLISHABLE_PAPER_PLAN_BN.md",
+        "?? docs/superpowers/plans/2026-08-29-automated-visual-qa.md",
+        "?? docs/superpowers/plans/keystone_mpp_goal_plan.md",
+        "?? paper/property_separation_obligations.md",
+        "?? paper/signature_test_vectors.json",
+        "?? paper/tables/",
+        "?? paper/test_vectors.json",
+        "?? prototype/results/engineering_qa/",
+        "?? prototype/results/exact_stratified_validation.csv",
+        "?? prototype/results/markov_temporal_dependence.csv",
+        "?? prototype/scripts/export_crypto_case_receipt.py",
+        "?? prototype/scripts/export_signature_vectors.py",
+        "?? prototype/scripts/export_test_vectors.py",
+        "?? prototype/src/keystone/serialization.py",
+        "?? prototype/src/keystone/signatures.py",
+        "?? prototype/tests/test_crypto_case_receipt.py",
+        "?? prototype/tests/test_experiment_manifest.py",
+        "?? prototype/tests/test_preauth_engineering_qa_table.py",
+        "?? prototype/tests/test_preliminary_table_lineage_receipt.py",
+        "?? prototype/tests/test_property_separation_render.py",
+        "?? prototype/tests/test_refresh.py",
+        "?? prototype/tests/test_serialization.py",
+        "?? prototype/tests/test_signatures.py",
+        "?? prototype/tests/test_svg_accessibility.py",
+        "?? prototype/tests/test_visual_accessibility.py",
+        "?? research-case/",
+        "?? scripts/"
+      ],
+      "worktree_dirty": true
+    }
+  },
+  "independence_status": "SAME_WORKSPACE_NOT_INDEPENDENT",
+  "limitations": [
+    "This receipt is preauthorization engineering QA, not scientific evidence.",
+    "It is a same-workspace run and not an independent reproduction.",
+    "It is not a smart-contract security audit, formal verification, deployment study, or production-security assessment.",
+    "Passing mapped cases prove only the asserted behavior of the current local source/test/config hashes.",
+    "The contract remains a research-only ledger boundary and records admin-adjudicated off-chain proof outcomes.",
+    "Foundry gas values are test-body observations with possible harness/setup effects and are not production cost evidence.",
+    "Fuzz and invariant exploration is bounded by the recorded effective configuration and is not exhaustive proof."
+  ],
+  "overall_status": "PASS",
+  "production_security_status": "NOT_ASSESSED",
+  "receipt_type": "PREAUTHORIZATION_ENGINEERING_QA",
+  "result_id": "RID-C002-CONTRACT-001",
+  "runtime": {
+    "forge_executable": "/Users/rainbow/.foundry/bin/forge",
+    "forge_version_output": "forge Version: 1.5.1-stable\nCommit SHA: b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2\nBuild Timestamp: 2025-12-22T11:41:09.812070000Z (1766403669)\nBuild Profile: maxperf",
+    "platform_machine": "arm64",
+    "platform_release": "24.1.0",
+    "platform_system": "Darwin",
+    "python_executable": "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "python_implementation": "CPython",
+    "python_version": "3.14.6",
+    "relevant_environment": {}
+  },
+  "schema_version": 1,
+  "scientific_evidence_status": "NOT_SCIENTIFIC_EVIDENCE",
+  "scope": {
+    "case_mapping": [
+      {
+        "case_id": "KBB-D01-AUDIT-MISSING-FAIL",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testAuditFinalizesWithMissingBitmap()"
+      },
+      {
+        "case_id": "KBB-D02-EQUIVOCATION-EXCLUSION",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testEquivocationExcludesResponse()"
+      },
+      {
+        "case_id": "KBB-D03-EPOCH-DUPLICATE-IDENTITY",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testRegisterEpochRejectsDuplicateCustodianIdentity()"
+      },
+      {
+        "case_id": "KBB-D04-EPOCH-ZERO-DESCRIPTORS",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testRegisterEpochRejectsZeroDescriptorCommitments()"
+      },
+      {
+        "case_id": "KBB-D05-ZERO-SUBJECT-BINDING",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testRequestRejectsZeroSubjectBinding()"
+      },
+      {
+        "case_id": "KBB-D06-INVALID-EVIDENCE-NONZERO",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testInvalidResponseRequiresEvidenceBinding()"
+      },
+      {
+        "case_id": "KBB-D07-AUDIT-COMPLETE-PASS",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testAuditFinalizesPassingWithCompleteSample()"
+      },
+      {
+        "case_id": "KBB-D08-FINALIZE-STATE-BOUNDARIES",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testFinalizeRejectsTooEarlyAndAfterFinalization()"
+      },
+      {
+        "case_id": "KBB-D09-DEADLINE-EQUALITY",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testDeadlineEqualityAcceptsResponseButRejectsFinalization()"
+      },
+      {
+        "case_id": "KBB-D10-DEADLINE-PLUS-ONE",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testResponseAfterDeadlineIsRejectedAndFinalizationRecordsMissing()"
+      },
+      {
+        "case_id": "KBB-D11-REQUEST-ID-OPEN-UNIQUENESS",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testRequestIdentifiersRejectZeroAndDuplicateOpenRequest()"
+      },
+      {
+        "case_id": "KBB-D12-REQUEST-ID-TERMINAL-NONREUSE",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testRequestIdentifierCannotBeReusedAfterFinalizationOrCancellation()"
+      },
+      {
+        "case_id": "KBB-D13-CANCELLED-CLOSED",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testCancelledRequestRejectsSubmissionAndFinalization()"
+      },
+      {
+        "case_id": "KBB-D14-DISPUTE-THRESHOLD-PASS",
+        "case_role": "deterministic_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testDisputeCompletesThresholdResponseLifecycle()"
+      },
+      {
+        "case_id": "KBB-F01-FUZZ-DUPLICATE-IDENTITY",
+        "case_role": "fuzz_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testFuzzRegisterEpochRejectsDuplicateCustodianIdentity(uint8)"
+      },
+      {
+        "case_id": "KBB-F02-FUZZ-REQUIRED-ABOVE-SAMPLE",
+        "case_role": "fuzz_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testFuzzAuditRejectsThresholdAboveSample(uint256)"
+      },
+      {
+        "case_id": "KBB-F03-FUZZ-UNAUTHORIZED-OPEN-AUDIT",
+        "case_role": "fuzz_boundary",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testFuzzUnauthorizedCallerCannotOpenAudit(address)"
+      },
+      {
+        "case_id": "KBB-G01-REGISTER-EPOCH-5",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_RegisterEpochFiveMembers()"
+      },
+      {
+        "case_id": "KBB-G02-OPEN-AUDIT-3",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_OpenAuditThreeMembers()"
+      },
+      {
+        "case_id": "KBB-G03-SUBMIT-FIRST-RESPONSE",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_SubmitAuditResponse()"
+      },
+      {
+        "case_id": "KBB-G04-MARK-INVALID",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_MarkInvalidResponse()"
+      },
+      {
+        "case_id": "KBB-G05-RECORD-EQUIVOCATION",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_RecordEquivocation()"
+      },
+      {
+        "case_id": "KBB-G06-FINALIZE-AUDIT-2-OF-3",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_FinalizeAudit()"
+      },
+      {
+        "case_id": "KBB-G07-OPEN-DISPUTE",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_OpenDispute()"
+      },
+      {
+        "case_id": "KBB-G08-CANCEL-OPEN-REQUEST",
+        "case_role": "gas_test_body",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardTest",
+        "test_name": "testGas_CancelRequest()"
+      },
+      {
+        "case_id": "KBB-I01-ADMIN-NONZERO",
+        "case_role": "stateful_invariant",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardInvariantTest",
+        "test_name": "invariant_AdminRemainsNonzero()"
+      },
+      {
+        "case_id": "KBB-I02-BITMAP-OUTCOME-CONSISTENCY",
+        "case_role": "stateful_invariant",
+        "suite_name": "test/KeystoneBulletinBoard.t.sol:KeystoneBulletinBoardInvariantTest",
+        "test_name": "invariant_ResponseAndOutcomeBitmapsRemainConsistent()"
+      }
+    ],
+    "mapped_case_count": 27,
+    "mapped_cases_are_not_a_scientific_denominator": true,
+    "observed_case_count": 27
+  },
+  "security_review_status": "NOT_A_SECURITY_AUDIT",
+  "self_check": {
+    "negative_checks_rejected": [
+      "duplicate_mapping",
+      "duplicate_result",
+      "missing_case"
+    ],
+    "status": "PASS",
+    "valid_fixture_case_count": 3
+  },
+  "sha256": {
+    "execution_outputs": [
+      {
+        "path": "contracts/results/engineering_qa/rid-c002-contract-001-foundry.junit.xml",
+        "sha256": "04a54123d7af8b04920d9c25171d0e571915ad7a82dcdf88fd269c886afe88e7"
+      },
+      {
+        "path": "contracts/results/engineering_qa/rid-c002-contract-001-foundry.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "inputs_verified_unchanged": [
+      {
+        "path": "contracts/src/KeystoneBulletinBoard.sol",
+        "sha256": "9b480c09c766d11fafb482b19927763c4fea9ca3a86f6927bf9dec9eee627887"
+      },
+      {
+        "path": "contracts/test/KeystoneBulletinBoard.t.sol",
+        "sha256": "64547932e3afb6c4c9057e191cf5c9567bd884d98287bb2a6eabb03e1bcf2c9e"
+      },
+      {
+        "path": "contracts/foundry.toml",
+        "sha256": "1e774a21a65cf52f8450676797875b62391c96eda469cb7a49fe1de2c718492b"
+      },
+      {
+        "path": "contracts/scripts/export_contract_case_receipt.py",
+        "sha256": "5dde8d50410727dbaa29965b5af5bbcca5fb11f201c668496ff4707f49247097"
+      }
+    ],
+    "receipt_hash_location": "contracts/results/engineering_qa/rid-c002-contract-001-preauth-receipt.json.sha256",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "04a54123d7af8b04920d9c25171d0e571915ad7a82dcdf88fd269c886afe88e7"
+  },
+  "started_at_utc": "2026-08-29T03:27:34.745519Z"
+}

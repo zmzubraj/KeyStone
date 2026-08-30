@@ -1,0 +1,138 @@
+{
+  "canonical_dispositions": {
+    "acceptance_readiness": "NOT_ASSESSABLE",
+    "feasibility": "UNASSESSED",
+    "novelty": "UNRESOLVED",
+    "phase": "INTAKE",
+    "solution_viability": "ASSERTED_ONLY"
+  },
+  "inputs": [
+    {
+      "path": "research-case/01-novelty/novelty-matrix.csv",
+      "sha256": "5692d14ace4267f949163f7f9cb2bb06daee00bffd2223b725c43157c4c1c3cd"
+    },
+    {
+      "path": "research-case/02-feasibility/risk-register.csv",
+      "sha256": "075ac5ee2fd9bcf0424ec17501d4c1784586bbb47edef9a35028053ef49921a6"
+    },
+    {
+      "path": "research-case/03-design/protocol.md",
+      "sha256": "4ab6e396a75a6c5cab6290de681b7c3ba8de468606a591a19ee951ae6963efc3"
+    },
+    {
+      "path": "research-case/03-design/analysis-plan.md",
+      "sha256": "ab5a01e12b8b2e65275ad9317aad219e3219c63c45395e6274f68dc049c915a1"
+    },
+    {
+      "path": "research-case/07-manuscript/claim-evidence-matrix.csv",
+      "sha256": "d70979a1ae641f51669519dc0dadda0b683766a32520365d2279218fd1b54553"
+    },
+    {
+      "path": "prototype/configs/baseline.json",
+      "sha256": "ceef72707f92f3b5a17a7343339222114e92110b145f9db3f7ff5b17a4631c59"
+    },
+    {
+      "path": "prototype/results/experiment_manifest.json",
+      "sha256": "4fc1e392e7636bd777f5d276b3ba5431f81d0034411fe5bc625f1d10523b8de6"
+    },
+    {
+      "path": "prototype/results/baseline.json",
+      "sha256": "1bb15f333fe5620543ed378223dfb64c0db86bc461c59e4da2afc62877687730"
+    },
+    {
+      "path": "prototype/results/exact_stratified_validation.csv",
+      "sha256": "4256a9bf771838b9bfd804d9dcd486fd137555a6853e5feaeca3c9f44160b8d9"
+    },
+    {
+      "path": "prototype/results/markov_temporal_dependence.csv",
+      "sha256": "ac1bd20264a92e689de3ef074f1bfdf94cfde9c9f6dec7975a69ec22e3c7cb86"
+    },
+    {
+      "path": "prototype/results/selective_withholding.csv",
+      "sha256": "f97239e8cb8bf22dbdd3d3713b33680cb75ccd37b9d731dae2dc21239c1bf8b7"
+    },
+    {
+      "path": "prototype/results/crypto_benchmark.csv",
+      "sha256": "1c5efa4d13d46ed3f31d77c6c2f2a70adf848429d500197a5f1d1a378fd9a5ce"
+    },
+    {
+      "path": "contracts/gas_report.csv",
+      "sha256": "7431faffe73379a745204bf480f48172fb4c8e96546b562c81e898bfd8ca2cc1"
+    },
+    {
+      "path": "paper/tables/preauthorization_engineering_qa.csv",
+      "sha256": "7f63806e29edec711360a8b70fed227f03ec655fe14de53b6a82e7d4cf9ec865"
+    }
+  ],
+  "missing_required_evidence": [
+    "RID-C003-DEADLINE-001",
+    "independent reproduction",
+    "external validation"
+  ],
+  "outputs": [
+    {
+      "path": "t1_strongest_prior_art.csv",
+      "sha256": "373d8a5a721ed453b8b3b2a4944c1dc41753a7b1e15aa887e43a5c0895f9add6"
+    },
+    {
+      "path": "t1_t8_package.md",
+      "sha256": "0876dd9fe3fec6256a8b11dbdfbcadad8e66a0f6a9855a43a6819afdd6045d51"
+    },
+    {
+      "path": "t1_t8_package.tex",
+      "sha256": "8b7088f63f36c57c5b1dba8ccdadb20b8ff2aa3a449d0673b0603e1d4ca38e8c"
+    },
+    {
+      "path": "t2_proposed_vs_baselines.csv",
+      "sha256": "74eb71cf5e5eac9d722cc489a1b29e6e97fe4040db893eb201652167046dfef3"
+    },
+    {
+      "path": "t3_experimental_conditions.csv",
+      "sha256": "0ce677c2ce2208bd8ceef8b113f044e543a28231dec2c2a327b88338a888d5e4"
+    },
+    {
+      "path": "t4_primary_results.csv",
+      "sha256": "3a3ff0cd703bb31138c81a1e7f7ba7aacae6a671490328d070e47b37876816fb"
+    },
+    {
+      "path": "t5_ablation_mechanism.csv",
+      "sha256": "f99252e6ff6b7ea08c8f27d6d96ceb89938c11f6778ba0a61a2023c5b4e9aea7"
+    },
+    {
+      "path": "t6_robustness_boundaries.csv",
+      "sha256": "4c14fa59b7d1e1df3f65b91ee29a846712b633ec7779d1abb2d79482e69262d0"
+    },
+    {
+      "path": "t7_real_world_feasibility.csv",
+      "sha256": "8336f2a7cbe0e89f5e709ba100929587eaba7aa7d30918d496f4a1202e36f979"
+    },
+    {
+      "path": "t8_negative_findings_risks.csv",
+      "sha256": "a9861681e31fc8052500ab059260e40a33784f1d5fa341f9846e1ae5c90eebac"
+    }
+  ],
+  "schema_id": "KEYSTONE_T1_T8_TABLE_PACKAGE",
+  "schema_version": 1,
+  "scientific_evidence_boundary": "NOT_CONFIRMATORY_OR_INDEPENDENT_EVIDENCE",
+  "status": "DRAFT_PREAUTHORIZATION",
+  "table_dispositions": {
+    "T1": "bounded strongest-prior-art matrix only; not novelty clearance",
+    "T2": "design comparator registry only; no measured superiority claim",
+    "T3": "frozen local conditions plus explicit missing distributed deadline profile",
+    "T4": "preliminary internal result display only; numeric values remain source-bound",
+    "T5": "planned mechanism-isolation registry only; all rows missing and unexecuted",
+    "T6": "exact, exploratory, and preliminary robustness checks with distinct estimands",
+    "T7": "local timing and gas observations only; distributed, operator, network, and external evidence blocked",
+    "T8": "negative findings and unresolved risks ledger with selective withholding preserved"
+  },
+  "table_ids": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7",
+    "T8"
+  ]
+}

@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/JYd9UXH2ctIAxNjMogQhCuh00pE</id>
+  <title>arXiv Query: search_query=all:threshold OR all:decryption OR all:liveness OR all:blockchain&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-08-28T22:06:42Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:threshold+OR+(all:decryption+OR+(all:liveness+OR+all:blockchain))&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>101184</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/1910.00742v1</id>
+    <title>ChainSplitter: Towards Blockchain-based Industrial IoT Architecture for Supporting Hierarchical Storage</title>
+    <updated>2019-10-02T01:37:20Z</updated>
+    <link href="https://arxiv.org/abs/1910.00742v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/1910.00742v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The fast developing Industrial Internet of Things (IIoT) technologies provide a promising opportunity to build large-scale systems to connect numerous heterogeneous devices into the Internet. Most existing IIoT infrastructures are based on a centralized architecture, which is easier for management but cannot effectively support immutable and verifiable services among multiple parties. Blockchain technology provides many desired features for large-scale IIoT infrastructures, such as decentralization, trustworthiness, trackability, and immutability. This paper presents a blockchain-based IIoT architecture to support immutable and verifiable services. However, when applying blockchain technology to the IIoT infrastructure, the required storage space posts a grant challenge to resource-constrained IIoT infrastructures. To address the storage issue, this paper proposes a hierarchical blockchain storage structure, \textit{ChainSplitter}. Specially, the proposed architecture features a hierarchical storage structure where the majority of the blockchain is stored in the clouds, while the most recent blocks are stored in the overlay network of the individual IIoT networks. The proposed architecture seamlessly binds local IIoT networks, the blockchain overlay network, and the cloud infrastructure together through two connectors, the \textit{blockchain connector} and the \textit{cloud connector}, to construct the hierarchical blockchain storage. The blockchain connector in the overlay network builds blocks in blockchain from data generated in IIoT networks, and the cloud connector resolves the blockchain synchronization issues between the overlay network and the clouds. We also provide a case study to show the efficiency of the proposed hierarchical blockchain storage in a practical Industrial IoT case.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2019-10-02T01:37:20Z</published>
+    <arxiv:comment>10 pages, 5 figures, 2019 IEEE International Conference on Blockchain (Blockchain) 978-1-7281-4693-5/19/$31.00 \c{opyright}2019 IEEE</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <arxiv:journal_ref>2019 IEEE International Conference on Blockchain (Blockchain)</arxiv:journal_ref>
+    <author>
+      <name>Gang Wang</name>
+    </author>
+    <author>
+      <name>Zhijie Jerry Shi</name>
+    </author>
+    <author>
+      <name>Mark Nixon</name>
+    </author>
+    <author>
+      <name>Song Han</name>
+    </author>
+    <arxiv:doi>10.1109/Blockchain.2019.00030</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/Blockchain.2019.00030" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2004.13438v2</id>
+    <title>BlockSim: An Extensible Simulation Tool for Blockchain Systems</title>
+    <updated>2020-10-14T21:48:10Z</updated>
+    <link href="https://arxiv.org/abs/2004.13438v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2004.13438v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Both in the design and deployment of blockchain solutions many performance-impacting configuration choices need to be made. We introduce BlockSim, a framework and software tool to build and simulate discrete-event dynamic systems models for blockchain systems. BlockSim is designed to support the analysis of a large variety of blockchains and blockchain deployments as well as a wide set of analysis questions. At the core of BlockSim is a Base Model, which contains the main model constructs common across various blockchain systems organized in three abstraction layers (network, consensus and incentives layer). The Base Model is usable for a wide variety of blockchain systems and can be extended easily to include system or deployment particulars. The BlockSim software tool provides a simulator that implements the Base Model in Python. This paper describes the Base Model, the simulator implementation, and the application of BlockSim to Bitcoin, Ethereum and other consensus algorithms. We validate BlockSim simulation results by comparison with performance results from actual systems and from other studies in the literature. We close the paper by a BlockSim simulation study of the impact of uncle blocks rewards on mining decentralization, for a variety of blockchain configurations.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.PF" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2020-04-28T11:44:07Z</published>
+    <arxiv:comment>Frontiers in Blockchain: https://www.frontiersin.org/article/10.3389/fbloc.2020.00028</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <arxiv:journal_ref>Frontiers in Blockchain 3(2020)</arxiv:journal_ref>
+    <author>
+      <name>Maher Alharby</name>
+    </author>
+    <author>
+      <name>Aad van Moorsel</name>
+    </author>
+    <arxiv:doi>10.3389/fbloc.2020.00028</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.3389/fbloc.2020.00028" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2105.05338v1</id>
+    <title>SmartOil: Blockchain and smart contract-based oil supply chain management</title>
+    <updated>2021-05-11T20:45:13Z</updated>
+    <link href="https://arxiv.org/abs/2105.05338v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2105.05338v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The traditional oil supply chain suffers from various shortcomings regarding crude oil extraction, processing, distribution, environmental pollution, and traceability. It offers an only a forward flow of products with almost no security and tracking process. In time, the system will lag behind due to the limitations in quality inspection, fraudulent information, and monopolistic behavior of supply chain entities. Inclusion of counterfeiting products and opaqueness of the system urge renovation in this sector. The recent evolution of Industry 4.0 leads to the alternation in the supply chain introducing the smart supply chain. Technological advancement can now reshape the infrastructure of the supply chain for the future. In this paper, we suggest a conceptual framework utilizing Blockchain and Smart Contract to monitor the overall oil supply chain. Blockchain is a groundbreaking technology to monitor and support the security building of a decentralized type supply chain over a peer-to-peer network. The use of the Internet of Things (IoT), especially sensors, opens broader window to track the global supply chain in real-time. We construct a methodology to support reverse traceability for each participant of the supply chain. The functions and characteristics of Blockchain and Smart Contract are defined. Implementation of Smart Contracts has also been shown with detailed analysis. We further describe the challenges of implementing such a system and validate our framework's adaptability in the real world. The paper concludes with future research scope to mitigate the restrictions of data management and maintenance with advanced working prototypes and agile systems achieving greater traceability and transparency.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2021-05-11T20:45:13Z</published>
+    <arxiv:comment>Accepted as Open access article in IET Blockchain</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <arxiv:journal_ref>IET Blockchain, 2021</arxiv:journal_ref>
+    <author>
+      <name>AKM Bahalul Haque</name>
+    </author>
+    <author>
+      <name>Md. Rifat Hasan</name>
+    </author>
+    <author>
+      <name>Md. Oahiduzzaman Mondol Zihad</name>
+    </author>
+    <arxiv:doi>10.1049/blc2.12005</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1049/blc2.12005" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2307.10492v1</id>
+    <title>Blockchain-Based Federated Learning: Incentivizing Data Sharing and Penalizing Dishonest Behavior</title>
+    <updated>2023-07-19T23:05:49Z</updated>
+    <link href="https://arxiv.org/abs/2307.10492v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2307.10492v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>With the increasing importance of data sharing for collaboration and innovation, it is becoming more important to ensure that data is managed and shared in a secure and trustworthy manner. Data governance is a common approach to managing data, but it faces many challenges such as data silos, data consistency, privacy, security, and access control. To address these challenges, this paper proposes a comprehensive framework that integrates data trust in federated learning with InterPlanetary File System, blockchain, and smart contracts to facilitate secure and mutually beneficial data sharing while providing incentives, access control mechanisms, and penalizing any dishonest behavior. The experimental results demonstrate that the proposed model is effective in improving the accuracy of federated learning models while ensuring the security and fairness of the data-sharing process. The research paper also presents a decentralized federated learning platform that successfully trained a CNN model on the MNIST dataset using blockchain technology. The platform enables multiple workers to train the model simultaneously while maintaining data privacy and security. The decentralized architecture and use of blockchain technology allow for efficient communication and coordination between workers. This platform has the potential to facilitate decentralized machine learning and support privacy-preserving collaboration in various domains.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-07-19T23:05:49Z</published>
+    <arxiv:comment>To appear in the 5th International Congress on Blockchain and Applications (BLOCKCHAIN'23). Publish by the Lecture Notes in Networks and Systems series of Springer Verlag</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <arxiv:journal_ref>Blockchain and Applications, 5th International Congress. BLOCKCHAIN 2023. Lecture Notes in Networks and Systems, vol 778. Springer, Cham</arxiv:journal_ref>
+    <author>
+      <name>Amir Jaberzadeh</name>
+    </author>
+    <author>
+      <name>Ajay Kumar Shrestha</name>
+    </author>
+    <author>
+      <name>Faijan Ahamad Khan</name>
+    </author>
+    <author>
+      <name>Mohammed Afaan Shaikh</name>
+    </author>
+    <author>
+      <name>Bhargav Dave</name>
+    </author>
+    <author>
+      <name>Jason Geng</name>
+    </author>
+    <arxiv:doi>10.1007/978-3-031-45155-3_19</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/978-3-031-45155-3_19" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2206.03237v2</id>
+    <title>Blockchain for Business Process Enactment: A Taxonomy and Systematic Literature Review</title>
+    <updated>2022-07-15T14:51:42Z</updated>
+    <link href="https://arxiv.org/abs/2206.03237v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2206.03237v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Blockchain has been proposed to facilitate the enactment of interorganisational business processes. For such processes, blockchain can guarantee the enforcement of rules and the integrity of execution traces - without the need for a centralised trusted party. However, the enactment of interorganisational processes pose manifold challenges. In this work, we ask what answers the research field offers in response to those challenges. To do so, we conduct a systematic literature review (SLR). As our guiding question, we investigate the guarantees and capabilities of blockchain-based enactment approaches. Based on resulting empirical evidence, we develop a taxonomy for blockchain-based enactment. We find that a wide range of approaches support traceability and correctness; however, research focusing on flexibility and scalability remains nascent. For all challenges, we point towards future research opportunities.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-06-07T12:38:15Z</published>
+    <arxiv:comment>Preprint, Accepted at BPM 2022, Blockchain Forum</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <arxiv:journal_ref>Business Process Management: Blockchain, Robotic Process Automation, and Central and Eastern Europe Forum. BPM 2022. Lecture Notes in Business Information Processing, vol 459. Springer, Cham</arxiv:journal_ref>
+    <author>
+      <name>Fabian Stiehle</name>
+    </author>
+    <author>
+      <name>Ingo Weber</name>
+    </author>
+    <arxiv:doi>10.1007/978-3-031-16168-1_1</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1007/978-3-031-16168-1_1" title="doi"/>
+  </entry>
+</feed>

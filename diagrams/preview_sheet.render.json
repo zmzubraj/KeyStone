@@ -1,0 +1,71 @@
+{
+  "diagram_order": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8"
+  ],
+  "evidence_classification": "NOT_SCIENTIFIC_EVIDENCE",
+  "generated_at": "2026-08-29T04:06:21.800503Z",
+  "independence": "SAME_WORKSPACE_NOT_INDEPENDENT",
+  "inputs": [
+    {
+      "label": "D1",
+      "path": "diagrams/01_system_architecture.png",
+      "sha256": "4e73a92d8acce4121565862b99c1b4a207266b4ebf757d1d189fe687d9e400db"
+    },
+    {
+      "label": "D2",
+      "path": "diagrams/02_property_separation.png",
+      "sha256": "64b8f957bd1d9a55ae5b8db0893815db7e93c3cad2ad2cceac76a42cca2880e7"
+    },
+    {
+      "label": "D3",
+      "path": "diagrams/03_audit_sequence.png",
+      "sha256": "5e867f1a1fcc392552427ea7642a21de8068f0e1399d8d1bdc568636ed8092af"
+    },
+    {
+      "label": "D4",
+      "path": "diagrams/04_dispute_sequence.png",
+      "sha256": "b835231559b9d58f810e06d2357aad460e3b48d36d5e41016ccc41a38f1cf258"
+    },
+    {
+      "label": "D5",
+      "path": "diagrams/05_state_machines.png",
+      "sha256": "967291472c477a38aa04c2bfebcecceb8ec653795a4434be43f31ac775ff7074"
+    },
+    {
+      "label": "D6",
+      "path": "diagrams/06_threat_model.png",
+      "sha256": "a01364216990420fbaa842e77e6a3c2380665ea15f0bb337a3798ba79cc93fff"
+    },
+    {
+      "label": "D7",
+      "path": "diagrams/07_sampling_domains.png",
+      "sha256": "f02c6e9eb24d265046b71c86a78f9510a96d7e8c010677d9478095443bbb8e0e"
+    },
+    {
+      "label": "D8",
+      "path": "diagrams/08_experiment_pipeline.png",
+      "sha256": "877526f710b5470053aa25a6dda5778b6b2f284c20c04e89f3fd4603a0a29b82"
+    }
+  ],
+  "output": {
+    "height_px": 3400,
+    "path": "diagrams/preview_sheet.png",
+    "sha256": "6133609eeecde837ceb9c21cb405af655a8590700488216fc6b3ce8793dde703",
+    "width_px": 2400
+  },
+  "renderer": {
+    "path": "scripts/render_diagram_preview_sheet.py",
+    "pillow_version": "12.2.0",
+    "sha256": "52762ccb255d0f9c7aa0bb3beb5d3bca9457c1acbe3e8bc46cf007ab542af9aa"
+  },
+  "schema_id": "KEYSTONE_DIAGRAM_PREVIEW_SHEET_RENDER_RECEIPT",
+  "schema_version": 1,
+  "status": "PREAUTHORIZATION_VISUAL_DERIVATIVE"
+}

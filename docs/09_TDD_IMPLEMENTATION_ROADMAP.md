@@ -15,43 +15,63 @@ Every behavior change begins with one failing test, the test is observed failing
 | `test_protocol.py` | evidence, successful dispute, selective-withholding counterexample |
 | `test_simulation.py` | reproducibility and correlation/diversity effect |
 
+## Completed TDD tasks
+
+### Task 1 — Exact stratified distribution — complete
+
+- A hand-enumerated two-domain RED test was observed failing before implementation.
+- Per-domain hypergeometric PMFs are convolved for fixed draw quotas.
+- Exact and seeded Monte Carlo tails are checked within a 0.01 absolute tolerance;
+  the frozen 100,000-trial evidence row differs by 0.000427.
+
+### Task 2 — Confidence intervals — complete
+
+- Known-count Wilson interval RED tests were observed failing before implementation.
+- Simulation results now expose raw event counts, denominators, point estimates,
+  and two-sided 95% Wilson score intervals.
+- Regenerated CSVs and applicable plots include interval fields/bands. Conditional
+  catastrophic detection intervals remain undefined when no catastrophic trial
+  was observed.
+
 ## Next TDD tasks
 
-### Task 1 — Exact stratified distribution
+### Task 3 — Churn and Markov readiness — complete
 
-- Add failing tests for a hand-enumerated two-domain case.
-- Implement convolution of per-domain hypergeometric PMFs.
-- Compare exact and Monte Carlo results within a stated tolerance.
+- Deterministic online → degraded → offline transitions and the offline →
+  degraded recovery event are covered by tests.
+- Validated two-state and three-state transition-matrix constructors are implemented.
+- A reproducible repeated-audit sequence simulator reports the conditional event
+  “all audits pass and the final state is catastrophic,” its Wilson interval,
+  and the non-equivalent static-ready-set repeated bound side by side.
+- `markov_temporal_dependence.csv` is explicitly exploratory because the grid
+  was selected during implementation and is not the frozen confirmatory design.
 
-### Task 2 — Confidence intervals
+### Task 4 — Epoch refresh model — experimental MPP gate complete
 
-- Add failing tests for Wilson intervals at known counts.
-- Add interval fields to simulation results.
-- Include intervals in plots/tables.
+- Three RED/GREEN tests verify that zero-polynomial refresh preserves the epoch
+  public key and authorized opening, rejects old/new partial mixing, and changes
+  generation-bound canaries/proof contexts.
+- `refresh_epoch_shares` is explicitly dealer-based experimental scaffolding.
+- Production proactive refresh still requires authenticated DPSS/DKG and is not
+  claimed by this artifact.
 
-### Task 3 — Churn and Markov readiness
+### Task 5 — Public response serialization — complete
 
-- Add tests for deterministic state transitions: online → degraded → offline → recovered.
-- Add a two-state/three-state Markov failure model.
-- Compare repeated-audit inference with the static-set bound.
+- RED tests fixed the byte layout independently before implementation.
+- Versioned, big-endian, length-delimited audit-request and partial-response
+  transcripts bind chain, contract, epoch, request, member, deadline, and proof fields.
+- Strict decoders reject wrong kinds, trailing bytes, malformed lengths, and
+  noncanonical unsigned integers.
+- `paper/test_vectors.json` is generated deterministically and freshness-checked.
 
-### Task 4 — Epoch refresh model
+### Task 6 — Signatures — internal MPP gate complete
 
-- Add tests ensuring refreshed shares reconstruct the same secret while old/new mixed shares are rejected by epoch context.
-- Add a dealer-based zero-polynomial refresh for experimentation only.
-- Bind proofs and requests to refresh generation.
-
-### Task 5 — Public response serialization
-
-- Add golden-vector tests for request/response encoding and transcript hashes.
-- Implement canonical CBOR/SSZ or a fixed ABI-compatible encoding.
-- Publish vectors in `paper/test_vectors.json`.
-
-### Task 6 — Signatures
-
-- Add tests for identity-bound response signatures, replay rejection, and wrong-chain context.
-- Implement Ed25519 or secp256k1 adapter.
-- Include signature bytes/verification time in benchmarks.
+- Six RED/GREEN tests cover deterministic Ed25519 identity binding, tampering,
+  wrong-key rejection, cross-chain/contract replay, and exact key/signature lengths.
+- The adapter signs the canonical partial-response bytes without a second encoding.
+- `paper/signature_test_vectors.json` is deterministic and freshness-checked.
+- The local benchmark records 64-byte signatures plus median signing and
+  verification latency; production key management remains explicitly out of scope.
 
 ### Task 7 — Multi-process testbed
 
@@ -59,11 +79,16 @@ Every behavior change begins with one failing test, the test is observed failing
 - Inject delay and process failure.
 - Verify audit/dispute outcomes match the in-memory protocol.
 
-### Task 8 — Contract test suite
+### Task 8 — Contract test suite — internal MPP gate complete
 
-- Initialize Foundry.
-- Write failing tests for epoch registration, request deadlines, response bitmap, duplicate response, and finalization.
-- Compile, fuzz, and record gas.
+- Foundry is initialized without an external test dependency.
+- Boundary, lifecycle, fuzz, gas, and stateful-invariant tests are implemented.
+- The current internal suite contains 19 passing tests, including three
+  512-run fuzz properties and two invariants at 64 runs × 32 calls.
+- Eight operation-level gas measurements are exported to
+  `contracts/gas_report.csv`.
+- Remaining production gate: independent audit and a larger, separately owned
+  fuzz/invariant campaign.
 
 ### Task 9 — Authorized destination adapter
 

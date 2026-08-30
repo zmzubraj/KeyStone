@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "lease_id": "LEASE-4a1b80141961",
+  "worker_alias": "worker-7add07224a",
+  "executor_identity": "/root",
+  "artifacts": [
+    "00-governance/intake-original.md",
+    "00-governance/intake.json",
+    "00-governance/program-charter.md",
+    "00-governance/study-profile.json",
+    "00-governance/egress-policy.json"
+  ],
+  "summary": "Integrated the exact six-field intake, resolved a bounded working study profile, froze C1-C6 claim ceilings, documented authority and ethics boundaries, and approved public-web-only research egress. All outputs remain DRAFT pending independent scientific verification; no phase or novelty verdict is asserted."
+}

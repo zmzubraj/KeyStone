@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/pBXXq6iQnQVH990a+h97YqSV764</id>
+  <title>arXiv Query: search_query=ti:"Accountable Liveness"&amp;id_list=&amp;start=0&amp;max_results=3</title>
+  <updated>2026-08-28T21:43:46Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=ti:%22Accountable+Liveness%22&amp;start=0&amp;max_results=3&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>3</opensearch:itemsPerPage>
+  <opensearch:totalResults>2</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2504.12218v2</id>
+    <title>Accountable Liveness</title>
+    <updated>2025-09-11T04:16:44Z</updated>
+    <link href="https://arxiv.org/abs/2504.12218v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.12218v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Safety and liveness are the two classical security properties of consensus protocols. Recent works have strengthened safety with accountability: should any safety violation occur, a sizable fraction of adversary nodes can be proven to be protocol violators. This paper studies to what extent analogous accountability guarantees are achievable for liveness. To reveal the full complexity of this question, we introduce an interpolation between the classical synchronous and partially-synchronous models that we call the $x$-partially-synchronous network model in which, intuitively, at most an $x$ fraction of the time steps in any sufficiently long interval are asynchronous (and, as with a partially-synchronous network, all time steps are synchronous following the passage of an unknown "global stablization time"). We prove a precise characterization of the parameter regime in which accountable liveness is achievable: if and only if $x &lt; 1/2$ and $f &lt; n/2$, where $n$ denotes the number of nodes and $f$ the number of nodes controlled by an adversary. We further refine the problem statement and our analysis by parameterizing by the number of violating nodes identified following a liveness violation, and provide evidence that the guarantees achieved by our protocol are near-optimal (as a function of $x$ and $f$). Our results provide rigorous foundations for liveness-accountability heuristics such as the "inactivity leaks" employed in Ethereum.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-16T16:13:09Z</published>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Andrew Lewis-Pye</name>
+    </author>
+    <author>
+      <name>Joachim Neu</name>
+    </author>
+    <author>
+      <name>Tim Roughgarden</name>
+    </author>
+    <author>
+      <name>Luca Zanolini</name>
+    </author>
+    <arxiv:doi>10.1145/3719027.3765032</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3719027.3765032" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.15678v1</id>
+    <title>Where Accountability Lives: Mapping Human Responsibility to Workflow Artifacts in Agentic Software Development</title>
+    <updated>2026-08-16T11:11:04Z</updated>
+    <link href="https://arxiv.org/abs/2608.15678v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.15678v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Coding agents author commits, open pull requests, and push code in production repositories. Who is accountable is settled in two places that do not refer to each other: the platform controls that gate what an agent may do, and the provider terms that allocate responsibility for what it produces.
+  We read both against the workflow events that leave artifacts, across four agentic coding tools and eighteen governing policy documents from seven providers, recording at each event who holds authority, who executed and under which identity, who must verify, who bears the consequence, and which artifact survives.
+  The layers disagree. One provider bars the developer who assigned a task from approving the resulting pull request; another documents an agent that approves pull requests below a configured risk threshold and can dismiss reviews. We therefore replace the usual three-way distinction between enforced, advisory and absent verification with a grid separating whether a mechanism compels the check from who performs it. Attribution runs in opposite directions across providers, and no trailer is defined for agent authorship, though one provider repurposes the co-authorship trailer for it.
+  We argue that agentic tooling did not create this gap. A decade of code-review research already recorded that the approval artifact carries less than the terms assume. What changes is that this weakness moved from a property of how people work to a property of what a product does: a vendor now documents a product that stands at the approval event and emits the same artifact with no party capable of forming a judgement present.
+  We do not claim the gap harms anyone. The selection rule is equalised across the four tools, every reported absence is re-tested against a doubled page set with the survival rate reported, and the source collection and its scripts are deposited.</summary>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-16T11:11:04Z</published>
+    <arxiv:comment>30 pages, 5 tables. Source collection of 118 archived documents and 12 processing scripts deposited at Zenodo, doi:10.5281/zenodo.21965182</arxiv:comment>
+    <arxiv:primary_category term="cs.SE"/>
+    <author>
+      <name>Sabry E. Farrag</name>
+    </author>
+  </entry>
+</feed>

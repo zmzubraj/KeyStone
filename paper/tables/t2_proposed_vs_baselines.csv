@@ -1,0 +1,5 @@
+comparator_id,comparator_class,compared_property,design_difference,measured_superiority,claim_ids,source_path,evidence_stage,claim_ceiling
+KEYSTONE_FROZEN_DESIGN,proposed composition,pre-authorization evidence of present dispute-key serviceability,separates ciphertext availability from current authorized reconstructability,NOT_MEASURED,C001|C003,research-case/03-design/protocol.md,DESIGN_ONLY,ASSERTED_ONLY
+CIPHERTEXT_DA,design comparator,public ciphertext availability,does not by itself establish threshold-key serviceability,NOT_MEASURED,C001,research-case/03-design/protocol.md,DESIGN_ONLY,NOVELTY_UNRESOLVED
+GENERIC_THRESHOLD_RELEASE,design comparator,authorized threshold release,prior art already occupies generic threshold release; KEYSTONE comparison is narrower,NOT_MEASURED,C001|C003,research-case/03-design/protocol.md,DESIGN_ONLY,NOVELTY_UNRESOLVED
+UNIFORM_CANARY_SAMPLING,internal baseline design,"uniform sample response under frozen n=32, t=22, s=8, q=8",reference policy for planned stratified and correlated comparisons,NOT_MEASURED,C003,research-case/03-design/protocol.md,DESIGN_ONLY,ASSERTED_ONLY

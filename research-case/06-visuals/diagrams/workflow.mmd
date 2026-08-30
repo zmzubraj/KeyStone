@@ -1,0 +1,10 @@
+flowchart LR
+  N[Novelty evidence\nUNRESOLVED and REFRAME-bounded] --> D[Study-design DRAFT\npre-authorization only]
+  D --> X[Authorized execution\nnot yet permitted]
+  X --> A[Canonical analysis ledgers]
+  A --> V[Visual ledger and figure manifest]
+  V --> M[Manuscript and claim-evidence matrix]
+  M --> Q[Adversarial and reproducibility QA]
+  Q --> S[Submission QA]
+  D -. current workspace assets are preliminary or exploratory until authorized rerun .-> V
+  X -. future provenance and evidence-status manifests required .-> A

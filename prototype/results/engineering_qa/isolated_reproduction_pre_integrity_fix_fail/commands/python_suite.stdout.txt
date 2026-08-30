@@ -1,0 +1,131 @@
+....F.............................FF.F.................................. [ 56%]
+........................................................                 [100%]
+=================================== FAILURES ===================================
+__________ test_manifest_binding_is_complete_and_fails_on_missing_row __________
+
+    def test_manifest_binding_is_complete_and_fails_on_missing_row() -> None:
+>       manifest_rows = receipt.read_crypto_manifest_rows(receipt.MANIFEST_PATH)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_crypto_case_receipt.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/keystone-isolated-copy-mjcyq2tp/.superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv')
+
+    def read_crypto_manifest_rows(path: Path) -> list[dict[str, str]]:
+        if not path.is_file():
+>           raise ReceiptError(f"missing deterministic case manifest: {path}")
+E           export_crypto_case_receipt.ReceiptError: missing deterministic case manifest: /private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/keystone-isolated-copy-mjcyq2tp/.superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv
+
+scripts/export_crypto_case_receipt.py:320: ReceiptError
+___________ test_current_crypto_manifest_matches_hash_bound_receipt ____________
+
+    def test_current_crypto_manifest_matches_hash_bound_receipt() -> None:
+>       table_export.validate_current_crypto_manifest(_crypto_receipt(), ROOT)
+
+tests/test_preauth_engineering_qa_table.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../scripts/export_preauth_engineering_qa_table.py:228: in validate_current_crypto_manifest
+    _require(manifest_path.is_file(), "CRYPTO_INTEROPERABILITY: current manifest missing")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+condition = False, message = 'CRYPTO_INTEROPERABILITY: current manifest missing'
+
+    def _require(condition: bool, message: str) -> None:
+        if not condition:
+>           raise ExportError(message)
+E           export_preauth_engineering_qa_table.ExportError: CRYPTO_INTEROPERABILITY: current manifest missing
+
+../scripts/export_preauth_engineering_qa_table.py:103: ExportError
+__________ test_crypto_manifest_mutation_is_rejected_by_receipt_hash ___________
+
+tmp_path = PosixPath('/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/pytest-of-rainbow/pytest-20/test_crypto_manifest_mutation_0')
+
+    def test_crypto_manifest_mutation_is_rejected_by_receipt_hash(tmp_path: Path) -> None:
+        receipt = copy.deepcopy(_crypto_receipt())
+        relative = Path(table_export.EXPECTED_CRYPTO_MANIFEST_PATH)
+        copied_manifest = tmp_path / relative
+        copied_manifest.parent.mkdir(parents=True)
+>       shutil.copyfile(ROOT / relative, copied_manifest)
+
+tests/test_preauth_engineering_qa_table.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+src = PosixPath('/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/keystone-isolated-copy-mjcyq2tp/.superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv')
+dst = PosixPath('/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/pytest-of-rainbow/pytest-20/test_crypto_manifest_mutation_0/.superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv')
+follow_symlinks = True
+
+    def copyfile(src, dst, *, follow_symlinks=True):
+        """Copy data from src to dst in the most efficient way possible.
+    
+        If follow_symlinks is not set and src is a symbolic link, a new
+        symlink will be created instead of copying the file it points to.
+    
+        """
+        sys.audit("shutil.copyfile", src, dst)
+    
+        if _samefile(src, dst):
+            raise SameFileError("{!r} and {!r} are the same file".format(src, dst))
+    
+        file_size = 0
+        for i, fn in enumerate([src, dst]):
+            try:
+                st = _stat(fn)
+            except OSError:
+                # File most likely does not exist
+                pass
+            else:
+                # XXX What about other special files? (sockets, devices...)
+                if stat.S_ISFIFO(st.st_mode):
+                    fn = fn.path if isinstance(fn, os.DirEntry) else fn
+                    raise SpecialFileError("`%s` is a named pipe" % fn)
+                if _WINDOWS and i == 0:
+                    file_size = st.st_size
+    
+        if not follow_symlinks and _islink(src):
+            os.symlink(os.readlink(src), dst)
+        else:
+>           with open(src, 'rb') as fsrc:
+                 ^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/keystone-isolated-copy-mjcyq2tp/.superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv'
+
+/Users/rainbow/.local/share/uv/python/cpython-3.13.13-macos-aarch64-none/lib/python3.13/shutil.py:260: FileNotFoundError
+_____ test_hash_rebound_semantic_manifest_classification_drift_is_rejected _____
+
+tmp_path = PosixPath('/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/pytest-of-rainbow/pytest-20/test_hash_rebound_semantic_man0')
+
+    def test_hash_rebound_semantic_manifest_classification_drift_is_rejected(
+        tmp_path: Path,
+    ) -> None:
+        receipt = copy.deepcopy(_crypto_receipt())
+        relative = Path(table_export.EXPECTED_CRYPTO_MANIFEST_PATH)
+        copied_manifest = tmp_path / relative
+        copied_manifest.parent.mkdir(parents=True)
+    
+>       with (ROOT / relative).open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_preauth_engineering_qa_table.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/keystone-isolated-copy-mjcyq2tp/.superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/mj/bbzf23ds62xb5n4l6s0ttwc00000gn/T/keystone-isolated-copy-mjcyq2tp/.superpowers/sdd/keystone_mpp_goal_plan/prospective-deterministic-case-manifest.csv'
+
+/Users/rainbow/.local/share/uv/python/cpython-3.13.13-macos-aarch64-none/lib/python3.13/pathlib/_local.py:537: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_crypto_case_receipt.py::test_manifest_binding_is_complete_and_fails_on_missing_row
+FAILED tests/test_preauth_engineering_qa_table.py::test_current_crypto_manifest_matches_hash_bound_receipt
+FAILED tests/test_preauth_engineering_qa_table.py::test_crypto_manifest_mutation_is_rejected_by_receipt_hash
+FAILED tests/test_preauth_engineering_qa_table.py::test_hash_rebound_semantic_manifest_classification_drift_is_rejected

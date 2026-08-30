@@ -8,7 +8,7 @@ Let:
 - `n` be the number of custodians;
 - `t` be the threshold;
 - `s` be the audit sample size;
-- `q` be the number of valid sampled responses required for audit acceptance;
+- `q_accept` be the number of valid sampled responses required for audit acceptance;
 - `Δ_a` be the audit response deadline;
 - `Δ_d` be the authorized dispute response deadline;
 - `E` be an epoch with threshold public key `PK_E`;
@@ -59,7 +59,7 @@ Audit and dispute readiness are deliberately separate. A selective withholder ma
 
 ### 5.3 Audit-Time Key-Service Readiness (AKR)
 
-Given sampled set `S` and canonical `X=H_G(E,slot,beacon)`, `AKR(E,S,τ)` holds when at least `q` sampled custodians return valid context-bound canary partial decryptions before `τ+Δ_a`. `H_G` is modeled as a domain-separated hash-to-group map whose output discrete logarithm is not exposed.
+Given sampled set `S` and canonical `X=H_G(E,slot,beacon)`, `AKR(E,S,τ)` holds when at least `q_accept` sampled custodians return valid context-bound canary partial decryptions before `τ+Δ_a`. `H_G` is modeled as a domain-separated hash-to-group map whose output discrete logarithm is not exposed. `q_accept` is distinct from the paired-analysis discordance fraction `q_disc`.
 
 ### 5.4 Authorized Decryptability (AD)
 

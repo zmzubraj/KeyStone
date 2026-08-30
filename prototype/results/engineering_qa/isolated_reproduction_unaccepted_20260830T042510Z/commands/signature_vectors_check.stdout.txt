@@ -1,0 +1,1 @@
+PASS: signature test vectors match signature implementation

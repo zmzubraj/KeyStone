@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/MrqJ/RENmPoG6nin/PZAOotug5I</id>
+  <title>arXiv Query: search_query=all:dispute OR all:key OR all:availability OR all:threshold OR all:decryption OR all:rollup&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-08-28T22:06:37Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:dispute+OR+(all:key+OR+(all:availability+OR+(all:threshold+OR+(all:decryption+OR+all:rollup))))&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>399401</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2504.05094v1</id>
+    <title>Hollow Victory: How Malicious Proposers Exploit Validator Incentives in Optimistic Rollup Dispute Games</title>
+    <updated>2025-04-07T14:00:46Z</updated>
+    <link href="https://arxiv.org/abs/2504.05094v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2504.05094v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Blockchain systems, such as Ethereum, are increasingly adopting layer-2 scaling solutions to improve transaction throughput and reduce fees. One popular layer-2 approach is the Optimistic Rollup, which relies on a mechanism known as a dispute game for block proposals. In these systems, validators can challenge blocks that they believe contain errors, and a successful challenge results in the transfer of a portion of the proposer's deposit as a reward. In this paper, we reveal a structural vulnerability in the mechanism: validators may not be awarded a proper profit despite winning a dispute challenge. We develop a formal game-theoretic model of the dispute game and analyze several scenarios, including cases where the proposer controls some validators and cases where a secondary auction mechanism is deployed to induce additional participation. Our analysis demonstrates that under current designs, the competitive pressure from validators may be insufficient to deter malicious behavior. We find that increased validator competition, paradoxically driven by higher rewards or participation, can allow a malicious proposer to significantly lower their net loss by capturing value through mechanisms like auctions. To address this, we propose countermeasures such as an escrowed reward mechanism and a commit-reveal protocol. Our findings provide critical insights into enhancing the economic security of layer-2 scaling solutions in blockchain networks.</summary>
+    <category term="cs.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-04-07T14:00:46Z</published>
+    <arxiv:comment>This paper will appear in the 9th Workshop on Trusted Smart Contracts (WTSC) 2025 proceedings</arxiv:comment>
+    <arxiv:primary_category term="cs.GT"/>
+    <author>
+      <name>Suhyeon Lee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2210.15017v2</id>
+    <title>Accountable Safety for Rollups</title>
+    <updated>2022-11-04T23:12:29Z</updated>
+    <link href="https://arxiv.org/abs/2210.15017v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2210.15017v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Accountability, the ability to provably identify protocol violators, gained prominence as the main economic argument for the security of proof-of-stake (PoS) protocols. Rollups, the most popular scaling solution for blockchains, typically use PoS protocols as their parent chain. We define accountability for rollups, and present an attack that shows the absence of accountability on existing designs. We provide an accountable rollup design and prove its security, both for the traditional `enshrined' rollups and for sovereign rollups, an emergent alternative built on lazy blockchains, tasked only with ordering and availability of the rollup data.</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-10-26T20:22:30Z</published>
+    <arxiv:comment>28 pages, 4 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Ertem Nusret Tas</name>
+    </author>
+    <author>
+      <name>John Adler</name>
+    </author>
+    <author>
+      <name>Mustafa Al-Bassam</name>
+    </author>
+    <author>
+      <name>Ismail Khoffi</name>
+    </author>
+    <author>
+      <name>David Tse</name>
+    </author>
+    <author>
+      <name>Nima Vaziri</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.14032v3</id>
+    <title>GeoGuard: UWB Timing-Encoded Key Reconstruction for Location-Dependent, Geographically Bounded Decryption</title>
+    <updated>2026-02-01T05:45:03Z</updated>
+    <link href="https://arxiv.org/abs/2511.14032v3" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.14032v3" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Digital content distribution and propitiatory research driven industries face persistent risks from intellectual property theft and unauthorized redistribution. Conventional encryption schemes such as AES, TDES, ECC, and ElGamal provide strong cryptographic guarantees, but they remain fundamentally agnostic to where decryption takes place. In practice, this means that once a decryption key is leaked or intercepted, any adversary can misuse the key to decrypt the protected content from any location. This paper presents, GeoGuard, a location-dependent cryptosystem in which the decryption key is not transmitted as data but is implicitly encoded in the precise time-of-flight differences of ultra-wideband (UWB) data transmission packets.
+  The system leverages precise timing hardware and a custom Timing-encoded Cryptographic Keying (TiCK) protocol to map a 32-byte SHA-256 AES key onto scheduled transmission timestamps. Only user located within an approved spatial location can observe the correct packet timing that aligns with the intended packet-reception timing pattern, enabling them to reconstruct the key. Eavesdroppers outside the authorized region observe an incorrect timing pattern, which yields incorrect keys.
+  GeoGuard is designed to encrypt and transmit data, but decryption is only possible when the user is within the authorized area. Our evaluation demonstrates that the system (i) removes the need to share decryption passwords electronically or physically, (ii) ensures the decryption key cannot be recovered by the eavesdropper, and (iii) provides a non-trivial spatial tolerance for legitimate users</summary>
+    <category term="cs.CR" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-18T01:24:08Z</published>
+    <arxiv:comment>Accepted for publication in International Journal of Computer Applications</arxiv:comment>
+    <arxiv:primary_category term="cs.CR"/>
+    <author>
+      <name>Kunal Mukherjee</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2404.16150v1</id>
+    <title>A Rollup Comparison Framework</title>
+    <updated>2024-04-24T19:10:59Z</updated>
+    <link href="https://arxiv.org/abs/2404.16150v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2404.16150v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Rollups are a popular blockchain paradigm where one blockchain network is anchored to a different blockchain network, typically though smart contracts and data commitments. The rollup executes transactions on its own network and periodically publishes them along with the state root of the rollup network. The state root is determined to be final by a protocol, often enforced by smart contracts on the anchoring blockchain, which may let the state roots be challenged or verify an accompanying validity proof. While this core functionality is universal to existing rollups, these systems have introduced unique features as they vie for users and market dominance. In this paper, we aim to classify ways in which these rollups differ in order to establish a common ground of understanding. We explore various dimensions in which these system can differ: familiarity, finality time, modularity, and maturity. The result is a framework that can be used to understand and compare the properties of rollups.</summary>
+    <category term="cs.DC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-04-24T19:10:59Z</published>
+    <arxiv:comment>15 pages, 1 figure. Accepted at ChainScience 2024</arxiv:comment>
+    <arxiv:primary_category term="cs.DC"/>
+    <author>
+      <name>Jan Gorzny</name>
+    </author>
+    <author>
+      <name>Martin Derka</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.01155v1</id>
+    <title>EIP-4844 Economics and Rollup Strategies</title>
+    <updated>2023-10-02T12:41:36Z</updated>
+    <link href="https://arxiv.org/abs/2310.01155v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.01155v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We study the economics of the Ethereum improvement proposal 4844 and its effect on rollups' data posting strategies. Rollups' cost consists of two parts: data posting and delay. In the new proposal, the data posting cost corresponds to a blob posting cost and is fixed in each block, no matter how much of the blob is utilized by the rollup. The tradeoff is clear: the rollup prefers to post a full blob, but if its transaction arrival rate is low, filling up a blob space causes too large delay cost. The first result of the paper shows that if a rollup transaction arrival rate is too low, it prefers to use the regular blockspace market for data posting, as it offers a more flexible cost structure. Second, we show that shared blob posting is not always beneficial for participating rollups and change in the aggregate blob posting cost in the equilibrium depends on the types of participating rollups. In the end, we discuss blob cost-sharing rules from an axiomatic angle.</summary>
+    <category term="cs.GT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="econ.TH" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-02T12:41:36Z</published>
+    <arxiv:primary_category term="cs.GT"/>
+    <author>
+      <name>Davide Crapis</name>
+    </author>
+    <author>
+      <name>Edward W. Felten</name>
+    </author>
+    <author>
+      <name>Akaki Mamageishvili</name>
+    </author>
+  </entry>
+</feed>

@@ -118,7 +118,8 @@ pip install -e '.[dev]'
 
 Pass criteria:
 
-- all 17 tests pass;
+- all 35 tests pass, including exact stratified-distribution, Wilson interval,
+  canonical transcript, এবং Ed25519 canonical-response signature tests;
 - threshold-valid partials decrypt the record;
 - fewer than `t` valid partials cannot open it;
 - tampered DLEQ response fails;

@@ -1,0 +1,13 @@
+query_id,surface,query,searched_at,result_count,screened_count,access_status
+Q001-arxiv_api,arxiv_api,"dispute key availability threshold decryption rollup",2026-08-28T22:06:38Z,5,5,open-noisy-no-direct-hit
+Q001-openalex_works,openalex_works,"dispute key availability threshold decryption rollup",2026-08-28T22:06:37Z,5,5,open-noisy-no-direct-hit
+Q002-arxiv_api,arxiv_api,"pre authorization threshold decryption readiness audit canary",2026-08-28T22:06:41Z,5,5,open-noisy-no-direct-hit
+Q002-openalex_works,openalex_works,"pre authorization threshold decryption readiness audit canary",2026-08-28T22:06:40Z,5,5,open-noisy-no-direct-hit
+Q003-arxiv_api,arxiv_api,"threshold decryption liveness blockchain",2026-08-28T22:06:42Z,5,5,open-adjacent-cluster
+Q003-openalex_works,openalex_works,"threshold decryption liveness blockchain",2026-08-28T22:06:42Z,5,5,open-adjacent-cluster
+Q004-arxiv_api,arxiv_api,"secret share retrievability audit",2026-08-28T22:06:45Z,5,5,open-noisy-open-question
+Q004-openalex_works,openalex_works,"secret share retrievability audit",2026-08-28T22:06:44Z,5,5,open-noisy-open-question
+Q005-arxiv_api,arxiv_api,"context dependent threshold decryption",2026-08-28T22:06:47Z,5,5,open-known-item-recovery
+Q005-openalex_works,openalex_works,"context dependent threshold decryption",2026-08-28T22:06:47Z,5,5,open-known-item-recovery
+Q006-arxiv_api,arxiv_api,"accountable liveness threshold decryption",2026-08-28T22:06:49Z,5,5,open-known-item-recovery
+Q006-openalex_works,openalex_works,"accountable liveness threshold decryption",2026-08-28T22:06:49Z,5,5,open-known-item-recovery

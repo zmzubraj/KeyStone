@@ -1,0 +1,2 @@
+design,strata,required_successes,exact_tail_probability,monte_carlo_tail_probability,absolute_error,trials,seed
+fixed-quota domain-stratified sampling,"[[8,5,2],[8,5,2],[8,5,2],[8,5,2]]",6,0.35304300291545193,0.35347,0.0004269970845480753,100000,20260829

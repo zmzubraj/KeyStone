@@ -1,0 +1,5 @@
+ablation_id,planned_change,mechanism_question,execution_status,estimate,claim_ids,source_path,evidence_stage,claim_ceiling
+ABL-CANARY-001,remove canary readiness audit,separate audit contribution from ciphertext availability,MISSING_NOT_EXECUTED,MISSING,C001|C003,research-case/03-design/analysis-plan.md,MISSING_NOT_EXECUTED,ASSERTED_ONLY
+ABL-STRAT-001,replace stratified sampling with uniform sampling,isolate sampling-policy contribution,MISSING_NOT_EXECUTED,MISSING,C001|C003,research-case/03-design/analysis-plan.md,MISSING_NOT_EXECUTED,ASSERTED_ONLY
+ABL-DOMAIN-001,remove failure-domain labels,test dependency on domain metadata,MISSING_NOT_EXECUTED,MISSING,C001|C003,research-case/03-design/analysis-plan.md,MISSING_NOT_EXECUTED,ASSERTED_ONLY
+ABL-TEMPORAL-001,replace temporal dependence with static IID assumptions,isolate temporal-model sensitivity,MISSING_NOT_EXECUTED,MISSING,C001|C003,research-case/03-design/analysis-plan.md,MISSING_NOT_EXECUTED,ASSERTED_ONLY

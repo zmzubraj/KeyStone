@@ -1,0 +1,17 @@
+{
+  "schema_version": 4,
+  "adapter_id": "generic_research_v1",
+  "field": "applied cryptography; blockchain and distributed systems; systems security",
+  "study_type": "analytical security model with reproducible simulation, software prototype experiments, smart-contract evaluation, and a claim-matched distributed deadline benchmark",
+  "jurisdiction": "non-human computational research; author institution and selected publication venue govern accountable review",
+  "jurisdiction_basis": "the frozen protocol uses synthetic, simulated, and locally generated software evidence and authorizes no participant recruitment, personal data, live exploitation, or regulated intervention",
+  "ethics_category": "non-human-subject computational security research with bounded dual-use, data-rights, and institutional-policy review",
+  "reporting_guidelines": [
+    "current selected-venue author and artifact instructions",
+    "field-appropriate reproducibility, statistical reporting, security disclosure, and artifact-evaluation practices"
+  ],
+  "evidence_standard": "claim-matched analytic, simulated, internal prototype, external, and field evidence using the V0-V5 ladder; exact probability validation, prespecified stochastic uncertainty, reproducible code and provenance, and independent scientific review",
+  "article_type": "original full research paper, initially venue neutral",
+  "status": "RESOLVED_DRAFT_PENDING_INDEPENDENT_VERIFICATION",
+  "notes": "Root-owned working resolution based on the user's explicit full-paper goal, the frozen repository, and the confirmed accountable-human authority for this run. Final author order, corresponding-author designation, and exact affiliation wording are deliberately deferred and are not required to prepare this draft intake. INTAKE promotion still requires authenticated, independently signed scientific verification of the study profile and frozen claim boundaries; current venue and institutional checks remain required before submission."
+}

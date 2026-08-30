@@ -1,0 +1,66 @@
+{
+  "author_metadata_freeze": "DEFERRED_BY_ACCOUNTABLE_HUMAN",
+  "canonical_phase": "INTAKE",
+  "claim_ids": "C002|C003",
+  "execution_authorization": "NOT_AUTHORIZED",
+  "inputs": [
+    {
+      "path": "research-case/00-governance/accountable-authority-confirmation.md",
+      "sha256": "33b83fc480eed3dc5b5869454297f7bced200b1ab63afa23c119e95ab8d7cdb8"
+    },
+    {
+      "path": "research-case/03-design/analysis-plan.md",
+      "sha256": "ab5a01e12b8b2e65275ad9317aad219e3219c63c45395e6274f68dc049c915a1"
+    },
+    {
+      "path": "research-case/03-design/power-or-precision.md",
+      "sha256": "b8488329b5e851db18f7a8ba923c308387845772b59d3d23ea737d992ded7993"
+    },
+    {
+      "path": "research-case/03-design/protocol.md",
+      "sha256": "4ab6e396a75a6c5cab6290de681b7c3ba8de468606a591a19ee951ae6963efc3"
+    },
+    {
+      "path": "research-case/program-state.json",
+      "sha256": "e1a8185c07a300a6b3d1c61f50d7f4ada9ddabffdcccabd52505b4645fda040a"
+    }
+  ],
+  "integrity_artifacts": [
+    "research-case/03-design/deadline-pilot-start-package-manifest.json",
+    "research-case/03-design/deadline-pilot-start-package-manifest.json.sha256"
+  ],
+  "outputs": [
+    {
+      "path": "research-case/03-design/deadline-environment-profiles.csv",
+      "sha256": "353f5bd7448aa76762f78729701d99c26c243c333787da324d986787846b9b14"
+    },
+    {
+      "path": "research-case/03-design/t5-ablation-run-matrix.csv",
+      "sha256": "5174403ee52e22b8b58cdca44fd4615221f1957a1dbc80635644dee7a80d6236"
+    },
+    {
+      "path": "research-case/03-design/deadline-pilot-execution-contract.md",
+      "sha256": "8910b88a6214e01d1c038f390d9588211dc258b8c5f838e870aeba27167ecfda"
+    },
+    {
+      "path": "research-case/03-design/independent-reproduction-handoff.md",
+      "sha256": "93b2b9e61dd45a3be94bd47bd9538b224412f3f71c7e56e0f313ec058039b346"
+    }
+  ],
+  "package_constants": {
+    "author_metadata_freeze": "DEFERRED_BY_ACCOUNTABLE_HUMAN",
+    "canonical_phase": "INTAKE",
+    "claim_ids": "C002|C003",
+    "execution_authorization": "NOT_AUTHORIZED",
+    "result_id": "RID-C003-DEADLINE-001",
+    "schema_id": "KEYSTONE_DEADLINE_PILOT_START_PACKAGE",
+    "schema_version": 1,
+    "scientific_evidence_boundary": "DESIGN_ONLY_NOT_CONFIRMATORY_EVIDENCE",
+    "status": "DRAFT_PREAUTHORIZATION"
+  },
+  "result_id": "RID-C003-DEADLINE-001",
+  "schema_id": "KEYSTONE_DEADLINE_PILOT_START_PACKAGE",
+  "schema_version": 1,
+  "scientific_evidence_boundary": "DESIGN_ONLY_NOT_CONFIRMATORY_EVIDENCE",
+  "status": "DRAFT_PREAUTHORIZATION"
+}

@@ -5,7 +5,9 @@
  -->
 <!-- Title: G Pages: 1 -->
 <svg width="407pt" height="527pt"
- viewBox="0.00 0.00 407.00 527.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ viewBox="0.00 0.00 407.00 527.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="d4-title d4-desc">
+<title id="d4-title">D4. Authorized dispute opening sequence</title>
+<desc id="d4-desc">Protocol-sequence diagram for an authorized challenge: post the dispute request and bond, release confidential partials under policy, combine at least t verified responses, re-execute privately, and record the verdict.</desc>
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 509)">
 <title>G</title>
 <polygon fill="white" stroke="transparent" points="-18,18 -18,-509 389,-509 389,18 -18,18"/>

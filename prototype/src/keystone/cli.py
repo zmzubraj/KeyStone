@@ -5,7 +5,7 @@ import json
 import random
 from pathlib import Path
 
-from .protocol import CustodianBehavior, derive_canary, execute_audit, execute_dispute
+from .protocol import CustodianBehavior, execute_audit, execute_dispute
 from .sampling import catastrophic_false_accept_probability
 from .simulation import Scenario, run_monte_carlo
 from .threshold_kem import dealer_keygen, seal_record
@@ -23,10 +23,9 @@ def _demo() -> int:
         b"keystone-demo",
     )
     behaviors = {index: CustodianBehavior(latency_ms=25 + index) for index in epoch.members}
-    canary = derive_canary(epoch, b"demo-finalized-beacon", b"demo-audit")
     audit = execute_audit(
         epoch,
-        canary,
+        b"demo-finalized-beacon",
         sampled_indices=[1, 3, 5, 7, 9],
         behaviors=behaviors,
         deadline_ms=100,

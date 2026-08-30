@@ -48,6 +48,24 @@ class DisputeResult:
     evidence: tuple[Evidence, ...]
 
 
+def epoch_bound_context(epoch: EpochKey, context: bytes) -> bytes:
+    """Bind a proof/request context to the epoch and refresh generation."""
+
+    if not context:
+        raise ValueError("context must not be empty")
+    epoch_id = epoch.epoch_id.encode("utf-8")
+    return b"".join(
+        [
+            b"KEYSTONE-EPOCH-CONTEXT-v1",
+            len(epoch_id).to_bytes(2, "big"),
+            epoch_id,
+            epoch.refresh_generation.to_bytes(8, "big"),
+            len(context).to_bytes(4, "big"),
+            context,
+        ]
+    )
+
+
 def derive_canary(epoch: EpochKey, beacon: bytes, context: bytes) -> int:
     """Derive a canonical canary from public post-commit randomness.
 
@@ -63,9 +81,8 @@ def derive_canary(epoch: EpochKey, beacon: bytes, context: bytes) -> int:
     return hash_to_group(
         epoch.group,
         b"KEYSTONE-CANARY-v1",
-        epoch.epoch_id.encode("utf-8"),
+        epoch_bound_context(epoch, context),
         beacon,
-        context,
     )
 
 
@@ -85,17 +102,28 @@ def _possibly_corrupt(
 
 def execute_audit(
     epoch: EpochKey,
-    canary_c1: int,
+    beacon: bytes,
     sampled_indices: Sequence[int],
     behaviors: Mapping[int, CustodianBehavior],
     deadline_ms: int,
     required_valid: int,
     context: bytes,
 ) -> AuditResult:
+    """Execute a routine audit over the canonical beacon-derived canary.
+
+    The audit API intentionally accepts public beacon material rather than a
+    caller-supplied group element.  This keeps production record KEM elements
+    out of the routine-audit path by construction: the challenge is always
+    derived with the KEYSTONE canary domain separator and the epoch-bound audit
+    context inside this function.
+    """
+
     if not 0 <= required_valid <= len(sampled_indices):
         raise ValueError("required_valid must fit inside the sample")
     evidence: list[Evidence] = []
     valid_count = 0
+    proof_context = epoch_bound_context(epoch, context)
+    canary_c1 = derive_canary(epoch, beacon, context)
     for index in sampled_indices:
         member = epoch.members[index]
         behavior = _behavior(behaviors, index)
@@ -110,9 +138,9 @@ def execute_audit(
                 )
             )
             continue
-        partial = create_partial_decryption(member, canary_c1, epoch.group, context)
+        partial = create_partial_decryption(member, canary_c1, epoch.group, proof_context)
         partial = _possibly_corrupt(epoch, partial, behavior)
-        if verify_partial_decryption(member, canary_c1, partial, epoch.group, context):
+        if verify_partial_decryption(member, canary_c1, partial, epoch.group, proof_context):
             valid_count += 1
         else:
             evidence.append(
@@ -136,6 +164,7 @@ def execute_dispute(
 ) -> DisputeResult:
     evidence: list[Evidence] = []
     valid_partials: list[PartialDecryption] = []
+    proof_context = epoch_bound_context(epoch, context)
     ordering = sorted(epoch.members, key=lambda index: (_behavior(behaviors, index).latency_ms, index))
     for index in ordering:
         member = epoch.members[index]
@@ -151,9 +180,9 @@ def execute_dispute(
                 )
             )
             continue
-        partial = create_partial_decryption(member, sealed.c1, epoch.group, context)
+        partial = create_partial_decryption(member, sealed.c1, epoch.group, proof_context)
         partial = _possibly_corrupt(epoch, partial, behavior)
-        if verify_partial_decryption(member, sealed.c1, partial, epoch.group, context):
+        if verify_partial_decryption(member, sealed.c1, partial, epoch.group, proof_context):
             valid_partials.append(partial)
         else:
             evidence.append(
@@ -169,7 +198,7 @@ def execute_dispute(
     if len(valid_partials) < epoch.threshold:
         return DisputeResult(False, len(valid_partials), None, tuple(evidence))
     try:
-        plaintext = open_record(epoch, sealed, valid_partials, context)
+        plaintext = open_record(epoch, sealed, valid_partials, proof_context)
     except InsufficientValidShares:
         return DisputeResult(False, len(valid_partials), None, tuple(evidence))
     return DisputeResult(True, len(valid_partials), plaintext, tuple(evidence))

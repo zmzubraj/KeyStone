@@ -1,0 +1,26 @@
+flowchart TD
+    A[Ciphertext available from DA layer] --> B[Authorized dispute opens]
+    C[Valid share registration at epoch setup] --> D[Current custodian serviceability state]
+    E[Beacon unpredictability until sample is fixed] --> F[Canonical canary sample]
+    D --> F
+    F --> G[Canary partial decryptions plus proofs]
+    G --> H[Audit outcome AKR]
+    D --> I[Authorized dispute partial decryptions]
+    B --> I
+    I --> J[Authorized decryptability AD]
+    J --> K[Deadline liveness DDL]
+    H --> L[Inference about present readiness]
+    L --> M[Bound on catastrophic false acceptance]
+    N[Failure-domain correlation] --> D
+    O[Selective withholding on target dispute] --> I
+    O -. may not affect .-> G
+    P[Network and timing assumptions] --> K
+    P --> Q[Meaning of non-response evidence]
+    K --> R[Dispute-key availability DKA outcome]
+    M --> R
+
+    S[What the canary can measure] --> T[Current sampled serviceability under declared audit model]
+    U[What the canary cannot prove] --> V[Unconditional future cooperation or timing-free guilt]
+    H --> T
+    O --> V
+    Q --> V

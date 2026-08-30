@@ -21,18 +21,23 @@ The contract makes request timing, membership, and submission/non-submission pub
 3. Add signatures or proof bytes to DA rather than storing large payloads on-chain.
 4. Add challengeable proof-verdict commitments or a zk verifier if justified.
 5. Add graded penalties: warning, inactivity, replacement, hard slash.
-6. Add Foundry fuzz/invariant tests and gas benchmarks.
+6. Replace the research-only bounded test profile with a larger independent
+   audit campaign before production use.
 
 ## Foundry setup
 
 ```bash
 forge build --root contracts
 forge test --root contracts -vvv
-forge snapshot --root contracts --snap .gas-snapshot
+make snapshot
+make snapshot-check
 ```
 
 The current tests use a minimal local Foundry cheatcode interface, so no
 `forge-std` download is required. On 2026-08-29 the source compiled with Solc
-0.8.24, both current tests passed, and a baseline gas snapshot was generated.
-Fuzz/invariant coverage and a complete contract-overhead benchmark remain
-required before the Day-4 research gate is considered complete.
+0.8.24 and 19 tests passed: deterministic boundary/lifecycle tests, three
+512-run fuzz properties, eight dedicated gas measurements, and two stateful
+invariants exercised across 64 runs × 32 calls. The operation table is generated
+as `contracts/gas_report.csv` from `.gas-snapshot`; setup gas is excluded, but
+small harness overhead may remain. These are internal research measurements,
+not production audit evidence.

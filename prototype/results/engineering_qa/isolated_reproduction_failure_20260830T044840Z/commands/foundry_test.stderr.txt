@@ -1,0 +1,2 @@
+Error: failed to extract foundry config:
+foundry config error: invalid type: found unsigned int `1`, expected a boolean for key "OFFLINE" in `FOUNDRY_` environment variable(s) for setting `offline`

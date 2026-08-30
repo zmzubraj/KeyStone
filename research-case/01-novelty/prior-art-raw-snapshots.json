@@ -1,0 +1,561 @@
+{
+  "generated_at": "2026-08-28T22:06:49Z",
+  "run_id": "keystone-mpp-f1-20260828T211430Z-6f21c82e-5e0f10",
+  "adapter_id": "generic_research_v1",
+  "fixture_set": "LIVE_SNAPSHOT",
+  "offline_only": false,
+  "may_assert_novelty": false,
+  "raw_snapshot_schema": {
+    "version": 1,
+    "required_keys": [
+      "record_id",
+      "query_id",
+      "source",
+      "title",
+      "published_at",
+      "url"
+    ]
+  },
+  "records": [
+    {
+      "record_id": "http://arxiv.org/abs/2404.16150v1",
+      "query_id": "Q001-arxiv_api",
+      "source": "arxiv_api",
+      "title": "A Rollup Comparison Framework",
+      "published_at": "2024-04-24T19:10:59Z",
+      "url": "http://arxiv.org/abs/2404.16150v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2210.15017v2",
+      "query_id": "Q001-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Accountable Safety for Rollups",
+      "published_at": "2022-10-26T20:22:30Z",
+      "url": "http://arxiv.org/abs/2210.15017v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2310.01155v1",
+      "query_id": "Q001-arxiv_api",
+      "source": "arxiv_api",
+      "title": "EIP-4844 Economics and Rollup Strategies",
+      "published_at": "2023-10-02T12:41:36Z",
+      "url": "http://arxiv.org/abs/2310.01155v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2511.14032v3",
+      "query_id": "Q001-arxiv_api",
+      "source": "arxiv_api",
+      "title": "GeoGuard: UWB Timing-Encoded Key Reconstruction for Location-Dependent, Geographically Bounded Decryption",
+      "published_at": "2025-11-18T01:24:08Z",
+      "url": "http://arxiv.org/abs/2511.14032v3",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2504.05094v1",
+      "query_id": "Q001-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Hollow Victory: How Malicious Proposers Exploit Validator Incentives in Optimistic Rollup Dispute Games",
+      "published_at": "2025-04-07T14:00:46Z",
+      "url": "http://arxiv.org/abs/2504.05094v1",
+      "doi": ""
+    },
+    {
+      "record_id": "https://openalex.org/W4402326988",
+      "query_id": "Q001-openalex_works",
+      "source": "openalex_works",
+      "title": "A survey on Ethereum pseudonymity: Techniques, challenges, and future directions",
+      "published_at": "2024-09-07",
+      "url": "https://doi.org/10.1016/j.jnca.2024.104019",
+      "doi": "10.1016/j.jnca.2024.104019"
+    },
+    {
+      "record_id": "https://openalex.org/W4405181795",
+      "query_id": "Q001-openalex_works",
+      "source": "openalex_works",
+      "title": "Atomic and Fair Data Exchange via Blockchain",
+      "published_at": "2024-12-02",
+      "url": "https://doi.org/10.1145/3658644.3690248",
+      "doi": "10.1145/3658644.3690248"
+    },
+    {
+      "record_id": "https://openalex.org/W4407305909",
+      "query_id": "Q001-openalex_works",
+      "source": "openalex_works",
+      "title": "FHE-Rollups: Scaling Confidential Smart Contracts on Ethereum and Beyond",
+      "published_at": "2024-07-02",
+      "url": "https://doi.org/10.1145/3659463.3660031",
+      "doi": "10.1145/3659463.3660031"
+    },
+    {
+      "record_id": "https://openalex.org/W4394692435",
+      "query_id": "Q001-openalex_works",
+      "source": "openalex_works",
+      "title": "Security, Privacy, and Decentralized Trust Management in VANETs: A Review of Current Research and Future Directions",
+      "published_at": "2024-04-10",
+      "url": "https://doi.org/10.1145/3656166",
+      "doi": "10.1145/3656166"
+    },
+    {
+      "record_id": "https://openalex.org/W4387427800",
+      "query_id": "Q001-openalex_works",
+      "source": "openalex_works",
+      "title": "SoK: Decentralized Sequencers for Rollups",
+      "published_at": "2023-10-05",
+      "url": "http://arxiv.org/abs/2310.03616",
+      "doi": "10.48550/arxiv.2310.03616"
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2306.00133v2",
+      "query_id": "Q002-arxiv_api",
+      "source": "arxiv_api",
+      "title": "A Note On Interpreting Canary Exposure",
+      "published_at": "2023-05-31T19:18:24Z",
+      "url": "http://arxiv.org/abs/2306.00133v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1306.5832v1",
+      "query_id": "Q002-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Dynamics on character varieties: a survey",
+      "published_at": "2013-06-25T02:14:27Z",
+      "url": "http://arxiv.org/abs/1306.5832v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2507.15836v1",
+      "query_id": "Q002-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Optimizing Canaries for Privacy Auditing with Metagradient Descent",
+      "published_at": "2025-07-21T17:47:33Z",
+      "url": "http://arxiv.org/abs/2507.15836v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1401.3662v1",
+      "query_id": "Q002-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Quasiconformal homogeneity after Gehring and Palks",
+      "published_at": "2014-01-15T16:53:21Z",
+      "url": "http://arxiv.org/abs/1401.3662v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2506.23033v5",
+      "query_id": "Q002-arxiv_api",
+      "source": "arxiv_api",
+      "title": "What Must a Fairness Audit Report When Demographic Data Is Incomplete?",
+      "published_at": "2025-06-28T23:12:59Z",
+      "url": "http://arxiv.org/abs/2506.23033v5",
+      "doi": ""
+    },
+    {
+      "record_id": "https://openalex.org/W4416401782",
+      "query_id": "Q002-openalex_works",
+      "source": "openalex_works",
+      "title": "A Governance Framework for Cross-Border Data Protection Compliance under the GDPR and CCPA",
+      "published_at": "2023-01-01",
+      "url": "https://doi.org/10.54660/ijsser.2023.2.5.193-210",
+      "doi": "10.54660/ijsser.2023.2.5.193-210"
+    },
+    {
+      "record_id": "https://openalex.org/W4401302644",
+      "query_id": "Q002-openalex_works",
+      "source": "openalex_works",
+      "title": "An optimized hybrid encryption framework for smart home healthcare: Ensuring data confidentiality and security",
+      "published_at": "2024-08-03",
+      "url": "https://doi.org/10.1016/j.iot.2024.101314",
+      "doi": "10.1016/j.iot.2024.101314"
+    },
+    {
+      "record_id": "https://openalex.org/W7104957661",
+      "query_id": "Q002-openalex_works",
+      "source": "openalex_works",
+      "title": "CLOUD-NATIVE FRAMEWORKS FOR REAL-TIME THREAT DETECTION AND DATA SECURITY IN ENTERPRISE NETWORKS",
+      "published_at": "2021-06-01",
+      "url": "https://doi.org/10.63125/0t27av85",
+      "doi": "10.63125/0t27av85"
+    },
+    {
+      "record_id": "https://openalex.org/W7125352643",
+      "query_id": "Q002-openalex_works",
+      "source": "openalex_works",
+      "title": "MANATEE: A DevOps Platform for xApp Lifecycle Management and Testing in Open RAN",
+      "published_at": "2026-01-20",
+      "url": "http://arxiv.org/abs/2601.14009",
+      "doi": ""
+    },
+    {
+      "record_id": "https://openalex.org/W4411802912",
+      "query_id": "Q002-openalex_works",
+      "source": "openalex_works",
+      "title": "TrustShare: Secure and Trusted Blockchain Framework for Threat Intelligence Sharing",
+      "published_at": "2025-06-27",
+      "url": "https://doi.org/10.3390/fi17070289",
+      "doi": "10.3390/fi17070289"
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2206.03237v2",
+      "query_id": "Q003-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Blockchain for Business Process Enactment: A Taxonomy and Systematic Literature Review",
+      "published_at": "2022-06-07T12:38:15Z",
+      "url": "http://arxiv.org/abs/2206.03237v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2307.10492v1",
+      "query_id": "Q003-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Blockchain-Based Federated Learning: Incentivizing Data Sharing and Penalizing Dishonest Behavior",
+      "published_at": "2023-07-19T23:05:49Z",
+      "url": "http://arxiv.org/abs/2307.10492v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2004.13438v2",
+      "query_id": "Q003-arxiv_api",
+      "source": "arxiv_api",
+      "title": "BlockSim: An Extensible Simulation Tool for Blockchain Systems",
+      "published_at": "2020-04-28T11:44:07Z",
+      "url": "http://arxiv.org/abs/2004.13438v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1910.00742v1",
+      "query_id": "Q003-arxiv_api",
+      "source": "arxiv_api",
+      "title": "ChainSplitter: Towards Blockchain-based Industrial IoT Architecture for Supporting Hierarchical Storage",
+      "published_at": "2019-10-02T01:37:20Z",
+      "url": "http://arxiv.org/abs/1910.00742v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2105.05338v1",
+      "query_id": "Q003-arxiv_api",
+      "source": "arxiv_api",
+      "title": "SmartOil: Blockchain and smart contract-based oil supply chain management",
+      "published_at": "2021-05-11T20:45:13Z",
+      "url": "http://arxiv.org/abs/2105.05338v1",
+      "doi": ""
+    },
+    {
+      "record_id": "https://openalex.org/W2759621428",
+      "query_id": "Q003-openalex_works",
+      "source": "openalex_works",
+      "title": "2017 Global Blockchain Benchmarking Study",
+      "published_at": "2017-01-01",
+      "url": "https://doi.org/10.2139/ssrn.3040224",
+      "doi": "10.2139/ssrn.3040224"
+    },
+    {
+      "record_id": "https://openalex.org/W2765928069",
+      "query_id": "Q003-openalex_works",
+      "source": "openalex_works",
+      "title": "A blockchain future for internet of things security: a position paper",
+      "published_at": "2017-11-01",
+      "url": "https://doi.org/10.1016/j.dcan.2017.10.006",
+      "doi": "10.1016/j.dcan.2017.10.006"
+    },
+    {
+      "record_id": "https://openalex.org/W3156129242",
+      "query_id": "Q003-openalex_works",
+      "source": "openalex_works",
+      "title": "A Survey on Blockchain Technology: Evolution, Architecture and Security",
+      "published_at": "2021-01-01",
+      "url": "https://doi.org/10.1109/access.2021.3072849",
+      "doi": "10.1109/access.2021.3072849"
+    },
+    {
+      "record_id": "https://openalex.org/W3133065136",
+      "query_id": "Q003-openalex_works",
+      "source": "openalex_works",
+      "title": "A survey on the adoption of blockchain in IoT: challenges and solutions",
+      "published_at": "2021-02-18",
+      "url": "https://doi.org/10.1016/j.bcra.2021.100006",
+      "doi": "10.1016/j.bcra.2021.100006"
+    },
+    {
+      "record_id": "https://openalex.org/W3005847836",
+      "query_id": "Q003-openalex_works",
+      "source": "openalex_works",
+      "title": "Security and Privacy for Green IoT-Based Agriculture: Review, Blockchain Solutions, and Challenges",
+      "published_at": "2020-01-01",
+      "url": "https://doi.org/10.1109/access.2020.2973178",
+      "doi": "10.1109/access.2020.2973178"
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2310.09232v2",
+      "query_id": "Q004-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Bounds on Guessing Numbers and Secret Sharing Combining Information Theory Methods",
+      "published_at": "2023-10-13T16:34:35Z",
+      "url": "http://arxiv.org/abs/2310.09232v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2604.16762v1",
+      "query_id": "Q004-arxiv_api",
+      "source": "arxiv_api",
+      "title": "CapSeal: Capability-Sealed Secret Mediation for Secure Agent Execution",
+      "published_at": "2026-04-18T00:23:32Z",
+      "url": "http://arxiv.org/abs/2604.16762v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/0808.1532v3",
+      "query_id": "Q004-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Graph States for Quantum Secret Sharing",
+      "published_at": "2008-08-11T16:17:02Z",
+      "url": "http://arxiv.org/abs/0808.1532v3",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1706.06998v2",
+      "query_id": "Q004-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Secret Sharing and Shared Information",
+      "published_at": "2017-06-21T16:43:25Z",
+      "url": "http://arxiv.org/abs/1706.06998v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2506.23033v5",
+      "query_id": "Q004-arxiv_api",
+      "source": "arxiv_api",
+      "title": "What Must a Fairness Audit Report When Demographic Data Is Incomplete?",
+      "published_at": "2025-06-28T23:12:59Z",
+      "url": "http://arxiv.org/abs/2506.23033v5",
+      "doi": ""
+    },
+    {
+      "record_id": "https://openalex.org/W2923615625",
+      "query_id": "Q004-openalex_works",
+      "source": "openalex_works",
+      "title": "A blockchain based approach for the definition of auditable Access Control systems",
+      "published_at": "2019-03-20",
+      "url": "https://doi.org/10.1016/j.cose.2019.03.016",
+      "doi": "10.1016/j.cose.2019.03.016"
+    },
+    {
+      "record_id": "https://openalex.org/W2811082328",
+      "query_id": "Q004-openalex_works",
+      "source": "openalex_works",
+      "title": "Enabling Identity-Based Integrity Auditing and Data Sharing With Sensitive Information Hiding for Secure Cloud Storage",
+      "published_at": "2018-06-25",
+      "url": "https://doi.org/10.1109/tifs.2018.2850312",
+      "doi": "10.1109/tifs.2018.2850312"
+    },
+    {
+      "record_id": "https://openalex.org/W3086608681",
+      "query_id": "Q004-openalex_works",
+      "source": "openalex_works",
+      "title": "Female Audit Partners and Extended Audit Reporting: UK Evidence",
+      "published_at": "2020-09-15",
+      "url": "https://doi.org/10.1007/s10551-020-04607-0",
+      "doi": "10.1007/s10551-020-04607-0"
+    },
+    {
+      "record_id": "https://openalex.org/W2585855180",
+      "query_id": "Q004-openalex_works",
+      "source": "openalex_works",
+      "title": "Fuzzy Identity-Based Data Integrity Auditing for Reliable Cloud Storage Systems",
+      "published_at": "2017-02-01",
+      "url": "https://doi.org/10.1109/tdsc.2017.2662216",
+      "doi": "10.1109/tdsc.2017.2662216"
+    },
+    {
+      "record_id": "https://openalex.org/W4283168787",
+      "query_id": "Q004-openalex_works",
+      "source": "openalex_works",
+      "title": "Who Audits the Auditors? Recommendations from a field scan of the algorithmic auditing ecosystem",
+      "published_at": "2022-06-20",
+      "url": "https://doi.org/10.1145/3531146.3533213",
+      "doi": "10.1145/3531146.3533213"
+    },
+    {
+      "record_id": "http://arxiv.org/abs/0805.4444v2",
+      "query_id": "Q005-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Action potential restitution and hysteresis in a reaction-diffusion system with pacing rate dependent excitation threshold",
+      "published_at": "2008-05-28T22:23:24Z",
+      "url": "http://arxiv.org/abs/0805.4444v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1805.09012v1",
+      "query_id": "Q005-arxiv_api",
+      "source": "arxiv_api",
+      "title": "An Ontology-Based Reasoning Framework for Context-Aware Applications",
+      "published_at": "2018-05-23T08:36:28Z",
+      "url": "http://arxiv.org/abs/1805.09012v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/cmp-lg/9701001v1",
+      "query_id": "Q005-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Exploiting Context to Identify Lexical Atoms -- A Statistical View of Linguistic Context",
+      "published_at": "1997-01-02T16:35:24Z",
+      "url": "http://arxiv.org/abs/cmp-lg/9701001v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1806.07358v1",
+      "query_id": "Q005-arxiv_api",
+      "source": "arxiv_api",
+      "title": "No Threshold graphs are cospectral",
+      "published_at": "2018-06-19T17:40:23Z",
+      "url": "http://arxiv.org/abs/1806.07358v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2410.19338v1",
+      "query_id": "Q005-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Privacy-preserving server-supported decryption",
+      "published_at": "2024-10-25T06:47:53Z",
+      "url": "http://arxiv.org/abs/2410.19338v1",
+      "doi": ""
+    },
+    {
+      "record_id": "https://openalex.org/W2995022099",
+      "query_id": "Q005-openalex_works",
+      "source": "openalex_works",
+      "title": "Advances and Open Problems in Federated Learning",
+      "published_at": "2020-12-02",
+      "url": "https://doi.org/10.1561/2200000083",
+      "doi": "10.1561/2200000083"
+    },
+    {
+      "record_id": "https://openalex.org/W4417084924",
+      "query_id": "Q005-openalex_works",
+      "source": "openalex_works",
+      "title": "Context-Dependent Threshold Decryption and Its Applications",
+      "published_at": "2025-12-06",
+      "url": "https://doi.org/10.1007/978-981-95-5119-4_16",
+      "doi": "10.1007/978-981-95-5119-4_16"
+    },
+    {
+      "record_id": "https://openalex.org/W1540686394",
+      "query_id": "Q005-openalex_works",
+      "source": "openalex_works",
+      "title": "Private and Threshold Set-Intersection",
+      "published_at": "2004-11-01",
+      "url": "https://doi.org/10.21236/ada461119",
+      "doi": "10.21236/ada461119"
+    },
+    {
+      "record_id": "https://openalex.org/W1824405704",
+      "query_id": "Q005-openalex_works",
+      "source": "openalex_works",
+      "title": "RSA Key Extraction via Low-Bandwidth Acoustic Cryptanalysis",
+      "published_at": "2014-01-01",
+      "url": "https://doi.org/10.1007/978-3-662-44371-2_25",
+      "doi": "10.1007/978-3-662-44371-2_25"
+    },
+    {
+      "record_id": "https://openalex.org/W4302734258",
+      "query_id": "Q005-openalex_works",
+      "source": "openalex_works",
+      "title": "Survey on Fully Homomorphic Encryption, Theory, and Applications",
+      "published_at": "2022-10-01",
+      "url": "https://doi.org/10.1109/jproc.2022.3205665",
+      "doi": "10.1109/jproc.2022.3205665"
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2504.12218v2",
+      "query_id": "Q006-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Accountable Liveness",
+      "published_at": "2025-04-16T16:13:09Z",
+      "url": "http://arxiv.org/abs/2504.12218v2",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1907.10835v1",
+      "query_id": "Q006-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Decrypting live SSH traffic in virtual environments",
+      "published_at": "2019-07-25T04:40:20Z",
+      "url": "http://arxiv.org/abs/1907.10835v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/1806.07358v1",
+      "query_id": "Q006-arxiv_api",
+      "source": "arxiv_api",
+      "title": "No Threshold graphs are cospectral",
+      "published_at": "2018-06-19T17:40:23Z",
+      "url": "http://arxiv.org/abs/1806.07358v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2511.12936v1",
+      "query_id": "Q006-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Privacy-Preserving Federated Learning from Partial Decryption Verifiable Threshold Multi-Client Functional Encryption",
+      "published_at": "2025-11-17T03:44:47Z",
+      "url": "http://arxiv.org/abs/2511.12936v1",
+      "doi": ""
+    },
+    {
+      "record_id": "http://arxiv.org/abs/2410.19338v1",
+      "query_id": "Q006-arxiv_api",
+      "source": "arxiv_api",
+      "title": "Privacy-preserving server-supported decryption",
+      "published_at": "2024-10-25T06:47:53Z",
+      "url": "http://arxiv.org/abs/2410.19338v1",
+      "doi": ""
+    },
+    {
+      "record_id": "https://openalex.org/W2767424829",
+      "query_id": "Q006-openalex_works",
+      "source": "openalex_works",
+      "title": "A critical survey of live virtual machine migration techniques",
+      "published_at": "2017-11-07",
+      "url": "https://doi.org/10.1186/s13677-017-0092-1",
+      "doi": "10.1186/s13677-017-0092-1"
+    },
+    {
+      "record_id": "https://openalex.org/W3156129242",
+      "query_id": "Q006-openalex_works",
+      "source": "openalex_works",
+      "title": "A Survey on Blockchain Technology: Evolution, Architecture and Security",
+      "published_at": "2021-01-01",
+      "url": "https://doi.org/10.1109/access.2021.3072849",
+      "doi": "10.1109/access.2021.3072849"
+    },
+    {
+      "record_id": "https://openalex.org/W1963957521",
+      "query_id": "Q006-openalex_works",
+      "source": "openalex_works",
+      "title": "Balancing Societal Security and Individual Privacy: Accountable Escrow System",
+      "published_at": "2014-07-01",
+      "url": "https://doi.org/10.1109/csf.2014.37",
+      "doi": "10.1109/csf.2014.37"
+    },
+    {
+      "record_id": "https://openalex.org/W1907293129",
+      "query_id": "Q006-openalex_works",
+      "source": "openalex_works",
+      "title": "SoK: Research Perspectives and Challenges for Bitcoin and Cryptocurrencies",
+      "published_at": "2015-05-01",
+      "url": "https://doi.org/10.1109/sp.2015.14",
+      "doi": "10.1109/sp.2015.14"
+    },
+    {
+      "record_id": "https://openalex.org/W2895659175",
+      "query_id": "Q006-openalex_works",
+      "source": "openalex_works",
+      "title": "Threshold schemes for cryptographic primitives:",
+      "published_at": "2019-03-01",
+      "url": "https://doi.org/10.6028/nist.ir.8214",
+      "doi": "10.6028/nist.ir.8214"
+    }
+  ]
+}

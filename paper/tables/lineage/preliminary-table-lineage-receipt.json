@@ -1,0 +1,318 @@
+{
+  "artifact_hashes_after_check": [
+    {
+      "path": "prototype/results/baseline.json",
+      "sha256": "1bb15f333fe5620543ed378223dfb64c0db86bc461c59e4da2afc62877687730"
+    },
+    {
+      "path": "prototype/results/exact_stratified_validation.csv",
+      "sha256": "4256a9bf771838b9bfd804d9dcd486fd137555a6853e5feaeca3c9f44160b8d9"
+    },
+    {
+      "path": "contracts/gas_report.csv",
+      "sha256": "7431faffe73379a745204bf480f48172fb4c8e96546b562c81e898bfd8ca2cc1"
+    },
+    {
+      "path": "prototype/results/markov_temporal_dependence.csv",
+      "sha256": "ac1bd20264a92e689de3ef074f1bfdf94cfde9c9f6dec7975a69ec22e3c7cb86"
+    },
+    {
+      "path": "prototype/results/crypto_benchmark.csv",
+      "sha256": "1c5efa4d13d46ed3f31d77c6c2f2a70adf848429d500197a5f1d1a378fd9a5ce"
+    },
+    {
+      "path": "scripts/export_paper_tables.py",
+      "sha256": "08eed2c98acb6892c2e0f1616273935fae48c9549c8311b26745846183dd4700"
+    },
+    {
+      "path": "paper/tables/preliminary_results.md",
+      "sha256": "fb7ed306da8c00b52ca96eb73493c5f14ea4862815c58f986187f014a04dcb64"
+    },
+    {
+      "path": "paper/tables/preliminary_results.tex",
+      "sha256": "c64224ab133e7e652984ae7d2643c70b5a38e3bb5be38c5a4902e1bd266674f5"
+    }
+  ],
+  "artifact_hashes_before_check": [
+    {
+      "path": "prototype/results/baseline.json",
+      "sha256": "1bb15f333fe5620543ed378223dfb64c0db86bc461c59e4da2afc62877687730"
+    },
+    {
+      "path": "prototype/results/exact_stratified_validation.csv",
+      "sha256": "4256a9bf771838b9bfd804d9dcd486fd137555a6853e5feaeca3c9f44160b8d9"
+    },
+    {
+      "path": "contracts/gas_report.csv",
+      "sha256": "7431faffe73379a745204bf480f48172fb4c8e96546b562c81e898bfd8ca2cc1"
+    },
+    {
+      "path": "prototype/results/markov_temporal_dependence.csv",
+      "sha256": "ac1bd20264a92e689de3ef074f1bfdf94cfde9c9f6dec7975a69ec22e3c7cb86"
+    },
+    {
+      "path": "prototype/results/crypto_benchmark.csv",
+      "sha256": "1c5efa4d13d46ed3f31d77c6c2f2a70adf848429d500197a5f1d1a378fd9a5ce"
+    },
+    {
+      "path": "scripts/export_paper_tables.py",
+      "sha256": "08eed2c98acb6892c2e0f1616273935fae48c9549c8311b26745846183dd4700"
+    },
+    {
+      "path": "paper/tables/preliminary_results.md",
+      "sha256": "fb7ed306da8c00b52ca96eb73493c5f14ea4862815c58f986187f014a04dcb64"
+    },
+    {
+      "path": "paper/tables/preliminary_results.tex",
+      "sha256": "c64224ab133e7e652984ae7d2643c70b5a38e3bb5be38c5a4902e1bd266674f5"
+    }
+  ],
+  "authorization_boundary": "PREAUTHORIZATION_ONLY",
+  "canonical_table_status": "NOT_CANONICAL_T_SERIES",
+  "completed_at_utc": "2026-08-29T03:27:35.159664Z",
+  "evidence_stage": "PRELIMINARY",
+  "independence_status": "SAME_WORKSPACE_NOT_INDEPENDENT",
+  "invocation_argv": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "scripts/export_preliminary_table_lineage_receipt.py"
+  ],
+  "limitations": [
+    "This receipt records same-workspace lineage for preliminary outputs only.",
+    "It is not scientific evidence, independent reproduction, confirmatory analysis, or canonical T-series evidence.",
+    "A passing exporter check establishes deterministic source-to-table consistency, not scientific validity."
+  ],
+  "lineage": {
+    "classification": {
+      "authorization_boundary": "PREAUTHORIZATION_ONLY",
+      "canonical_table_status": "NOT_CANONICAL_T_SERIES",
+      "evidence_stage": "PRELIMINARY",
+      "independence_status": "SAME_WORKSPACE_NOT_INDEPENDENT",
+      "scientific_evidence_status": "NOT_SCIENTIFIC_EVIDENCE"
+    },
+    "inputs": [
+      {
+        "format": "JSON_ARRAY",
+        "input_id": "MONTE_CARLO_BASELINE",
+        "path": "prototype/results/baseline.json",
+        "row_count": 4,
+        "row_identities": [
+          {
+            "name": "iid-10pct-uniform"
+          },
+          {
+            "name": "domain-20pct-uniform"
+          },
+          {
+            "name": "domain-20pct-stratified"
+          },
+          {
+            "name": "selective-withholding-11"
+          }
+        ],
+        "section_mapping": {
+          "latex_label": "tab:preliminary-monte-carlo",
+          "markdown_heading": "Monte Carlo outcomes"
+        },
+        "selected_fields": [
+          "name",
+          "trials",
+          "reconstruction_success_rate",
+          "reconstruction_success_ci_low",
+          "reconstruction_success_ci_high",
+          "audit_pass_rate",
+          "audit_pass_ci_low",
+          "audit_pass_ci_high",
+          "catastrophic_trials",
+          "catastrophic_detection_rate",
+          "catastrophic_detection_ci_low",
+          "catastrophic_detection_ci_high"
+        ],
+        "sha256": "1bb15f333fe5620543ed378223dfb64c0db86bc461c59e4da2afc62877687730"
+      },
+      {
+        "format": "CSV",
+        "input_id": "EXACT_STRATIFIED_VALIDATION",
+        "path": "prototype/results/exact_stratified_validation.csv",
+        "row_count": 1,
+        "row_identities": [
+          {
+            "design": "fixed-quota domain-stratified sampling"
+          }
+        ],
+        "section_mapping": {
+          "latex_label": "tab:exact-stratified-validation",
+          "markdown_heading": "Exact fixed-quota stratified validation"
+        },
+        "selected_fields": [
+          "design",
+          "required_successes",
+          "exact_tail_probability",
+          "monte_carlo_tail_probability",
+          "absolute_error",
+          "trials",
+          "seed"
+        ],
+        "sha256": "4256a9bf771838b9bfd804d9dcd486fd137555a6853e5feaeca3c9f44160b8d9"
+      },
+      {
+        "format": "CSV",
+        "input_id": "SOLIDITY_GAS",
+        "path": "contracts/gas_report.csv",
+        "row_count": 8,
+        "row_identities": [
+          {
+            "operation": "register_epoch"
+          },
+          {
+            "operation": "open_audit"
+          },
+          {
+            "operation": "submit_audit_response"
+          },
+          {
+            "operation": "mark_invalid_response"
+          },
+          {
+            "operation": "record_equivocation"
+          },
+          {
+            "operation": "finalize_audit"
+          },
+          {
+            "operation": "open_dispute"
+          },
+          {
+            "operation": "cancel_request"
+          }
+        ],
+        "section_mapping": {
+          "latex_label": "tab:preliminary-gas",
+          "markdown_heading": "Solidity operation gas"
+        },
+        "selected_fields": [
+          "operation",
+          "gas",
+          "measurement_scope"
+        ],
+        "sha256": "7431faffe73379a745204bf480f48172fb4c8e96546b562c81e898bfd8ca2cc1"
+      },
+      {
+        "format": "CSV",
+        "input_id": "TEMPORAL_DEPENDENCE",
+        "path": "prototype/results/markov_temporal_dependence.csv",
+        "row_count": 4,
+        "row_identities": [
+          {
+            "audits": "1"
+          },
+          {
+            "audits": "2"
+          },
+          {
+            "audits": "4"
+          },
+          {
+            "audits": "8"
+          }
+        ],
+        "section_mapping": {
+          "latex_label": "tab:temporal-boundary",
+          "markdown_heading": "Exploratory temporal-dependence boundary"
+        },
+        "selected_fields": [
+          "audits",
+          "final_catastrophic_trials",
+          "all_audits_pass_and_final_catastrophic_count",
+          "conditional_sequence_false_accept_rate",
+          "conditional_sequence_false_accept_ci_low",
+          "conditional_sequence_false_accept_ci_high",
+          "static_set_repeated_bound"
+        ],
+        "sha256": "ac1bd20264a92e689de3ef074f1bfdf94cfde9c9f6dec7975a69ec22e3c7cb86"
+      },
+      {
+        "format": "CSV",
+        "input_id": "CRYPTO_MICROBENCHMARK",
+        "path": "prototype/results/crypto_benchmark.csv",
+        "row_count": 3,
+        "row_identities": [
+          {
+            "n": "16",
+            "threshold": "11"
+          },
+          {
+            "n": "32",
+            "threshold": "22"
+          },
+          {
+            "n": "64",
+            "threshold": "43"
+          }
+        ],
+        "section_mapping": {
+          "latex_label": "tab:preliminary-crypto-benchmark",
+          "markdown_heading": "Local cryptographic and signature microbenchmark"
+        },
+        "selected_fields": [
+          "n",
+          "threshold",
+          "keygen_median_ms",
+          "seal_median_ms",
+          "partial_proof_median_ms",
+          "partial_verify_median_ms",
+          "open_median_ms",
+          "signature_sign_median_ms",
+          "signature_verify_median_ms",
+          "signature_size_bytes"
+        ],
+        "sha256": "1c5efa4d13d46ed3f31d77c6c2f2a70adf848429d500197a5f1d1a378fd9a5ce"
+      }
+    ],
+    "outputs": [
+      {
+        "format": "MARKDOWN",
+        "path": "paper/tables/preliminary_results.md",
+        "sha256": "fb7ed306da8c00b52ca96eb73493c5f14ea4862815c58f986187f014a04dcb64"
+      },
+      {
+        "format": "LATEX",
+        "path": "paper/tables/preliminary_results.tex",
+        "sha256": "c64224ab133e7e652984ae7d2643c70b5a38e3bb5be38c5a4902e1bd266674f5"
+      }
+    ],
+    "source_exporter": {
+      "path": "scripts/export_paper_tables.py",
+      "sha256": "08eed2c98acb6892c2e0f1616273935fae48c9549c8311b26745846183dd4700"
+    }
+  },
+  "overall_status": "PASS",
+  "receipt_hash_location": "paper/tables/lineage/preliminary-table-lineage-receipt.json.sha256",
+  "receipt_type": "PRELIMINARY_TABLE_LINEAGE_RECEIPT",
+  "runtime": {
+    "platform_machine": "arm64",
+    "platform_release": "24.1.0",
+    "platform_system": "Darwin",
+    "python_executable": "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "python_implementation": "CPython",
+    "python_version": "3.14.6",
+    "working_directory": "/Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0"
+  },
+  "schema_version": 1,
+  "scientific_evidence_status": "NOT_SCIENTIFIC_EVIDENCE",
+  "started_at_utc": "2026-08-29T03:27:35.124659Z",
+  "table_check": {
+    "command_argv": [
+      "<PYTHON_EXECUTABLE>",
+      "scripts/export_paper_tables.py",
+      "--check"
+    ],
+    "executed_argv": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "scripts/export_paper_tables.py",
+      "--check"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "PASS: paper tables match canonical result sources"
+  }
+}
