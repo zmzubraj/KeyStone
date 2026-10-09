@@ -15,19 +15,19 @@ scientific review, editor judgment, or accountable-human manuscript approval.
 
 ## Verified facts
 
-- The manuscript carries one stable throughline from abstract to discussion: ciphertext availability is not the same as dispute-key serviceability at `research-case/07-manuscript/manuscript.md:21`; `research-case/07-manuscript/manuscript.md:390`.
-- The display map for D1-D8 and F1-F5 is explicit at `research-case/07-manuscript/manuscript.md:187`; `research-case/07-manuscript/manuscript.md:338`; `research-case/07-manuscript/manuscript.md:374`.
-- Several key sections remain deliberately provisional at `research-case/07-manuscript/manuscript.md:73`; `research-case/07-manuscript/manuscript.md:419`; `research-case/07-manuscript/manuscript.md:414`.
+- The manuscript carries one stable throughline from abstract to discussion: ciphertext availability is not the same as dispute-key serviceability at `research-case/07-manuscript/manuscript.md:25`; `research-case/07-manuscript/manuscript.md:394`.
+- The display map for D1-D8 and F1-F5 is explicit at `research-case/07-manuscript/manuscript.md:191`; `research-case/07-manuscript/manuscript.md:342`; `research-case/07-manuscript/manuscript.md:378`.
+- Several key sections remain deliberately provisional at `research-case/07-manuscript/manuscript.md:77`; `research-case/07-manuscript/manuscript.md:423`; `research-case/07-manuscript/manuscript.md:418`.
 
 ## Findings
 
 | ID | Severity | Confidence | Disposition | Evidence | Impacted boundary | Recommended next step |
 | --- | --- | --- | --- | --- | --- | --- |
-| CC-01 | Medium | High | PARTIAL | `research-case/07-manuscript/manuscript.md:21`; `research-case/07-manuscript/manuscript.md:40`; `research-case/07-manuscript/manuscript.md:390` | Core narrative coherence | Preserve the current single-message structure because the main distinction remains consistent across the draft. |
-| CC-02 | Medium | High | FAIL | `research-case/07-manuscript/manuscript.md:73`; `research-case/07-manuscript/manuscript.md:419` | Standalone readability | Replace placeholder section openers with evidence-bound prose once the corresponding novelty and results gates produce final artifacts. |
-| CC-03 | Medium | Medium | FAIL | `research-case/07-manuscript/manuscript.md:40`; `research-case/07-manuscript/claim-evidence-matrix.csv:4`; `research-case/07-manuscript/manuscript.md:454` | Reader load | Reduce internal code names and gate jargon in venue-facing prose by translating them into one reader-facing contribution map after the underlying artifacts stabilize. |
-| CC-04 | Low | High | PARTIAL | `research-case/07-manuscript/manuscript.md:187`; `research-case/07-manuscript/manuscript.md:338`; `research-case/07-manuscript/manuscript.md:374` | Cross-artifact navigation | Keep the current explicit diagram/figure/table mapping because it materially improves auditability for later integration. |
-| CC-05 | Medium | High | FAIL | `research-case/07-manuscript/manuscript.md:412`; `research-case/07-manuscript/manuscript.md:414`; `research-case/07-manuscript/manuscript.md:432` | Ending coherence | The paper cannot yet land a full conclusion because the current ending must still point outward to missing review, venue, and approval artifacts. |
+| CC-01 | Medium | High | PARTIAL | `research-case/07-manuscript/manuscript.md:25`; `research-case/07-manuscript/manuscript.md:44`; `research-case/07-manuscript/manuscript.md:394` | Core narrative coherence | Preserve the current single-message structure because the main distinction remains consistent across the draft. |
+| CC-02 | Medium | High | FAIL | `research-case/07-manuscript/manuscript.md:77`; `research-case/07-manuscript/manuscript.md:423` | Standalone readability | Replace placeholder section openers with evidence-bound prose once the corresponding novelty and results gates produce final artifacts. |
+| CC-03 | Medium | Medium | FAIL | `research-case/07-manuscript/manuscript.md:44`; `research-case/07-manuscript/claim-evidence-matrix.csv:4`; `research-case/07-manuscript/manuscript.md:458` | Reader load | Reduce internal code names and gate jargon in venue-facing prose by translating them into one reader-facing contribution map after the underlying artifacts stabilize. |
+| CC-04 | Low | High | PARTIAL | `research-case/07-manuscript/manuscript.md:191`; `research-case/07-manuscript/manuscript.md:342`; `research-case/07-manuscript/manuscript.md:378` | Cross-artifact navigation | Keep the current explicit diagram/figure/table mapping because it materially improves auditability for later integration. |
+| CC-05 | Medium | High | FAIL | `research-case/07-manuscript/manuscript.md:416`; `research-case/07-manuscript/manuscript.md:418`; `research-case/07-manuscript/manuscript.md:436` | Ending coherence | The paper cannot yet land a full conclusion because the current ending must still point outward to missing review, venue, and approval artifacts. |
 
 ## Residual risks
 

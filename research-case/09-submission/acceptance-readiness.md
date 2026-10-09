@@ -36,7 +36,7 @@ This snapshot is **internal preauthorization only**. It helps the workspace stay
 | External review blocker | `REM-001` |
 | Submission authorized | `False` |
 | External transfer authorized | `False` |
-| Draft PDF page count | `22` |
+| Draft PDF page count | `21` |
 | Build manifest | `paper/preauthorization-build/build-manifest.json` |
 | Draft PDF | `paper/preauthorization-build/main.pdf` |
 

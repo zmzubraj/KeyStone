@@ -8,7 +8,7 @@ Date: `2026-08-29`
 Canonical phase at draft time: `INTAKE`
 
 Draft author and repository public-release authority: **Zubaer Mahmood Zubraj**
-([`@zmzubraj`](https://github.com/zmzubraj)). Final publication byline order,
+([GitHub: zmzubraj](https://github.com/zmzubraj)). Final publication byline order,
 affiliations, CRediT roles, declarations, and submission approval remain open.
 
 ## Abstract
