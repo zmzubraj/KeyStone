@@ -198,7 +198,12 @@ def require_text(value: Any, label: str) -> str:
     return value.strip()
 
 
-def validate_completed_return(root: Path, response: dict[str, Any]) -> None:
+def validate_completed_return(
+    root: Path,
+    response: dict[str, Any],
+    *,
+    allow_recorded_revision_drift: bool = False,
+) -> None:
     template = build_template(root)
     if response.get("schema_id") != template["schema_id"] or response.get("schema_version") != 1:
         raise ContractError("unsupported verifier return schema")
@@ -239,9 +244,18 @@ def validate_completed_return(root: Path, response: dict[str, Any]) -> None:
     for actual, expected in zip(artifacts, expected_artifacts, strict=True):
         if not isinstance(actual, dict):
             raise ContractError("artifact disposition must be an object")
-        for field in ("path", "revision", "sha256"):
+        for field in ("path", "sha256"):
             if actual.get(field) != expected[field]:
                 raise ContractError(f"artifact {field} drift for {expected['path']}")
+        if actual.get("revision") != expected["revision"]:
+            recorded_revision_ok = False
+            if allow_recorded_revision_drift:
+                try:
+                    recorded_revision_ok = int(expected["revision"]) == int(actual.get("revision")) + 1
+                except (TypeError, ValueError):
+                    recorded_revision_ok = False
+            if not recorded_revision_ok:
+                raise ContractError(f"artifact revision drift for {expected['path']}")
         disposition = actual.get("disposition")
         if disposition not in ARTIFACT_DISPOSITIONS:
             raise ContractError(f"artifact disposition is invalid for {expected['path']}")

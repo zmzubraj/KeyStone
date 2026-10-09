@@ -526,7 +526,7 @@
       "notes": "The historical 'GO for MPP implementation' wording is superseded for research governance by program-state.json; canonical phase remains INTAKE.",
       "path": "VERIFICATION.md",
       "path_base": "workspace_root",
-      "sha256": "c37ac303a2cbac81925fea8e49ecf8f458dcdd5a570575890f67cb1b4ea47940",
+      "sha256": "b116bf0f81b4f4cbb5464520fd41f97960d7f0a6b584edda10ecce61943e2871",
       "source_id": "SRC-LOCAL-VERIFICATION",
       "status": "QUARANTINED_LOCAL_RECORD"
     },

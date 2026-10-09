@@ -3,7 +3,7 @@
   "registry_revision": 3,
   "trust_mode": "EXTERNAL_RUN_BOUND_REGISTRY_ADMIN",
   "registry_signing_key_id": "registry-admin-keystone-mpp-f1",
-  "trust_root_fingerprint": "987c74bc279de8c004ff285abdcc3acc7c93a06ceaa8ad1badc9f4b79d94f159",
+  "trust_root_fingerprint": "5b0c1d92f9e7151d6c7e766b7784949a6f58857a07950076692b3f3cead10085",
   "entries": [
     {
       "registry_id": "runtime-mechanical-attestor",
@@ -19,7 +19,7 @@
       "identity_pattern": "intake\\-reviewer\\-002",
       "verifier_type": "INDEPENDENT_REVIEWER",
       "signing_key_id": "intake-reviewer-key-002",
-      "public_key_fingerprint": "4d6c4c63561e3a5b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8b6b8",
+      "public_key_fingerprint": "0594f2d1a0e5d0668c5a22c830c0e1abe506ba41b7743b1bdc65e8c665a8a6c1",
       "registration_method": "EXPLICIT_LOCAL_PUBLIC_KEY_BOOTSTRAP",
       "authority_tier": "SCIENTIFIC_INDEPENDENT",
       "active": true

@@ -8,9 +8,10 @@
 signature, এবং চারটি canonical verification event সম্পন্ন করবেন—তার exact
 line-by-line procedure ও completion contract।
 
-**বর্তমান live status:** `WAITING_EXTERNAL`। কোনো independent human reviewer
-এখনও registered নন, canonical verification event count `0`, এবং phase
-`INTAKE`। এই SOP বা template-এর লেখা AI দিয়ে `PASS`, `VERIFIED`, reviewer
+**বর্তমান live status:** `WAITING_EXTERNAL`। বর্তমান registry-তে অন্তত একটি
+active `INDEPENDENT_REVIEWER` entry আছে, কিন্তু canonical verification event
+count এখনো `0`, accepted completed reviewer return নেই, এবং phase `INTAKE`।
+এই SOP বা template-এর লেখা AI দিয়ে `PASS`, `VERIFIED`, reviewer
 identity, competence, conflict disclosure, attestation, signature, অথবা
 independence basis হিসেবে পূরণ করানো নিষিদ্ধ। Reviewer-এর নিজের judgment এবং
 নিজের key-controlled signature ছাড়া task complete হবে না।
@@ -82,7 +83,7 @@ Reviewer নিচের কোনো verdict দেবেন না:
 এই SOP তৈরির সময় packet SHA-256:
 
 ```text
-b0126dadcd4606a235187d16735572b531eb210f099fa2c783b29e0bf43fa27f
+b2b653a619ecfa3cc825b3a539b7e359aa1c8dec5485bfab6098b16d0d44008f
 ```
 
 চারটি reviewed revision ও SHA-256:
@@ -107,7 +108,10 @@ cd /Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0
 make intake-verifier-packet-check
 make intake-review-bundle-check
 make intake-verifier-return-template-check
-sha256sum review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip
+make intake-transfer-authorization-template-check
+LC_ALL=C LANG=C shasum -a 256 review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip
+LC_ALL=C LANG=C shasum -a 256 review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json
+LC_ALL=C LANG=C shasum -a 256 review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json
 ```
 
 Expected packet hash অবশ্যই Section 3-এর hash-এর সঙ্গে match করবে। Match না
@@ -117,9 +121,11 @@ Expected packet hash অবশ্যই Section 3-এর hash-এর সঙ্�
 make intake-verifier-packet
 make intake-review-bundle
 make intake-verifier-return-template
+make intake-transfer-authorization-template
 make intake-verifier-packet-check
 make intake-review-bundle-check
 make intake-verifier-return-template-check
+make intake-transfer-authorization-template-check
 ```
 
 Regeneration-এর পরে এই SOP-এর snapshot values আর automatically current বলে
@@ -129,6 +135,11 @@ Regeneration-এর পরে এই SOP-এর snapshot values আর automatic
 Packet external human-এর কাছে পাঠানো একটি external transfer। Accountable human
 নিজে recipient, channel, confidentiality, এবং institutional-policy boundary
 approve করবেন। Codex নিজে packet upload/send করবে না।
+
+যদি current active reviewer entry reuse করা হয়, Section 5-6 skip করে Section 7
+থেকে review flow continue করা যাবে। Section 5-6 only তখন লাগবে যখন reviewer
+replace করতে হবে, new key register করতে হবে, বা trust bootstrap rebuild করতে
+হবে।
 
 ## 5. Reviewer key তৈরি করবেন
 
@@ -539,6 +550,16 @@ ssh-keygen -Y verify \
 Expected signature result `Good ... signature`। Structural validation বা
 signature verification fail হলে task incomplete।
 
+Exact accepted signature line-এ namespace এবং principal দুটোই frozen values হতে হবে:
+
+```text
+Good "keystone-mpp-f1-intake" signature for intake-reviewer-key-002 with ED25519 key ...
+```
+
+`Good "keyname" signature for isolated-human-verifier ...` গ্রহণযোগ্য নয়। OpenSSH output-এর
+quoted value namespace; key control valid হলেও wrong namespace বা unregistered principal
+INTAKE contract satisfy করে না।
+
 ## 12. Reviewer চারটি signed canonical event record করবেন
 
 এই commands reviewer নিজে তার private key access-সহ চালাবেন। Private key root
@@ -640,9 +661,22 @@ python3 /Users/rainbow/.codex/skills/orchestrate-top-journal-research/scripts/re
 
 ```bash
 cd /Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0
+python3 scripts/intake_reviewer_submission_audit.py
+python3 scripts/intake_reviewer_submission_audit.py --check --require-complete
+```
+
+এই authenticated-return audit-এর সব checks `PASS` না হলে phase transition চালানো যাবে না।
+Open invalidation না থাকলে pre-transition strict checker-ও চালাবেন:
+
+```bash
 python3 /Users/rainbow/.codex/skills/orchestrate-top-journal-research/scripts/check_research_case.py \
   research-case --strict
 ```
+
+Remediation-এর কারণে same-phase open invalidation থাকলে strict checker স্বাভাবিকভাবে
+`open invalidation queue` report করবে। সে ক্ষেত্রে audit complete এবং চার current artifact
+independently `VERIFIED` হওয়ার পরে `advance_research_case.py` একই INTAKE invalidation resolve
+করবে; transition-এর আগে strict PASS দাবি করে invalidation history manually edit করবেন না।
 
 তারপর registry-তে চার path `VERIFIED`, current hash-matched, independently
 signed, unique event ID-যুক্ত কি না inspect করবেন। Strict pass এবং চারটি
@@ -681,8 +715,10 @@ Codex `Independent INTAKE verifier return সংগ্রহ` task-কে **COMP
 - [ ] Scope flags: phase promotion, novelty assertion, execution authorization,
       author metadata inclusion—সব `false`।
 - [ ] Reviewer attestation nonblank এবং companion signature cryptographically
-      verifies with the registered reviewer public key।
+      verifies with the registered reviewer public key, exact namespace
+      `keystone-mpp-f1-intake`, এবং registered principal `intake-reviewer-key-002`।
 - [ ] Completed return structural validator exits `0`।
+- [ ] `intake_reviewer_submission_audit.py --check --require-complete` exits `0`।
 - [ ] Four canonical `record_artifact.py` commands exit `0` এবং independently
       signed verification events ledger-এ আছে।
 - [ ] Pre-transition strict schema-v4 checker exits `0`।

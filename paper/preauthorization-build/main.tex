@@ -107,14 +107,14 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <2c22e8e75e21567a28aa50ae592a3e1e> <2c22e8e75e21567a28aa50ae592a3e1e> ]}
+\special{pdf:trailerid [ <e01e2daad26ee7242d964bb0e66da8a2> <e01e2daad26ee7242d964bb0e66da8a2> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <2c22e8e75e21567a28aa50ae592a3e1e> <2c22e8e75e21567a28aa50ae592a3e1e> ]}
+\pdftrailer{/ID [ <e01e2daad26ee7242d964bb0e66da8a2> <e01e2daad26ee7242d964bb0e66da8a2> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <2c22e8e75e21567a28aa50ae592a3e1e> <2c22e8e75e21567a28aa50ae592a3e1e> ]}
+\pdfvariable trailerid {[ <e01e2daad26ee7242d964bb0e66da8a2> <e01e2daad26ee7242d964bb0e66da8a2> ]}
 \fi
 
 \title{KEYSTONE-MPP-F1 -\/-\/- DRAFT PREAUTHORIZATION MANUSCRIPT}
@@ -457,9 +457,12 @@ submission approval.
 
 \subsection{Results}\label{results}
 
-The present results surface is an explicitly preliminary inventory. It
-does not replace missing authorized \texttt{05-analysis} evidence or the
-still-missing canonical primary-results ledger.
+The present results surface is an explicitly preliminary inventory. The
+design-layer \texttt{03-design/primary-results-contract.csv} exists only
+as a schema-complete, non-executable result contract: all nine slots
+remain unauthorized, non-independent, \texttt{NOT\_COLLECTED}, and
+\texttt{NOT\_ESTIMATED}. It does not replace missing authorized
+confirmatory evidence.
 
 The temporary Markdown/LaTeX preliminary-table bundle has a fail-closed
 same-workspace lineage receipt that binds its five input files,
@@ -474,13 +477,17 @@ non-boolean offline setting; its hash-bound failure receipt and logs
 were preserved. After the environment contract was corrected and
 independently re-reviewed, a new operator completed all ten commands
 with zero return codes, unchanged source and isolated-copy inventories,
-and a valid \texttt{MECHANICAL\_PASS} receipt. This establishes bounded
-same-host mechanical replay only: it used the same machine and
-potentially the same tool caches, did not enforce network isolation at
-the kernel level, did not execute the distributed deadline study, and is
-neither external reproduction nor independent scientific verification,
-institutional approval, venue approval, or evidence that changes the
-current claim-maturity ceilings.
+and a hash-verified \texttt{MECHANICAL\_PASS} receipt for that
+historical snapshot. The canonical reproducibility report at
+\texttt{05-analysis/reproducibility-report.md} finds that the receipt's
+source-manifest and program-state hashes do not match the current
+revisions, so a current-tree replay is required. Even after such a
+replay, this establishes bounded same-host mechanical consistency only:
+it used the same machine and potentially the same tool caches, did not
+enforce network isolation at the kernel level, did not execute the
+distributed deadline study, and is neither external reproduction nor
+independent scientific verification, institutional approval, venue
+approval, or evidence that changes the current claim-maturity ceilings.
 
 \subsection{7. Evaluation}\label{evaluation}
 
@@ -503,14 +510,14 @@ Only a limited set of result classes is admissible for drafting:
 The current figures F1--F5 and \texttt{paper/tables/t1\_t8\_package.*}
 are draft preauthorization display assets. They are not canonical
 confirmatory tables or publication evidence. Missing or blocked
-evaluation outputs include the canonical \texttt{05-analysis} primary
-ledger, authorized confirmatory robustness and negative-result analyses,
-deadline Figures F6--F7, the planned recovery-timeline Figure F8,
-independent reproduction, and external validation for \texttt{C003}. The
-canonical \texttt{05-analysis/results/exploratory-findings.csv} now
-records the four temporal Markov rows under distinct \texttt{EXPLORE-*}
-identifiers. It preserves the simulated source maturity but caps claim
-support at \texttt{V0\ ASSERTED}: each row is explicitly post-hoc,
+evaluation outputs include authorized primary outcomes, confirmatory
+robustness and negative-result analyses, deadline Figures F6--F7, the
+planned recovery-timeline Figure F8, independent reproduction, and
+external validation for \texttt{C003}. The canonical
+\texttt{05-analysis/results/exploratory-findings.csv} now records the
+four temporal Markov rows under distinct \texttt{EXPLORE-*} identifiers.
+It preserves the simulated source maturity but caps claim support at
+\texttt{V0\ ASSERTED}: each row is explicitly post-hoc,
 preauthorization-only, unauthorized, non-independent, and descriptive
 rather than confirmatory. Its conditional denominator is the number of
 trials ending in the catastrophic state, not all simulated trials. Draft
@@ -737,10 +744,16 @@ The derived robustness ledger at
 \texttt{05-analysis/results/robustness-and-boundaries.csv} is
 reproducible from the hash-bound IID and sampling-policy datasets
 through \texttt{scripts/export\_robustness\_boundaries.py}; it remains a
-draft traceability surface and cannot substitute for the missing primary
-ledger, authorized confirmatory analysis, independent reproduction, or
-external validation. The non-executable future-run contract is recorded
-in \texttt{02-feasibility/pilot-plan.md} and
+draft traceability surface and cannot substitute for authorized primary
+evidence, confirmatory analysis, independent reproduction, or external
+validation. The schema-complete primary-results contract at
+\texttt{03-design/primary-results-contract.csv} contains no observations
+or estimates; the canonical
+\texttt{05-analysis/results/primary-results.csv} remains missing; the
+current reproducibility disposition and historical-receipt binding audit
+are recorded in \texttt{05-analysis/reproducibility-report.md}. The
+non-executable future-run contract is recorded in
+\texttt{02-feasibility/pilot-plan.md} and
 \texttt{02-feasibility/pilot-run-contract.csv}; it contains no collected
 outcome and grants no authorization. The PC03 amendment, count contract,
 and seed schedule under \texttt{03-design/} are likewise result-blind,

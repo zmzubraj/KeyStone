@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / "scripts/export_primary_results_contract.py"
-OUTPUT = ROOT / "research-case/05-analysis/results/primary-results.csv"
+OUTPUT = ROOT / "research-case/03-design/primary-results-contract.csv"
 
 
 RESULT_IDS = {
@@ -73,7 +73,7 @@ def test_check_detects_output_drift() -> None:
     OUTPUT.write_text(original.replace("NOT_ESTIMATED", "0.99", 1), encoding="utf-8")
     result = _run("--check")
     assert result.returncode == 1
-    assert "primary-results contract is stale" in result.stderr
+    assert "primary-results planning contract is stale" in result.stderr
     OUTPUT.write_text(original, encoding="utf-8")
     assert _run("--check").returncode == 0
 

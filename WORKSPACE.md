@@ -181,6 +181,10 @@ make intake-review-bundle
 make intake-review-bundle-check
 make intake-verifier-return-template
 make intake-verifier-return-template-check
+make intake-transfer-authorization-template
+make intake-transfer-authorization-template-check
+make intake-transfer-authorization-draft
+make intake-transfer-authorization-draft-check
 make pc02-novelty-verifier-packet
 make pc02-novelty-verifier-packet-check
 make pc03-design-amendment
@@ -204,6 +208,20 @@ to the current intake ZIP hash and four canonical artifact revisions. The
 read-only validator rejects stale, incomplete, over-scoped, or unbound returns;
 it never verifies reviewer identity or signatures, writes canonical state, or
 promotes the case.
+
+The companion
+`review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json`
+records the accountable human's named-reviewer, channel, and confidentiality
+approval for this exact INTAKE packet scope. Its structural validator checks
+that approved transfer stays bound to the current packet artifacts and keeps
+all non-promotion flags fail-closed.
+
+The companion draft
+`review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-draft.json`
+prefills the accountable-human identity and the current packet scope but keeps
+the decision unfilled. It is a fill-ready scaffold only and does not authorize
+transfer until a completed copy is saved outside the draft path and passes the
+structural validator.
 
 The PC02 output is
 `review-packets/KEYSTONE-MPP-F1-pc02-novelty-review-packet.zip` with a SHA-256

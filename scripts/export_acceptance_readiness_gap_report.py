@@ -78,6 +78,8 @@ REMEDIATION_PACKET_MAP = {
         "docs/24_INVALID_AI_INTAKE_VERIFICATION_QUARANTINE.md",
         "review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip",
         "review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json",
+        "review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json",
+        "review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-draft.json",
     ),
     "REM-002": (
         "docs/21_PC02_NOVELTY_VERIFIER_HANDOFF.md",

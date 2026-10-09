@@ -1,0 +1,4 @@
+group,element_bytes,audit_request_bytes,partial_response_bytes
+keystone-safe-prime-256-v1,32,191,253
+ffdhe2048,256,223,1149
+ffdhe3072,384,223,1661

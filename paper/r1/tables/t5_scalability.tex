@@ -1,0 +1,12 @@
+\begin{tabular}{@{}rrrrrrrr@{}}
+\toprule
+ & & & & \multicolumn{2}{c}{Audit, ffdhe2048} & \multicolumn{2}{c}{Dispute: verify $t$ + combine}\\
+\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+$n$ & $t$ & $s$ & Detection & CPU & Bytes & ffdhe2048 & ffdhe3072\\
+\midrule
+16 & 11 & 4 & 88.46\% & 1063\,ms & 4,819 & 1585\,ms & 5040\,ms\\
+32 & 22 & 8 & 98.07\% & 2125\,ms & 9,415 & 3213\,ms & 10201\,ms\\
+64 & 43 & 12 & 99.66\% & 3188\,ms & 14,011 & 6230\,ms & 20086\,ms\\
+128 & 86 & 16 & 99.92\% & 4250\,ms & 18,607 & 12534\,ms & 40201\,ms\\
+\bottomrule
+\end{tabular}

@@ -40,11 +40,19 @@ Authoritative sources:
 - Intake review packet:
   `review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip`
 - Current packet SHA-256:
-  `3c9433eb163c322ccd911806f69f71303ad70ec5d0989b1edb84b36e57eba1bc`
+  `b2b653a619ecfa3cc825b3a539b7e359aa1c8dec5485bfab6098b16d0d44008f`
 - Return template:
   `review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json`
 - Current return-template SHA-256:
-  `b59d2834fef3b12075d21df011b0e12bcbd84bb2959ef6dc95d38b83aed7ff3d`
+  `b1df9c2f18c269ae388a8f4c0c82650a72a930eebbae500faf44731faa5b7657`
+- Transfer authorization template:
+  `review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json`
+- Current transfer-authorization-template SHA-256:
+  `d947916a98417b078e45534e3b1e59fe71c98d9f6e4c292c6c8e38007a554d82`
+- Fill-ready draft:
+  `review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-draft.json`
+- Current fill-ready-draft SHA-256:
+  `68f65c5231635b7c2d2bf86c744d1ee736c0dde2d2e45896847cb5b40904b3ba`
 
 এই values stale হয়ে যাবে যদি packet বা canonical intake artifact revision/hash বদলায়।
 
@@ -66,8 +74,11 @@ cd /Users/rainbow/Documents/ZTech/Research/KEYSTONE_MPP_v1.0
 make intake-verifier-packet-check
 make intake-review-bundle-check
 make intake-verifier-return-template-check
-sha256sum review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip
-sha256sum review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json
+make intake-transfer-authorization-template-check
+make intake-transfer-authorization-draft-check
+LC_ALL=C LANG=C shasum -a 256 review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip
+LC_ALL=C LANG=C shasum -a 256 review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json
+LC_ALL=C LANG=C shasum -a 256 review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json
 ```
 
 Expected outcome:
@@ -75,8 +86,10 @@ Expected outcome:
 - packet check pass
 - bundle check pass
 - template check pass
+- draft check pass
 - packet SHA-256 matches Section 3
 - template SHA-256 matches Section 3
+- transfer-authorization-template SHA-256 matches Section 3
 
 Mismatch হলে regenerate:
 
@@ -84,9 +97,13 @@ Mismatch হলে regenerate:
 make intake-verifier-packet
 make intake-review-bundle
 make intake-verifier-return-template
+make intake-transfer-authorization-template
+make intake-transfer-authorization-draft
 make intake-verifier-packet-check
 make intake-review-bundle-check
 make intake-verifier-return-template-check
+make intake-transfer-authorization-template-check
+make intake-transfer-authorization-draft-check
 ```
 
 ## 6. External authorization gate
@@ -157,9 +174,10 @@ REM-001 remains OPEN.
 
 Next executable action is not a code change. It is:
 
-1. choose the named reviewer,
-2. approve transfer boundary,
-3. deliver the packet,
-4. wait for the authenticated human return.
+1. confirm the current active reviewer entry or choose a replacement,
+2. copy the fill-ready draft and complete reviewer, channel, and confidentiality boundary,
+3. approve the transfer boundary,
+4. deliver the packet,
+5. wait for the authenticated human return.
 
 Until that happens, the workspace may continue internal preparation, but `INTAKE` remains the blocking serial gate.

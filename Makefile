@@ -3,7 +3,7 @@ SHELL := /bin/bash
 PYTHON_VERSION ?= 3.13
 GAS_TEST_PATTERN ?= ^testGas_
 
-.PHONY: setup test-python test-contract build-contract snapshot snapshot-check reproduce paper-tables paper-tables-check test-vectors test-vectors-check signature-vectors signature-vectors-check intake-verifier-packet intake-verifier-packet-check intake-review-bundle intake-review-bundle-check intake-verifier-return-template intake-verifier-return-template-check pc02-novelty-verifier-packet pc02-novelty-verifier-packet-check pc03-design-amendment pc03-design-amendment-check pc03-methods-verifier-packet pc03-methods-verifier-packet-check draft-adversarial-reviews draft-adversarial-reviews-check manuscript-source-check manuscript-alignment-check manuscript-assembly-inventory manuscript-assembly-inventory-check draft-manuscript draft-manuscript-check acceptance-readiness-gap acceptance-readiness-gap-check evidence-lineage evidence-lineage-check exploratory-findings exploratory-findings-check primary-results-contract primary-results-contract-check negative-findings negative-findings-check robustness-boundaries robustness-boundaries-check confirmatory-pilot-plan confirmatory-pilot-plan-check refresh-integrity checksums verify clean
+.PHONY: setup test-python test-contract build-contract snapshot snapshot-check reproduce paper-tables paper-tables-check test-vectors test-vectors-check signature-vectors signature-vectors-check intake-verifier-packet intake-verifier-packet-check intake-review-bundle intake-review-bundle-check intake-verifier-return-template intake-verifier-return-template-check intake-reviewer-submission-audit intake-reviewer-submission-audit-check intake-reviewer-submission-require-complete intake-transfer-authorization-template intake-transfer-authorization-template-check intake-transfer-authorization-draft intake-transfer-authorization-draft-check pc02-novelty-verifier-packet pc02-novelty-verifier-packet-check pc03-design-amendment pc03-design-amendment-check pc03-methods-verifier-packet pc03-methods-verifier-packet-check draft-adversarial-reviews draft-adversarial-reviews-check manuscript-source-check manuscript-alignment-check manuscript-assembly-inventory manuscript-assembly-inventory-check draft-manuscript draft-manuscript-check acceptance-readiness-gap acceptance-readiness-gap-check evidence-lineage evidence-lineage-check exploratory-findings exploratory-findings-check primary-results-contract primary-results-contract-check reproducibility-report reproducibility-report-check negative-findings negative-findings-check robustness-boundaries robustness-boundaries-check confirmatory-pilot-plan confirmatory-pilot-plan-check refresh-integrity checksums verify clean r1-run r1-testbed r1-assets r1-paper r1-check
 
 setup:
 	cd prototype && uv sync --locked --extra dev --python "$(PYTHON_VERSION)"
@@ -66,6 +66,27 @@ intake-verifier-return-template:
 
 intake-verifier-return-template-check:
 	python3 scripts/intake_verifier_return_contract.py --check
+
+intake-reviewer-submission-audit:
+	python3 scripts/intake_reviewer_submission_audit.py
+
+intake-reviewer-submission-audit-check:
+	python3 scripts/intake_reviewer_submission_audit.py --check
+
+intake-reviewer-submission-require-complete:
+	python3 scripts/intake_reviewer_submission_audit.py --check --require-complete
+
+intake-transfer-authorization-template:
+	python3 scripts/intake_transfer_authorization_contract.py
+
+intake-transfer-authorization-template-check:
+	python3 scripts/intake_transfer_authorization_contract.py --check
+
+intake-transfer-authorization-draft:
+	python3 scripts/intake_transfer_authorization_contract.py --draft
+
+intake-transfer-authorization-draft-check:
+	python3 scripts/intake_transfer_authorization_contract.py --check-draft
 
 pc02-novelty-verifier-packet:
 	python3 scripts/export_pc02_novelty_verifier_packet.py
@@ -133,6 +154,12 @@ primary-results-contract:
 primary-results-contract-check:
 	python3 scripts/export_primary_results_contract.py --check
 
+reproducibility-report:
+	python3 scripts/export_reproducibility_report.py
+
+reproducibility-report-check:
+	python3 scripts/export_reproducibility_report.py --check
+
 negative-findings:
 	python3 scripts/export_negative_findings.py
 
@@ -157,7 +184,28 @@ refresh-integrity:
 checksums:
 	LC_ALL=C LANG=C shasum -a 256 -c SHA256SUMS
 
-verify: test-python build-contract test-contract snapshot-check paper-tables-check test-vectors-check signature-vectors-check intake-verifier-packet-check intake-review-bundle-check intake-verifier-return-template-check pc02-novelty-verifier-packet-check pc03-design-amendment-check pc03-methods-verifier-packet-check draft-adversarial-reviews-check manuscript-source-check manuscript-alignment-check manuscript-assembly-inventory-check draft-manuscript-check acceptance-readiness-gap-check evidence-lineage-check exploratory-findings-check primary-results-contract-check negative-findings-check robustness-boundaries-check confirmatory-pilot-plan-check checksums
+# ---- Revision R1 (reviewer response): frozen design in research-case/03-design/r1-reviewer-revision ----
+R1_PY = cd prototype && uv run --locked --extra dev python
+
+r1-run:
+	$(R1_PY) scripts/run_r1_pc03.py
+	$(R1_PY) scripts/run_r1_analytic.py
+	$(R1_PY) scripts/run_r1_microbench.py
+
+r1-testbed:
+	$(R1_PY) -u scripts/run_r1_deadline_testbed.py
+
+r1-assets:
+	$(R1_PY) scripts/build_r1_figures_tables.py
+
+r1-paper: r1-assets
+	cd paper/r1 && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error KEYSTONE_R1.tex
+
+r1-check:
+	cd research-case/03-design/r1-reviewer-revision && LC_ALL=C shasum -a 256 -c r1-design-freeze.SHA256SUMS
+	cd prototype && uv run --locked --extra dev pytest -q tests/test_r1_revision.py
+
+verify: test-python build-contract test-contract snapshot-check paper-tables-check test-vectors-check signature-vectors-check intake-verifier-packet-check intake-review-bundle-check intake-verifier-return-template-check intake-reviewer-submission-audit-check intake-transfer-authorization-template-check intake-transfer-authorization-draft-check pc02-novelty-verifier-packet-check pc03-design-amendment-check pc03-methods-verifier-packet-check draft-adversarial-reviews-check manuscript-source-check manuscript-alignment-check manuscript-assembly-inventory-check draft-manuscript-check acceptance-readiness-gap-check evidence-lineage-check exploratory-findings-check primary-results-contract-check reproducibility-report-check negative-findings-check robustness-boundaries-check confirmatory-pilot-plan-check checksums
 
 clean:
 	cd prototype && rm -rf .pytest_cache src/keystone_mpp.egg-info

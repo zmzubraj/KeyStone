@@ -180,6 +180,8 @@ def _write_case(root: Path) -> Path:
         "docs/24_INVALID_AI_INTAKE_VERIFICATION_QUARANTINE.md",
         "review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip",
         "review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json",
+        "review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json",
+        "review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-draft.json",
         "docs/21_PC02_NOVELTY_VERIFIER_HANDOFF.md",
         "review-packets/KEYSTONE-MPP-F1-pc02-novelty-review-packet.zip",
         "review-packets/KEYSTONE-MPP-F1-pc02-novelty-verifier-return-template.json",
@@ -224,6 +226,8 @@ def test_export_writes_fail_closed_gap_report_from_canonical_state(tmp_path: Pat
     assert "`docs/23_INDEPENDENT_INTAKE_HUMAN_VERIFICATION_SOP_BN.md`" in report
     assert "`docs/24_INVALID_AI_INTAKE_VERIFICATION_QUARANTINE.md`" in report
     assert "`review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip`" in report
+    assert "`review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json`" in report
+    assert "`review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-draft.json`" in report
     assert "do not authorize external transfer" in report
     assert "follow the human-verification SOP" in report
     assert "invalid-AI quarantine boundary" in report

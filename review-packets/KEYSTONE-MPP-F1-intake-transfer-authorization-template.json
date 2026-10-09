@@ -1,0 +1,62 @@
+{
+  "accountable_human": {
+    "contact": "",
+    "identity": "",
+    "policy_basis_confirmation": "UNANSWERED"
+  },
+  "allowed_transfer_artifacts": [
+    {
+      "path": "docs/20_INTAKE_EXTERNAL_VERIFIER_HANDOFF.md",
+      "sha256": "ea1debf17e9a391556cd19e6be7906a3e4e57d37c93ec9c7d7f8f5ca139d8770"
+    },
+    {
+      "path": "docs/23_INDEPENDENT_INTAKE_HUMAN_VERIFICATION_SOP_BN.md",
+      "sha256": "a04d997ab1e82986d8c7fd791b414e6ead09b5d2c9636d0ed4bb1dfc000e05a1"
+    },
+    {
+      "path": "docs/24_INVALID_AI_INTAKE_VERIFICATION_QUARANTINE.md",
+      "sha256": "b405665e2af73c93c42a5d98806a5c5d4a7b5bb2166e414781b69cd9e0f5d133"
+    },
+    {
+      "path": "review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip",
+      "sha256": "73c2db40621f8893c9165b48bdd6560d9f97e30500458efabf929f5454366bc6"
+    },
+    {
+      "path": "review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json",
+      "sha256": "eac7b29d9b43fe90b463eab9b04c8bc5e2be502cb01cb7a8b898f6ed5d218c7c"
+    }
+  ],
+  "authority_reference_path": "research-case/00-governance/accountable-authority-confirmation.md",
+  "authorization_attestation": "",
+  "authorization_decision": "UNANSWERED",
+  "authorization_id": "",
+  "authorization_scope": "INTAKE_EXTERNAL_TRANSFER_ONLY",
+  "canonical_acceptance_readiness": "NOT_ASSESSABLE",
+  "canonical_phase": "INTAKE",
+  "constraints": {
+    "may_assert_independent_verification": false,
+    "may_authorize_execution": false,
+    "may_freeze_author_metadata": false,
+    "may_promote_phase": false
+  },
+  "decision_rationale": "",
+  "named_reviewer": {
+    "affiliation_or_role": "",
+    "conflicts_disclosure": "",
+    "contact": "",
+    "identity": "",
+    "independence_basis": ""
+  },
+  "review_packet_path": "review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip",
+  "review_packet_sha256": "73c2db40621f8893c9165b48bdd6560d9f97e30500458efabf929f5454366bc6",
+  "schema_id": "KEYSTONE_INTAKE_TRANSFER_AUTHORIZATION",
+  "schema_version": 1,
+  "status": "UNCOMPLETED_TEMPLATE",
+  "transfer_channel": {
+    "channel_type": "",
+    "confidentiality_boundary": "",
+    "destination": "",
+    "institutional_policy_notes": ""
+  },
+  "validation_boundary": "Structural validation does not verify the accountable human identity, institutional authority, reviewer independence, transmission security, recipient identity, or scientific correctness. It only checks that the approval stays bound to the current INTAKE packet scope and non-promotion limits."
+}

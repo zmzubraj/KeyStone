@@ -71,7 +71,7 @@
   "outputs": [
     {
       "path": "paper/preauthorization-build/manuscript-prepared.md",
-      "sha256": "c068f692e2d89764765172ce86b9c533e9e026b8df613567eba8ada1d73b140c"
+      "sha256": "733b9f0179c932ba9dfe11ef134ae56d03c30ef992d036de0d70495e6f5422c8"
     },
     {
       "path": "paper/preauthorization-build/preauthorization-header.tex",
@@ -79,11 +79,11 @@
     },
     {
       "path": "paper/preauthorization-build/main.tex",
-      "sha256": "b00a64dc9116367dff8f01db241be6b030829901eb4948d35a5b0b8ad7f45c02"
+      "sha256": "141d5cb7b44982703a965edd5d719a133f2c5e2cb38668896ddd765e81bc4c1e"
     },
     {
       "path": "paper/preauthorization-build/main.pdf",
-      "sha256": "0611bbc33e181e507a49141200c90517c0886ad19ae1ef0672a077e5c8e654df"
+      "sha256": "5707dfc55f331d2da481cbef9d8482075bc4da5fda222b79045068c46f0d6d32"
     },
     {
       "path": "paper/preauthorization-build/build.log",
@@ -91,11 +91,11 @@
     },
     {
       "path": "paper/preauthorization-build/pdf-qa.json",
-      "sha256": "60f53214ee73d9675b25deda35177618b964d2fd7e0c19df78674e6963897549"
+      "sha256": "c820dfabd03e95c588ea211900239297d4f7ecfd31b77cae63cf200972b0b2ec"
     }
   ],
-  "page_count": 21,
-  "pdf_sha256": "0611bbc33e181e507a49141200c90517c0886ad19ae1ef0672a077e5c8e654df",
+  "page_count": 22,
+  "pdf_sha256": "5707dfc55f331d2da481cbef9d8482075bc4da5fda222b79045068c46f0d6d32",
   "schema_id": "KEYSTONE_DRAFT_MANUSCRIPT_BUILD",
   "schema_version": 1,
   "scientific_gate_promoted": false,
@@ -210,11 +210,11 @@
     },
     {
       "path": "research-case/07-manuscript/manuscript.md",
-      "sha256": "ea591efaabcfc658a13b20f43d34a444bbf741fdcc13cb3e003fb7b03bffd80f"
+      "sha256": "9d72779b31fab74a33dc0242a45f8eae8ab499a1a21814b3906aee46586f0943"
     },
     {
       "path": "research-case/program-state.json",
-      "sha256": "3a15f7ee07d2a976f8648fb0ccc5b889ee523d47a029a9a14a6c8eb4ad313d0d"
+      "sha256": "1e61b34c07dbbe0a41986372c7fd070f352be46b2caed8fc4d5ca8efa1d78eb0"
     }
   ],
   "status": "DRAFT_PREAUTHORIZATION_NOT_SUBMISSION_READY",

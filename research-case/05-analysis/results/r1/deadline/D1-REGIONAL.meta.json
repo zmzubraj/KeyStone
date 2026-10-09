@@ -1,0 +1,17 @@
+{
+  "profile_id": "D1-REGIONAL",
+  "profile": {
+    "median_ms": 40,
+    "sigma": 0.5,
+    "loss": 0.0,
+    "crashed": 0,
+    "domain_outage": false
+  },
+  "freeze_sha256": "4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385",
+  "group": "ffdhe2048",
+  "pid": 61075,
+  "started_unix": 1791555085.632986,
+  "elapsed_s": 1567.4439539909363,
+  "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+  "python": "3.13.13"
+}

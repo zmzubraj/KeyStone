@@ -1,0 +1,74 @@
+{
+  "document_id": "KEYSTONE-MPP-F1-PHD-REVIEW-DRAFT-001",
+  "title": "KEYSTONE: Auditable Dispute-Key Availability for Encrypted AI Rollups",
+  "status": "EXTERNAL_PHD_REVIEW_DRAFT",
+  "author": {
+    "name": "Zubaer Mahmood Zubraj",
+    "affiliation": "Department of Computer Science, East Delta University, Chittagong, Bangladesh",
+    "email": "zmzubraj@gmail.com"
+  },
+  "built_at_local": "2026-08-30T21:42:00+06:00",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error KEYSTONE_PhD_Reviewer_Manuscript.tex",
+  "source": {
+    "path": "paper/external-review/KEYSTONE_PhD_Reviewer_Manuscript.tex",
+    "sha256": "8eb975c884e86d1e319b471ed226f2ac9902e682f4cd244ac9f4727fce1cf39c"
+  },
+  "pdf": {
+    "path": "paper/external-review/KEYSTONE_PhD_Reviewer_Manuscript.pdf",
+    "sha256": "b9173d386f4d0a149610532f20a8c2a3aa590991b3ddca56d6c3ddd6d743cbc5",
+    "pages": 9,
+    "page_size": "US Letter",
+    "fonts_embedded": true,
+    "unresolved_citations": 0,
+    "unresolved_references": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "javascript": false,
+    "encrypted": false
+  },
+  "bibliography": {
+    "path": "paper/references.bib",
+    "sha256": "5b57bab08523644de23539793776b8512de4e8aa422c54a11cab19d81132c012",
+    "cited_entries": 16,
+    "citation_style": "numeric, ordered by first citation"
+  },
+  "docx": {
+    "path": "paper/external-review/KEYSTONE_PhD_Reviewer_Manuscript.docx",
+    "sha256": "ec87ad52ca53cceb18095d9cd5477c848d81f9f1c97345e7032f4fc44e11e7e7",
+    "rendered_pages": 13,
+    "page_size": "US Letter",
+    "author_metadata_present": true,
+    "email_present": true,
+    "numeric_citations": true,
+    "reference_entries": 16,
+    "rendered_visual_qa": "PASS",
+    "citation_style_source": {
+      "path": "paper/external-review/numeric-citations.csl",
+      "sha256": "7442d1e11142b07cb9a749bec653713e8f848a4b5bec8dff7f807363edb1eaf1"
+    }
+  },
+  "figures": [
+    {
+      "path": "diagrams/01_system_architecture.png",
+      "sha256": "4e73a92d8acce4121565862b99c1b4a207266b4ebf757d1d189fe687d9e400db",
+      "role": "PROTOCOL_ARCHITECTURE"
+    },
+    {
+      "path": "prototype/results/figures/figure_1_theoretical_detection_bound.png",
+      "sha256": "8b3214778ddf623592471ab68123f3f5dbeaf75dde8e29fd4f2cd319beaf6e59",
+      "role": "DETERMINISTIC_ANALYTIC"
+    },
+    {
+      "path": "prototype/results/figures/figure_4_selective_withholding_gap.png",
+      "sha256": "9d59193bb164a744d26d7a509b2c698c6a3a2a7beefbecb03fc185c742b08cac",
+      "role": "INTERNAL_EXPLORATORY_NEGATIVE_RESULT"
+    }
+  ],
+  "scientific_ceiling": {
+    "novelty": "UNRESOLVED",
+    "confirmatory_execution": "NOT_AUTHORIZED_IN_THIS_DRAFT",
+    "external_reproduction": "NOT_COMPLETED",
+    "production_security": "NOT_CLAIMED",
+    "submission_readiness": "NOT_CLAIMED"
+  }
+}

@@ -24,3 +24,16 @@ contracts/broadcast/
 
 # Research-case transient lock (authoritative state remains in the case ledgers)
 research-case/.control/runtime.lock
+
+# LaTeX build intermediates
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+paper/**/*.log
+paper/r1/build.log
+
+# Third-party reviewer submissions (personal data; kept local, not published)
+review-packets/reviewer-submissions/

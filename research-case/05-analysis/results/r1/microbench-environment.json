@@ -1,0 +1,14 @@
+{
+  "freeze_sha256": "4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385",
+  "label": "LOCAL_MICROBENCHMARK_PURE_PYTHON_UPPER_BOUND",
+  "python": "3.13.13",
+  "machine": "arm64",
+  "platform": "macOS-15.1-arm64-arm-64bit-Mach-O",
+  "cpu": "Apple M4 Pro (12 cores)",
+  "warmup": 3,
+  "repeats": {
+    "keystone-safe-prime-256-v1": 50,
+    "ffdhe2048": 30,
+    "ffdhe3072": 20
+  }
+}

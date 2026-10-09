@@ -7,6 +7,48 @@ for MPP implementation” wording is superseded by
 `research-case/program-state.json`. All results below remain preliminary or
 preauthorization-only unless a stronger disposition is stated explicitly.
 
+## Revision R1 (reviewer response), 2026-10-09 to 2026-10-10
+
+Trigger: reviewer return `Jubyer.docx` (eight screenshots of an AI-chat answer
+with values labelled "illustrative"). No placeholder value from it is used.
+Authorization and choices: `research-case/03-design/r1-reviewer-revision/R1-AUTHORIZATION.md`.
+
+Frozen design: `research-case/03-design/r1-reviewer-revision/r1-design-freeze.json`,
+SHA-256 `4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385`,
+written and hashed at 2026-10-09T13:05Z before any R1 run. Three logged
+deviations in `r1-deviation-log.md` (post hoc s=12/16 extension of the
+acceptance analysis; a discarded 3-trace smoke test; one D0 control trace that
+timed out under host contention and is kept as a failure).
+
+Executed (CPython 3.13.13, Apple M4 Pro, macOS 15.1):
+
+| Family | Script | Output | Label |
+|---|---|---|---|
+| PC03 cells IID/STRAT/SW, 131,072 draws each | `prototype/scripts/run_r1_pc03.py` | `research-case/05-analysis/results/r1/pc03-summary.json`, `*-blocks.csv` | prespecified synthetic simulation; methods review not independent |
+| Correlation, acceptance rule, scalability | `prototype/scripts/run_r1_analytic.py` | `analytic-*.csv` (MC cross-check max error 0.0085) | exact; acceptance rule post hoc |
+| Crypto microbenchmarks (256-bit, ffdhe2048, ffdhe3072) | `prototype/scripts/run_r1_microbench.py` | `microbench-*.csv` | local, pure Python, upper bound |
+| Emulated deadline testbed, 8 profiles x 300 traces | `prototype/scripts/run_r1_deadline_testbed.py` | `results/r1/deadline/D*.csv` | single-host emulation, real ffdhe2048 crypto |
+| Tables, figures, prose macros | `prototype/scripts/build_r1_figures_tables.py` | `paper/r1/tables`, `paper/r1/figures`, `paper/r1/r1-asset-manifest.json` | generated only from the outputs above |
+
+Headline results: strict s=q=8 audit passes 43.1% at 10% IID unavailability
+while reconstruction succeeds 99.98%; stratification raises conditional
+detection 99.89% to 100% (primary paired difference 0.00021); 11 selective
+withholders pass 100% of audits and 0% of disputes; testbed disputes succeed
+0% by the 2 s primary deadline and 100% by 5 s wherever reconstruction is
+possible (medians 3.69-3.88 s), dominated by ~135 ms per pure-Python
+ffdhe2048 proof verification; 11 crashes defeat all 300 disputes.
+
+Checks run: `pytest tests/test_r1_revision.py` (17 passed); freeze hash
+re-verified by every R1 script; manuscript `paper/r1/KEYSTONE_R1.tex` builds
+with latexmk (12 pages, no undefined references or overfull boxes).
+
+Gas re-run: `make snapshot` at 2026-10-09T19:50Z (Foundry 1.5.1, Solc 0.8.24),
+8/8 gas tests passed, values identical to the 2026-08-29 snapshot; Table 8 is
+rendered from `contracts/gas_report.csv` with each operation's harness scope.
+
+Not done: independent novelty review, geo-distributed deployment,
+optimized-library timing, external cryptographic or contract audit.
+
 ## Latest workspace environment
 
 - macOS 15.1, Darwin 24.1.0, arm64

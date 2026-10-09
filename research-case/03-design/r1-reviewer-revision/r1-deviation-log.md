@@ -1,0 +1,11 @@
+# KEYSTONE R1 deviation log
+
+Frozen design: `r1-design-freeze.json` (SHA-256 4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385).
+Entries are append-only. Times are UTC.
+
+| # | Time | Family | Deviation | Reason | Effect on claims |
+|---|---|---|---|---|---|
+| 1 | 2026-10-09T13:10:08Z | ANALYTIC_ACCEPTANCE_SENSITIVITY | Extend the frozen grid (s=8, q=5..8) with s=12 and s=16, q from ceil(s/2) to s | After seeing s=8 results: no q at s=8 gives both high detection and low benign alarms; the extension shows whether a larger sample resolves the trade-off | Exact analytic, already POST_HOC; extension also POST_HOC; reported as design guidance only |
+| 2 | 2026-10-09T13:43:38Z | EMULATED_DEADLINE | 3-trace smoke test of D0-CONTROL and D5-GLOBAL-CRASH11 written to the session scratchpad and discarded | Engineering check that processes start, proofs verify and plaintext decrypts before the 2,400-trace run | None; smoke outputs are not results and are not used |
+| 3 | 2026-10-09T14:11:39Z | EMULATED_DEADLINE | Trace D0-CONTROL/107 timed out (19 valid partials at the 6 s hard timeout; audit 1.65 s vs median 1.24 s). The analyst compiled a TikZ figure (pdflatex, pdftoppm) on the same host during the D0 run, near this trace's time | Host CPU contention or efficiency-core scheduling of the single-threaded combiner is the likely cause; the trace is a timeout, not a cryptographic failure (all 32 custodians answer in D0, so 3 invalid proofs could not reduce valid partials below 29) | Trace kept as a failure per the frozen rule; reported in the paper as a host-scheduling tail event; no further analyst CPU work during the remaining profiles |
+| 4 | 2026-10-09T20:35:30Z | AUTHORIZATION RECORD | Replaced the reviewer's personal name in R1-AUTHORIZATION.md with 'naming the reviewer'; updated that file's hash in r1-design-freeze.SHA256SUMS (old 2b63579724fe966716faf8b612eda2211387ea663ec724c7e0994e8944426a19, new 7e89c15bdaca24d0ae1792993e341dd9cff772f6bd8d43a5ae773d2b2bd5ae91). r1-design-freeze.json and its hash are unchanged | Privacy: the repository is public and the reviewer has not consented to publication of his name or attestation | None on design, runs or results |

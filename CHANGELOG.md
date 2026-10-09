@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-10: Revision R1 (reviewer response)
+
+- Froze and hashed the R1 design before execution; executed the frozen PC03
+  cells, exact correlation/acceptance/scalability analysis, cryptographic
+  microbenchmarks at RFC 7919 sizes, and a 2,400-trace single-host emulated
+  deadline testbed.
+- Added `keystone.standard_groups` (ffdhe2048, ffdhe3072), R1 scripts, 17 tests,
+  and Makefile targets `r1-run`, `r1-testbed`, `r1-assets`, `r1-paper`, `r1-check`.
+- New manuscript `paper/r1/KEYSTONE_R1.tex` whose tables, figures and prose
+  numbers are generated from R1 outputs; redrawn architecture figure.
+
 ## 2026-08-29 — Exact sampling and uncertainty tranche
 
 - Added an exact fixed-quota domain-stratified success distribution by

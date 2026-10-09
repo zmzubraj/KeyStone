@@ -1,0 +1,154 @@
+{
+  "label": "PRESPECIFIED_SYNTHETIC_SIMULATION_NONINDEPENDENT_METHODS_REVIEW",
+  "freeze_sha256": "4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385",
+  "python": "3.13.13",
+  "cells": {
+    "RID-C003-IID-001": {
+      "draws": 131072,
+      "blocks": 32,
+      "reserve_blocks_used": 0,
+      "counts": {
+        "reconstruction_success": 131045,
+        "audit_pass": 56461
+      },
+      "reconstruction_success": {
+        "estimate": 0.9997940063476562,
+        "wilson95": [
+          0.9997002993863292,
+          0.9998584182371709
+        ],
+        "hoeffding_half_width": 0.0037512609035934403,
+        "block_min": 0.99951171875,
+        "block_max": 1.0
+      },
+      "audit_pass": {
+        "estimate": 0.43076324462890625,
+        "wilson95": [
+          0.4280845462252868,
+          0.43344600129592015
+        ],
+        "hoeffding_half_width": 0.0037512609035934403,
+        "block_min": 0.41796875,
+        "block_max": 0.4501953125
+      }
+    },
+    "RID-C003-STRAT-001": {
+      "draws": 131072,
+      "blocks": 32,
+      "reserve_blocks_used": 0,
+      "counts": {
+        "catastrophic": 24454,
+        "z_unif": 24426,
+        "z_strat": 24454,
+        "pass_unif": 48904,
+        "pass_strat": 45780,
+        "d_sum": 28,
+        "d_pos": 28,
+        "d_neg": 0
+      },
+      "primary_D": {
+        "estimate": 0.000213623046875,
+        "hoeffding_half_width": 0.0075025218071868805,
+        "discordant_strat_better": 28,
+        "discordant_unif_better": 0,
+        "block_estimates": [
+          0.0,
+          0.0,
+          0.000244140625,
+          0.00048828125,
+          0.000244140625,
+          0.000244140625,
+          0.000732421875,
+          0.0,
+          0.00048828125,
+          0.0,
+          0.0,
+          0.001220703125,
+          0.0,
+          0.000244140625,
+          0.000244140625,
+          0.000244140625,
+          0.0,
+          0.0,
+          0.00048828125,
+          0.000244140625,
+          0.0,
+          0.0,
+          0.000244140625,
+          0.000244140625,
+          0.0,
+          0.000244140625,
+          0.000244140625,
+          0.000244140625,
+          0.0,
+          0.0,
+          0.000244140625,
+          0.000244140625
+        ]
+      },
+      "catastrophic_rate": {
+        "estimate": 0.1865692138671875,
+        "wilson95": [
+          0.1844694258665849,
+          0.1886873733914007
+        ]
+      },
+      "conditional_detection_uniform": {
+        "estimate": 0.998854993048172,
+        "wilson95": [
+          0.9983456265562382,
+          0.999207654712616
+        ]
+      },
+      "conditional_detection_stratified": {
+        "estimate": 1.0,
+        "wilson95": [
+          0.9998429354926043,
+          1.0
+        ]
+      },
+      "audit_pass_uniform": {
+        "estimate": 0.37310791015625,
+        "wilson95": [
+          0.37049344101870624,
+          0.37572981698379654
+        ]
+      },
+      "audit_pass_stratified": {
+        "estimate": 0.349273681640625,
+        "wilson95": [
+          0.3466972088678086,
+          0.3518589891298733
+        ]
+      }
+    },
+    "RID-C003-SW-001": {
+      "draws": 131072,
+      "blocks": 32,
+      "reserve_blocks_used": 0,
+      "counts": {
+        "audit_pass": 131072,
+        "dispute_success": 0,
+        "gap_sum": 131072
+      },
+      "primary_G": {
+        "estimate": 1.0,
+        "hoeffding_half_width": 0.0075025218071868805
+      },
+      "audit_pass": {
+        "estimate": 1.0,
+        "wilson95": [
+          0.9999706928540154,
+          1.0
+        ]
+      },
+      "dispute_success": {
+        "estimate": 0.0,
+        "wilson95": [
+          0.0,
+          2.9307145984647147e-05
+        ]
+      }
+    }
+  }
+}

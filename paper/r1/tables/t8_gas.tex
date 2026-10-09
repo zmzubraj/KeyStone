@@ -1,0 +1,14 @@
+\begin{tabularx}{\textwidth}{@{}l r X@{}}
+\toprule
+Bulletin-board operation & Gas & Harness scope\\
+\midrule
+Register epoch & 223,629 & n=5, t=3; duplicate-identity validation enabled\\
+Open audit & 125,107 & three sampled members; q=3\\
+Submit audit response & 57,882 & first commitment from one sampled custodian\\
+Mark invalid response & 27,704 & admin records a non-zero evidence hash\\
+Record equivocation & 51,710 & second conflicting commitment from one custodian\\
+Finalize audit & 29,142 & two responses for a three-member sample after deadline\\
+Open dispute & 144,149 & n=5, t=3; all members eligible\\
+Cancel request & 5,709 & admin cancels one open audit\\
+\bottomrule
+\end{tabularx}

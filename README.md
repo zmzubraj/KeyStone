@@ -60,6 +60,13 @@ The package is suitable for:
 
 The prototype uses a generated 256-bit safe-prime subgroup, deterministic hash-to-group canaries, Feldman commitments, Fiat–Shamir Chaum–Pedersen/DLEQ proofs, Shamir sharing, a threshold DH KEM, and AES-GCM. It is deliberately compact and reproducible. It has not undergone cryptographic audit and must not protect production funds or sensitive data.
 
+## Revision R1
+
+The reviewer-response revision lives in `paper/r1/` (manuscript, generated
+tables and figures, response letter) with its frozen design under
+`research-case/03-design/r1-reviewer-revision/` and outputs under
+`research-case/05-analysis/results/r1/`. See `VERIFICATION.md`.
+
 ## Verification status
 
 The Python cryptographic/simulation artifact and all 35 tests were reproduced

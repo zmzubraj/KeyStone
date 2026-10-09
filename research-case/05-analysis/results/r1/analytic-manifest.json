@@ -1,0 +1,10 @@
+{
+  "freeze_sha256": "4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385",
+  "labels": {
+    "analytic-domain-correlation.csv": "EXACT_ANALYTIC_DECLARED_SYNTHETIC_MODEL",
+    "analytic-domain-mc-check.csv": "CODE_VALIDATION_ONLY",
+    "analytic-acceptance-sensitivity.csv": "POST_HOC_EXACT_ANALYTIC",
+    "analytic-scalability-detection.csv": "EXACT_ANALYTIC"
+  },
+  "max_mc_abs_error": 0.008491546162402774
+}

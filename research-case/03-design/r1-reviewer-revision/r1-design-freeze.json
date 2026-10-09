@@ -1,0 +1,131 @@
+{
+  "schema_id": "KEYSTONE_R1_DESIGN_FREEZE",
+  "schema_version": 1,
+  "system_id": "KEYSTONE-MPP-F1",
+  "revision": "R1",
+  "frozen_at_utc": "2026-10-09T13:05:00Z",
+  "frozen_before_any_r1_run": true,
+  "authorization": "research-case/03-design/r1-reviewer-revision/R1-AUTHORIZATION.md",
+  "result_blind_statement": "No R1 output existed when this file was frozen. August exploratory outputs (prototype/results/*.csv) were visible to the designer; where an R1 analysis was added because of an observed exploratory pattern, it is labelled POST_HOC below.",
+  "families": {
+    "PC03": {
+      "source_contract": [
+        "research-case/03-design/pc03-prospective-amendment.md",
+        "research-case/03-design/pc03-prospective-counts.csv",
+        "research-case/03-design/pc03-seed-schedule.csv"
+      ],
+      "label": "PRESPECIFIED_SYNTHETIC_SIMULATION_NONINDEPENDENT_METHODS_REVIEW",
+      "blocks": "32 primary blocks x 4096 draws per cell; reserve blocks 33-36 used only to replace a block that fails to execute; a completed unfavourable block is never replaced",
+      "rng": "Python random.Random(seed) per block, seed from pc03-seed-schedule.csv",
+      "cells": {
+        "RID-C003-IID-001": {
+          "n": 32, "t": 22, "s": 8, "q": 8, "domains": 4,
+          "independent_offline_probability": 0.10,
+          "domain_outage_probability": 0.0,
+          "sampling": "uniform without replacement",
+          "primary_endpoints": ["reconstruction_success = 1[ready >= t]", "audit_pass = 1[valid sampled >= q]"],
+          "precision_target": "Hoeffding absolute half-width <= 0.005 at alpha 0.05"
+        },
+        "RID-C003-STRAT-001": {
+          "n": 32, "t": 22, "s": 8, "q": 8, "domains": 4,
+          "independent_offline_probability": 0.02,
+          "domain_outage_probability": 0.20,
+          "parameter_source": "prototype/configs/baseline.json entries domain-20pct-uniform and domain-20pct-stratified",
+          "policies": {
+            "uniform": "8 members uniformly without replacement",
+            "stratified": "fixed quota of 2 members per domain (4 domains x 2), uniformly within domain"
+          },
+          "pairing": "common random numbers: one failure state per draw; RNG state snapshotted after the failure draw and restored before each policy's sample; policy evaluation order alternates by draw-index parity",
+          "primary_endpoint": "per-draw difference D = Z_strat - Z_unif where Z = 1[catastrophic AND audit fails] (unconditional detected-catastrophe indicator); estimand E[D]",
+          "secondary_endpoints": ["conditional detection difference among catastrophic draws", "audit-pass difference over all draws (benign alarm cost)"],
+          "precision_target": "Hoeffding absolute half-width <= 0.010 on D in [-1,1]",
+          "note": "Fixed quota 2-per-domain follows the analysis-plan wording 'fixed-quota stratified sampling'. The August exploratory sweep used one-per-domain plus uniform remainder; that implementation is not the R1 primary."
+        },
+        "RID-C003-SW-001": {
+          "n": 32, "t": 22, "s": 8, "q": 8, "domains": 4,
+          "independent_offline_probability": 0.0,
+          "domain_outage_probability": 0.0,
+          "selective_withholders": 11,
+          "withholder_identity": "members with zero-based index 21..31 (spread over all four domains by index mod 4)",
+          "primary_endpoint": "per-draw gap G = audit_pass - dispute_success; estimand E[G]; reported regardless of direction",
+          "precision_target": "Hoeffding absolute half-width <= 0.010"
+        }
+      },
+      "excluded": {
+        "RID-C003-CORR-001": "remains excluded as a confirmatory family; correlated behaviour is reported only through the ANALYTIC_DOMAIN family below",
+        "RID-C003-DEADLINE-001": "superseded for R1 by the EMULATED_DEADLINE family below, which is labelled single-host emulation"
+      }
+    },
+    "ANALYTIC_DOMAIN": {
+      "label": "EXACT_ANALYTIC_DECLARED_SYNTHETIC_MODEL",
+      "n": 32, "t": 22, "s": 8, "q": 8,
+      "unavailability_grid": "f in {0.000, 0.025, ..., 0.400} (17 points)",
+      "models": {
+        "IID": "each member independently unavailable with probability f",
+        "DOMAIN_4x8": "4 domains of 8; each domain independently fails with probability f; no other failures",
+        "DOMAIN_2x16": "2 domains of 16 (violates placement cap n-t=10); each domain fails with probability f",
+        "DOMAIN_8x4": "8 domains of 4; each domain fails with probability f"
+      },
+      "outputs": ["exact reconstructability P[ready >= t]", "exact uniform audit pass P[all s sampled ready]"],
+      "monte_carlo_cross_check": "20000 draws at f in {0.10, 0.20} per model, seeds 20261009 + model index, used only to validate the exact code",
+      "claim_boundary": "Domain labels and independence are assumptions; no claim about real provider or region behaviour."
+    },
+    "ANALYTIC_ACCEPTANCE_SENSITIVITY": {
+      "label": "POST_HOC_EXACT_ANALYTIC",
+      "post_hoc_reason": "The August IID sweep showed that s=q=8 audits fail benignly in about 56% of draws at 10% IID unavailability while reconstruction still succeeds. This trade-off analysis was added after seeing that pattern.",
+      "n": 32, "t": 22, "s": 8,
+      "q_grid": [5, 6, 7, 8],
+      "outputs": ["worst-case catastrophic detection at r=t-1", "benign audit pass under IID f in {0.05, 0.10, 0.20}"]
+    },
+    "SCALABILITY": {
+      "label": "EXACT_ANALYTIC_PLUS_LOCAL_MICROBENCHMARK",
+      "committee_rule": "t = n - floor((n-1)/3)",
+      "n_grid": [16, 32, 64, 128],
+      "s_grid": [4, 8, 12, 16],
+      "detection": "exact worst-case 1 - C(t-1,s)/C(n,s) with q=s",
+      "groups": {
+        "keystone-safe-prime-256-v1": "prototype research group (NOT a secure size; reference only)",
+        "ffdhe2048": "RFC 7919 safe prime, q=(p-1)/2, generator 4 of the order-q subgroup; parameters from OpenSSL 3.6.5, file ffdhe2048.pem",
+        "ffdhe3072": "RFC 7919 safe prime, as above, file ffdhe3072.pem"
+      },
+      "microbenchmarks": {
+        "operations": ["canary derivation", "partial decryption + DLEQ proof", "DLEQ verification", "combine t partials (Lagrange in exponent)", "record seal", "full open with t verifications"],
+        "repeats": {"keystone-safe-prime-256-v1": 50, "ffdhe2048": 30, "ffdhe3072": 20},
+        "statistic": "median and p95 wall time, time.perf_counter, single process, CPython 3.13.13, Apple M4 Pro",
+        "warmup": "3 discarded iterations per operation"
+      },
+      "message_sizes": "canonical AuditRequestTranscript and PartialResponseTranscript byte lengths per group; audit bandwidth = 1 request broadcast + s responses; dispute bandwidth = n requests + t responses",
+      "implementation_boundary": "pure-Python reference implementation; timings are an upper bound on compute cost, not optimized-library performance"
+    },
+    "EMULATED_DEADLINE": {
+      "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+      "host": "one Apple M4 Pro (12 cores), macOS 15.1, CPython 3.13.13",
+      "group": "ffdhe2048",
+      "committee": {"n": 32, "t": 22, "domains": "4 x 8 by index mod 4", "keygen": "dealer keygen once per profile run"},
+      "topology": "32 custodian OS processes, each an asyncio TCP server on 127.0.0.1 holding only its own share; one combiner process (asyncio client) that issues requests, verifies DLEQ proofs as responses arrive, stops at t valid, combines, unwraps the record key and AES-GCM-decrypts",
+      "network_emulation": "one-way delay per message drawn by the combiner-side emulator from the trace seed and passed as out-of-band emulation metadata; the custodian sleeps the inbound delay before computing and the outbound delay before replying; lost messages are never answered; no retransmission",
+      "delay_model": "lognormal one-way delay with stated median and sigma (log-space); 0 means no injected delay",
+      "trace": "each trace = one routine audit (uniform s=8, q=8, beacon-derived canary) then one authorized dispute over a freshly sealed 1 KiB record",
+      "traces_per_profile": 300,
+      "trace_seed": "int.from_bytes(SHA256('KEYSTONE-R1|DEADLINE|' + profile_id + '|' + str(i))[:8], 'big')",
+      "hard_timeout_s": 6.0,
+      "deadlines_s": [0.25, 0.5, 1.0, 2.0, 5.0],
+      "primary_endpoint": "P[dispute completes with correct plaintext by deadline 2.0 s] per profile",
+      "secondary_endpoints": ["dispute success at other deadlines", "dispute completion-time quantiles among successes", "audit pass by 1.0 s", "audit completion-time quantiles"],
+      "profiles": {
+        "D0-CONTROL": {"median_ms": 0, "sigma": 0, "loss": 0.0, "crashed": 0, "domain_outage": false},
+        "D1-REGIONAL": {"median_ms": 40, "sigma": 0.5, "loss": 0.0, "crashed": 0, "domain_outage": false},
+        "D2-GLOBAL": {"median_ms": 120, "sigma": 0.6, "loss": 0.0, "crashed": 0, "domain_outage": false},
+        "D3-GLOBAL-LOSS2": {"median_ms": 120, "sigma": 0.6, "loss": 0.02, "crashed": 0, "domain_outage": false},
+        "D4-GLOBAL-CRASH10": {"median_ms": 120, "sigma": 0.6, "loss": 0.0, "crashed": 10, "domain_outage": false},
+        "D5-GLOBAL-CRASH11": {"median_ms": 120, "sigma": 0.6, "loss": 0.0, "crashed": 11, "domain_outage": false},
+        "D6-GLOBAL-DOMAIN-OUTAGE": {"median_ms": 120, "sigma": 0.6, "loss": 0.0, "crashed": 0, "domain_outage": true},
+        "D7-HEAVY-TAIL": {"median_ms": 120, "sigma": 1.2, "loss": 0.0, "crashed": 0, "domain_outage": false}
+      },
+      "crash_selection": "crashed members chosen uniformly per trace from the trace seed; domain outage = one domain chosen uniformly per trace, all 8 members silent",
+      "interval_method": "Wilson 95% for proportions; order-statistic quantiles for times",
+      "claim_boundary": "Delay parameters are declared synthetic profiles, not measured internet paths. Same-host scheduling, loopback TCP and CPU sharing differ from a geo-distributed deployment."
+    }
+  },
+  "deviation_rule": "Any change after the first R1 run is appended to research-case/03-design/r1-reviewer-revision/r1-deviation-log.md with reason and time; the frozen file is not edited."
+}

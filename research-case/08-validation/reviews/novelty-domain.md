@@ -2,7 +2,7 @@
 
 Status: `DRAFT / INTERNAL DEVELOPMENTAL REVIEW / NOT INDEPENDENT`  
 System: `KEYSTONE-MPP-F1`  
-Date: `2026-08-30`  
+Date: `2026-10-10`  
 Canonical phase: `INTAKE`
 
 This review is a local novelty-domain challenge only. It does not certify novelty,

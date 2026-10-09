@@ -58,17 +58,17 @@ A methods-review `ACCEPT_AS_DRAFT` disposition does not authorize confirmatory e
 
 | Artifact | Registry status | Revision | SHA-256 |
 | --- | --- | ---: | --- |
-| `research-case/03-design/protocol.md` | `DRAFT` | `2` | `4ab6e396a75a6c5cab6290de681b7c3ba8de468606a591a19ee951ae6963efc3` |
-| `research-case/03-design/analysis-plan.md` | `DRAFT` | `3` | `ef2c05bff11d9c7aca886737d342eaa77f5c9f26096869e9b9eba9bfb313c1ef` |
-| `research-case/03-design/power-or-precision.md` | `DRAFT` | `4` | `dfb678063d914134d78950620654d8907c84784f612bc529cd53a6518886bde5` |
-| `research-case/03-design/preregistration-and-deviations.md` | `DRAFT` | `4` | `b82ac6378281ce132bf8ae763128e83af02d7267f38216bbcfd1f475ccc0c71d` |
+| `research-case/03-design/protocol.md` | `STALE` | `2` | `4ab6e396a75a6c5cab6290de681b7c3ba8de468606a591a19ee951ae6963efc3` |
+| `research-case/03-design/analysis-plan.md` | `STALE` | `3` | `ef2c05bff11d9c7aca886737d342eaa77f5c9f26096869e9b9eba9bfb313c1ef` |
+| `research-case/03-design/power-or-precision.md` | `STALE` | `4` | `dfb678063d914134d78950620654d8907c84784f612bc529cd53a6518886bde5` |
+| `research-case/03-design/preregistration-and-deviations.md` | `STALE` | `4` | `b82ac6378281ce132bf8ae763128e83af02d7267f38216bbcfd1f475ccc0c71d` |
 | `research-case/03-design/pc03-prospective-amendment.md` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `fa92cf52c7db2bb4377bb6b94303b086ca1ec37d372b8bf9af1a23b4c47e82e0` |
 | `research-case/03-design/pc03-prospective-counts.csv` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `840db07ed3f228662625beeac1d42d74cfb78dc85610f2b9ddd4a05c2f8d5a2b` |
 | `research-case/03-design/pc03-seed-schedule.csv` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `7063adc013979905e0e296f4ace7daa5dde2053c3f78c080c586f567ac18954a` |
 | `research-case/03-design/pc03-independent-methods-challenge/design-assessment.md` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `e2759aefb89dd6e082b7db10cd8a85b75df759e91309d83e975bf85eaa5ab9f8` |
 | `research-case/03-design/pc03-independent-methods-challenge/prospective-counts.csv` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `f04946b030306e376745e938dea9f1ddd11e0df6cbddbeaf54368ecb138c75e0` |
 | `research-case/03-design/pc03-independent-methods-challenge/calculation-notes.md` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `365f620a5e166d429b6b805de5404e7e67cae4db361a16e6a4e880c632434696` |
-| `research-case/02-feasibility/pilot-plan.md` | `DRAFT` | `3` | `907d9c6f954daa44216b5ee83f56bd42a7c990c2fd8d0dccaacf1f5a7e134b8a` |
+| `research-case/02-feasibility/pilot-plan.md` | `STALE` | `3` | `907d9c6f954daa44216b5ee83f56bd42a7c990c2fd8d0dccaacf1f5a7e134b8a` |
 | `research-case/02-feasibility/pilot-run-contract.csv` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `918dacfae714329d9b37a174421ee02806f3c06a2777b09de07f59c40627db95` |
 | `prototype/src/keystone/simulation.py` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `61662f7c144723aeaa9b75e3f6c51991f9b8006543d68f801b47be1d4254ff77` |
 | `prototype/scripts/run_experiments.py` | `AUXILIARY_HASH_BOUND_INPUT` | `N/A` | `4488593cba625e3732c1cd3e6633f21b284142967795a1056051b7c10eef8424` |

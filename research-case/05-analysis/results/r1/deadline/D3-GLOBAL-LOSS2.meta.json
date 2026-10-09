@@ -1,0 +1,17 @@
+{
+  "profile_id": "D3-GLOBAL-LOSS2",
+  "profile": {
+    "median_ms": 120,
+    "sigma": 0.6,
+    "loss": 0.02,
+    "crashed": 0,
+    "domain_outage": false
+  },
+  "freeze_sha256": "4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385",
+  "group": "ffdhe2048",
+  "pid": 61075,
+  "started_unix": 1791558328.8189929,
+  "elapsed_s": 1981.791092157364,
+  "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+  "python": "3.13.13"
+}

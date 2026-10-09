@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\definecolor{keystoneblue}{HTML}{163B64}
+\pagestyle{empty}
+\newsavebox\figbox
+\begin{document}
+\sbox\figbox{%
+\begin{tikzpicture}[font=\footnotesize, node distance=9mm and 17mm,
+  box/.style={draw=keystoneblue, rounded corners=2pt, fill=keystoneblue!6, align=center, minimum height=10mm, text width=29mm, inner sep=3pt},
+  pub/.style={box, fill=black!4, draw=black!55},
+  cus/.style={box, fill=green!7, draw=green!40!black},
+  arr/.style={-{Stealth[length=2mm]}, thick, draw=black!70},
+  lab/.style={font=\scriptsize, align=center, inner sep=1.5pt},
+  lane/.style={font=\scriptsize\itshape, text=black!60, anchor=east}]
+  \node[box] (worker) {Inference worker\\encrypts the record\\(AEAD, fresh $K_r$)};
+  \node[box, right=of worker] (kem) {Threshold KEM\\$C_1=g^{\rho}$, wraps $K_r$\\under $PK_E$};
+  \node[pub, right=of kem] (da) {Data-availability\\layer: ciphertext\\and receipt};
+  \node[pub, right=of da] (bb) {Policy contract and\\bulletin board\\(public clock)};
+  \node[box, below=of worker] (beacon) {Beacon, revealed\\after slot commit};
+  \node[box, right=of beacon] (canary) {Canary $X=H_G(\cdot)$;\\sample $S$, $|S|=s$};
+  \node[cus, right=of canary] (cust) {Custodian\\committee\\shares $x_1,\dots,x_n$};
+  \node[box, right=of cust] (auditv) {Audit verifier:\\accept iff $\geq q$\\valid responses};
+  \node[box, below=of beacon] (auth) {Authorized dispute:\\record, verifier set,\\deadline $\Delta_d$};
+  \node[box, right=of auth] (req) {Release request\\for record's $C_1$};
+  \node[box, right=of req] (comb) {Combiner verifies $t$\\partials, computes\\$\prod_i (C_1^{x_i})^{\lambda_i}$};
+  \node[box, right=of comb] (verdict) {Unwrap $K_r$, decrypt,\\re-execute,\\issue verdict};
+  \draw[arr] (worker) -- (kem);
+  \draw[arr] (kem) -- (da);
+  \draw[arr] (da) -- node[lab, above]{commit} (bb);
+  \draw[arr] (beacon) -- (canary);
+  \draw[arr] (canary) -- node[lab, above]{$X$ to $S$} (cust);
+  \draw[arr] (cust) -- node[lab, above]{$X^{x_i}$ + DLEQ} (auditv);
+  \draw[arr] (auth) -- (req);
+  \draw[arr] (req.north east) -- node[lab, above, sloped]{to all $n$} (cust.south west);
+  \draw[arr] (cust) -- node[lab, right]{$C_1^{x_i}$ + DLEQ} (comb);
+  \draw[arr] (comb) -- (verdict);
+  \draw[arr, dashed] (auditv) -- node[lab, right]{audit evidence} (bb);
+  \draw[arr, dashed] (verdict.east) -- ++(5mm,0) |- node[lab, pos=0.25, right]{deadline and\\response record} (bb.east);
+  \node[lane] at ([xshift=-2mm]worker.west) {seal};
+  \node[lane] at ([xshift=-2mm]beacon.west) {audit};
+  \node[lane] at ([xshift=-2mm]auth.west) {dispute};
+\end{tikzpicture}}
+\pdfpagewidth=\dimexpr\wd\figbox+12pt\relax
+\pdfpageheight=\dimexpr\ht\figbox+\dp\figbox+12pt\relax
+\hoffset=-1in \voffset=-1in \oddsidemargin=6pt \evensidemargin=6pt \topmargin=6pt
+\headheight=0pt \headsep=0pt \textwidth=\wd\figbox \parindent=0pt
+\noindent\usebox\figbox
+\end{document}

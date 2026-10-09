@@ -1,0 +1,17 @@
+{
+  "profile_id": "D4-GLOBAL-CRASH10",
+  "profile": {
+    "median_ms": 120,
+    "sigma": 0.6,
+    "loss": 0.0,
+    "crashed": 10,
+    "domain_outage": false
+  },
+  "freeze_sha256": "4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385",
+  "group": "ffdhe2048",
+  "pid": 61075,
+  "started_unix": 1791560324.669504,
+  "elapsed_s": 2906.103308200836,
+  "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+  "python": "3.13.13"
+}

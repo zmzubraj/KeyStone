@@ -167,9 +167,9 @@
       "dispatch_policy": {
         "mode": "single"
       },
-      "status": "COMPLETED",
+      "status": "READY",
       "lease_id": null,
-      "checkpoint_id": "CP-0e523aa6371e"
+      "checkpoint_id": null
     },
     {
       "cell_id": "problem_investigation",
@@ -192,7 +192,7 @@
       "dispatch_policy": {
         "mode": "single"
       },
-      "status": "READY",
+      "status": "PENDING",
       "lease_id": null,
       "checkpoint_id": null
     },

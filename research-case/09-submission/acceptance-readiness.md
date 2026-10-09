@@ -18,7 +18,7 @@ Final author order, corresponding-author designation, and exact affiliation word
 | Boundary | Disposition | Required resolution evidence |
 | --- | --- | --- |
 | External independent INTAKE verification | `BLOCKING` | Authenticated, independently signed canonical INTAKE verification events with matching artifact hashes and provenance |
-| Driver next action | `WAIT` | Collect an authenticated, independently signed human INTAKE verifier return for the four canonical INTAKE artifacts; then run strict checks before any phase advance. |
+| Driver next action | `WAIT` | Resolve invalidation at INTAKE, reverify affected artifacts, then close the invalidation record. |
 | External transfer | `NOT_AUTHORIZED_IN_THIS_RUN` | Explicit accountable-human transfer authorization plus recipient and confidentiality boundary |
 | Acceptance forecast | `N/A — NOT ESTIMABLE` | Target-matched, transparently calibrated historical evidence; absent at this stage |
 
@@ -36,7 +36,7 @@ This snapshot is **internal preauthorization only**. It helps the workspace stay
 | External review blocker | `REM-001` |
 | Submission authorized | `False` |
 | External transfer authorized | `False` |
-| Draft PDF page count | `21` |
+| Draft PDF page count | `22` |
 | Build manifest | `paper/preauthorization-build/build-manifest.json` |
 | Draft PDF | `paper/preauthorization-build/main.pdf` |
 
@@ -46,7 +46,7 @@ Prepared packets are producer-side artifacts only. They do not authorize externa
 
 | Remediation | Priority | Status | Owner | Dependencies | Prepared handoff artifacts | Next admissible step |
 | --- | --- | --- | --- | --- | --- | --- |
-| `REM-001` | `P0` | `OPEN` | `human_approval` | `External verifier identity and trust bootstrap` | `docs/20_INTAKE_EXTERNAL_VERIFIER_HANDOFF.md`, `docs/23_INDEPENDENT_INTAKE_HUMAN_VERIFICATION_SOP_BN.md`, `docs/24_INVALID_AI_INTAKE_VERIFICATION_QUARANTINE.md`, `review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip`, `review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json` | obtain accountable-human authorization for a named independent reviewer, follow the human-verification SOP, and only then transfer the prepared intake packet while preserving the invalid-AI quarantine boundary |
+| `REM-001` | `P0` | `OPEN` | `human_approval` | `External verifier identity and trust bootstrap` | `docs/20_INTAKE_EXTERNAL_VERIFIER_HANDOFF.md`, `docs/23_INDEPENDENT_INTAKE_HUMAN_VERIFICATION_SOP_BN.md`, `docs/24_INVALID_AI_INTAKE_VERIFICATION_QUARANTINE.md`, `review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip`, `review-packets/KEYSTONE-MPP-F1-intake-verifier-return-template.json`, `review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-template.json`, `review-packets/KEYSTONE-MPP-F1-intake-transfer-authorization-draft.json` | obtain accountable-human authorization for a named independent reviewer, follow the human-verification SOP, and only then transfer the prepared intake packet while preserving the invalid-AI quarantine boundary |
 | `REM-002` | `P1` | `OPEN` | `novelty_synthesis` | `REM-001` | `docs/21_PC02_NOVELTY_VERIFIER_HANDOFF.md`, `review-packets/KEYSTONE-MPP-F1-pc02-novelty-review-packet.zip`, `review-packets/KEYSTONE-MPP-F1-pc02-novelty-verifier-return-template.json` | preserve the prepared packet, but do not transfer it until REM-001 is recorded and accountable-human authorization names the reviewer |
 | `REM-003` | `P1` | `OPEN` | `methods_design` | `REM-001`, `REM-002` | `docs/22_PC03_METHODS_VERIFIER_HANDOFF.md`, `review-packets/KEYSTONE-MPP-F1-pc03-methods-review-packet.zip`, `review-packets/KEYSTONE-MPP-F1-pc03-methods-verifier-return-template.json` | preserve the prepared packet, but do not transfer it until REM-001 is recorded and accountable-human authorization names the reviewer |
 | `REM-004` | `P1` | `OPEN` | `authorized_execution` | `REM-003` | none prepared yet | Execute the bounded synthetic distributed deadline pilot after authorization. |
@@ -67,70 +67,70 @@ Open (`DRAFT`, `MISSING`, `BLOCKED`, or `STALE`): **63**.
 
 | Lifecycle status | Required artifact count |
 | --- | ---: |
-| `DRAFT` | 49 |
+| `STALE` | 49 |
 | `MISSING` | 14 |
 
 ## Open canonical requirements
 
 | Phase | Canonical artifact | Status | Revision | Owner | Smallest adequate action |
 | --- | --- | --- | ---: | --- | --- |
-| `INTAKE` | `00-governance/intake-original.md` | `DRAFT` | 2 | `intake_integration` | independent semantic verification with authenticated provenance |
-| `INTAKE` | `00-governance/intake.json` | `DRAFT` | 2 | `intake_integration` | independent semantic verification with authenticated provenance |
-| `INTAKE` | `00-governance/program-charter.md` | `DRAFT` | 4 | `intake_integration` | independent semantic verification with authenticated provenance |
-| `INTAKE` | `00-governance/study-profile.json` | `DRAFT` | 3 | `intake_integration` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/candidate-portfolio.md` | `DRAFT` | 1 | `novelty_problem_specification` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/causal-model.mmd` | `DRAFT` | 1 | `novelty_problem_specification` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/citation-audit.md` | `DRAFT` | 3 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/evidence-ledger.csv` | `DRAFT` | 3 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/independent-search-challenge.md` | `DRAFT` | 1 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/novelty-claim-specification.md` | `DRAFT` | 1 | `novelty_problem_specification` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/novelty-matrix.csv` | `DRAFT` | 3 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/prior-art-dedup-report.json` | `DRAFT` | 1 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/prior-art-query-log.json` | `DRAFT` | 1 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/prior-art-raw-snapshots.json` | `DRAFT` | 1 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/problem-investigation.md` | `DRAFT` | 1 | `novelty_problem_specification` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/search-coverage.csv` | `DRAFT` | 1 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `NOVELTY_AUDIT` | `01-novelty/search-protocol.md` | `DRAFT` | 3 | `canonical_novelty_reconciliation` | independent semantic verification with authenticated provenance |
-| `FEASIBILITY_GATE` | `02-feasibility/evidence-maturity-ladder.csv` | `DRAFT` | 1 | `result_blind_feasibility_package` | independent semantic verification with authenticated provenance |
-| `FEASIBILITY_GATE` | `02-feasibility/feasibility-report.md` | `DRAFT` | 3 | `result_blind_feasibility_package` | independent semantic verification with authenticated provenance |
-| `FEASIBILITY_GATE` | `02-feasibility/progression-criteria.csv` | `DRAFT` | 2 | `result_blind_feasibility_package` | independent semantic verification with authenticated provenance |
-| `FEASIBILITY_GATE` | `02-feasibility/risk-register.csv` | `DRAFT` | 3 | `result_blind_feasibility_package` | independent semantic verification with authenticated provenance |
-| `FEASIBILITY_GATE` | `02-feasibility/solution-viability-case.md` | `DRAFT` | 2 | `result_blind_feasibility_package` | independent semantic verification with authenticated provenance |
-| `STUDY_DESIGN` | `03-design/analysis-plan.md` | `DRAFT` | 3 | `methods_design` | independent semantic verification with authenticated provenance |
-| `STUDY_DESIGN` | `03-design/power-or-precision.md` | `DRAFT` | 4 | `power_challenge` | independent semantic verification with authenticated provenance |
-| `STUDY_DESIGN` | `03-design/preregistration-and-deviations.md` | `DRAFT` | 4 | `methods_design` | independent semantic verification with authenticated provenance |
-| `STUDY_DESIGN` | `03-design/protocol.md` | `DRAFT` | 2 | `methods_design` | independent semantic verification with authenticated provenance |
-| `AUTHORIZED_EXECUTION` | `04-data/evidence-status.csv` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `AUTHORIZED_EXECUTION` | `04-data/provenance-manifest.csv` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
+| `INTAKE` | `00-governance/intake-original.md` | `STALE` | 6 | `intake-integration` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `INTAKE` | `00-governance/intake.json` | `STALE` | 6 | `intake-integration` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `INTAKE` | `00-governance/program-charter.md` | `STALE` | 8 | `intake-integration` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `INTAKE` | `00-governance/study-profile.json` | `STALE` | 7 | `intake-integration` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/candidate-portfolio.md` | `STALE` | 1 | `novelty_problem_specification` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/causal-model.mmd` | `STALE` | 1 | `novelty_problem_specification` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/citation-audit.md` | `STALE` | 3 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/evidence-ledger.csv` | `STALE` | 3 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/independent-search-challenge.md` | `STALE` | 1 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/novelty-claim-specification.md` | `STALE` | 1 | `novelty_problem_specification` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/novelty-matrix.csv` | `STALE` | 3 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/prior-art-dedup-report.json` | `STALE` | 1 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/prior-art-query-log.json` | `STALE` | 1 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/prior-art-raw-snapshots.json` | `STALE` | 1 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/problem-investigation.md` | `STALE` | 1 | `novelty_problem_specification` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/search-coverage.csv` | `STALE` | 1 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `NOVELTY_AUDIT` | `01-novelty/search-protocol.md` | `STALE` | 3 | `canonical_novelty_reconciliation` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `FEASIBILITY_GATE` | `02-feasibility/evidence-maturity-ladder.csv` | `STALE` | 1 | `result_blind_feasibility_package` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `FEASIBILITY_GATE` | `02-feasibility/feasibility-report.md` | `STALE` | 3 | `result_blind_feasibility_package` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `FEASIBILITY_GATE` | `02-feasibility/progression-criteria.csv` | `STALE` | 2 | `result_blind_feasibility_package` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `FEASIBILITY_GATE` | `02-feasibility/risk-register.csv` | `STALE` | 3 | `result_blind_feasibility_package` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `FEASIBILITY_GATE` | `02-feasibility/solution-viability-case.md` | `STALE` | 2 | `result_blind_feasibility_package` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `STUDY_DESIGN` | `03-design/analysis-plan.md` | `STALE` | 3 | `methods_design` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `STUDY_DESIGN` | `03-design/power-or-precision.md` | `STALE` | 4 | `power_challenge` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `STUDY_DESIGN` | `03-design/preregistration-and-deviations.md` | `STALE` | 4 | `methods_design` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `STUDY_DESIGN` | `03-design/protocol.md` | `STALE` | 2 | `methods_design` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `AUTHORIZED_EXECUTION` | `04-data/evidence-status.csv` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `AUTHORIZED_EXECUTION` | `04-data/provenance-manifest.csv` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
 | `ANALYSIS` | `05-analysis/external-validation/challenge.md` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
 | `ANALYSIS` | `05-analysis/external-validation/protocol.md` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
 | `ANALYSIS` | `05-analysis/external-validation/real-world-validation-report.md` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
 | `ANALYSIS` | `05-analysis/external-validation/results.csv` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
-| `ANALYSIS` | `05-analysis/reproducibility-report.md` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
-| `ANALYSIS` | `05-analysis/results/exploratory-findings.csv` | `DRAFT` | 1 | `exploratory-analysis` | independent semantic verification with authenticated provenance |
-| `ANALYSIS` | `05-analysis/results/negative-findings.csv` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ANALYSIS` | `05-analysis/results/primary-results.csv` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ANALYSIS` | `05-analysis/results/robustness-and-boundaries.csv` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
+| `ANALYSIS` | `05-analysis/reproducibility-report.md` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ANALYSIS` | `05-analysis/results/exploratory-findings.csv` | `STALE` | 1 | `exploratory-analysis` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ANALYSIS` | `05-analysis/results/negative-findings.csv` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ANALYSIS` | `05-analysis/results/primary-results.csv` | `MISSING` | 3 | `root-integration-owner` | produce the canonical artifact, then independently verify it |
+| `ANALYSIS` | `05-analysis/results/robustness-and-boundaries.csv` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
 | `ANALYSIS` | `06-visuals/tables/t2-proposed-vs-baselines.csv` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
 | `ANALYSIS` | `06-visuals/tables/t3-data-or-conditions.csv` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
 | `ANALYSIS` | `06-visuals/tables/t7-real-world-feasibility.csv` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
-| `MANUSCRIPT` | `06-visuals/diagrams/architecture.mmd` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `MANUSCRIPT` | `06-visuals/diagrams/workflow.mmd` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `MANUSCRIPT` | `06-visuals/figures/figure-manifest.csv` | `DRAFT` | 4 | `root` | independent semantic verification with authenticated provenance |
-| `MANUSCRIPT` | `06-visuals/visual-ledger.csv` | `DRAFT` | 6 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `MANUSCRIPT` | `07-manuscript/claim-evidence-matrix.csv` | `DRAFT` | 3 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `MANUSCRIPT` | `07-manuscript/manuscript.md` | `DRAFT` | 19 | `manuscript_integration` | independent semantic verification with authenticated provenance |
-| `MANUSCRIPT` | `07-manuscript/source-manifest.json` | `DRAFT` | 38 | `manuscript_integration` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/killer-question-ledger.csv` | `DRAFT` | 4 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/postdoctoral-standards-audit.md` | `DRAFT` | 4 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/remediation-log.csv` | `DRAFT` | 4 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/reviews/clarity-coherence.md` | `DRAFT` | 3 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/reviews/editor.md` | `DRAFT` | 4 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/reviews/methods-statistics.md` | `DRAFT` | 2 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/reviews/novelty-domain.md` | `DRAFT` | 2 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/reviews/real-world-ethics.md` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `ADVERSARIAL_QA` | `08-validation/reviews/visual-reproducibility.md` | `DRAFT` | 4 | `root-integration-owner` | independent semantic verification with authenticated provenance |
-| `SUBMISSION_QA` | `09-submission/novelty-refresh.md` | `DRAFT` | 1 | `root-integration-owner` | independent semantic verification with authenticated provenance |
+| `MANUSCRIPT` | `06-visuals/diagrams/architecture.mmd` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `MANUSCRIPT` | `06-visuals/diagrams/workflow.mmd` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `MANUSCRIPT` | `06-visuals/figures/figure-manifest.csv` | `STALE` | 4 | `root` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `MANUSCRIPT` | `06-visuals/visual-ledger.csv` | `STALE` | 6 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `MANUSCRIPT` | `07-manuscript/claim-evidence-matrix.csv` | `STALE` | 4 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `MANUSCRIPT` | `07-manuscript/manuscript.md` | `STALE` | 20 | `manuscript_integration` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `MANUSCRIPT` | `07-manuscript/source-manifest.json` | `STALE` | 39 | `manuscript_integration` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/killer-question-ledger.csv` | `STALE` | 4 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/postdoctoral-standards-audit.md` | `STALE` | 4 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/remediation-log.csv` | `STALE` | 4 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/reviews/clarity-coherence.md` | `STALE` | 4 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/reviews/editor.md` | `STALE` | 5 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/reviews/methods-statistics.md` | `STALE` | 2 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/reviews/novelty-domain.md` | `STALE` | 2 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/reviews/real-world-ethics.md` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `ADVERSARIAL_QA` | `08-validation/reviews/visual-reproducibility.md` | `STALE` | 4 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
+| `SUBMISSION_QA` | `09-submission/novelty-refresh.md` | `STALE` | 1 | `root-integration-owner` | resolve the recorded blocker or invalidation, regenerate, and reverify |
 | `SUBMISSION_QA` | `09-submission/reporting-checklist.md` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
 | `SUBMISSION_QA` | `09-submission/submission-audit.md` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |
 | `SUBMISSION_QA` | `09-submission/submission-gate-ledger.csv` | `MISSING` | 0 | `UNASSIGNED` | produce the canonical artifact, then independently verify it |

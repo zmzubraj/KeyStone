@@ -59,7 +59,7 @@ silently frozen by the reviewer.
 ## Current artifact snapshot
 
 This generated snapshot is derived from canonical registry and governance inputs.
-Snapshot source timestamp: `2026-08-30T05:18:24Z` (latest required artifact `updated_at`; no wall-clock value).
+Snapshot source timestamp: `2026-10-09T20:11:24Z` (latest required artifact `updated_at`; no wall-clock value).
 
 - Current status: `ACTIVE`
 - Current phase: `INTAKE`
@@ -69,14 +69,14 @@ Snapshot source timestamp: `2026-08-30T05:18:24Z` (latest required artifact `upd
 - Acceptance readiness: `NOT_ASSESSABLE`
 - Verifier trust mode: `EXTERNAL_RUN_BOUND_REGISTRY_ADMIN`
 - Active independent reviewers: `1`
-- Independent verification events for these four artifacts: `0`
+- Independent verification events for these four artifacts: `12`
 
 | Path | Required | Status | Revision | SHA-256 |
 | --- | --- | --- | --- | --- |
-| `research-case/00-governance/intake-original.md` | `true` | `DRAFT` | `2` | `6f21c82ed0fe6c2933e689ab22750ee838e88b75e564eb985da119faf22a5ddd` |
-| `research-case/00-governance/intake.json` | `true` | `DRAFT` | `2` | `800fdb650470596dc67367ba6868bffbb60b80cf7fe2471734254dc60d1ef9eb` |
-| `research-case/00-governance/program-charter.md` | `true` | `DRAFT` | `4` | `a14ed6564b8d8bf3c51dff8f931321b6f288a9c832a6326522bac96c454b3f44` |
-| `research-case/00-governance/study-profile.json` | `true` | `DRAFT` | `3` | `74e76831f2fc44f8b4a659a94b326ed621b886c2fb70c42794a94e3f28b7a982` |
+| `research-case/00-governance/intake-original.md` | `true` | `STALE` | `6` | `6f21c82ed0fe6c2933e689ab22750ee838e88b75e564eb985da119faf22a5ddd` |
+| `research-case/00-governance/intake.json` | `true` | `STALE` | `6` | `800fdb650470596dc67367ba6868bffbb60b80cf7fe2471734254dc60d1ef9eb` |
+| `research-case/00-governance/program-charter.md` | `true` | `STALE` | `8` | `a14ed6564b8d8bf3c51dff8f931321b6f288a9c832a6326522bac96c454b3f44` |
+| `research-case/00-governance/study-profile.json` | `true` | `STALE` | `7` | `74e76831f2fc44f8b4a659a94b326ed621b886c2fb70c42794a94e3f28b7a982` |
 
 Any content or registry change invalidates this snapshot until the exporter is rerun.
 This snapshot is operational metadata, not independent scientific verification.

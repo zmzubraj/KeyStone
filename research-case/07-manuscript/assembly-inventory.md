@@ -32,7 +32,7 @@ The current canonical INTAKE manuscript may reference `F6`, `F7`, and `F8` only 
 | Claim | Draft status | Table targets | Figure targets | Diagram targets | Blocked by | Allowed wording |
 | --- | --- | --- | --- | --- | --- | --- |
 | `C001` | `BLOCKED` | `T1`, `T4` | `F1` | `D2` | `NOVELTY_UNRESOLVED; canonical counterexample manuscript artifact and signed independent closure absent` | `This paper studies|KEYSTONE defines|under the stated static catastrophic model` |
-| `C002` | `AT_RISK` | `T3`, `T7` | `none` | `D1`, `D3`, `D4`, `D5`, `D8` | `Accountable authority and confirmatory environment are open; independent reproduction and external review are missing` | `internal prototype evidence shows|local reproducibility evidence records` |
+| `C002` | `AT_RISK` | `T3`, `T7` | `none` | `D1`, `D3`, `D4`, `D5`, `D8` | `Accountable authority and confirmatory environment are open; the historical same-host mechanical receipt does not bind the current source-manifest/program-state revisions; independent reproduction and external review are missing` | `internal prototype evidence shows|local reproducibility evidence records` |
 | `C003` | `AT_RISK` | `T2`, `T3`, `T4`, `T5`, `T6`, `T7`, `T8` | `F1`, `F2`, `F3`, `F4`, `F5`, `F6`, `F7`, `F8` | `D1`, `D2`, `D3`, `D4`, `D5`, `D6`, `D7`, `D8` | `RID-C003-DEADLINE-001 absent; canonical robustness-and-boundaries.csv and negative-findings.csv are draft/preauthorization only; no authorized confirmatory rerun, independent reproduction, or external validation; F6-F8 remain future outputs` | `bounded internal evidence indicates|within the declared model|conditional on synchrony assumptions|selective withholding remains a limitation` |
 
 ## Table inventory
@@ -79,5 +79,5 @@ The current canonical INTAKE manuscript may reference `F6`, `F7`, and `F8` only 
 | `independent reproduction` | `paper/tables/t1_t8_manifest.json` |
 | `external validation` | `paper/tables/t1_t8_manifest.json` |
 | `NOVELTY_UNRESOLVED; canonical counterexample manuscript artifact and signed independent closure absent` | `research-case/07-manuscript/claim-evidence-matrix.csv` |
-| `Accountable authority and confirmatory environment are open; independent reproduction and external review are missing` | `research-case/07-manuscript/claim-evidence-matrix.csv` |
+| `Accountable authority and confirmatory environment are open; the historical same-host mechanical receipt does not bind the current source-manifest/program-state revisions; independent reproduction and external review are missing` | `research-case/07-manuscript/claim-evidence-matrix.csv` |
 | `RID-C003-DEADLINE-001 absent; canonical robustness-and-boundaries.csv and negative-findings.csv are draft/preauthorization only; no authorized confirmatory rerun, independent reproduction, or external validation; F6-F8 remain future outputs` | `research-case/07-manuscript/claim-evidence-matrix.csv` |

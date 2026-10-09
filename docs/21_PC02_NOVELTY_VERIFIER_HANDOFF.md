@@ -44,16 +44,16 @@ Any acceptable outcome from this packet is capped at the bounded `REFRAME` lane 
 
 | Artifact | Status | Revision | SHA-256 |
 | --- | --- | ---: | --- |
-| `research-case/01-novelty/novelty-claim-specification.md` | `DRAFT` | `1` | `933c027ede5ddcf2379731f9022f64d0d6ad3fc004187dfe66a9276fec28c7af` |
-| `research-case/01-novelty/search-protocol.md` | `DRAFT` | `3` | `ec9e4b57c22d81ede9aaba8ec37b332df9df04eee720f5512a390b96ea85b3df` |
-| `research-case/01-novelty/prior-art-query-log.json` | `DRAFT` | `1` | `b367f53057b21d10097aeb7f7d04393903b77e52f19a0104011af1918c7e52cd` |
-| `research-case/01-novelty/prior-art-raw-snapshots.json` | `DRAFT` | `1` | `124df5b63e65a22ed68f0800587623e53cb73b504e5349f38f4efe79e398430f` |
-| `research-case/01-novelty/prior-art-dedup-report.json` | `DRAFT` | `1` | `8bd6c6fbbe15a27fdcd134e0bfc35781c1093f8f81b422480435731627319d8a` |
-| `research-case/01-novelty/search-coverage.csv` | `DRAFT` | `1` | `dca3b3a2eec9733447f431b142708fec3c0e7f5da00dd1c2e0e7f29a8646dc4f` |
-| `research-case/01-novelty/evidence-ledger.csv` | `DRAFT` | `3` | `b909f908c1ec8471f0273757776b97caa0d85aa216441b44e520fe8e99ce3080` |
-| `research-case/01-novelty/independent-search-challenge.md` | `DRAFT` | `1` | `85336ce474c9c5320c40bc10aa50180f7d1174551cc46eb76daeb52df7722263` |
-| `research-case/01-novelty/novelty-matrix.csv` | `DRAFT` | `3` | `5692d14ace4267f949163f7f9cb2bb06daee00bffd2223b725c43157c4c1c3cd` |
-| `research-case/01-novelty/citation-audit.md` | `DRAFT` | `3` | `4f4c96cdf5d11032c707d6b9ff17db5963dcd960b63927eb46dd9257e08e65eb` |
+| `research-case/01-novelty/novelty-claim-specification.md` | `STALE` | `1` | `933c027ede5ddcf2379731f9022f64d0d6ad3fc004187dfe66a9276fec28c7af` |
+| `research-case/01-novelty/search-protocol.md` | `STALE` | `3` | `ec9e4b57c22d81ede9aaba8ec37b332df9df04eee720f5512a390b96ea85b3df` |
+| `research-case/01-novelty/prior-art-query-log.json` | `STALE` | `1` | `b367f53057b21d10097aeb7f7d04393903b77e52f19a0104011af1918c7e52cd` |
+| `research-case/01-novelty/prior-art-raw-snapshots.json` | `STALE` | `1` | `124df5b63e65a22ed68f0800587623e53cb73b504e5349f38f4efe79e398430f` |
+| `research-case/01-novelty/prior-art-dedup-report.json` | `STALE` | `1` | `8bd6c6fbbe15a27fdcd134e0bfc35781c1093f8f81b422480435731627319d8a` |
+| `research-case/01-novelty/search-coverage.csv` | `STALE` | `1` | `dca3b3a2eec9733447f431b142708fec3c0e7f5da00dd1c2e0e7f29a8646dc4f` |
+| `research-case/01-novelty/evidence-ledger.csv` | `STALE` | `3` | `b909f908c1ec8471f0273757776b97caa0d85aa216441b44e520fe8e99ce3080` |
+| `research-case/01-novelty/independent-search-challenge.md` | `STALE` | `1` | `85336ce474c9c5320c40bc10aa50180f7d1174551cc46eb76daeb52df7722263` |
+| `research-case/01-novelty/novelty-matrix.csv` | `STALE` | `3` | `5692d14ace4267f949163f7f9cb2bb06daee00bffd2223b725c43157c4c1c3cd` |
+| `research-case/01-novelty/citation-audit.md` | `STALE` | `3` | `4f4c96cdf5d11032c707d6b9ff17db5963dcd960b63927eb46dd9257e08e65eb` |
 
 ## Verification and return contract
 

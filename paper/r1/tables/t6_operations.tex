@@ -1,0 +1,11 @@
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Operation (median, ms) & 256-bit prototype & ffdhe2048 & ffdhe3072\\
+\midrule
+Canary derivation $H_G$ & 0.08 & 16.99 & 54.32\\
+Partial decryption + DLEQ proof & 0.58 & 130.30 & 420.54\\
+DLEQ verification & 0.75 & 135.36 & 430.58\\
+Seal 1\,KiB record & 0.22 & 48.32 & 156.48\\
+Partial response size (bytes) & 253 & 1149 & 1661\\
+\bottomrule
+\end{tabular}

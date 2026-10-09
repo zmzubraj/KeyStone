@@ -1,0 +1,277 @@
+{
+  "freeze_sha256": "4c852969b615ba0dc6f935cff83aa3f0f35743168695948cf6898e8ba1932385",
+  "inputs": {
+    "research-case/05-analysis/results/r1/RID-C003-IID-001-blocks.csv": "425363afa63039dc819824aa67404b1b26b5a4277e4564f53a5b1e0250fff52a",
+    "research-case/05-analysis/results/r1/RID-C003-STRAT-001-blocks.csv": "3fac3cc56594643fb846eccbc0df76fd2c83a2f8e6629d9aed0303315ae8ccc9",
+    "research-case/05-analysis/results/r1/RID-C003-SW-001-blocks.csv": "7c688e1c9dc9224deedcd2a627b90b650bb3f25ee34c00ead6e6d527023f8e97",
+    "research-case/05-analysis/results/r1/analytic-acceptance-sensitivity.csv": "c7b307a96237823b241f40ffa5bfc892fd74c8ffb8de9d3a80a3c17358abd006",
+    "research-case/05-analysis/results/r1/analytic-domain-correlation.csv": "7e5e07833e5c98eb492c69d393da31de366d0d03bc12d3800d9f6a98664cdc8d",
+    "research-case/05-analysis/results/r1/analytic-domain-mc-check.csv": "6a7879d262427f0994e20a621807974af08f24fba2ba4bc7cb5b8ed6b2268d30",
+    "research-case/05-analysis/results/r1/analytic-manifest.json": "137fc14eb5271804dbf201bf27f7814f3ecb10762d69d4620f2140542f951786",
+    "research-case/05-analysis/results/r1/analytic-scalability-detection.csv": "5642f85387335d1e9a5c910473fb9044f4de8ba41997ff779a17437f302712c8",
+    "research-case/05-analysis/results/r1/deadline/D0-CONTROL.csv": "a3153bfbaa869d98a0e3f85fed4b7e5dc84638560113fe93e65f75bb8a29eed7",
+    "research-case/05-analysis/results/r1/deadline/D0-CONTROL.meta.json": "26bffd31768af5ee8dbd971e019b86df000771a505463b72dbbf9b842bc34130",
+    "research-case/05-analysis/results/r1/deadline/D1-REGIONAL.csv": "49707ddfb1b0a4974c9044e1af5221fdc3eb70e3fbcb02d3d6a403b863d71e9d",
+    "research-case/05-analysis/results/r1/deadline/D1-REGIONAL.meta.json": "b5e7a269e1b3d04ffc62eb195578e70f89e1a7305f3b11e6f2236a45c9d84e7d",
+    "research-case/05-analysis/results/r1/deadline/D2-GLOBAL.csv": "0d0bd4a787a98517e506c686dc828e88fb5ff77f16e2f9ccdf2fd09117912dab",
+    "research-case/05-analysis/results/r1/deadline/D2-GLOBAL.meta.json": "b6bb672fa051df5d0ffd5e45500008582a1cc1cb54c601b2b2ef21997c857d1f",
+    "research-case/05-analysis/results/r1/deadline/D3-GLOBAL-LOSS2.csv": "94dddf1cf8a5d151e2d3071e9ae27406730058a42da1793dcd1edeb5e1a9e002",
+    "research-case/05-analysis/results/r1/deadline/D3-GLOBAL-LOSS2.meta.json": "29292b025a426f098ffc2085417179017d7c9d4e200b701d31115c05113b3c4c",
+    "research-case/05-analysis/results/r1/deadline/D4-GLOBAL-CRASH10.csv": "ee5562e3f441e0b2427a87cd5f1982911034ed0302f68b52774ef9d16620f4c7",
+    "research-case/05-analysis/results/r1/deadline/D4-GLOBAL-CRASH10.meta.json": "2321e13cce5775edfc006e2acc9e2f304683c72c6f6ff6d15374c4036c21a09b",
+    "research-case/05-analysis/results/r1/deadline/D5-GLOBAL-CRASH11.csv": "7b5b8626cf63a22db65b1929ff17acf8991dbee2e474d1a997f75b69c35a827f",
+    "research-case/05-analysis/results/r1/deadline/D5-GLOBAL-CRASH11.meta.json": "ffe5497adfc3b46e62a097b03aecf5fdd2b7b820af02bd2f1b94269f9291f8cf",
+    "research-case/05-analysis/results/r1/deadline/D6-GLOBAL-DOMAIN-OUTAGE.csv": "0a25260df79bab8ab8e51e09a5775fcb00907ce2846879714b2a2a80503654cd",
+    "research-case/05-analysis/results/r1/deadline/D6-GLOBAL-DOMAIN-OUTAGE.meta.json": "c47dd72ad950e479fff34b779c999802a6ea3ba1b9234312ea912fa88b2ece2b",
+    "research-case/05-analysis/results/r1/deadline/D7-HEAVY-TAIL.csv": "815360c5f83ec5befc13fbf4eee22d298c04eded9fc65630f515b3476388fad8",
+    "research-case/05-analysis/results/r1/deadline/D7-HEAVY-TAIL.meta.json": "dda1fee44ad4cccbe6421d70514236756ef8c362b9ee434d56c9259a487bcb00",
+    "research-case/05-analysis/results/r1/microbench-environment.json": "24b497908e97c317722410b25f80e532ede7cea0f84d9b261c6d7064bdbdcc42",
+    "research-case/05-analysis/results/r1/microbench-message-sizes.csv": "d968bbe1039c77c2e5949adde5ae071f01588824d01e389342d2b82c45a89b7d",
+    "research-case/05-analysis/results/r1/microbench-operations.csv": "fb9659ea5f234e96972894a23f084cae9ecb7ff6e5038bd8be61330cc7ef52d1",
+    "research-case/05-analysis/results/r1/pc03-summary.json": "876267493fdb50bc2e77754f2e8047e73552f5979768b743a6aae3237e530167",
+    ".gas-snapshot": "aaa66318d0883cc31d669f7d6fc12e4d5913ed98cf71ef0d7cac93e4e172b310"
+  },
+  "assets": {
+    "figures/fig2_detection_vs_sample.pdf": {
+      "sha256": "7ce1caff30bcac064794e65ce64fe62496cc8edb2fd9dc68614daa6190f731e0",
+      "sources": [
+        "analytic-scalability-detection.csv"
+      ]
+    },
+    "figures/fig3_dispute_success_vs_deadline.pdf": {
+      "sha256": "3aedd5846a34ab18f31ccc29f1690e979d21f5fc0081c41fe02313709715db49",
+      "sources": [
+        "deadline/D0-CONTROL.csv",
+        "deadline/D1-REGIONAL.csv",
+        "deadline/D2-GLOBAL.csv",
+        "deadline/D3-GLOBAL-LOSS2.csv",
+        "deadline/D4-GLOBAL-CRASH10.csv",
+        "deadline/D5-GLOBAL-CRASH11.csv",
+        "deadline/D6-GLOBAL-DOMAIN-OUTAGE.csv",
+        "deadline/D7-HEAVY-TAIL.csv"
+      ]
+    },
+    "figures/fig4_iid_vs_correlated.pdf": {
+      "sha256": "888553ef6434e1ac9c0b13efdce60ad9485cb996f10644197e91cacd1294bb4d",
+      "sources": [
+        "analytic-domain-correlation.csv"
+      ]
+    },
+    "figures/fig5_audit_vs_dispute_withholding.pdf": {
+      "sha256": "db7ed9da13362c05e486e987ee89661fd4420cb784ef89fbfbf5430fa0827d30",
+      "sources": [
+        "pc03-summary.json"
+      ]
+    },
+    "figures/fig6_acceptance_tradeoff.pdf": {
+      "sha256": "95d993c56fd4ce59a9cac3e1d2ba50f1af0caa3c0f2da3e1dab7bfc25575fc1d",
+      "sources": [
+        "analytic-acceptance-sensitivity.csv"
+      ]
+    },
+    "tables/t2_configuration.tex": {
+      "sha256": "5a18401c7162636bc5c9411da2206ec695b52bf8b1335a544c1107322863f2bb",
+      "sources": [
+        "pc03-summary.json",
+        "analytic-manifest.json",
+        "deadline/*.meta.json"
+      ]
+    },
+    "tables/t3_baselines.tex": {
+      "sha256": "40c033dbfa2872d8e2dc0e3c02edf1d945edb29bd8b1c2ba9ffbf89e1e728c13",
+      "sources": [
+        "microbench-operations.csv",
+        "microbench-message-sizes.csv"
+      ]
+    },
+    "tables/t4_robustness.tex": {
+      "sha256": "f128582be73cf22b018226ef923b30cf21a00a70c2cfcd4c4b844b3a6bf29980",
+      "sources": [
+        "pc03-summary.json",
+        "deadline/D0-CONTROL.csv",
+        "deadline/D1-REGIONAL.csv",
+        "deadline/D2-GLOBAL.csv",
+        "deadline/D3-GLOBAL-LOSS2.csv",
+        "deadline/D4-GLOBAL-CRASH10.csv",
+        "deadline/D5-GLOBAL-CRASH11.csv",
+        "deadline/D6-GLOBAL-DOMAIN-OUTAGE.csv",
+        "deadline/D7-HEAVY-TAIL.csv"
+      ]
+    },
+    "tables/t5_scalability.tex": {
+      "sha256": "14acd7ab26abd5fa26086a54cc4fa03e0db2aafc48f849788d6a5951810add9b",
+      "sources": [
+        "analytic-scalability-detection.csv",
+        "microbench-operations.csv",
+        "microbench-message-sizes.csv"
+      ]
+    },
+    "tables/t6_operations.tex": {
+      "sha256": "3560b8fc4b91e7bb17fe1cbb02513d345ec0f6186952f6a4ccd1909b0f7a781f",
+      "sources": [
+        "microbench-operations.csv",
+        "microbench-message-sizes.csv"
+      ]
+    },
+    "tables/t7_acceptance.tex": {
+      "sha256": "6cc6e028756a94e03fb248fcec0f8e35b287cc4be51d3daee053adb89150dc38",
+      "sources": [
+        "analytic-acceptance-sensitivity.csv"
+      ]
+    },
+    "tables/t8_gas.tex": {
+      "sha256": "f9a0027c536bc1606e15f25b57b008f743b9b97fb351dd255925a1e829bd0572",
+      "sources": [
+        ".gas-snapshot",
+        "contracts/gas_report.csv"
+      ]
+    },
+    "tables/numbers.tex": {
+      "sha256": "b9f4b99f1e40a2bab5972349a639bafe147eb90ad4c6dff682e567dbd3d98052",
+      "sources": [
+        "pc03-summary.json",
+        "analytic-*.csv",
+        "microbench-operations.csv",
+        "deadline/*.csv"
+      ]
+    }
+  },
+  "summaries": {
+    "D0-CONTROL": {
+      "traces": 300,
+      "success": 299,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 299
+      },
+      "median": 3.817586,
+      "p95": 3.935801,
+      "audit_pass": 300,
+      "audit_by_1s": 0,
+      "audit_median": 1.2409284999999999,
+      "audit_p95": 1.270338
+    },
+    "D1-REGIONAL": {
+      "traces": 300,
+      "success": 300,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 300
+      },
+      "median": 3.8410165000000003,
+      "p95": 3.908478,
+      "audit_pass": 300,
+      "audit_by_1s": 0,
+      "audit_median": 1.299854,
+      "audit_p95": 1.325229
+    },
+    "D2-GLOBAL": {
+      "traces": 300,
+      "success": 300,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 300
+      },
+      "median": 3.8750545,
+      "p95": 4.015672,
+      "audit_pass": 300,
+      "audit_by_1s": 0,
+      "audit_median": 1.400611,
+      "audit_p95": 1.504255
+    },
+    "D3-GLOBAL-LOSS2": {
+      "traces": 300,
+      "success": 300,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 300
+      },
+      "median": 3.828703,
+      "p95": 3.886327,
+      "audit_pass": 215,
+      "audit_by_1s": 0,
+      "audit_median": 1.386935,
+      "audit_p95": 1.454301
+    },
+    "D4-GLOBAL-CRASH10": {
+      "traces": 300,
+      "success": 300,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 300
+      },
+      "median": 3.6915685,
+      "p95": 3.775354,
+      "audit_pass": 7,
+      "audit_by_1s": 0,
+      "audit_median": 1.423786,
+      "audit_p95": 1.452075
+    },
+    "D5-GLOBAL-CRASH11": {
+      "traces": 300,
+      "success": 0,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 0
+      },
+      "median": null,
+      "p95": null,
+      "audit_pass": 5,
+      "audit_by_1s": 0,
+      "audit_median": 1.363804,
+      "audit_p95": 1.369486
+    },
+    "D6-GLOBAL-DOMAIN-OUTAGE": {
+      "traces": 300,
+      "success": 300,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 300
+      },
+      "median": 3.699549,
+      "p95": 3.780109,
+      "audit_pass": 17,
+      "audit_by_1s": 0,
+      "audit_median": 1.351677,
+      "audit_p95": 1.440174
+    },
+    "D7-HEAVY-TAIL": {
+      "traces": 300,
+      "success": 300,
+      "by_deadline": {
+        "0.25": 0,
+        "0.5": 0,
+        "1.0": 0,
+        "2.0": 0,
+        "5.0": 300
+      },
+      "median": 3.7717314999999996,
+      "p95": 3.849887,
+      "audit_pass": 295,
+      "audit_by_1s": 0,
+      "audit_median": 1.42839,
+      "audit_p95": 3.484712
+    }
+  }
+}

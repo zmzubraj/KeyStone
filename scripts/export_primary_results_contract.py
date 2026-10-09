@@ -17,7 +17,7 @@ STATE_PATH = Path("research-case/program-state.json")
 CHARTER_PATH = Path("research-case/00-governance/program-charter.md")
 PILOT_CONTRACT_PATH = Path("research-case/02-feasibility/pilot-run-contract.csv")
 ANALYSIS_PLAN_PATH = Path("research-case/03-design/analysis-plan.md")
-OUTPUT_PATH = Path("research-case/05-analysis/results/primary-results.csv")
+OUTPUT_PATH = Path("research-case/03-design/primary-results-contract.csv")
 
 REQUIRED_STATE = {
     "status": "ACTIVE",
@@ -185,9 +185,9 @@ def export(root: Path, check: bool) -> None:
         try:
             current = output.read_bytes()
         except OSError as exc:
-            raise PrimaryResultsContractError(f"cannot read primary-results contract: {exc}") from exc
+            raise PrimaryResultsContractError(f"cannot read primary-results planning contract: {exc}") from exc
         if current != rendered:
-            raise PrimaryResultsContractError("primary-results contract is stale")
+            raise PrimaryResultsContractError("primary-results planning contract is stale")
         return
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes(rendered)

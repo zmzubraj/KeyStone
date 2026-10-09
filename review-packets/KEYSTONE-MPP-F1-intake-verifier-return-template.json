@@ -5,7 +5,7 @@
       "disposition": "UNANSWERED",
       "path": "research-case/00-governance/intake-original.md",
       "residual_uncertainty": "",
-      "revision": "2",
+      "revision": "6",
       "sha256": "6f21c82ed0fe6c2933e689ab22750ee838e88b75e564eb985da119faf22a5ddd",
       "verification_event_id": ""
     },
@@ -14,7 +14,7 @@
       "disposition": "UNANSWERED",
       "path": "research-case/00-governance/intake.json",
       "residual_uncertainty": "",
-      "revision": "2",
+      "revision": "6",
       "sha256": "800fdb650470596dc67367ba6868bffbb60b80cf7fe2471734254dc60d1ef9eb",
       "verification_event_id": ""
     },
@@ -23,7 +23,7 @@
       "disposition": "UNANSWERED",
       "path": "research-case/00-governance/program-charter.md",
       "residual_uncertainty": "",
-      "revision": "4",
+      "revision": "8",
       "sha256": "a14ed6564b8d8bf3c51dff8f931321b6f288a9c832a6326522bac96c454b3f44",
       "verification_event_id": ""
     },
@@ -32,14 +32,14 @@
       "disposition": "UNANSWERED",
       "path": "research-case/00-governance/study-profile.json",
       "residual_uncertainty": "",
-      "revision": "3",
+      "revision": "7",
       "sha256": "74e76831f2fc44f8b4a659a94b326ed621b886c2fb70c42794a94e3f28b7a982",
       "verification_event_id": ""
     }
   ],
   "author_metadata_included": false,
   "canonical_phase": "INTAKE",
-  "contract_timestamp": "2026-08-30T05:18:24Z",
+  "contract_timestamp": "2026-10-09T20:11:24Z",
   "may_assert_novelty": false,
   "may_authorize_execution": false,
   "may_promote_phase": false,
@@ -110,7 +110,7 @@
     }
   ],
   "review_packet_path": "review-packets/KEYSTONE-MPP-F1-intake-review-packet.zip",
-  "review_packet_sha256": "3c9433eb163c322ccd911806f69f71303ad70ec5d0989b1edb84b36e57eba1bc",
+  "review_packet_sha256": "73c2db40621f8893c9165b48bdd6560d9f97e30500458efabf929f5454366bc6",
   "review_scope": "INTAKE_ONLY",
   "reviewer": {
     "competence_basis": "",

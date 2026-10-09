@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <info>
+    <title>KEYSTONE Numeric Review Style</title>
+    <id>https://example.invalid/styles/keystone-numeric-review</id>
+    <link href="https://example.invalid/styles/keystone-numeric-review" rel="self"/>
+    <updated>2026-08-30T00:00:00+00:00</updated>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name initialize-with=". " and="text" delimiter=", " delimiter-precedes-last="always"/>
+      <substitute><text variable="title"/></substitute>
+    </names>
+  </macro>
+  <macro name="container">
+    <choose>
+      <if variable="container-title">
+        <text variable="container-title" font-style="italic"/>
+      </if>
+      <else-if variable="publisher">
+        <text variable="publisher"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    <sort><key variable="citation-number"/></sort>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  <bibliography entry-spacing="1" second-field-align="flush">
+    <layout>
+      <text variable="citation-number" prefix="[" suffix="] "/>
+      <group delimiter=". ">
+        <text macro="author"/>
+        <text variable="title"/>
+        <text macro="container"/>
+        <group delimiter=", ">
+          <date variable="issued"><date-part name="year"/></date>
+          <text variable="volume"/>
+          <text variable="page"/>
+        </group>
+      </group>
+      <choose>
+        <if variable="DOI"><text variable="DOI" prefix=". doi: "/></if>
+        <else-if variable="URL"><text variable="URL" prefix=". "/></else-if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

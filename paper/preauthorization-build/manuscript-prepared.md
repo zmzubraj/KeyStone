@@ -245,9 +245,11 @@ independent reproduction, or human submission approval.
 
 ## Results
 
-The present results surface is an explicitly preliminary inventory. It does not
-replace missing authorized `05-analysis` evidence or the still-missing canonical
-primary-results ledger.
+The present results surface is an explicitly preliminary inventory. The
+design-layer `03-design/primary-results-contract.csv` exists only as a
+schema-complete, non-executable result contract: all nine slots remain
+unauthorized, non-independent, `NOT_COLLECTED`, and `NOT_ESTIMATED`. It does not
+replace missing authorized confirmatory evidence.
 
 The temporary Markdown/LaTeX preliminary-table bundle has a fail-closed
 same-workspace lineage receipt that binds its five input files, exporter,
@@ -261,9 +263,13 @@ fresh attempt failed closed when Foundry rejected a non-boolean offline setting;
 its hash-bound failure receipt and logs were preserved. After the environment
 contract was corrected and independently re-reviewed, a new operator completed
 all ten commands with zero return codes, unchanged source and isolated-copy
-inventories, and a valid `MECHANICAL_PASS` receipt. This establishes bounded
-same-host mechanical replay only: it used the same machine and potentially the
-same tool caches, did not enforce network isolation at the kernel level, did not
+inventories, and a hash-verified `MECHANICAL_PASS` receipt for that historical
+snapshot. The canonical reproducibility report at
+`05-analysis/reproducibility-report.md` finds that the receipt's source-manifest
+and program-state hashes do not match the current revisions, so a current-tree
+replay is required. Even after such a replay, this establishes bounded same-host
+mechanical consistency only: it used the same machine and potentially the same
+tool caches, did not enforce network isolation at the kernel level, did not
 execute the distributed deadline study, and is neither external reproduction
 nor independent scientific verification, institutional approval, venue
 approval, or evidence that changes the current claim-maturity ceilings.
@@ -280,9 +286,9 @@ Only a limited set of result classes is admissible for drafting:
 
 The current figures F1–F5 and `paper/tables/t1_t8_package.*` are draft
 preauthorization display assets. They are not canonical confirmatory tables or
-publication evidence. Missing or blocked evaluation outputs include the
-canonical `05-analysis` primary ledger, authorized confirmatory robustness and
-negative-result analyses, deadline Figures F6–F7, the planned recovery-timeline
+publication evidence. Missing or blocked evaluation outputs include authorized
+primary outcomes, confirmatory robustness and negative-result analyses,
+deadline Figures F6–F7, the planned recovery-timeline
 Figure F8, independent reproduction, and external validation for `C003`. The canonical
 `05-analysis/results/exploratory-findings.csv` now records the four temporal
 Markov rows under distinct `EXPLORE-*` identifiers. It preserves the simulated
@@ -436,8 +442,13 @@ The derived robustness ledger at
 `05-analysis/results/robustness-and-boundaries.csv` is reproducible from the
 hash-bound IID and sampling-policy datasets through
 `scripts/export_robustness_boundaries.py`; it remains a draft traceability
-surface and cannot substitute for the missing primary ledger, authorized
-confirmatory analysis, independent reproduction, or external validation.
+surface and cannot substitute for authorized primary evidence, confirmatory
+analysis, independent reproduction, or external validation. The
+schema-complete primary-results contract at
+`03-design/primary-results-contract.csv` contains no observations or estimates;
+the canonical `05-analysis/results/primary-results.csv` remains missing;
+the current reproducibility disposition and historical-receipt binding audit are
+recorded in `05-analysis/reproducibility-report.md`.
 The non-executable future-run contract is recorded in
 `02-feasibility/pilot-plan.md` and `02-feasibility/pilot-run-contract.csv`; it
 contains no collected outcome and grants no authorization. The PC03 amendment,
