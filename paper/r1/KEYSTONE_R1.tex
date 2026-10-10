@@ -29,6 +29,16 @@
 \newcommand{\AKR}{\mathrm{AKR}}
 \newcommand{\DDL}{\mathrm{DDL}}
 \newcommand{\PAC}{\mathrm{PAC}}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\makeatletter
+\newcommand{\FloatBarrier}{\par\begingroup\let\@elt\relax\edef\@tempa{\@botlist\@deferlist\@dbldeferlist}\ifx\@tempa\@empty\else\clearpage\fi\endgroup}
+\makeatother
 \input{tables/numbers.tex}
 
 \title{\textbf{KEYSTONE: Auditable Dispute-Key Availability for Encrypted AI Rollups}}
@@ -80,18 +90,18 @@ Our prior-art search therefore rejects broad primitive novelty. The hypothesis w
 
 An epoch $E$ contains $n$ custodians and a threshold $t$. Custodian $i$ holds share $x_i$ and registers public share $Y_i=g^{x_i}$. A rollup worker encrypts record $r$ with a fresh key $K_r$ under AES-256-GCM, wraps $K_r$ through a threshold Diffie--Hellman KEM under the epoch public key $PK_E$, and publishes the encrypted record to a data-availability layer. The settlement layer records commitment, policy, request and deadline events and supplies an ordered public clock. Figure~\ref{fig:architecture} shows the three paths.
 
-\begin{figure*}[t]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/fig1_architecture.pdf}
 \caption{KEYSTONE architecture. Sealing, routine canary auditing and authorized dispute release are separate paths over one custodian committee. The audit uses a beacon-derived canary, never a production ciphertext; only an authorized dispute requests partial decryptions of a record's KEM component $C_1$. Dashed arrows are public evidence written to the bulletin board.}
 \label{fig:architecture}
-\end{figure*}
+\end{figure}
 
 \subsection{Readiness and security properties}
 
 For request type $u\in\{\mathsf{audit},\mathsf{dispute}\}$, $\mathsf{Ready}_i(E,\tau,u,\Delta)=1$ iff custodian $i$ can access its valid current share, execute the required operation, produce a valid proof and deliver its response by $\tau+\Delta$. Audit and dispute readiness differ on purpose: a target-aware custodian may answer a canary and refuse a particular dispute. Table~\ref{tab:properties} lists the properties and where this paper assesses each.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Properties separated by KEYSTONE, how each is assessed in this paper, and the evidence type.}
 \label{tab:properties}
@@ -127,6 +137,7 @@ where $H_G$ is domain separated and does not expose $\log_g X$. Sampled custodia
 
 \paragraph{Authorized dispute release.} A dispute starts only after the policy contract binds a record, epoch, authorized verifier set and deadline. Custodians verify the authorization and return $C_1^{x_i}$ with a DLEQ proof. The combiner verifies $t$ distinct responses and interpolates in the exponent, $\prod_{i\in I}(C_1^{x_i})^{\lambda_i}=C_1^{x}=PK_E^{\rho}$, then unwraps $K_r$, decrypts and runs the authorized verification. The public transcript records valid, invalid, equivocal, stale, unauthorized and missing responses; plaintext release policy stays separate.
 
+\FloatBarrier
 \section{Analysis}\label{sec:analysis}
 
 \subsection{Static catastrophic false acceptance}
@@ -143,12 +154,12 @@ This is non-decreasing in $r$, so the worst catastrophic state is $r=t-1$, and f
 \end{equation}
 For $n=32$, $t=22$, $s=q=8$, $\varepsilon_a=0.0193462822$ and detection $1-\varepsilon_a=0.9806537178$. These are exact under the static model, not field-calibrated probabilities. If the catastrophic ready set is fixed and samples are independent and unpredictable, $m$ audits all falsely accept with probability at most $\varepsilon_a^m$; this does not hold for time-varying or adaptive readiness without a temporal model. Figure~\ref{fig:detection} shows how detection grows with $s$ and how the bound scales with committee size under $t=n-\lfloor(n-1)/3\rfloor$.
 
-\begin{figure*}[t]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/fig2_detection_vs_sample.pdf}
 \caption{Exact worst-case detection $1-\binom{t-1}{s}/\binom{n}{s}$ versus sample size with $q=s$. (a)~Thresholds $t\in\{17,22,27\}$ at $n=32$; the baseline $s=8$, $t=22$ is annotated. (b)~Committee sizes $16$--$128$. Values for $(n,s)\in\{(16,4),(32,8),(64,12),(128,16)\}$ are listed in Table~\ref{tab:scalability}.}
 \label{fig:detection}
-\end{figure*}
+\end{figure}
 
 \subsection{Three non-implication witnesses}
 
@@ -162,7 +173,7 @@ For $n=32$, $t=22$, $s=q=8$, $\varepsilon_a=0.0193462822$ and detection $1-\vare
 
 Requiring $q=s$ maximizes detection but turns every benign miss in the sample into an alarm. Under independent unavailability $f$, a healthy committee passes with probability $\Pr[\mathrm{Bin}(s,1-f)\geq q]$, which for $s=q=8$ and $f=0.10$ is only $0.43$ although $t$ of $32$ shares are almost surely reachable. Table~\ref{tab:acceptance} and Figure~\ref{fig:acceptance} give the exact trade-off. At $s=8$ no rule achieves both: $q=7$ lowers detection to \RAccEightSevenDet{} while benign pass rises to \RAccEightSevenPass{}. A larger sample recovers the trade-off: $s=16$, $q=14$ detects \RAccSixteenFourteenDet{} of worst-case catastrophic states with benign pass \RAccSixteenFourteenPassFive{} at $f=0.05$ and \RAccSixteenFourteenPassTen{} at $f=0.10$. This analysis was added after observing the high benign alarm rate in exploratory runs and is reported as design guidance, not as a prespecified result.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Exact acceptance-rule trade-off at $n=32$, $t=22$: worst-case catastrophic detection ($r=t-1$) versus the probability that a healthy committee passes under IID unavailability $f$. Post hoc analysis.}
 \label{tab:acceptance}
@@ -171,13 +182,14 @@ Requiring $q=s$ maximizes detection but turns every benign miss in the sample in
 \end{table}
 
 
+\FloatBarrier
 \section{Evaluation}\label{sec:evaluation}
 
 \subsection{Method and evidence labels}
 
 Table~\ref{tab:config} lists every experiment. We separate four evidence types and label each result with one of them. \emph{Exact} values are closed-form under a declared model. \emph{Simulation} results come from three cells whose parameters, endpoints, precision targets and seed schedule were written and hashed before execution: 32 seed blocks of 4{,}096 independent draws each (131{,}072 draws per cell), which exceeds the Hoeffding requirement of 73{,}778 draws for the stated half-widths \citep{hoeffding1963}. The sampling-policy cell uses common random numbers, so uniform and stratified samples are compared on the same failure draw. \emph{Microbenchmarks} are single-process wall-clock medians. \emph{Emulation} is a testbed of 32 custodian operating-system processes on one host. Proportions carry 95\% Wilson intervals \citep{wilson1927}. The emulated testbed is not a geo-distributed deployment.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Experimental configuration. The baseline committee is $n=32$, $t=22$, $s=q=8$ with four failure domains of eight custodians.}
 \label{tab:config}
@@ -185,18 +197,11 @@ Table~\ref{tab:config} lists every experiment. We separate four evidence types a
 \input{tables/t2_configuration.tex}
 \end{table}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig3_dispute_success_vs_deadline.pdf}
-\caption{Empirical probability that an authorized dispute decrypts the correct plaintext by deadline $\Delta_d$, single-host emulation with real ffdhe2048 cryptography, \RDLTraces{} traces per profile. (a)~Latency profiles. (b)~Faults under the 120\,ms-median profile; with eleven crashed custodians no dispute succeeds. Vertical lines mark the evaluated deadlines $0.25$, $0.5$, $1$, $2$ and $5$\,s.}
-\label{fig:deadline}
-\end{figure*}
-
 \subsection{Comparison with readiness baselines}
 
 Table~\ref{tab:baselines} compares the canary audit with the obvious alternatives. A heartbeat confirms only that a process responds; a custodian that has lost its share still answers, so a static catastrophic state of $t-1$ share-holders is invisible to it. Share registration is checked once and says nothing about later share loss. Decrypting a real record would test the right capability but discloses a production record. A full-committee canary probe detects every static catastrophic state at four times KEYSTONE's per-round cost at $n=32$; KEYSTONE trades that cost for the detection probability of Eq.~\eqref{eq:bound}.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Readiness checks compared. Costs are measured medians for ffdhe2048 in the prototype (Table~\ref{tab:operations}); bytes are canonical request plus response transcripts.}
 \label{tab:baselines}
@@ -204,11 +209,28 @@ Table~\ref{tab:baselines} compares the canary audit with the obvious alternative
 \input{tables/t3_baselines.tex}
 \end{table}
 
+\subsection{Deadline liveness in an emulated testbed}
+
+The testbed runs 32 custodian processes, each an asyncio TCP server holding only its own ffdhe2048 share, and one combiner on the same host. Each trace performs one canary audit and one authorized dispute over a freshly sealed 1\,KiB record. The combiner verifies each DLEQ proof on arrival, stops at $t=22$ valid partials, combines, unwraps $K_r$ and checks the decrypted plaintext. One-way delays are drawn per message from a lognormal law with the profile's median; loss drops a message with no retransmission; crashed custodians never answer. Each of eight profiles ran \RDLTraces{} traces with seeds fixed before execution.
+
+Figure~\ref{fig:deadline} and Table~\ref{tab:robustness}(b) report the results. The prespecified primary endpoint, success by $\Delta_d=2$\,s, was $0\%$ in every profile: no dispute finished in under 3.5\,s. Every reconstructable dispute finished within 5\,s, with medians from \RDLMedLo{} to \RDLMedHi\,s and a slowest success of \RDLMaxSucc\,s. Completion time is dominated by computation, not by the network. With no injected delay the median is \RDLControlMed\,ms, close to 22 serial proof verifications at the \RVerifyTwoK\,ms measured in Table~\ref{tab:operations}; adding a 120\,ms-median one-way delay moved the median only to \RDLGlobalMed\,ms, because responses arrive while the combiner is still verifying earlier ones. A heavy-tailed delay law ($\sigma=1.2$) did not lengthen completion (95th percentile \RDLHeavyTailPninefive\,ms). Ten crashes (median \RDLCrashTenMed\,ms) and a full domain outage (median \RDLDomainOutMed\,ms) completed slightly faster than the fault-free global profile, which we attribute to fewer custodian processes competing for the shared host CPU. Eleven crashes defeated every dispute (\RDLCrashElevenSucc{} succeeded).
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig3_dispute_success_vs_deadline.pdf}
+\caption{Empirical probability that an authorized dispute decrypts the correct plaintext by deadline $\Delta_d$, single-host emulation with real ffdhe2048 cryptography, \RDLTraces{} traces per profile. (a)~Latency profiles. (b)~Faults under the 120\,ms-median profile; with eleven crashed custodians no dispute succeeds. Vertical lines mark the evaluated deadlines $0.25$, $0.5$, $1$, $2$ and $5$\,s.}
+\label{fig:deadline}
+\end{figure}
+
+The audit side reproduces Eq.~\eqref{eq:hypergeom} on real cryptography. A single audit took \RDLAuditMedLo--\RDLAuditMedHi\,s at the median. With ten crashed custodians the strict audit passed in \RDLCrashTenAudit{} of traces against an exact expectation of \RExpCrashTen{}; with one domain down, \RDLDomainOutAudit{} against \RExpDomainOut{}; with 2\% message loss, \RDLLossAudit{} against \RExpLoss{}. In the crash and outage profiles the dispute nevertheless succeeded in every trace, the benign-alarm pattern of Section~\ref{sec:analysis}. One control trace timed out because the combiner was slowed by unrelated activity on the shared host; it is counted as a failure.
+
+The design implication is that $\Delta_d$ must budget for verifying $t$ proofs at the combiner. We did not measure optimized, batched or parallel verification, which would shorten this term.
+
 \subsection{Robustness under failure scenarios}
 
 Table~\ref{tab:robustness}(a) reports the prespecified simulation cells. Under 10\% independent unavailability the committee reconstructs in \RIIDRecon{} of draws, yet the strict audit passes in only \RIIDAudit{}: the audit is a sensitive alarm, not an accurate health score. Under 20\% domain outages, fixed-quota stratified sampling raised conditional detection of catastrophic draws from \RStratDetU{} to \RStratDetS{} and lowered the benign pass rate from \RStratPassU{} to \RStratPassS{}. The prespecified primary endpoint, the paired difference in detected catastrophes per draw, was \RStratD{} (Hoeffding half-width \RStratHW{}; all \RStratDiscordant{} discordant pairs favored stratification), so stratification's benefit is real but small in this cell. With eleven selective withholders, audits passed in \RSWAudit{} of draws and disputes succeeded in \RSWDispute{} (upper 95\% bound \RSWDisputeHi{}), confirming the second non-implication witness at the prespecified sample size.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Robustness under failure scenarios. (a)~Prespecified simulation; dispute success equals reconstructability because the simulator has no network. (b)~Emulated testbed: audit pass is $q=8$ valid responses within the 6\,s timeout; dispute success requires correct plaintext within $\Delta_d=2$\,s; times are over successful disputes, from first request to decrypted plaintext.}
 \label{tab:robustness}
@@ -218,43 +240,33 @@ Table~\ref{tab:robustness}(a) reports the prespecified simulation cells. Under 1
 
 Figure~\ref{fig:correlation} shows why placement matters. At equal per-unit unavailability $f=0.10$, an IID committee reconstructs with probability \RIIDReconTen{}, four domains of eight (each under the placement cap $n-t=10$) with \RDomFourRecon{}, and two domains of sixteen, which violate the cap, with only \RDomTwoRecon{}. These are exact values under a declared synthetic model; real domain labels and their independence are assumptions.
 
-\begin{figure*}[t]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/fig4_iid_vs_correlated.pdf}
 \caption{IID versus domain-correlated unavailability at $n=32$, $t=22$. A domain fails with probability $f$ and takes all its members; in the IID model each custodian fails independently with probability $f$. (a)~Reconstructability. (b)~Audit pass with $s=q=8$. Exact; a 20{,}000-draw Monte Carlo check agrees within $0.009$.}
 \label{fig:correlation}
-\end{figure*}
+\end{figure}
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/fig5_audit_vs_dispute_withholding.pdf}
 \caption{Audit pass versus dispute success as the number of selective withholders $w$ grows, with no other failures. Lines are exact; markers at $w=11$ are the prespecified 131{,}072-draw simulation cell.}
 \label{fig:withholding}
 \end{figure}
 
-\subsection{Deadline liveness in an emulated testbed}
-
-The testbed runs 32 custodian processes, each an asyncio TCP server holding only its own ffdhe2048 share, and one combiner on the same host. Each trace performs one canary audit and one authorized dispute over a freshly sealed 1\,KiB record. The combiner verifies each DLEQ proof on arrival, stops at $t=22$ valid partials, combines, unwraps $K_r$ and checks the decrypted plaintext. One-way delays are drawn per message from a lognormal law with the profile's median; loss drops a message with no retransmission; crashed custodians never answer. Each of eight profiles ran \RDLTraces{} traces with seeds fixed before execution.
-
-Figure~\ref{fig:deadline} and Table~\ref{tab:robustness}(b) report the results. The prespecified primary endpoint, success by $\Delta_d=2$\,s, was $0\%$ in every profile: no dispute finished in under 3.5\,s. Every reconstructable dispute finished within 5\,s, with medians from \RDLMedLo{} to \RDLMedHi\,s and a slowest success of \RDLMaxSucc\,s. Completion time is dominated by computation, not by the network. With no injected delay the median is \RDLControlMed\,ms, close to 22 serial proof verifications at the \RVerifyTwoK\,ms measured in Table~\ref{tab:operations}; adding a 120\,ms-median one-way delay moved the median only to \RDLGlobalMed\,ms, because responses arrive while the combiner is still verifying earlier ones. A heavy-tailed delay law ($\sigma=1.2$) did not lengthen completion (95th percentile \RDLHeavyTailPninefive\,ms). Ten crashes (median \RDLCrashTenMed\,ms) and a full domain outage (median \RDLDomainOutMed\,ms) completed slightly faster than the fault-free global profile, which we attribute to fewer custodian processes competing for the shared host CPU. Eleven crashes defeated every dispute (\RDLCrashElevenSucc{} succeeded).
-
-The audit side reproduces Eq.~\eqref{eq:hypergeom} on real cryptography. A single audit took \RDLAuditMedLo--\RDLAuditMedHi\,s at the median. With ten crashed custodians the strict audit passed in \RDLCrashTenAudit{} of traces against an exact expectation of \RExpCrashTen{}; with one domain down, \RDLDomainOutAudit{} against \RExpDomainOut{}; with 2\% message loss, \RDLLossAudit{} against \RExpLoss{}. In the crash and outage profiles the dispute nevertheless succeeded in every trace, the benign-alarm pattern of Section~\ref{sec:analysis}. One control trace timed out because the combiner was slowed by unrelated activity on the shared host; it is counted as a failure.
-
-The design implication is that $\Delta_d$ must budget for verifying $t$ proofs at the combiner. We did not measure optimized, batched or parallel verification, which would shorten this term.
-
-
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.62\textwidth]{figures/fig6_acceptance_tradeoff.pdf}
 \caption{Detection versus benign alarm rate (audit fails while the committee is healthy, $f=0.10$) for each acceptance threshold $q$; one curve per sample size. Exact values from Table~\ref{tab:acceptance} and its full source grid.}
 \label{fig:acceptance}
 \end{figure}
 
+\FloatBarrier
 \subsection{Performance and scalability}
 
 Table~\ref{tab:operations} gives per-operation costs in the pure-Python prototype; these are upper bounds, and optimized libraries are substantially faster. At ffdhe2048 a custodian's partial decryption with proof takes \RProveTwoK\,ms and its verification \RVerifyTwoK\,ms; verifying 22 partials and combining takes \RCombineTwoK\,ms (\RCombineThreeK\,ms at ffdhe3072). The 256-bit prototype group is listed for reference only and is not a secure size. Table~\ref{tab:scalability} scales the committee: audit cost grows with $s$, not $n$, while dispute cost grows with $t$. Table~\ref{tab:gas} reports the bulletin-board gas costs measured in the Foundry harness.
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Scalability with $t=n-\lfloor(n-1)/3\rfloor$. Detection is exact (Eq.~\eqref{eq:bound}, $q=s$). Audit CPU is $s$ proofs plus $s$ verifications; bytes are one request plus $s$ responses. Dispute time is measured verification of $t$ partials plus combination.}
 \label{tab:scalability}
@@ -262,7 +274,7 @@ Table~\ref{tab:operations} gives per-operation costs in the pure-Python prototyp
 \input{tables/t5_scalability.tex}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Median wall time per operation, CPython 3.13 on an Apple M4 Pro; RFC~7919 groups \citep{rfc7919} with $q=(p-1)/2$ and generator~4. Pure-Python reference implementation.}
 \label{tab:operations}
@@ -270,7 +282,7 @@ Table~\ref{tab:operations} gives per-operation costs in the pure-Python prototyp
 \input{tables/t6_operations.tex}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
 \caption{Bulletin-board gas per operation, re-measured for this revision with Foundry 1.5.1 and Solidity 0.8.24 (test-body gas; fixture setup excluded). Each operation was measured in the small harness committee named in the scope column; values are deterministic and identical to the earlier snapshot.}
 \label{tab:gas}
@@ -278,6 +290,7 @@ Table~\ref{tab:operations} gives per-operation costs in the pure-Python prototyp
 \input{tables/t8_gas.tex}
 \end{table}
 
+\FloatBarrier
 \section{Discussion}
 
 Availability is layered. Data availability answers whether encrypted bytes can be retrieved; share registration whether a key was formed consistently; a readiness audit whether sampled custodians can now perform a non-production share operation; an authorized dispute whether $t$ custodians will serve a specific target before a deadline. Treating these as interchangeable hides distinct failure modes, and the evaluation shows each one separating in practice: high reconstructability with low audit pass under benign failures, perfect audit pass with zero dispute success under selective withholding, and dispute completion governed by verification work at the combiner rather than by average network latency.
