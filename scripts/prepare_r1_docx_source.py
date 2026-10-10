@@ -23,6 +23,31 @@ def number(env, word):
         pos = m.end()
     out.append(s[pos:])
     s = ''.join(out)
+# Pandoc drops \multicolumn cells and prints \cmidrule specs as text in DOCX:
+# expand each \multicolumn{k}{spec}{text} to its text plus k-1 empty cells, drop \cmidrule.
+def _expand_multicolumn(src):
+    out, i, key = [], 0, '\\multicolumn{'
+    while True:
+        j = src.find(key, i)
+        if j < 0:
+            out.append(src[i:]); return ''.join(out)
+        out.append(src[i:j])
+        k_end = src.index('}', j + len(key)); k = int(src[j + len(key):k_end])
+        spec_start = k_end + 1; depth = 0; pos = spec_start
+        for _ in range(2):  # skip {spec}, then capture {text}
+            start = pos; depth = 0
+            while True:
+                ch = src[pos]
+                if ch == '{': depth += 1
+                elif ch == '}':
+                    depth -= 1
+                    if depth == 0: break
+                pos += 1
+            if _ == 1: text = src[start + 1:pos]
+            pos += 1
+        out.append(text + ' &' * (k - 1)); i = pos
+s = _expand_multicolumn(s)
+s = re.sub(r'\\cmidrule(\([a-z]*\))?\{[0-9-]+\}', '', s)
 number('table', 'Table')
 number('figure', 'Figure')
 open(out, 'w').write(s)
