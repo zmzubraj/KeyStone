@@ -47,6 +47,8 @@ def _expand_multicolumn(src):
             pos += 1
         out.append(text + ' &' * (k - 1)); i = pos
 s = _expand_multicolumn(s)
+# Run-in \paragraph headings are unnumbered in the PDF; keep them that way in DOCX.
+s = re.sub(r'\\paragraph\{([^}]*)\}', r'\\textbf{\1}', s)
 s = re.sub(r'\\cmidrule(\([a-z]*\))?\{[0-9-]+\}', '', s)
 number('table', 'Table')
 number('figure', 'Figure')

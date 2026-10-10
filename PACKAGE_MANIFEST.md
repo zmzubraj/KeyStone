@@ -9,7 +9,7 @@ virtual environments, caches, Foundry build output, OS metadata, and the transie
 research-case runtime lock. Presence in this manifest does not make a scientific
 artifact independently verified.
 
-**Inventoried files:** 576 plus `PACKAGE_MANIFEST.md`; `SHA256SUMS` is excluded from its own checksum set.
+**Inventoried files:** 579 plus `PACKAGE_MANIFEST.md`; `SHA256SUMS` is excluded from its own checksum set.
 
 ## Entry points
 
@@ -140,12 +140,14 @@ artifact independently verified.
 - `./paper/preauthorization-build/pdf-qa.json` (191 bytes)
 - `./paper/preauthorization-build/preauthorization-header.tex` (195 bytes)
 - `./paper/property_separation_obligations.md` (4220 bytes)
-- `./paper/r1/KEYSTONE_R1.docx` (756953 bytes)
+- `./paper/r1/KEYSTONE_R1.docx` (756946 bytes)
 - `./paper/r1/KEYSTONE_R1.pdf` (555791 bytes)
 - `./paper/r1/KEYSTONE_R1.tex` (33071 bytes)
-- `./paper/r1/Response_to_Reviewer_R1.docx` (14949 bytes)
-- `./paper/r1/Response_to_Reviewer_R1.md` (7393 bytes)
-- `./paper/r1/Response_to_Reviewer_R1.pdf` (174675 bytes)
+- `./paper/r1/KEYSTONE_R1_Word.pdf` (1031792 bytes)
+- `./paper/r1/Response_to_Reviewer_R1.docx` (14758 bytes)
+- `./paper/r1/Response_to_Reviewer_R1.md` (7529 bytes)
+- `./paper/r1/Response_to_Reviewer_R1.pdf` (174847 bytes)
+- `./paper/r1/Response_to_Reviewer_R1_Word.pdf` (68230 bytes)
 - `./paper/r1/figures/fig1_architecture.pdf` (113805 bytes)
 - `./paper/r1/figures/fig1_architecture.png` (142375 bytes)
 - `./paper/r1/figures/fig1_architecture.tex` (3000 bytes)
@@ -586,12 +588,13 @@ artifact independently verified.
 - `./scripts/export_reproducibility_report.py` (12939 bytes)
 - `./scripts/export_robustness_boundaries.py` (24229 bytes)
 - `./scripts/export_t1_t8_tables.py` (47504 bytes)
+- `./scripts/finalize_r1_docx.py` (1736 bytes)
 - `./scripts/intake_reviewer_submission_audit.py` (20625 bytes)
 - `./scripts/intake_transfer_authorization_contract.py` (15064 bytes)
 - `./scripts/intake_verifier_return_contract.py` (14906 bytes)
 - `./scripts/pc02_novelty_verifier_return_contract.py` (15085 bytes)
 - `./scripts/pc03_methods_verifier_return_contract.py` (17447 bytes)
-- `./scripts/prepare_r1_docx_source.py` (2596 bytes)
+- `./scripts/prepare_r1_docx_source.py` (2738 bytes)
 - `./scripts/render_dense_diagrams.py` (28694 bytes)
 - `./scripts/render_diagram_preview_sheet.py` (9637 bytes)
 - `./scripts/render_preview_sheet.py` (3297 bytes)

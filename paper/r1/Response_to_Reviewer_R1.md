@@ -12,7 +12,7 @@ Thank you for the review and for the suggested five-table, five-figure package. 
 
 # 1. How the new evidence was produced
 
-Before running anything, we wrote the experimental design (parameters, endpoints, precision targets, seeds and testbed profiles) to a file and recorded its SHA-256 hash. Every script checks that hash before it runs, and every output records it. Three deviations are logged openly (a post hoc extension of one analysis, a discarded three-trace smoke test, and one testbed trace that timed out under host contention and is kept as a failure). Four kinds of evidence are used and each result is labelled with its kind:
+Before running anything, we wrote the experimental design (parameters, endpoints, precision targets, seeds and testbed profiles) to a file and recorded its SHA-256 hash. Every script checks that hash before it runs, and every output records it. The deviation log records three deviations that touch the experiments (a post hoc extension of one analysis, a discarded three-trace smoke test, and one testbed trace that timed out under host contention and is kept as a failure) and one privacy redaction in an administrative record that does not affect any design, run or result. Four kinds of evidence are used and each result is labelled with its kind:
 
 * **Exact** closed-form values under a declared model.
 * **Prespecified simulation**: three cells of 131,072 draws each (32 seed blocks of 4,096), above the Hoeffding requirement of 73,778 draws.
