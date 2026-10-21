@@ -1,0 +1,214 @@
+{
+  "schema_id": "KEYSTONE_R2_DESIGN_FREEZE",
+  "schema_version": 1,
+  "system_id": "KEYSTONE-MPP-F1",
+  "revision": "R2",
+  "frozen_at_utc": "2026-10-21T00:00:00Z (date of author approval; exact time recorded by the commit that adds this file)",
+  "frozen_before_any_r2_run": true,
+  "authorization": "research-case/03-design/r2-design-amendment/R2-AUTHORIZATION.md",
+  "design_document": "research-case/03-design/r2-design-amendment/R2-DESIGN-AMENDMENT-DRAFT.md",
+  "base_commit": "2670827d74a29224fb9e951069ea7ca17890dd6d",
+  "result_blind_statement": "No R2 output existed when this file was frozen. All R1 outputs were visible to the designer; R2 endpoints that depend on R2 measurements are frozen as formulas, not values.",
+  "decisions": {
+    "D1": "EC group ristretto255 via the rbcl binding to libsodium, subject to a static supply-chain review before installation; if the review fails, a ctypes wrapper over libsodium (option B) with identical interfaces. The choice is recorded in the deviation log.",
+    "D2": "Batched DLEQ verification is run as a secondary variant.",
+    "D3": "ffdhe2048 and ffdhe3072 are retained as the like-for-like baseline, with the W11 hash and membership fixes.",
+    "D4": "W1 includes the domain-shock extension.",
+    "D5": "Primary testbed deadline is the frozen formula in R2_DEADLINE_TESTBED.primary_deadline.",
+    "D6": "Paper adds the W1 theorem and Definition 7 uses PAC+."
+  },
+  "families": {
+    "R2_CORRECTNESS": {
+      "label": "UNIT_AND_INTEGRATION_TESTS",
+      "requirements": [
+        "ristretto255 group: from_hash output is a valid non-identity element; scalar arithmetic modulo the group order",
+        "DLEQ completeness and rejection of altered responses in ristretto255",
+        "threshold KEM and TDH2 end-to-end open with t valid partials; failure with t-1",
+        "TDH2: re-submitted C1 under a new record id is rejected by custodians; malleated C1*g^gamma is rejected; invalid ciphertext proof is rejected",
+        "ffdhe hash_to_group: candidate expanded to ceil((bitlen(p)+128)/8) bytes with an XMD-style SHA-256 expander before reduction; output is a quadratic residue != 1",
+        "ffdhe membership test by Jacobi symbol agrees with x^q mod p == 1 on random and adversarial inputs"
+      ],
+      "rule": "All correctness tests pass before any R2 measurement runs."
+    },
+    "R2_MICROBENCH": {
+      "label": "LOCAL_MICROBENCHMARK",
+      "host": "same host class as R1 (Apple M4 Pro); environment recorded per run",
+      "groups": [
+        "ristretto255 (rbcl or D1 fallback)",
+        "ffdhe2048 (W11-fixed)",
+        "ffdhe3072 (W11-fixed)"
+      ],
+      "operations": [
+        "canary derivation",
+        "partial decryption + DLEQ proof",
+        "DLEQ verification (serial)",
+        "DLEQ batch verification of t partials (secondary)",
+        "seal 1 KiB record (plain KEM)",
+        "seal 1 KiB record (TDH2)",
+        "TDH2 ciphertext-proof verification",
+        "combine t partials"
+      ],
+      "repetitions": "at least 1000 timed runs per operation after 50 warm-up runs; report median and 95th percentile",
+      "seed_namespace": "KEYSTONE-R2|MICROBENCH|"
+    },
+    "R2_DEADLINE_TESTBED": {
+      "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+      "topology": "32 custodian OS processes, each an asyncio TCP server on 127.0.0.1 holding only its own share; one combiner process (asyncio client) that issues requests, verifies DLEQ proofs as responses arrive, stops at t valid, combines, unwraps the record key and AES-GCM-decrypts Proof verification runs off the combiner event loop (worker thread or process).",
+      "network_emulation": "one-way delay per message drawn by the combiner-side emulator from the trace seed and passed as out-of-band emulation metadata; the custodian sleeps the inbound delay before computing and the outbound delay before replying; lost messages are never answered; no retransmission",
+      "delay_model": "lognormal one-way delay with stated median and sigma (log-space); 0 means no injected delay",
+      "committee": {
+        "n": 32,
+        "t": 22,
+        "domains": "4 x 8 by index mod 4",
+        "keygen": "dealer keygen once per profile run"
+      },
+      "crypto": "ristretto255; dispute partials use TDH2 with label (epoch, record id, policy hash); audit uses beacon-derived canary",
+      "profiles": {
+        "D0-CONTROL": {
+          "median_ms": 0,
+          "sigma": 0,
+          "loss": 0.0,
+          "crashed": 0,
+          "domain_outage": false
+        },
+        "D1-REGIONAL": {
+          "median_ms": 40,
+          "sigma": 0.5,
+          "loss": 0.0,
+          "crashed": 0,
+          "domain_outage": false
+        },
+        "D2-GLOBAL": {
+          "median_ms": 120,
+          "sigma": 0.6,
+          "loss": 0.0,
+          "crashed": 0,
+          "domain_outage": false
+        },
+        "D3-GLOBAL-LOSS2": {
+          "median_ms": 120,
+          "sigma": 0.6,
+          "loss": 0.02,
+          "crashed": 0,
+          "domain_outage": false
+        },
+        "D4-GLOBAL-CRASH10": {
+          "median_ms": 120,
+          "sigma": 0.6,
+          "loss": 0.0,
+          "crashed": 10,
+          "domain_outage": false
+        },
+        "D5-GLOBAL-CRASH11": {
+          "median_ms": 120,
+          "sigma": 0.6,
+          "loss": 0.0,
+          "crashed": 11,
+          "domain_outage": false
+        },
+        "D6-GLOBAL-DOMAIN-OUTAGE": {
+          "median_ms": 120,
+          "sigma": 0.6,
+          "loss": 0.0,
+          "crashed": 0,
+          "domain_outage": true
+        },
+        "D7-HEAVY-TAIL": {
+          "median_ms": 120,
+          "sigma": 1.2,
+          "loss": 0.0,
+          "crashed": 0,
+          "domain_outage": false
+        }
+      },
+      "crash_selection": "crashed members chosen uniformly per trace from the trace seed; domain outage = one domain chosen uniformly per trace, all 8 members silent",
+      "traces_per_profile": 300,
+      "trace_seed": "int.from_bytes(SHA256('KEYSTONE-R2|DEADLINE|' + variant + '|' + profile_id + '|' + str(i))[:8], 'big')",
+      "variants": {
+        "SERIAL": "primary: serial verification on arrival, stop at t valid",
+        "BATCH": "secondary: verify arrivals in batches by random linear combination; fall back to individual verification on batch failure"
+      },
+      "hard_timeout_s": 6.0,
+      "primary_deadline": {
+        "formula": "Delta_d_star(profile) = delta_b + c_p + delta_p99(profile) + t * c_v + c_c",
+        "terms": {
+          "delta_b": "0 (single host, no ledger)",
+          "c_p": "R2_MICROBENCH median of partial decryption + DLEQ proof (ristretto255)",
+          "c_v": "R2_MICROBENCH median of serial DLEQ verification (ristretto255)",
+          "c_c": "R2_MICROBENCH median of combine t partials plus TDH2 unwrap (ristretto255)",
+          "delta_p99": "99th percentile of the profile's one-way delay law: median_ms * exp(2.3263 * sigma); 0 for D0-CONTROL"
+        },
+        "procedure": "computed after R2_MICROBENCH and before any testbed trace; written to r2-deadline-record.json and hashed; the same values apply to both variants"
+      },
+      "primary_endpoint": "P[dispute decrypts the correct plaintext by Delta_d_star(profile)] per profile, SERIAL variant",
+      "secondary_endpoints": [
+        "same endpoint for the BATCH variant",
+        "success at deadlines 0.05, 0.1, 0.25, 0.5, 1, 2, 5 s",
+        "completion-time median and 95th percentile",
+        "audit pass rate versus exact expectation"
+      ],
+      "interval_method": "Wilson 95% for proportions; order-statistic quantiles for times",
+      "pre_stated_expectation": "near 100% success by Delta_d_star for reconstructable profiles; 0% for D5-GLOBAL-CRASH11; reported whatever the outcome",
+      "claim_boundary": "single host, synthetic delay laws; no claim about geo-distributed deployment or ledger delay"
+    },
+    "R2_TEMPORAL_EXACT": {
+      "label": "EXACT_UNDER_DECLARED_SYNTHETIC_MODEL",
+      "model": "non-selective faults; each custodian an independent two-state CTMC (failure rate lambda = 1/MTBF, repair rate mu = 1/MTTR); domain-shock variant: each of 4 domains of 8 additionally fails as a unit at rate 1/MTBF_domain and recovers at rate 1/MTTR_domain; audits every T with a fresh uniform sample (s, q) and acceptance probability from Theorem 1; dispute time independent of the process",
+      "method": "K(t) birth-death chain with binomial-convolution transitions over T; forward (filtering) recursion over k in 0..32 with emission Pr[accept|k]; domain-shock variant uses the product chain over (domain states, k)",
+      "grid": {
+        "MTBF_days": [
+          7,
+          30,
+          90
+        ],
+        "MTTR_hours": [
+          1,
+          6,
+          24
+        ],
+        "audit_interval_hours": [
+          1,
+          6,
+          24
+        ],
+        "designs_s_q": [
+          [
+            8,
+            8
+          ],
+          [
+            16,
+            14
+          ],
+          [
+            24,
+            20
+          ]
+        ],
+        "domain_shock": {
+          "MTBF_domain_days": [
+            90,
+            365
+          ],
+          "MTTR_domain_hours": [
+            6
+          ]
+        }
+      },
+      "metrics": [
+        "posterior Pr[K(tau) < t | all audits so far accepted], at the filter's fixed point, maximized over the dispute offset u in [0, T)",
+        "stationary Pr[K(tau) < t and the most recent audit before tau accepted], averaged over u uniform in [0, T)",
+        "design: largest T in the grid (and by bisection on a continuous T) meeting risk targets 1e-2, 1e-3, 1e-4 for each design"
+      ],
+      "claim_boundary": "synthetic parameters; real availability traces are future work"
+    },
+    "R2_TEMPORAL_SIM_CHECK": {
+      "label": "SIMULATION_IMPLEMENTATION_CHECK",
+      "cells": "three grid cells: (MTBF 30 d, MTTR 6 h, T 6 h, (8,8)); (MTBF 7 d, MTTR 24 h, T 24 h, (16,14)); (MTBF 30 d, MTTR 6 h, T 6 h, (16,14), domain MTBF 90 d)",
+      "runs": "200000 audit intervals per cell after a burn-in of 10000 intervals",
+      "seed": "int.from_bytes(SHA256('KEYSTONE-R2|TEMPORAL|' + cell_id)[:8], 'big')",
+      "criterion": "each simulated metric within its 99% Wilson interval of the exact value; any miss is investigated as an implementation error and logged"
+    }
+  },
+  "deviation_rule": "Any change after the first R2 run is appended to research-case/03-design/r2-design-amendment/r2-deviation-log.md with time, reason and effect on claims; this file is not edited."
+}
