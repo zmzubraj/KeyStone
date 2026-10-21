@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keystone-r2"
+version = "0.1.0"
+description = "R2 elliptic-curve core for KEYSTONE (ristretto255, TDH2); separate environment so R1 provenance stays unchanged"
+requires-python = ">=3.11"
+dependencies = [
+  "keystone-mpp",
+  # Reviewed in research-case/03-design/r2-design-amendment/D1-SUPPLY-CHAIN-REVIEW.md
+  "rbcl==1.1.2",
+  "barriers==1.2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.uv]
+# D1 condition 1: install reviewed wheels only; never run rbcl's source build (which downloads libsodium).
+no-build-package = ["rbcl", "barriers"]
+
+[tool.uv.sources]
+keystone-mpp = { path = "..", editable = true }

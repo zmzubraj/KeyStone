@@ -39,3 +39,12 @@ Option A (`rbcl`) may be used under all of these conditions:
 ## Residual risk
 
 The native binary was built by a third party and cannot be reproduced bit for bit here, so this review is static only. Its libsodium version (1.0.18) is older than the current release. Option B (a ctypes wrapper over a current libsodium from a system package manager) removes both points at the cost of a machine-level installation, and remains the fallback.
+
+## Post-install correctness results (2026-10-21)
+
+Installed from the pinned wheel into the separate R2 environment `prototype/r2/` (its `uv.lock` hashes equal the reviewed files; embedded library SHA-256 equal to the value above). See deviation-log entry 2 for why R2 has its own environment. `prototype/r2/tests/test_r2_ristretto.py` (40 tests) passes. Two findings while writing it:
+
+- **Identity accepted by libsodium.** `crypto_core_ristretto255_is_valid_point` accepts the all-zero encoding of the identity element. KEYSTONE's `validate_point` now rejects it explicitly, so an identity partial, canary or public share is never accepted.
+- **Loader lookup.** `rbcl._sodium` as an attribute is the loaded `ctypes` library, not the loader module, so the first version of the temp-file cleanup silently did nothing. The module is now taken from `sys.modules`, and a test asserts the temporary library is gone.
+
+No scalar clamping was observed: small multiples and full-range linearity hold, and Lagrange reconstruction with 22 of 32 partials recovers `xP` while 21 do not.
