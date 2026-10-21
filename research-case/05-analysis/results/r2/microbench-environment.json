@@ -1,0 +1,27 @@
+{
+  "family": "R2_MICROBENCH",
+  "freeze_sha256": "98e89893c06db3b68640038bb627b7e3e3892885c9a00e2849fba1a1763addb1",
+  "started_utc": "2026-10-21T16:53:54+00:00",
+  "finished_utc": "2026-10-21T18:20:03+00:00",
+  "git_commit": "0b8e27166c8f5756c256b1e5e38a36cf161dfd90",
+  "git_worktree_dirty": true,
+  "host": {
+    "machine": "arm64",
+    "system": "macOS-15.1-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "cpu_count": 12
+  },
+  "python": "3.13.13 (main, Apr 14 2026, 14:32:41) [Clang 22.1.3 ]",
+  "rbcl": "1.1.2",
+  "barriers": "1.2.0",
+  "cryptography": "50.0.2",
+  "embedded_libsodium_sha256": "87e460d62a4b1291058f3b97c72fd9d4ead1492023a4237cd5fe68ae8ef7a21b",
+  "warmup_runs": 50,
+  "timed_runs": 1000,
+  "committee": {
+    "n": 32,
+    "t": 22
+  },
+  "record_bytes": 1024,
+  "timer": "time.perf_counter_ns, single process"
+}

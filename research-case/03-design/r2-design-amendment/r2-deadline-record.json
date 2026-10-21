@@ -1,0 +1,63 @@
+{
+  "schema_id": "KEYSTONE_R2_DEADLINE_RECORD",
+  "schema_version": 1,
+  "created_utc": "2026-10-21T18:23:11+00:00",
+  "created_before_any_testbed_trace": true,
+  "freeze_sha256": "98e89893c06db3b68640038bb627b7e3e3892885c9a00e2849fba1a1763addb1",
+  "microbench_summary_sha256": "08413d8eb01236026b4de4b2e42921563f7865bb12bcfbe0474efa85cef9ff9b",
+  "inputs_ms": {
+    "c_p": 0.0863,
+    "c_v": 0.1524,
+    "c_c": 0.9234,
+    "t": 22,
+    "group": "ristretto255",
+    "c_p_source": "median partial_plus_dleq_proof",
+    "c_v_source": "median dleq_verification_serial",
+    "c_c_source": "median combine_t_plus_unwrap_decrypt",
+    "delta_p99_rule": "median_ms * exp(2.3263 * sigma); 0 for median 0"
+  },
+  "primary_formula": "Delta_d_star = c_p + 2*delta_p99 + t*c_v + c_c  (deviation-log entry 4: request and response legs)",
+  "secondary_formula": "Delta_d_star = delta_b + c_p + delta_p99 + t*c_v + c_c with delta_b = 0  (as frozen)",
+  "profiles": {
+    "D0-CONTROL": {
+      "delta_p99_one_way_ms": 0.0,
+      "primary_delta_d_star_ms": 4.3625,
+      "secondary_frozen_delta_d_star_ms": 4.3625
+    },
+    "D1-REGIONAL": {
+      "delta_p99_one_way_ms": 127.9999,
+      "primary_delta_d_star_ms": 260.3623,
+      "secondary_frozen_delta_d_star_ms": 132.3624
+    },
+    "D2-GLOBAL": {
+      "delta_p99_one_way_ms": 484.5748,
+      "primary_delta_d_star_ms": 973.512,
+      "secondary_frozen_delta_d_star_ms": 488.9373
+    },
+    "D3-GLOBAL-LOSS2": {
+      "delta_p99_one_way_ms": 484.5748,
+      "primary_delta_d_star_ms": 973.512,
+      "secondary_frozen_delta_d_star_ms": 488.9373
+    },
+    "D4-GLOBAL-CRASH10": {
+      "delta_p99_one_way_ms": 484.5748,
+      "primary_delta_d_star_ms": 973.512,
+      "secondary_frozen_delta_d_star_ms": 488.9373
+    },
+    "D5-GLOBAL-CRASH11": {
+      "delta_p99_one_way_ms": 484.5748,
+      "primary_delta_d_star_ms": 973.512,
+      "secondary_frozen_delta_d_star_ms": 488.9373
+    },
+    "D6-GLOBAL-DOMAIN-OUTAGE": {
+      "delta_p99_one_way_ms": 484.5748,
+      "primary_delta_d_star_ms": 973.512,
+      "secondary_frozen_delta_d_star_ms": 488.9373
+    },
+    "D7-HEAVY-TAIL": {
+      "delta_p99_one_way_ms": 1956.7726,
+      "primary_delta_d_star_ms": 3917.9076,
+      "secondary_frozen_delta_d_star_ms": 1961.1351
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "purpose": "Pins the exact R2 code used by the microbenchmark run, because the run's git worktree was dirty (R2 code not yet committed at run time).",
+  "run_started_utc": "2026-10-21T16:53:54+00:00",
+  "run_finished_utc": "2026-10-21T18:20:03+00:00",
+  "base_git_commit": "0b8e27166c8f5756c256b1e5e38a36cf161dfd90",
+  "files": {
+    "prototype/r2/pyproject.toml": "50eb4ea37b19cd0f1c847490627dc0f01218b421d8f84eb080b8dc74d08703bc",
+    "prototype/r2/scripts/run_r2_microbench.py": "4f462cb022665f0237c27db9b733eab973001317c71e28004dd5a4558f674460",
+    "prototype/r2/src/keystone_r2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prototype/r2/src/keystone_r2/audit.py": "4bca4322dbb429aff7b4090596dc5be278290ea0b96e3a2a5714332891ad1891",
+    "prototype/r2/src/keystone_r2/dleq.py": "bc14d1223a0f1d8f4d9610cf4435e27478465f1d94039fb1989992fef0a24039",
+    "prototype/r2/src/keystone_r2/ffdhe.py": "4690455b4defcf50188f67af6bbf0db7c4868601acc7eeb40cd01c31fdcd33b5",
+    "prototype/r2/src/keystone_r2/groups.py": "a1679cf23bdefce7d54322de4bb157e77fc5c7ca5b574aebda3664af0bc2cecd",
+    "prototype/r2/src/keystone_r2/ristretto.py": "544528c3b72189befe36e5e4c956a27d6aa5c05b1e762dc75c665b51ebb9281d",
+    "prototype/r2/src/keystone_r2/sharing.py": "8dc9c385168bbe5e739dc96770d495bccb886fe5afd4fa2fd19ffeba8934b1da",
+    "prototype/r2/src/keystone_r2/tdh2.py": "4029530bb854f68465826016fd6e6f819013591a227011ea20abbe882770a18a",
+    "prototype/r2/uv.lock": "d875425748376ef8cb6bff15856bbf1a65be9679ad6256bdb441695a274790ef"
+  },
+  "latest_file_mtime_utc": "2026-10-21T16:52:56+00:00"
+}

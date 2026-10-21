@@ -13,6 +13,7 @@ import pytest
 from keystone_r2 import dleq
 from keystone_r2 import ristretto as rs
 from keystone_r2 import sharing, tdh2
+from keystone_r2.groups import RISTRETTO
 
 N, T = 32, 22
 RECORD = b"inference record: model output 0x2a"
@@ -135,7 +136,7 @@ def test_negative_control_attack_succeeds_without_tdh2_checks(committee, sealed,
     released = {i: rs.multiply(committee.shares[i], relabelled.u) for i in range(1, T + 1)}
     shared = sharing.combine_in_exponent(released)
     # The attacker re-derives the target's key-encryption key from the target's public label.
-    data_key = AESGCM(tdh2._kek(shared, target_label)).decrypt(
+    data_key = AESGCM(tdh2._kek(RISTRETTO, shared, target_label)).decrypt(
         sealed.ciphertext.key_nonce, sealed.ciphertext.wrapped_key, target_label.encode())
     recovered = AESGCM(data_key).decrypt(sealed.record_nonce, sealed.record_ciphertext, target_label.encode())
     assert recovered == RECORD
