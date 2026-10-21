@@ -1,0 +1,11 @@
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.14\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}X@{}}
+\toprule
+Readiness check & Exercises the secret share? & Touches production ciphertext? & Detects a static state with $k=t-1$ ready shares & Cost per check ($n=32$, ffdhe2048, measured)\\
+\midrule
+Liveness heartbeat & No & No & No: a node that lost its share still answers & 1 message per node; no group operations\\
+Share registration (Feldman/PVSS check) & Once, at setup & No & No: says nothing about later share loss & One-time $O(nt)$ exponentiations at epoch setup\\
+Full-committee canary probe & Yes & No (canary) & Yes, with probability 1 & 32 proofs + 32 verifications; 8501\,ms CPU; 36,991\,B\\
+KEYSTONE sampled canary ($s=q=8$) & Yes, for the sampled members & No (canary) & Yes, with probability 0.9807 (Eq.~\ref{eq:bound}) & 8 proofs + 8 verifications; 2125\,ms CPU; 9,415\,B\\
+Decrypt a real record as a test & Yes & Yes: exposes a production record & Yes & $t$ verifications plus a real disclosure; excluded by design\\
+\bottomrule
+\end{tabularx}

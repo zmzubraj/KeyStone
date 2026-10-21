@@ -1,0 +1,12 @@
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.3\textwidth}X@{}}
+\toprule
+Experiment family & Parameters & Execution and evidence label\\
+\midrule
+Static bound (Eq.~\ref{eq:bound}) & $n\in\{16,32,64,128\}$, $t=n-\lfloor (n-1)/3\rfloor$, $s\in\{1,\dots,16\}$, $q=s$; baseline $n=32,t=22,s=q=8$ & Exact closed form\\
+Simulation cells & $n=32,t=22,s=q=8$, 4 domains of 8. IID: $p_{\mathrm{off}}=0.10$. STRAT: $p_{\mathrm{dom}}=0.20$, $p_{\mathrm{off}}=0.02$, uniform vs.\ 2-per-domain quota. SW: $w=11$ & 32 seed blocks $\times$ 4{,}096 draws $=131{,}072$ per cell; seeds frozen before execution; simulation\\
+Correlation model & $f\in\{0,0.025,\dots,0.40\}$; IID vs.\ 2/4/8 equal domains & Exact; declared synthetic model\\
+Acceptance rule & $s\in\{8,12,16\}$, $q\in[\lceil s/2\rceil,s]$, IID $f\in\{0.05,0.10,0.20\}$ & Exact; post hoc\\
+Cryptographic cost & ffdhe2048, ffdhe3072 (RFC 7919) and the 256-bit prototype group; $n\le 128$ & Local microbenchmark, CPython 3.13, Apple M4 Pro\\
+Deadline testbed & ffdhe2048, $n=32,t=22$; 8 profiles $\times$ 300 traces; one-way delay lognormal (median 0/40/120\,ms); 2\% loss; 10 or 11 crashes; one-domain outage; $\Delta_d\in\{0.25,0.5,1,2,5\}$\,s & 32 custodian processes on one host, loopback TCP, real cryptography; emulation\\
+\bottomrule
+\end{tabularx}

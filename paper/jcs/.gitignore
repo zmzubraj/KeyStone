@@ -1,0 +1,15 @@
+# LaTeX build outputs
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+out.txt
+build.log
+missfont.log
+KEYSTONE_JCS.pdf
+# Title page and cover letter contain the author's postal address: keep local only
+submission/Title_Page.*
+submission/Cover_Letter.*
+.DS_Store
