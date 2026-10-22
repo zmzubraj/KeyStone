@@ -34,6 +34,7 @@ import math
 import multiprocessing as mp
 import os
 import random
+import socket
 import struct
 import subprocess
 import sys
@@ -203,7 +204,11 @@ async def open_all(n: int) -> dict:
 
 
 def close_all(connections: dict) -> None:
+    # Abortive close (SO_LINGER 0): no TIME_WAIT, so 64 fresh connections per trace cannot exhaust ephemeral ports.
     for _, writer in connections.values():
+        sock = writer.get_extra_info("socket")
+        if sock is not None:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER, struct.pack("ii", 1, 0))
         writer.close()
 
 
