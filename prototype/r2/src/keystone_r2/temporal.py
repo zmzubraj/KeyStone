@@ -267,8 +267,15 @@ def largest_interval(metric, target: float, lo: float, hi: float, iterations: in
 
 
 # ---------------------------------------------------------------- repair on alarm (R2c, design R2C-DESIGN.md)
-def reset_members(model, dist: np.ndarray) -> np.ndarray:
-    """Resharing: every custodian becomes individually up; domain states are unchanged."""
+def reset_members(model, dist: np.ndarray, gate: int | None = None) -> np.ndarray:
+    """Resharing: every custodian becomes individually up; domain states are unchanged.
+
+    With ``gate`` = t (R2d), resharing happens only in states with at least t ready custodians, because the
+    shares of fewer than t cannot reconstruct the epoch secret; other states are left unchanged.
+    """
+    if gate is not None:
+        ok = model.ready >= gate
+        return reset_members(model, dist * ok) + dist * ~ok
     if isinstance(model, IndependentModel):
         out = np.zeros_like(dist)
         out[-1] = dist.sum()
@@ -284,16 +291,18 @@ def reset_members(model, dist: np.ndarray) -> np.ndarray:
     return dist
 
 
-def repair_step(model, dist: np.ndarray, T: float, accept: np.ndarray, repair_delay: float) -> np.ndarray:
+def repair_step(model, dist: np.ndarray, T: float, accept: np.ndarray, repair_delay: float,
+                gate: int | None = None) -> np.ndarray:
     """One audit interval: accept and evolve over T, or reject, evolve over D_r, reset, evolve over T - D_r."""
     accepted = model.propagate(dist * accept, T)
     rejected = model.propagate(dist * (1.0 - accept), repair_delay)
-    rejected = model.propagate(reset_members(model, rejected), T - repair_delay)
+    rejected = model.propagate(reset_members(model, rejected, gate), T - repair_delay)
     return accepted + rejected
 
 
 def repair_stationary(model, T: float, s: int, q: int, repair_delay: float, tol: float = 1e-13,
-                      max_steps: int = 200_000, start: np.ndarray | None = None) -> tuple[np.ndarray, int]:
+                      max_steps: int = 200_000, start: np.ndarray | None = None,
+                      gate: int | None = None) -> tuple[np.ndarray, int]:
     """Stationary law of the state just before an audit under the repair rule (power iteration).
 
     The limit does not depend on the start (the kernel is positive for T > 0); ``start`` only speeds it up.
@@ -303,7 +312,7 @@ def repair_stationary(model, T: float, s: int, q: int, repair_delay: float, tol:
     accept = emission(model, s, q)
     dist = model.stationary() if start is None else start
     for step in range(1, max_steps + 1):
-        nxt = repair_step(model, dist, T, accept, repair_delay)
+        nxt = repair_step(model, dist, T, accept, repair_delay, gate)
         nxt = nxt / nxt.sum()
         if np.abs(nxt - dist).sum() < tol:
             return nxt, step
@@ -312,12 +321,13 @@ def repair_stationary(model, T: float, s: int, q: int, repair_delay: float, tol:
 
 
 def repair_metrics(model, T: float, s: int, q: int, t: int, repair_delay: float,
-                   start: np.ndarray | None = None) -> dict:
-    """F_rep, U_rep, repairs per day and benign fraction under the repair rule."""
-    mu, steps = repair_stationary(model, T, s, q, repair_delay, start=start)
+                   start: np.ndarray | None = None, gate: int | None = None) -> dict:
+    """F_rep, U_rep, repairs per day and benign fraction under the repair rule (``gate``: see reset_members)."""
+    mu, steps = repair_stationary(model, T, s, q, repair_delay, start=start, gate=gate)
     accept = emission(model, s, q)
     acc, rej = mu * accept, mu * (1.0 - accept)
-    after = reset_members(model, model.propagate(rej, repair_delay))
+    before_reset = model.propagate(rej, repair_delay)
+    after = reset_members(model, before_reset, gate)
 
     def integral(start: np.ndarray, length: float) -> float:
         if length <= 0:
@@ -329,6 +339,8 @@ def repair_metrics(model, T: float, s: int, q: int, t: int, repair_delay: float,
     failure = (integral(acc, T) + integral(rej, repair_delay) + integral(after, T - repair_delay)) / T
     p_reject = float(rej.sum())
     benign = float(rej[model.ready >= t].sum()) / p_reject if p_reject > 0 else 0.0
+    p_reshare = p_reject if gate is None else float(before_reset[model.ready >= gate].sum())
     return {"failure": failure, "undetected": undetected, "p_reject": p_reject,
-            "repairs_per_day": 24.0 / T * p_reject, "audits_per_day": 24.0 / T, "benign_fraction": benign,
+            "repairs_per_day": 24.0 / T * p_reshare, "alarms_per_day": 24.0 / T * p_reject,
+            "audits_per_day": 24.0 / T, "benign_fraction": benign,
             "steps": steps, "stationary": mu}

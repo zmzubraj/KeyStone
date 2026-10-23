@@ -93,3 +93,44 @@ def test_withholding_formulas() -> None:
     assert withholding.audit_pass(32, 8, 8, 11, 0.99) >= withholding.audit_pass(32, 8, 8, 0, 0.99)
     assert withholding.minimal_coalition(32, 22, 1.0, 0.5) == 11
     assert withholding.minimal_coalition(32, 22, 0.9, 0.5) < 11
+
+
+def test_gated_resharing_is_never_better_and_matches_simulation() -> None:
+    n, t, s, q, T, dr = 6, 4, 3, 3, 6.0, 1.0
+    model = IndependentModel(n, LAM, MU)
+    free = temporal.repair_metrics(model, T, s, q, t, dr)
+    gated = temporal.repair_metrics(model, T, s, q, t, dr, gate=t)
+    assert gated["failure"] >= free["failure"] and gated["repairs_per_day"] <= gated["alarms_per_day"]
+    assert math.isclose(free["repairs_per_day"], free["alarms_per_day"])
+    rng = random.Random(23)
+    up = [rng.random() < MU / (LAM + MU) for _ in range(n)]
+    nxt = [rng.expovariate(LAM if u else MU) for u in up]
+
+    def at(time):
+        for i in range(n):
+            while nxt[i] <= time:
+                up[i] = not up[i]
+                nxt[i] += rng.expovariate(LAM if up[i] else MU)
+        return sum(up)
+
+    def reshare(time):
+        if at(time) >= t:
+            for i in range(n):
+                up[i] = True
+                nxt[i] = time + rng.expovariate(LAM)
+
+    fail = 0
+    intervals = 120_000
+    for m in range(intervals + 2_000):
+        a = m * T
+        at(a)
+        reject = sum(up[i] for i in rng.sample(range(n), s)) < q
+        u = rng.random() * T
+        if reject and u >= dr:
+            reshare(a + dr)
+        cat = at(a + u) < t
+        if reject and u < dr:
+            reshare(a + dr)
+        if m >= 2_000:
+            fail += cat
+    assert abs(fail / intervals - gated["failure"]) < 4 * math.sqrt(gated["failure"] / intervals) + 1e-4

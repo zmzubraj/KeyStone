@@ -38,14 +38,17 @@ DESIGN = ROOT / "research-case/03-design/r2c-repair-withholding"
 SMOKE = os.environ.get("KEYSTONE_R2C_SMOKE_DIR")
 OUT = Path(SMOKE) if SMOKE else ROOT / "research-case/05-analysis/results/r2c"
 N, THRESHOLD = 32, 22
+FREEZE_NAME = "r2c-design-freeze"  # R2d reuses this runner with its own freeze and GATE = t
+GATE: int | None = None
+SEED_PREFIX = "KEYSTONE-R2C|REPAIR|"
 
 
 def freeze() -> tuple[str, dict]:
-    raw = (DESIGN / "r2c-design-freeze.json").read_bytes()
+    raw = (DESIGN / f"{FREEZE_NAME}.json").read_bytes()
     actual = hashlib.sha256(raw).hexdigest()
-    recorded = (DESIGN / "r2c-design-freeze.SHA256SUMS").read_text().split()[0]
+    recorded = (DESIGN / f"{FREEZE_NAME}.SHA256SUMS").read_text().split()[0]
     if actual != recorded:
-        sys.exit(f"ABORT: r2c-design-freeze.json hash {actual} != recorded {recorded}")
+        sys.exit(f"ABORT: {FREEZE_NAME}.json hash {actual} != recorded {recorded}")
     return actual, json.loads(raw)
 
 
@@ -67,10 +70,12 @@ def run_repair(fh: str, spec: dict) -> None:
         gw, dw = csv.writer(gf), csv.writer(df)
         gw.writerow(["freeze_sha256", "domain_shock", "mtbf_days", "mttr_hours", "T_hours", "repair_delay_hours", "s",
                      "q", "failure_with_repair", "undetected_with_repair", "failure_no_repair", "p_reject",
-                     "repairs_per_day", "audits_per_day", "benign_fraction", "steps"])
+                     "repairs_per_day", "audits_per_day", "benign_fraction", "steps"]
+                    + (["alarms_per_day"] if GATE is not None else []))
         dw.writerow(["freeze_sha256", "domain_shock", "mtbf_days", "mttr_hours", "repair_delay_hours", "s", "q",
                      "target", "largest_grid_T_hours", "continuous_T_hours", "status", "monotone_on_check_grid",
-                     "audits_per_day_at_T", "repairs_per_day_at_T", "benign_fraction_at_T"])
+                     "audits_per_day_at_T", "repairs_per_day_at_T", "benign_fraction_at_T"]
+                    + (["alarms_per_day_at_T"] if GATE is not None else []))
         for shock, mtbf, mttr in cells:
             model = make_model(mtbf, mttr, shock)
             base = temporal.stationary_catastrophic(model, THRESHOLD)
@@ -78,18 +83,19 @@ def run_repair(fh: str, spec: dict) -> None:
                 for s, q in designs:
                     per_T = {}
                     for T in g["audit_interval_hours"]:
-                        r = temporal.repair_metrics(model, T, s, q, THRESHOLD, dr)
+                        r = temporal.repair_metrics(model, T, s, q, THRESHOLD, dr, gate=GATE)
                         per_T[T] = r["failure"]
                         gw.writerow([fh, shock_label(shock), mtbf, mttr, T, dr, s, q, f"{r['failure']:.6e}",
                                      f"{r['undetected']:.6e}", f"{base:.6e}", f"{r['p_reject']:.6e}",
                                      f"{r['repairs_per_day']:.6e}", f"{r['audits_per_day']:.4f}",
-                                     f"{r['benign_fraction']:.6f}", r["steps"]])
+                                     f"{r['benign_fraction']:.6f}", r["steps"]]
+                                    + ([f"{r['alarms_per_day']:.6e}"] if GATE is not None else []))
                     gf.flush()
 
                     warm = {"mu": None}
 
                     def metric(T: float) -> float:
-                        r = temporal.repair_metrics(model, T, s, q, THRESHOLD, dr, start=warm["mu"])
+                        r = temporal.repair_metrics(model, T, s, q, THRESHOLD, dr, start=warm["mu"], gate=GATE)
                         warm["mu"] = r["stationary"]
                         return r["failure"]
 
@@ -101,11 +107,14 @@ def run_repair(fh: str, spec: dict) -> None:
                         res = temporal.largest_interval(metric, target, lo_T, hi_T,
                                                         iterations=spec["design"]["bisection_iterations"])
                         if res["T"] is not None:
-                            at = temporal.repair_metrics(model, res["T"], s, q, THRESHOLD, dr, start=warm["mu"])
+                            at = temporal.repair_metrics(model, res["T"], s, q, THRESHOLD, dr, start=warm["mu"],
+                                                         gate=GATE)
                             extra = [f"{at['audits_per_day']:.4f}", f"{at['repairs_per_day']:.6e}",
                                      f"{at['benign_fraction']:.6f}"]
+                            if GATE is not None:
+                                extra.append(f"{at['alarms_per_day']:.6e}")
                         else:
-                            extra = ["", "", ""]
+                            extra = ["", "", ""] + ([""] if GATE is not None else [])
                         dw.writerow([fh, shock_label(shock), mtbf, mttr, dr, s, q, target, max(ok) if ok else "",
                                      "" if res["T"] is None else f"{res['T']:.4f}", res["status"], monotone] + extra)
                     df.flush()
@@ -113,7 +122,7 @@ def run_repair(fh: str, spec: dict) -> None:
 
 
 def simulate_repair(cell: dict, intervals: int, burn_in: int) -> dict:
-    seed = int.from_bytes(hashlib.sha256(f"KEYSTONE-R2C|REPAIR|{cell['cell_id']}".encode()).digest()[:8], "big")
+    seed = int.from_bytes(hashlib.sha256(f"{SEED_PREFIX}{cell['cell_id']}".encode()).digest()[:8], "big")
     rng = random.Random(seed)
     lam, mu = 1.0 / (cell["mtbf_days"] * DAY), 1.0 / cell["mttr_hours"]
     members = [Chain(rng, lam, mu) for _ in range(N)]
@@ -128,6 +137,8 @@ def simulate_repair(cell: dict, intervals: int, burn_in: int) -> dict:
         return [c.at(rng, when) and (not dom or dom[i % 4]) for i, c in enumerate(members)]
 
     def reshare(when: float) -> None:
+        if GATE is not None and sum(ready_at(when)) < GATE:
+            return  # fewer than t shares available: the secret cannot be reshared
         for c in members:
             c.at(rng, when)
             c.up = True
@@ -164,7 +175,7 @@ def run_repair_sim(fh: str, spec: dict) -> None:
                                                                          cell["mttr_domain_hours"])
             model = make_model(cell["mtbf_days"], cell["mttr_hours"], shock)
             exact = temporal.repair_metrics(model, cell["T_hours"], *cell["design"], THRESHOLD,
-                                            cell["repair_delay_hours"])
+                                            cell["repair_delay_hours"], gate=GATE)
             for name, key, values in (("p_reject", "p_reject", res["reject"]), ("failure_with_repair", "failure",
                                       res["failure"]), ("undetected_with_repair", "undetected", res["undetected"])):
                 lo, hi = wilson(sum(values), len(values))
