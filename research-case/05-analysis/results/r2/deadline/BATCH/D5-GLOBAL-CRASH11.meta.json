@@ -1,0 +1,21 @@
+{
+  "variant": "BATCH",
+  "profile_id": "D5-GLOBAL-CRASH11",
+  "profile": {
+    "median_ms": 120,
+    "sigma": 0.6,
+    "loss": 0.0,
+    "crashed": 11,
+    "domain_outage": false
+  },
+  "freeze_sha256": "98e89893c06db3b68640038bb627b7e3e3892885c9a00e2849fba1a1763addb1",
+  "deadline_record_sha256": "bd33a09e903f1e728787c077e921c669162d299d63506b41dd4cbd6ba52d0947",
+  "group": "ristretto255",
+  "dispute_kem": "TDH2",
+  "pid": 25933,
+  "started_unix": 1792709870.338111,
+  "elapsed_s": 3584.918458223343,
+  "traces": 300,
+  "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+  "python": "3.13.13"
+}
