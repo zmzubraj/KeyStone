@@ -1,0 +1,54 @@
+{
+  "schema_id": "KEYSTONE_R2B_DEADLINE_RECORD",
+  "created_utc": "2026-10-23T06:10:20+00:00",
+  "created_before_any_r2b_trace": true,
+  "rule": "Delta_os = smallest x with Pr[Bin(n_live, (1-loss)^2 F_RTT(x - B0)) >= t] >= 0.99; F_RTT = CDF of the sum of two lognormal one-way delays of the profile; none if unattainable",
+  "target": 0.99,
+  "B0_ms": 7.087000000000001,
+  "B0_source": "p99 of FULL_PATH_ZERO_DELAY dispute completion",
+  "calibration_summary_sha256": "7158b2af246a4046ab93aaab37b1972229d68fe0c23c125cb06b5f98c29e1f7c",
+  "r2_freeze_sha256": "98e89893c06db3b68640038bb627b7e3e3892885c9a00e2849fba1a1763addb1",
+  "model": "prototype/r2/src/keystone_r2/deadline_model.py",
+  "profiles": {
+    "D0-CONTROL": {
+      "n_live": 32,
+      "delta_os_ms": 7.087,
+      "reconstructable": true
+    },
+    "D1-REGIONAL": {
+      "n_live": 32,
+      "delta_os_ms": 128.0886,
+      "reconstructable": true
+    },
+    "D2-GLOBAL": {
+      "n_live": 32,
+      "delta_os_ms": 407.5343,
+      "reconstructable": true
+    },
+    "D3-GLOBAL-LOSS2": {
+      "n_live": 32,
+      "delta_os_ms": 435.2682,
+      "reconstructable": true
+    },
+    "D4-GLOBAL-CRASH10": {
+      "n_live": 22,
+      "delta_os_ms": 1175.9009,
+      "reconstructable": true
+    },
+    "D5-GLOBAL-CRASH11": {
+      "n_live": 21,
+      "delta_os_ms": null,
+      "reconstructable": false
+    },
+    "D6-GLOBAL-DOMAIN-OUTAGE": {
+      "n_live": 24,
+      "delta_os_ms": 662.528,
+      "reconstructable": true
+    },
+    "D7-HEAVY-TAIL": {
+      "n_live": 32,
+      "delta_os_ms": 785.3771,
+      "reconstructable": true
+    }
+  }
+}

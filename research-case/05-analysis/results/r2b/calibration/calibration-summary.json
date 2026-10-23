@@ -1,0 +1,35 @@
+{
+  "label": "TRANSPORT_CALIBRATION_SAME_HOST",
+  "design": "r2-deviation-log entries 10 and 11",
+  "started_utc": "2026-10-23T06:08:05+00:00",
+  "finished_utc": "2026-10-23T06:08:08+00:00",
+  "custodians": 32,
+  "needed": 22,
+  "warmup": 20,
+  "traces": 300,
+  "request_bytes": 816,
+  "host": "macOS-15.1-arm64-arm-64bit-Mach-O",
+  "python": "3.13.13",
+  "THREAD": {
+    "median_ms": 1.2339585009613074,
+    "p95_ms": 1.4799580021644942,
+    "p99_ms": 1.9797910063061863,
+    "max_ms": 8.957833000749815
+  },
+  "INLINE": {
+    "median_ms": 0.41252099981647916,
+    "p95_ms": 0.506583004607819,
+    "p99_ms": 0.5807499983347952,
+    "max_ms": 0.7354999979725108
+  },
+  "handoff_per_response_ms": 0.03733806823385583,
+  "FULL_PATH_ZERO_DELAY": {
+    "traces": 300,
+    "successes": 300,
+    "median_ms": 6.825,
+    "p95_ms": 6.997,
+    "p99_ms": 7.087000000000001,
+    "max_ms": 7.204000000000001
+  },
+  "B0_ms": 7.087000000000001
+}

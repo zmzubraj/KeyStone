@@ -1,0 +1,105 @@
+{
+  "schema_id": "KEYSTONE_R2B_DESIGN_FREEZE",
+  "frozen_at_utc": "2026-10-23T06:10:20+00:00",
+  "frozen_before_any_r2b_trace": true,
+  "purpose": "Confirmatory replication of R2_DEADLINE_TESTBED with a deadline corrected after R2: the R2 primary deadline missed on D0 (zero network slack; host overhead not in the formula) and fell short of 99% on D4 (per-leg p99 instead of the quantile of the t-th arrival). The corrected deadline is fixed here from the R2b calibration and the order-statistic model, and tested on fresh traces.",
+  "result_blind_statement": "R2 outcomes were known when this was designed and motivated it; no R2b trace existed. The deadline uses only the calibration run and frozen parameters.",
+  "deviation_log": "research-case/03-design/r2-design-amendment/r2-deviation-log.md (entries 10-12)",
+  "testbed": {
+    "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+    "topology": "32 custodian OS processes, each an asyncio TCP server on 127.0.0.1 holding only its own share; one combiner process (asyncio client) that issues requests, verifies DLEQ proofs as responses arrive, stops at t valid, combines, unwraps the record key and AES-GCM-decrypts Proof verification runs off the combiner event loop (worker thread or process).",
+    "network_emulation": "one-way delay per message drawn by the combiner-side emulator from the trace seed and passed as out-of-band emulation metadata; the custodian sleeps the inbound delay before computing and the outbound delay before replying; lost messages are never answered; no retransmission",
+    "delay_model": "lognormal one-way delay with stated median and sigma (log-space); 0 means no injected delay",
+    "committee": {
+      "n": 32,
+      "t": 22,
+      "domains": "4 x 8 by index mod 4",
+      "keygen": "dealer keygen once per profile run"
+    },
+    "crypto": "ristretto255; dispute partials use TDH2 with label (epoch, record id, policy hash); audit uses beacon-derived canary",
+    "profiles": {
+      "D0-CONTROL": {
+        "median_ms": 0,
+        "sigma": 0,
+        "loss": 0.0,
+        "crashed": 0,
+        "domain_outage": false
+      },
+      "D1-REGIONAL": {
+        "median_ms": 40,
+        "sigma": 0.5,
+        "loss": 0.0,
+        "crashed": 0,
+        "domain_outage": false
+      },
+      "D2-GLOBAL": {
+        "median_ms": 120,
+        "sigma": 0.6,
+        "loss": 0.0,
+        "crashed": 0,
+        "domain_outage": false
+      },
+      "D3-GLOBAL-LOSS2": {
+        "median_ms": 120,
+        "sigma": 0.6,
+        "loss": 0.02,
+        "crashed": 0,
+        "domain_outage": false
+      },
+      "D4-GLOBAL-CRASH10": {
+        "median_ms": 120,
+        "sigma": 0.6,
+        "loss": 0.0,
+        "crashed": 10,
+        "domain_outage": false
+      },
+      "D5-GLOBAL-CRASH11": {
+        "median_ms": 120,
+        "sigma": 0.6,
+        "loss": 0.0,
+        "crashed": 11,
+        "domain_outage": false
+      },
+      "D6-GLOBAL-DOMAIN-OUTAGE": {
+        "median_ms": 120,
+        "sigma": 0.6,
+        "loss": 0.0,
+        "crashed": 0,
+        "domain_outage": true
+      },
+      "D7-HEAVY-TAIL": {
+        "median_ms": 120,
+        "sigma": 1.2,
+        "loss": 0.0,
+        "crashed": 0,
+        "domain_outage": false
+      }
+    },
+    "crash_selection": "crashed members chosen uniformly per trace from the trace seed; domain outage = one domain chosen uniformly per trace, all 8 members silent",
+    "traces_per_profile": 300,
+    "hard_timeout_s": 6.0,
+    "code": "prototype/r2/scripts/run_r2_deadline_testbed.py (unchanged), driven by prototype/r2/scripts/run_r2b_deadline_testbed.py",
+    "trace_seed": "int.from_bytes(SHA256('KEYSTONE-R2B|DEADLINE|' + profile_id + '|' + str(i))[:8], 'big'), identical for both variants (paired)",
+    "variants": {
+      "SERIAL": "primary: serial verification on arrival, stop at t valid",
+      "BATCH": "secondary: verify arrivals in batches by random linear combination; fall back to individual verification on batch failure"
+    },
+    "audit": {
+      "s": 8,
+      "q": 8
+    }
+  },
+  "deadline_record": "r2b-deadline-record.json",
+  "primary_endpoint": "Pr[dispute decrypts the correct plaintext by Delta_os(profile)], SERIAL, per reconstructable profile; for D5-GLOBAL-CRASH11 (no Delta_os) success at any time",
+  "criterion": "a reconstructable profile meets the endpoint if the 95% Wilson upper bound of its success rate is at least 0.99; D5 is expected at 0%",
+  "secondary_endpoints": [
+    "the same for BATCH",
+    "paired SERIAL vs BATCH: exact two-sided McNemar test on success by Delta_os; paired completion-time difference (median and exact sign test) over traces where both succeed",
+    "model check: predicted vs observed success at the R2 deadline Delta_d_star and at Delta_os (prediction inside the Wilson interval)",
+    "success at 0.05, 0.1, 0.25, 0.5, 1, 2, 5 s; completion-time median and p95",
+    "audit pass rate versus exact expectation"
+  ],
+  "interval_method": "Wilson 95% for proportions; order-statistic quantiles for times",
+  "pre_stated_expectation": "success by Delta_os at or near 99% in every reconstructable profile, 0% in D5; no material SERIAL vs BATCH difference; reported whatever the outcome",
+  "claim_boundary": "single host, synthetic delay laws; a replication, not field data"
+}
