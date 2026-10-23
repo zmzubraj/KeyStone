@@ -1,0 +1,19 @@
+{
+  "family": "R2B_DEADLINE_REPLICATION",
+  "variant": "BATCH",
+  "profile_id": "D0-CONTROL",
+  "profile": {
+    "median_ms": 0,
+    "sigma": 0,
+    "loss": 0.0,
+    "crashed": 0,
+    "domain_outage": false
+  },
+  "freeze_sha256": "25952f9f6ee2afb4ab4ef0c2a6076be759bcdc749708b279bdf4a9bdefa61c62",
+  "deadline_record_sha256": "dff04dc41b52016739b1b60fd52c0ecc846e8bcabf0b63d6c233801de59481d2",
+  "seed_rule": "SHA256('KEYSTONE-R2B|DEADLINE|' + profile + '|' + i), shared by both variants",
+  "elapsed_s": 5.12427020072937,
+  "traces": 300,
+  "label": "SINGLE_HOST_EMULATION_REAL_CRYPTO_NOT_FIELD_DATA",
+  "python": "3.13.13"
+}

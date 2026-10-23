@@ -79,6 +79,12 @@ def main() -> None:
                 k = sum(not math.isinf(x) for x in times)
                 criterion = k == 0
                 pred_os = 0.0
+            elif profile["median_ms"] == 0:
+                # Zero injected delay: Delta_os = B0, the calibration p99, so the model's value is 0.99 by
+                # construction (evaluating the step function at x = B0 is a floating-point knife edge).
+                k = sum(x <= deadline for x in times)
+                criterion = wilson(k, n)[1] >= 0.99
+                pred_os = 0.99
             else:
                 k = sum(x <= deadline for x in times)
                 criterion = wilson(k, n)[1] >= 0.99

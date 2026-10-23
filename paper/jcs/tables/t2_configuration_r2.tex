@@ -7,7 +7,7 @@ Simulation cells & $n=32,t=22,s=q=8$, 4 domains of 8. IID: $p_{\mathrm{off}}=0.1
 Correlation model & $f\in\{0,0.025,\dots,0.40\}$; IID vs.\ 2/4/8 equal domains & Exact; declared synthetic model\\
 Acceptance rule & $s\in\{8,12,16\}$, $q\in[\lceil s/2\rceil,s]$, IID $f\in\{0.05,0.10,0.20\}$ & Exact; post hoc\\
 Cryptographic cost & R1: ffdhe groups, $n\le 128$. R2: ristretto255 and ffdhe, 1{,}000 runs & Microbenchmark, CPython 3.13, Apple M4 Pro\\
-Deadline testbed & R2: ristretto255, TDH2, $n=32,t=22$; 8 profiles $\times$ 300 traces $\times$ 2 variants; lognormal delay (median 0/40/120\,ms), 2\% loss, 10 or 11 crashes, domain outage. R1 for comparison & 32 processes on one host, loopback TCP; emulation\\
+Deadline testbed & R2 and R2b (fresh paired seeds): ristretto255, TDH2, $n=32,t=22$; 8 profiles $\times$ 300 traces $\times$ 2 variants; lognormal delay (median 0/40/120\,ms), loss, crashes, domain outage & 32 processes on one host; emulation\\
 Temporal readiness & MTBF 7/30/90\,d, MTTR 1/6/24\,h, $T$ 1/6/24\,h, $(s,q)$ $(8,8)$/$(16,14)$/$(24,20)$; domain shocks & Exact, synthetic; 3-cell simulation check\\
 \bottomrule
 \end{tabularx}

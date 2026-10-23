@@ -29,7 +29,7 @@
 \begin{document}
 \maketitle
 
-\noindent This supplement gives full proofs of the results that the article states with proof sketches (Lemmas~1--4 and Theorems~2 and~3, with the limit after accepted audits), the stratified-sampling formula (Proposition~S1), and the figures and tables moved out of the article for length. Notation follows the article; assumption, lemma, theorem and equation numbers refer to it. The temporal results are exact under the declared model; their parameters are synthetic.
+\noindent This supplement gives full proofs of the results that the article states with proof sketches (Lemmas~1--4, Corollary~2 and Theorems~2 and~3, with the limit after accepted audits), the stratified-sampling formula (Proposition~S1), and the figures and tables moved out of the article for length. Notation follows the article; assumption, lemma, theorem and equation numbers refer to it. The temporal results are exact under the declared model; their parameters are synthetic.
 
 \section{Proofs for the audit (Lemmas 1--3)}
 
@@ -89,6 +89,18 @@ Record identifiers are unique (Assumption~3), so distinct records have distinct 
 \]
 which is negligible under Assumptions~1 and~5. The canary path does not use the KEM and its oracles are domain separated from the TDH2 oracles, so Lemma~2 holds unchanged. Proposition~1 shows that the label and validity checks are necessary: without them, the release of a re-submitted $C_1$ under a fresh identifier answers the challenge.
 \end{proof}
+
+\section{Proof of Corollary 2 (stochastic deadline)}
+
+\begin{lemmaS}[Corollary 2]
+Suppose $n_\ell$ custodians can answer, each response is delivered independently with probability $p_\ell$ after a round trip with distribution function $F$, and the combiner finishes within $B$ after the $t$-th valid response. Then $\Pr[\mathrm{DDL}(r,E,\tau,\Delta_d)]\ge\Pr[\mathrm{Bin}(n_\ell,p_\ell F(\Delta_d-B))\ge t]$.
+\end{lemmaS}
+
+\begin{proof}
+Each of the $n_\ell$ responses is delivered within $\Delta_d-B$ of the request independently with probability $p_\ell F(\Delta_d-B)$, so their number $M$ is $\mathrm{Bin}(n_\ell,p_\ell F(\Delta_d-B))$. On the event $M\ge t$, the $t$-th valid response arrives by $\tau+\Delta_d-B$ and the combiner finishes by $\tau+\Delta_d$, so $\mathrm{DDL}$ holds.
+\end{proof}
+
+\noindent In the R2b replication, $F$ is the law of the injected two-leg delay, $p_\ell=(1-\mathrm{loss})^2$, and $B$ is the 99th percentile of the dispute completion time at zero injected delay, which absorbs transport, decoding and the combiner's work. $B$ is therefore a high quantile rather than a bound, and the 0.99 target of $\Delta_{os}$ is approximate; the replication tests it on fresh traces.
 
 \section{Proofs for readiness over time}
 
@@ -201,6 +213,15 @@ Threshold-release systems\cite{kokoriskogias2020calypso,stengele2021ethtid,bebel
 KEYSTONE & $q$ of $s$ sampled custodians can apply their shares now; $t$ custodians serve a dispute by $\Delta_d$ & Before release (canary) and at release & Bulletin board\\
 \bottomrule
 \end{tabularx}
+\end{table}
+
+\begin{table}[ht]
+\caption{Readiness checks compared (R1 prototype). Costs are R1 medians for ffdhe2048; bytes are canonical request plus response transcripts.}
+\label{tab:s-baselines}
+\centering
+\footnotesize
+% The table cites the article's Eq. (2); render that reference as the article number.
+{\renewcommand{\ref}[1]{2}\input{../tables/t3_baselines.tex}}
 \end{table}
 
 \bibliographystyle{unsrtnat}

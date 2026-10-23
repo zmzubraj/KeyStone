@@ -1,0 +1,17 @@
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{R2 (frozen deadline)} & \multicolumn{4}{c}{R2b (corrected deadline, fresh traces)} & R1\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-8}\cmidrule(l){9-9}
+Profile & $\Delta_d^{*}$ & serial & batch & $\Delta_{os}$ & serial & batch & median & median\\
+ & (ms) & & & (ms) & & & (ms) & (ms)\\
+\midrule
+control & 4.4 & 0.0\% & 0.0\% & 7.1 & 83.3\% [78.7, 87.1] & 99.3\% & 6.9 & 3818\\
+regional & 260 & 100.0\% & 100.0\% & 128 & 98.7\% [96.6, 99.5] & 87.7\% & 108 & 3841\\
+global & 974 & 100.0\% & 100.0\% & 408 & 98.7\% [96.6, 99.5] & 98.3\% & 325 & 3875\\
+global loss2 & 974 & 100.0\% & 100.0\% & 435 & 98.7\% [96.6, 99.5] & 98.0\% & 340 & 3829\\
+global crash10 & 974 & 97.3\% & 94.7\% & 1176 & 99.0\% [97.1, 99.7] & 99.0\% & 602 & 3692\\
+global crash11 & 974 & 0.0\% & 0.0\% & -- & 0.0\% [0.0, 1.3] & 0.0\% & -- & --\\
+global domain outage & 974 & 100.0\% & 100.0\% & 663 & 99.3\% [97.6, 99.8] & 99.0\% & 464 & 3700\\
+heavy tail & 3918 & 100.0\% & 100.0\% & 785 & 100.0\% [98.7, 100.0] & 100.0\% & 464 & 3771\\
+\bottomrule
+\end{tabular}

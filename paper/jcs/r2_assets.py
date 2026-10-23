@@ -25,6 +25,8 @@ ROOT = HERE.parents[1]
 DESIGN = ROOT / "research-case/03-design/r2-design-amendment"
 R2 = ROOT / "research-case/05-analysis/results/r2"
 R1_DEADLINE = ROOT / "research-case/05-analysis/results/r1/deadline"
+R2B = ROOT / "research-case/05-analysis/results/r2b"
+R2B_DESIGN = ROOT / "research-case/03-design/r2b-replication"
 TABLES = HERE / "tables"
 T_DESIGN = 22  # dispute threshold t of the R2 committee (n = 32)
 
@@ -69,6 +71,72 @@ def r1_median_ms(profile_id: str) -> float | None:
     return None if math.isinf(point) else 1000 * point
 
 
+def r2b_assets(r2_summary: dict) -> dict:
+    """R2 + R2b testbed table and macros for the replication, calibration and model check."""
+    sums = (R2B_DESIGN / "r2b-design-freeze.SHA256SUMS").read_text().split()
+    fh = hashlib.sha256((R2B_DESIGN / "r2b-design-freeze.json").read_bytes()).hexdigest()
+    assert fh == sums[0], "R2b freeze hash mismatch"
+    rb = {(r["variant"], r["profile_id"]): r for r in rows(R2B / "deadline/r2b-summary.csv")}
+    paired = {r["profile_id"]: r for r in rows(R2B / "deadline/r2b-paired.csv")}
+    assert all(r["freeze_sha256"] == fh for r in list(rb.values()) + list(paired.values())) and len(rb) == 16
+    calib = json.loads((R2B / "calibration/calibration-summary.json").read_text())
+    pred = {(r["variant"], r["profile_id"], r["endpoint"]): r
+            for r in rows(R2 / "deadline/deadline-predictions.csv")}
+
+    def rate(r: dict, key: str = "rate") -> str:
+        return pct(float(r[key]))
+
+    def wil(r: dict) -> str:
+        lo, hi = (float(x) for x in r["wilson95"].strip("[]").split(","))
+        return f"[{100 * lo:.1f}, {100 * hi:.1f}]"
+
+    def ms(x: float) -> str:
+        return f"{x:.1f}" if x < 10 else f"{x:.0f}"
+
+    lines = ["\\begin{tabular}{@{}lrrrrrrrr@{}}", "\\toprule",
+             " & \\multicolumn{3}{c}{R2 (frozen deadline)} & \\multicolumn{4}{c}{R2b (corrected deadline, fresh traces)} & R1\\\\",
+             "\\cmidrule(lr){2-4}\\cmidrule(lr){5-8}\\cmidrule(l){9-9}",
+             "Profile & $\\Delta_d^{*}$ & serial & batch & $\\Delta_{os}$ & serial & batch & median & median\\\\",
+             " & (ms) & & & (ms) & & & (ms) & (ms)\\\\", "\\midrule"]
+    for pid, name in PROFILES:
+        s2, b2 = r2_summary[("SERIAL", pid)], r2_summary[("BATCH", pid)]
+        sb, bb = rb[("SERIAL", pid)], rb[("BATCH", pid)]
+        dstar = 1000 * float(s2["primary_deadline_s"])
+        dos = "--" if sb["delta_os_ms"] == "none" else ms(float(sb["delta_os_ms"]))
+        med = "--" if sb["completion_median_s"] == "censored" else ms(1000 * float(sb["completion_median_s"]))
+        r1 = r1_median_ms(pid)
+        lines.append(f"{name} & {ms(dstar)} & {rate(s2, 'primary_rate')} & {rate(b2, 'primary_rate')} & {dos} & "
+                     f"{rate(sb)} {wil(sb)} & {rate(bb)} & {med} & {'--' if r1 is None else f'{r1:.0f}'}\\\\")
+    lines += ["\\bottomrule", "\\end{tabular}", ""]
+    (TABLES / "t4b_testbed_r2b.tex").write_text("\n".join(lines))
+
+    delayed = [p for p, _ in PROFILES if p not in ("D0-CONTROL", "D5-GLOBAL-CRASH11")]
+    slow = [float(paired[p]["median_batch_minus_serial_ms"]) for p in delayed]
+    sign_p = max(float(paired[p]["sign_test_exact_p"]) for p in delayed)
+    meets = sum(rb[("SERIAL", p)]["meets_criterion"] == "True" for p, _ in PROFILES)
+    audits = sum(r["audit_expected_in_wilson95"] == "True" for r in rb.values())
+    d4 = rb[("SERIAL", "D4-GLOBAL-CRASH10")]
+    s0, b0r, b1 = rb[("SERIAL", "D0-CONTROL")], rb[("BATCH", "D0-CONTROL")], rb[("BATCH", "D1-REGIONAL")]
+    return {
+        "RtwobBzero": f"{calib['B0_ms']:.2f}",
+        "RtwobCalibMed": f"{calib['FULL_PATH_ZERO_DELAY']['median_ms']:.2f}",
+        "RtwobNullMed": f"{calib['THREAD']['median_ms']:.2f}",
+        "RtwobHandoffUs": f"{1000 * calib['handoff_per_response_ms']:.0f}",
+        "RtwobMeets": str(meets),
+        "RtwobControlSucc": s0["success_by_delta_os"], "RtwobControlRate": rate(s0), "RtwobControlWilson": wil(s0),
+        "RtwobControlMed": ms(1000 * float(s0["completion_median_s"])),
+        "RtwobControlBatch": rate(b0r), "RtwobRegionalBatch": rate(b1),
+        "RtwobOsGlobal": ms(float(rb[("SERIAL", "D2-GLOBAL")]["delta_os_ms"])),
+        "RtwobOsHeavy": ms(float(rb[("SERIAL", "D7-HEAVY-TAIL")]["delta_os_ms"])),
+        "RtwobDfourAtDstar": rate(d4, "rate_at_r2_delta_d_star"),
+        "RtwoDfourPred": pct(float(pred[("SERIAL", "D4-GLOBAL-CRASH10", "primary")]["predicted"])),
+        "RtwobAuditInside": str(audits),
+        "RtwobBatchSlowLo": f"{min(slow):.0f}", "RtwobBatchSlowHi": f"{max(slow):.0f}",
+        "RtwobBatchFastZero": f"{-float(paired['D0-CONTROL']['median_batch_minus_serial_ms']):.1f}",
+        "RtwobSignPBound": f"10^{{{math.floor(math.log10(sign_p)) + 1}}}",
+    }
+
+
 def write_configuration_table() -> None:
     """Extend the derived configuration table (derive_assets.py) with the R2 experiment families."""
     lines = (TABLES / "t2_configuration.tex").read_text().splitlines()
@@ -76,9 +144,9 @@ def write_configuration_table() -> None:
     bed = next(i for i, l in enumerate(lines) if l.startswith("Deadline testbed"))
     lines[crypto] = ("Cryptographic cost & R1: ffdhe groups, $n\\le 128$. R2: ristretto255 and ffdhe, 1{,}000 runs "
                      "& Microbenchmark, CPython 3.13, Apple M4 Pro\\\\")
-    lines[bed] = ("Deadline testbed & R2: ristretto255, TDH2, $n=32,t=22$; 8 profiles $\\times$ 300 traces "
-                  "$\\times$ 2 variants; lognormal delay (median 0/40/120\\,ms), 2\\% loss, 10 or 11 crashes, "
-                  "domain outage. R1 for comparison & 32 processes on one host, loopback TCP; emulation\\\\")
+    lines[bed] = ("Deadline testbed & R2 and R2b (fresh paired seeds): ristretto255, TDH2, $n=32,t=22$; "
+                  "8 profiles $\\times$ 300 traces $\\times$ 2 variants; lognormal delay (median 0/40/120\\,ms), "
+                  "loss, crashes, domain outage & 32 processes on one host; emulation\\\\")
     lines.insert(bed + 1, "Temporal readiness & MTBF 7/30/90\\,d, MTTR 1/6/24\\,h, $T$ 1/6/24\\,h, "
                           "$(s,q)$ $(8,8)$/$(16,14)$/$(24,20)$; domain shocks & Exact, synthetic; "
                           "3-cell simulation check\\\\")
@@ -271,6 +339,7 @@ def main() -> None:
     })
 
     write_configuration_table()
+    macros.update(r2b_assets(summary))
 
     header = [f"% Generated by paper/jcs/r2_assets.py from committed R2 results; R2 freeze {fh[:12]}."]
     (TABLES / "r2_numbers.tex").write_text(

@@ -17,9 +17,9 @@ Portal: https://mc.manuscriptcentral.com/j-cs (ScholarOne). Journal: https://jou
 
 - Article type: Research article
 - Title: KEYSTONE: Readiness Audits for Dispute-Key Availability in Encrypted Rollups
-- Abstract: copy from the manuscript (197 words in the rendered PDF; limit 150 to 200)
+- Abstract: copy from the manuscript (193 words in the rendered PDF; limit 150 to 200)
 - Keywords: Dispute-key availability; threshold decryption; encrypted rollups; readiness audit; acceptance sampling; selective withholding
-- Counts: 10,984 words in the whole PDF incl. references, tables and figure labels; 23 pages, 2 figures, 8 tables, 45 references; supplement 8 pages
+- Counts: 10,974 words in the whole PDF incl. references, tables and figure labels; 23 pages, 2 figures, 7 tables, 45 references; supplement 8 pages (Tables S1 to S4)
 - Funding: none. Conflicts: none.
 - Preprint: none on a preprint server (an earlier draft is in the public GitHub repository; this is disclosed in the cover letter)
 - Suggested reviewers: not accepted by this journal
@@ -73,6 +73,17 @@ Plan: `paper/jcs/reviews/R2-PAPER-INTEGRATION-PLAN.md` (author approved all reco
 - Moved to the supplement: full proofs of Lemmas 1 to 3, Figures 2 and 6, scalability, gas and related-work tables. RFC 9496 added; EIP-7594 dropped (45 references).
 - All R2 numbers come from `paper/jcs/r2_assets.py`; the artifact reproduces the R2 tables and the deadline summary byte-identically, and its 89 R2 tests pass.
 - Artifact anonymization: R2 authorization record omitted (its line removed from `r2-design-freeze.SHA256SUMS`); git commit ids in environment and provenance records and in the deviation log redacted.
-- OPEN (author decision): `r2-design-freeze.json` and the design draft it hashes cite the full base commit of the public repository. They cannot be changed without breaking the hash checks. A reviewer could search GitHub for that commit and find the repository. Choose: keep (the cover letter already discloses the public draft) or ship R2 design files only after review.
-- Human gates unchanged: the expert read-through must cover the new proofs (Lemma 4 and the temporal results were drafted with AI assistance), and the AI-use declaration must stay true.
+- RESOLVED 2026-10-23 (author: keep): `r2-design-freeze.json` and the design draft it hashes cite the full base commit of the public repository. They cannot be changed without breaking the hash checks. A reviewer could search GitHub for that commit and find the repository. Choose: keep (the cover letter already discloses the public draft) or ship R2 design files only after review.
+- Human gates unchanged: the expert read-through must cover the new proofs, all drafted with AI assistance: Definition 6 (PAC), Assumption 5, Lemma 4, Corollary 2 (stochastic deadline), Theorems 2 and 3, and their supplement proofs. The AI-use declaration must stay true.
 - AI cold read of the R2 changes and the fixes: `paper/jcs/reviews/cold_read_R2_2026-10-23.md` (3 must-fix, 7 should-fix, 7 minor; all addressed). Notable: Definition 6 (PAC) is now plaintext indistinguishability, because the earlier key-indistinguishability form was trivially winnable; Assumption 5 states TDH2's KEM security; Theorem 3 now proves U monotone and never below its floor (deviation entry 9).
+
+## Deadline diagnosis and R2b replication (2026-10-23)
+
+- B (post hoc, labelled): Corollary 2 (stochastic deadline: Pr[success] >= Pr[Bin(n_live, p F(Delta - B)) >= t]) and `predict_r2_deadline.py`. With frozen parameters it predicts 96.3% for the ten-crash profile; R2 observed 97.3% (serial) and 94.7% (batch).
+- C (calibration, design logged before running): null transport 1.23 ms median (37 us per thread hand-off); full path at zero delay 6.83 ms median, p99 B0 = 7.09 ms.
+- D (pre-registered replication R2b, frozen and pushed before any trace, commit 973fa6f): fresh paired seeds, deadline Delta_os from Corollary 2 with B0.
+  - Serial met the criterion (Wilson upper bound >= 0.99) in 7 of 8 profiles. This includes deadlines far tighter than R2's (408 vs 974 ms under global delay). At the R2 deadline, the ten-crash profile again succeeded in 96.3%, as predicted.
+  - Miss: the control profile reached 83.3% [78.7, 87.1]. Without network slack, host drift of a few percent between the calibration and the run (median 6.83 to 6.9 ms) defeats the deadline.
+  - Paired batch vs serial: batch is 8 to 12 ms slower under delay (sign tests p < 1e-74) and 0.9 ms faster without delay. Batch met the control deadline (99.3%) but missed the regional one (87.7%). The pre-stated "no difference" did not hold; this is reported as a negative result.
+- Deviation entries 10 to 13 record the post hoc model, the calibration design and its revision after the smoke test (before the recorded run), the R2b freeze, the results and one display fix.
+- Paper: Corollary 2 added; Q3 rewritten with R2, the post hoc check, the calibration and R2b; Table 4 now shows R2 and R2b side by side; the baselines table moved to the supplement (Table S4).
