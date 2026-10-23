@@ -1,7 +1,8 @@
 % KEYSTONE: Journal of Computer Security submission (anonymized main manuscript).
 % Built with Sage's sagej.cls (Crown trim, Vancouver/numbered citations).
-% All result numbers are generated macros from ../r1/tables/numbers.tex and the
-% tables are the generated files in ../r1/tables, so text and data cannot drift.
+% All result numbers are generated macros (../r1/tables/numbers.tex, tables/jcs_numbers.tex,
+% tables/r2_numbers.tex from r2_assets.py) and the tables are generated files, so text and
+% data cannot drift.
 \documentclass[Crown,sagev]{sagej}
 
 \usepackage{booktabs}
@@ -49,6 +50,7 @@
 
 \input{../r1/tables/numbers.tex}
 \input{tables/jcs_numbers.tex}
+\input{tables/r2_numbers.tex}
 
 \begin{document}
 \setcounter{secnumdepth}{3}
@@ -62,7 +64,7 @@
 \author{[Author details removed for peer review]}
 
 \begin{abstract}
-Encrypted optimistic rollups can keep ciphertexts and execution receipts available and still fail a dispute because the threshold service that must decrypt the disputed record is unavailable, late or uncooperative. We call the missing property dispute-key availability (DKA) and separate it from ciphertext availability, valid-share registration, audit-time readiness, authorized decryptability and deadline liveness. KEYSTONE audits readiness with sampled canary shares, in the style of threshold-coin shares, carrying Chaum--Pedersen proofs; their transcripts are simulatable from public shares, so audits exercise real shares without revealing any record. We give exact operating characteristics for uniform and stratified samples, a placement condition and a deadline budget. We show that a single small audit cannot separate a committee one share short of its threshold from a live one, whereas a sequential test across audits can, and that confidentiality against parties who obtain other records' releases requires binding each release to its record. Exact analysis, simulation and a single-host 32-process testbed with ffdhe2048 cryptography confirm these separations, show that selective withholders pass every audit while defeating every dispute, and show that serial proof verification bounded completion time in our unoptimized prototype.
+Encrypted optimistic rollups can keep ciphertexts and execution receipts available and still fail a dispute because the threshold service that must decrypt the disputed record is unavailable, late or uncooperative. We call the missing property dispute-key availability (DKA) and separate it from ciphertext availability, valid-share registration, audit-time readiness, authorized decryptability and deadline liveness. KEYSTONE audits readiness with sampled canary shares carrying Chaum--Pedersen proofs; their transcripts are simulatable from public shares, so audits exercise real shares without revealing any record. We give exact operating characteristics, a placement condition and a deadline budget, and show that a single small audit cannot separate a committee one share short of its threshold from a live one, whereas sequential tests can. Under a stated assumption, record-labeled TDH2 restores the confidentiality plain threshold ElGamal loses to parties obtaining other releases. For custodians that fail and recover, a hidden-Markov recursion gives the exact risk that a dispute fails after a given audit history, and a floor shows when auditing more often cannot help. Exact analysis, simulation and a 32-process ristretto255 testbed confirm these results, show that selective withholders pass every audit yet defeat every dispute, and expose a deadline formula that omits host overhead.
 \end{abstract}
 
 \keywords{Dispute-key availability, threshold decryption, encrypted rollups, readiness audit, acceptance sampling, selective withholding}
@@ -72,34 +74,34 @@ Encrypted optimistic rollups can keep ciphertexts and execution receipts availab
 % =====================================================================
 \section{Introduction}\label{sec:intro}
 
-Optimistic rollups execute transactions off chain and accept the result unless a challenger proves it wrong within a dispute window\cite{kalodner2018arbitrum}. When the executed workload is private, as in encrypted machine-learning inference\cite{conway2024opml,eigenai2026}, the records a challenger needs are published only as ciphertexts. Data-availability mechanisms can keep these ciphertexts retrievable. They cannot ensure that the committee holding shares of the decryption key delivers enough valid decryption contributions once a dispute is authorized and before its deadline. A ciphertext that cannot be opened in time is, for the dispute, unavailable. We use AI-rollup disputes as a running example, but nothing in our model depends on the workload: the same question arises wherever a protocol must open threshold-encrypted inputs on demand.
+Optimistic rollups execute transactions off chain and accept the result unless a challenger proves it wrong within a dispute window\cite{kalodner2018arbitrum}. When the executed workload is private, as in encrypted machine-learning inference\cite{conway2024opml,eigenai2026}, the records a challenger needs are published only as ciphertexts. Data-availability mechanisms can keep these ciphertexts retrievable. They cannot ensure that the committee holding shares of the decryption key delivers enough valid decryption contributions once a dispute is authorized and before its deadline. A ciphertext that cannot be opened in time is, for the dispute, unavailable. AI-rollup disputes are our running example, but the question arises wherever a protocol must open threshold-encrypted inputs on demand.
 
-The failure is silent until it is needed. Custodians may lose shares, fail together when a provider or region goes down, or run broken software, and the key must stay serviceable for a dispute window that lasts days and may outlive the committee that sealed the record. A strategic custodian may also answer every routine check and refuse one targeted dispute; we show that no audit of the kind studied here can detect that, and treat it as a limit rather than a goal. Existing building blocks answer adjacent questions: threshold encryption limits who can decrypt\cite{desmedt1990threshold}, verifiable secret sharing shows that shares were distributed correctly\cite{feldman1987vss,schoenmakers1999pvss}, proactive sharing refreshes them\cite{herzberg1995proactive}, and proofs of retrievability and data-availability sampling check that data can be retrieved\cite{juels2007por,albassam2021fraud}. None produces public evidence that enough custodians can serve an authorized dispute now, or states what such evidence implies.
+The failure is silent until it is needed. Custodians may lose shares, fail together when a provider or region goes down, or run broken software, and the key must stay serviceable for a dispute window that lasts days and may outlive the committee that sealed the record. A strategic custodian may also answer every routine check and refuse one targeted dispute; no audit of the kind studied here can detect that, and we treat it as a limit. Threshold encryption limits who can decrypt\cite{desmedt1990threshold}, verifiable secret sharing shows that shares were distributed correctly\cite{feldman1987vss,schoenmakers1999pvss}, proactive sharing refreshes them\cite{herzberg1995proactive}, and proofs of retrievability and data-availability sampling check that data can be retrieved\cite{juels2007por,albassam2021fraud}. None produces public evidence that enough custodians can serve an authorized dispute now, or states what such evidence implies.
 
-In this article, we study this property, \emph{dispute-key availability} (DKA), and we design and evaluate KEYSTONE, a readiness audit for it that targets non-strategic faults. KEYSTONE seals each record under a fresh key wrapped by a threshold Diffie--Hellman KEM. Routine audits ask a beacon-sampled subset of custodians to apply their shares to a \emph{canary}, a group element hashed from public audit context, and to prove correctness with a Chaum--Pedersen equality-of-discrete-logarithm (DLEQ) proof; each response is structurally a threshold-coin or threshold-signature share on a hashed message\cite{cachin2005constantinople,boldyreva2003threshold}. An authorized dispute applies the same share operation to the disputed record under a public request-and-deadline transcript. Our contributions are:
+We study this property, \emph{dispute-key availability} (DKA), and design and evaluate KEYSTONE, a readiness audit for it that targets non-strategic faults. KEYSTONE seals each record under a fresh key wrapped by a threshold Diffie--Hellman KEM. Routine audits ask a beacon-sampled subset of custodians to apply their shares to a \emph{canary}, a group element hashed from public audit context, and to prove correctness with a Chaum--Pedersen equality-of-discrete-logarithm (DLEQ) proof; each response is structurally a threshold-coin or threshold-signature share on a hashed message\cite{cachin2005constantinople,boldyreva2003threshold}. An authorized dispute applies the same share operation to the disputed record. Our contributions are:
 \begin{enumerate}
-  \item \textbf{A property decomposition} (Section~\ref{sec:properties}): definitions of ciphertext availability, valid-share registration, audit-time readiness, authorized decryptability, deadline liveness, pre-authorization confidentiality and $(\varepsilon,\Delta_d)$-DKA, with constructive witnesses for three inferences a deployment must not draw.
-  \item \textbf{A confidentiality-preserving audit} (Section~\ref{sec:protocol}): we use threshold-coin-style shares as a sampled readiness test; adapting the standard simulation argument, canary transcripts are simulatable from public shares in the random-oracle model, and a coordinator cannot substitute a production record for a canary. We also show that the plain threshold KEM is malleable across records, so confidentiality against parties who obtain other records' releases requires binding each release to its record.
-  \item \textbf{An exact analysis} (Section~\ref{sec:analysis}): full operating characteristics for uniform and stratified samples, showing that small audits cannot separate a committee one share short of $t$ from a live one, the sample sizes and sequential tests that certify a stated safety margin, a placement condition, the detection versus benign-alarm trade-off, and a deadline budget.
-  \item \textbf{An evaluation with labeled evidence} (Section~\ref{sec:evaluation}) that combines exact analysis, three prespecified simulation cells, microbenchmarks at RFC~7919 group sizes and a 32-custodian emulated testbed, and reports negative results: a high benign alarm rate under the strictest rule, a selective-withholding counterexample and a primary deadline endpoint that no profile met.
+  \item \textbf{A property decomposition} (Section~\ref{sec:properties}) of $(\varepsilon,\Delta_d)$-DKA into ciphertext availability, valid-share registration, audit-time readiness, authorized decryptability, deadline liveness and pre-authorization confidentiality, with witnesses for three inferences a deployment must not draw.
+  \item \textbf{A confidentiality-preserving audit} (Section~\ref{sec:protocol}) whose canary transcripts are simulatable from public shares, so audits exercise real shares without opening records. The plain threshold KEM is malleable across records; record-labeled TDH2 restores confidentiality against parties who obtain other releases.
+  \item \textbf{An exact analysis} (Section~\ref{sec:analysis}): operating characteristics, showing that small audits cannot separate a committee one share short of $t$ from a live one; sample sizes and sequential tests that certify a safety margin; a placement condition; a deadline budget; and, for custodians that fail and recover, the exact posterior risk given an audit history, a frequency floor and the longest audit interval meeting a risk target.
+  \item \textbf{An evaluation with labeled evidence} (Section~\ref{sec:evaluation}): exact analysis, prespecified simulation, microbenchmarks and a 32-custodian testbed, with negative results: a high benign alarm rate under the strictest rule, a selective-withholding counterexample and a deadline formula that misses without network delay.
 \end{enumerate}
 None of the primitives is new, and a passed audit does not prove future availability.
 
-Sections~\ref{sec:prelim}--\ref{sec:evaluation} cover preliminaries, model, properties, protocol, analysis and evaluation; Sections~\ref{sec:discussion}--\ref{sec:conclusion} cover design consequences, related work, limitations and conclusions.
+Sections~\ref{sec:prelim}--\ref{sec:evaluation} give the model, properties, protocol, analysis and evaluation, and Sections~\ref{sec:discussion}--\ref{sec:conclusion} discuss them.
 
 % =====================================================================
 \section{Preliminaries}\label{sec:prelim}
 
-\paragraph{Groups and sharing.} Let $\G$ be a cyclic group of prime order $\ell$ with generator $g$ in which the decisional Diffie--Hellman (DDH) problem is hard. The prototype uses the order-$\ell$ subgroup of quadratic residues modulo the RFC~7919 safe primes\cite{rfc7919} (ffdhe2048, ffdhe3072), with $\ell=(p-1)/2$ and $g=4$; $q$ denotes only the acceptance threshold of an audit, and $\binom{a}{b}=0$ when $b>a$ or $b<0$. A secret $x\in\Zq$ is Shamir-shared with a polynomial $f$ of degree $t-1$, $f(0)=x$; custodian $i\in\{1,\dots,n\}$ holds $x_i=f(i)$ and publishes $Y_i=g^{x_i}$\cite{shamir1979share}, verifiable against Feldman commitments\cite{feldman1987vss}. Any $t$ distinct indices $I$ have Lagrange coefficients $\lambda_i^I$ with $\sum_{i\in I}\lambda_i^I x_i=x$.
+\paragraph{Groups and sharing.} Let $\G$ be a cyclic group of prime order $\ell$ with generator $g$ in which the decisional Diffie--Hellman (DDH) problem is hard. The prototype uses ristretto255, a prime-order group built on Curve25519\cite{rfc9496}, and keeps the quadratic residues modulo the RFC~7919 primes\cite{rfc7919} (ffdhe2048, ffdhe3072; $\ell=(p-1)/2$, $g=4$) as a baseline; we write groups multiplicatively, and $q$ denotes only the acceptance threshold of an audit, and $\binom{a}{b}=0$ when $b>a$ or $b<0$. A secret $x\in\Zq$ is Shamir-shared with a polynomial $f$ of degree $t-1$, $f(0)=x$; custodian $i\in\{1,\dots,n\}$ holds $x_i=f(i)$ and publishes $Y_i=g^{x_i}$\cite{shamir1979share}, verifiable against Feldman commitments\cite{feldman1987vss}. Any $t$ distinct indices $I$ have Lagrange coefficients $\lambda_i^I$ with $\sum_{i\in I}\lambda_i^I x_i=x$.
 
-\paragraph{Threshold Diffie--Hellman KEM.} With epoch key $PK=g^{x}$, a sender draws $\rho\leftarrow\Zq$, publishes $C_1=g^{\rho}$ and derives a key-encryption key from $PK^{\rho}$ and the record identifier. Any $t$ partial decryptions $C_1^{x_i}$ determine $C_1^{x}=\prod_{i\in I}(C_1^{x_i})^{\lambda_i^I}$. This threshold ElGamal KEM\cite{desmedt1990threshold} is semantically secure under DDH in the random-oracle model but malleable: anyone can turn $C_1$ into $C_1g^{\gamma}$. Shoup and Gennaro's TDH2 binds a label and a proof of knowledge of $\rho$ to the ciphertext, which makes it secure against chosen-ciphertext attacks\cite{shoup2002securing}; Section~\ref{sec:conf} explains when KEYSTONE needs it.
+\paragraph{Threshold Diffie--Hellman KEM.} With epoch key $PK=g^{x}$, a sender draws $\rho\leftarrow\Zq$, publishes $C_1=g^{\rho}$ and derives a key-encryption key from $PK^{\rho}$ and the record identifier. Any $t$ partial decryptions $C_1^{x_i}$ determine $C_1^{x}=\prod_{i\in I}(C_1^{x_i})^{\lambda_i^I}$. This threshold ElGamal KEM\cite{desmedt1990threshold} is semantically secure under DDH in the random-oracle model but malleable: anyone can turn $C_1$ into $C_1g^{\gamma}$. Shoup and Gennaro's TDH2 binds a label and a proof of knowledge of $\rho$ to the ciphertext, which makes it secure against chosen-ciphertext attacks\cite{shoup2002securing}; KEYSTONE uses it for disputes (Section~\ref{sec:conf}).
 
-\paragraph{DLEQ proofs, hashing and beacon.} A Chaum--Pedersen proof\cite{chaum1992dleq} shows $\log_g Y_i=\log_X D_i$: the prover picks $\nu\leftarrow\Zq$, sends $a_1=g^{\nu}$, $a_2=X^{\nu}$, derives $c=H(g,Y_i,X,D_i,a_1,a_2,\mathsf{ctx})$ by the Fiat--Shamir transform\cite{fiat1987prove} and returns $z=\nu+c\,x_i$; the verifier checks $g^{z}=a_1Y_i^{c}$ and $X^{z}=a_2D_i^{c}$. The protocol is complete, special-sound and honest-verifier zero knowledge, and the request context $\mathsf{ctx}$ ties each proof to one request. $H_G$ maps byte strings to $\G\setminus\{1\}$ with domain separation; we model $H$ and $H_G$ as random oracles. A public beacon outputs values that are unpredictable before publication\cite{das2022spurt}.
+\paragraph{DLEQ proofs, hashing and beacon.} A Chaum--Pedersen proof\cite{chaum1992dleq} shows $\log_g Y_i=\log_X D_i$: the prover picks $\nu\leftarrow\Zq$, sends $a_1=g^{\nu}$, $a_2=X^{\nu}$, derives $c=H(g,Y_i,X,D_i,a_1,a_2,\mathsf{ctx})$ by the Fiat--Shamir transform\cite{fiat1987prove} and returns $z=\nu+c\,x_i$; the verifier checks $g^{z}=a_1Y_i^{c}$ and $X^{z}=a_2D_i^{c}$. The request context $\mathsf{ctx}$ ties each proof to one request. $H_G$ maps byte strings to $\G\setminus\{1\}$ with domain separation; we model $H$ and $H_G$ as random oracles. A public beacon outputs values that are unpredictable before publication\cite{das2022spurt}.
 
 % =====================================================================
 \section{System and threat model}\label{sec:model}
 
-An epoch $E$ has $n$ custodians placed in failure domains (providers, regions, software stacks), a threshold $t$, a key $PK_E$ and registered public shares $Y_1,\dots,Y_n$. A rollup worker encrypts each inference record $r$ under a fresh data key $K_r$ with AES-GCM, wraps $K_r$ under the KEM key derived from $(C_1^{(r)},PK_E)$, and publishes the result to a data-availability (DA) layer. A settlement layer, the \emph{bulletin board}, records registrations, requests, deadlines and evidence and supplies an ordered public clock. A \emph{combiner} inside the authorized destination collects partial decryptions; it learns $K_r$ for records it is authorized to open and is trusted not to disclose it. Dispute partials reach it over authenticated, confidential channels, and the board stores only commitments to responses with their validity status and timestamps, so it never holds enough material to decrypt a record. Canary responses may be public (Lemma~\ref{lem:sim}). Figure~\ref{fig:architecture} shows the three paths.
+An epoch $E$ has $n$ custodians placed in failure domains (providers, regions, software stacks), a threshold $t$, a key $PK_E$ and registered public shares $Y_1,\dots,Y_n$. A rollup worker encrypts each record $r$ under a fresh data key $K_r$ with AES-GCM, wraps $K_r$ under the KEM, and publishes the result to a data-availability (DA) layer. A settlement layer, the \emph{bulletin board}, records registrations, requests, deadlines and evidence and supplies an ordered public clock. A \emph{combiner} inside the authorized destination collects partial decryptions over authenticated, confidential channels; it learns $K_r$ for records it may open and is trusted not to disclose it. The board stores only commitments to responses with their validity status and timestamps, never enough to decrypt a record; canary responses may be public (Lemma~\ref{lem:sim}). Figure~\ref{fig:architecture} shows the three paths.
 
 \begin{figure}[t]
 \centering
@@ -113,18 +115,18 @@ During an epoch the adversary learns fewer than $t$ current shares. DDH is hard 
 \end{assumption}
 
 \begin{assumption}[Beacon]\label{as:beacon}
-An audit's beacon value is unpredictable until its epoch, slot and committee are committed on the bulletin board, and the derived sample is uniform (without replacement, or within each domain quota for stratified samples) and independent of other audits' samples. The prototype seeds a pseudorandom generator with a SHA-256 hash of the beacon; we model this as ideal, and a production system should use a cryptographic sampler.
+An audit's beacon value is unpredictable until its epoch, slot and committee are committed on the bulletin board, and the derived sample is uniform (without replacement, or within each domain quota for stratified samples) and independent of other audits' samples. The prototype derives the sample with a SHA-256 counter stream and rejection sampling, which we model as ideal.
 \end{assumption}
 
 \begin{assumption}[Bulletin board and data availability]\label{as:board}
-The bulletin board is append-only and totally ordered and exposes each request to custodians within $\delta_b$. The DA layer keeps committed ciphertexts and receipts retrievable.
+The bulletin board is append-only and totally ordered and exposes each request to custodians within $\delta_b$. The DA layer keeps committed ciphertexts and receipts retrievable, and record identifiers are unique.
 \end{assumption}
 
 \begin{assumption}[Bounded delay, for deadline statements only]\label{as:sync}
 Messages between non-faulty parties arrive within $\delta$ over channels that authenticate the sending custodian. A non-faulty custodian produces a partial decryption with proof within $c_p$; the combiner verifies one proof within $c_v$ and combines $t$ partials within $c_c$.
 \end{assumption}
 
-Detection and confidentiality statements do not use Assumption~\ref{as:sync}. The adversary may crash custodians individually or by domain, cause share loss, send invalid or equivocal responses, move corruption across epochs, issue unauthorized requests, act as a worker that commits records of its choice and obtains disputes on them, and control \emph{selective} custodians that answer canaries but withhold targeted dispute responses. Corruption is static within an epoch: the adversary fixes the custodians it controls when the epoch starts. Out of scope are production key-generation security, malicious combiners, verifiers or trusted execution environments that leak records they are authorized to open, arbitrary asynchronous partitions, and selective withholding beyond the counterexample of Observation~\ref{prop:nonimpl}. Two limits follow from the model. An audit shows that whoever answered knows $x_i$, not that the registered operator does, so share pooling by one operator and false failure-domain declarations are invisible to it. And threshold custody replaces the one-honest-challenger assumption of optimistic rollups with an assumption on $t$ of $n$ custodians.
+Detection and confidentiality statements do not use Assumption~\ref{as:sync}. The adversary may crash custodians individually or by domain, cause share loss, send invalid or equivocal responses, issue unauthorized requests, act as a worker that commits records of its choice and obtains their releases, and control \emph{selective} custodians that answer canaries but withhold targeted dispute responses. Corruption is static within an epoch. Out of scope are production key-generation security, combiners or verifiers that leak records they may open, arbitrary asynchronous partitions, and selective withholding beyond Observation~\ref{prop:nonimpl}. An audit shows that whoever answered knows $x_i$, not that the registered operator does, so share pooling and false domain declarations are invisible to it; and threshold custody replaces the one-honest-challenger assumption of optimistic rollups with an assumption on $t$ of $n$ custodians.
 
 % =====================================================================
 \section{Dispute-key availability}\label{sec:properties}
@@ -140,7 +142,7 @@ $\VSR(E)$ holds if the registered public shares are consistent with one degree-$
 \end{definition}
 
 \begin{definition}[Readiness]\label{def:ready}
-For a request $u$, an audit or a dispute on a named record, $\Ready_i(E,\tau,u,\Delta)=1$ if custodian $i$ can access its current share, perform the operation $u$ requests, produce a valid DLEQ proof and deliver the response by $\tau+\Delta$. Audit readiness and dispute readiness for each record are distinct predicates.
+For a request $\mathsf{req}$, an audit or a dispute on a named record, $\Ready_i(E,\tau,\mathsf{req},\Delta)=1$ if custodian $i$ can access its current share, perform the requested operation, produce a valid DLEQ proof and deliver the response by $\tau+\Delta$. Audit readiness and dispute readiness for each record are distinct predicates.
 \end{definition}
 
 \begin{definition}[Audit-time readiness]\label{def:akr}
@@ -152,11 +154,11 @@ After a valid authorization for $r$ at $\tau$, $\AD(r,E,\tau)$ holds if the comb
 \end{definition}
 
 \begin{definition}[Pre-authorization confidentiality]\label{def:pac}
-$\PAC$ holds for $r$ if no probabilistic polynomial-time adversary that satisfies Assumption~\ref{as:conf} and observes all audit transcripts, but no dispute releases, distinguishes $K_r$ from a random key with non-negligible advantage. In the stronger $\PAC^{+}$, the adversary may also commit records of its choice and obtain the release of every record other than $r$, where a \emph{release} is the set of partial decryptions and the combined value delivered to the authorized destination, which the adversary may control for its own records.
+$\PAC$ holds for $r$ if no probabilistic polynomial-time adversary that satisfies Assumption~\ref{as:conf}, chooses two equal-length plaintexts for $r$ and observes the sealed record and all audit transcripts, but no dispute releases, guesses which plaintext was sealed with non-negligible advantage. In the stronger $\PAC^{+}$, the adversary may also commit records of its choice and obtain the release of every record other than $r$, where a \emph{release} is the set of partial decryptions and the combined value delivered to the authorized destination, which the adversary may control for its own records.
 \end{definition}
 
 \begin{definition}[Dispute-key availability]\label{def:dka}
-Fix a readiness model, a distribution over custodian failures, share loss and message delays over time. An epoch provides $(\varepsilon,\Delta_d)$-$\DKA$ under it if for every committed record $r$ and authorization time $\tau$, $\Pr[\DDL(r,E,\tau,\Delta_d)]\ge 1-\varepsilon$ over the readiness model and the protocol's randomness, and $\PAC$ holds for every record before its authorization.
+Fix a readiness model, a distribution over custodian failures, share loss and message delays over time. An epoch provides $(\varepsilon,\Delta_d)$-$\DKA$ under it if for every committed record $r$ and authorization time $\tau$, $\Pr[\DDL(r,E,\tau,\Delta_d)]\ge 1-\varepsilon$ over the readiness model and the protocol's randomness, and $\PAC^{+}$ holds for every record before its authorization.
 \end{definition}
 
 \begin{definition}[Catastrophic state and detection]\label{def:fa}
@@ -164,10 +166,10 @@ An epoch is \emph{catastrophic} at $\tau$ if fewer than $t$ custodians are audit
 \end{definition}
 
 \begin{remark}[Timescale and epochs]
-Deployed optimistic rollups keep dispute windows open for days and bound each interactive move by hours, so DKA chiefly requires the key to stay serviceable throughout the window ($\varepsilon$ over the window), while $\Delta_d$ matters for per-move timers and short-window designs. A record sealed under $PK_E$ remains disputable after the committee of $E$ rotates, so DKA must hold across epochs: old committees stay serviceable until their records' windows close, or shares are handed over by dynamic proactive sharing\cite{maram2019churp,yurek2023dpss}, and audits must cover every epoch with open records.
+Dispute windows last days and interactive moves hours, so DKA chiefly requires the key to stay serviceable throughout the window, while $\Delta_d$ matters for per-move timers. A record stays disputable after its committee rotates, so old committees must stay serviceable, or hand over shares by dynamic proactive sharing\cite{maram2019churp,yurek2023dpss}, and audits must cover every epoch with open records.
 \end{remark}
 
-DKA is conditional and probabilistic. The next observation records what the weaker properties do not imply. Its witnesses are elementary; each blocks a tempting inference, and the design is organized around them.
+The next observation records what the weaker properties do not imply; each elementary witness blocks a tempting inference.
 
 \begin{observation}[Non-implications]\label{prop:nonimpl}
 Fix $1\le t\le n$, $1\le q\le s\le n$ and $\Delta_d$.
@@ -180,20 +182,20 @@ Fix $1\le t\le n$, $1\le q\le s\le n$ and $\Delta_d$.
 
 \begin{proof}
 (1) Let the DA layer retain the record while exactly $t-1$ custodians are dispute-ready for $r$ and the others have lost their shares. $\CA$ holds, but at most $t-1$ valid partials exist, so $\AD$ and $\DDL$ fail.
-(2) Let all custodians be audit-ready and let $w=n-t+1$ of them answer every canary and withhold every response for $r$. Every sample has $s\ge q$ valid responses, so $\AKR$ holds for every $S$, while at most $t-1$ custodians answer the dispute.
-(3) Take two executions identical up to $\tau_m$ with all custodians audit-ready, so all $m$ audits accept in both. Afterwards all custodians stay ready in the first and $n-t+1$ lose their shares in the second. The audit histories are identical but $\AD$ holds at $\tau'$ only in the first, so without assumptions on how readiness evolves no predicate of the audit history implies $\AD$ at $\tau'$; Corollary~\ref{cor:repeat} shows what a static model recovers.
+(2) Let all custodians be audit-ready and let $n-t+1$ of them answer every canary but withhold every response for $r$: $\AKR$ holds for every $S$, while at most $t-1$ custodians answer the dispute.
+(3) Take two executions with all custodians audit-ready up to $\tau_m$; afterwards all stay ready in the first and $n-t+1$ lose their shares in the second. The audit histories are identical but $\AD$ holds at $\tau'$ only in the first, so without a model of how readiness evolves no predicate of the history implies $\AD$.
 \end{proof}
 
-Item~(2) is why audit and dispute readiness are separate predicates; item~(3) is why any repeated-audit guarantee needs a temporal model.
+Item~(2) is why audit and dispute readiness are separate predicates; item~(3) is why a repeated-audit guarantee needs a temporal model, static (Corollary~\ref{cor:repeat}) or stochastic (Section~\ref{sec:temporal}).
 
 % =====================================================================
 \section{The KEYSTONE protocol}\label{sec:protocol}
 
-\paragraph{Setup and sealing.} The committee is formed under identity, stake and failure-domain placement policy (Observation~\ref{prop:cap}). A deployment would use an authenticated distributed key generation or publicly verifiable secret sharing\cite{gennaro2007dkg,das2022adkg,schoenmakers1999pvss}; the prototype uses a dealer with Feldman commitments as an explicit substitution boundary. To seal $r$, the worker draws $\rho$, computes $C_1=g^{\rho}$ and $\kappa=\mathrm{KDF}(PK_E^{\rho},\mathsf{id}_r,\mathsf{aad})$, wraps $K_r$ under $\kappa$, encrypts the record under $K_r$ with AES-GCM, and publishes an envelope binding epoch, record identifier, ciphertext, metadata and DA pointer.
+\paragraph{Setup and sealing.} The committee is formed under identity, stake and failure-domain placement policy (Observation~\ref{prop:cap}). A deployment would use an authenticated distributed key generation or publicly verifiable secret sharing\cite{gennaro2007dkg,das2022adkg,schoenmakers1999pvss}; the prototype uses a dealer with Feldman commitments as an explicit substitution boundary. To seal $r$ under the label $L_r=(E,\mathsf{id}_r,\text{policy hash})$, the worker draws $\rho$, computes $C_1=g^{\rho}$ and $\kappa=\mathrm{KDF}(PK_E^{\rho},L_r)$, wraps $K_r$ under $\kappa$, adds a TDH2 proof that binds $L_r$ and the wrapped key to $C_1$\cite{shoup2002securing}, encrypts the record under $K_r$ with AES-GCM, and publishes the envelope with its DA pointer.
 
 \paragraph{Readiness audit.} The coordinator commits an epoch and audit slot. The next finalized beacon value $\beta$ fixes a sample $S$ of $s$ custodians, uniform or stratified by domain, and everyone derives the canary $X=H_G(\texttt{KEYSTONE-CANARY}\parallel E\parallel \mathsf{slot}\parallel \beta)$. Each sampled custodian returns $D_i=X^{x_i}$ with a DLEQ proof that $\log_g Y_i=\log_X D_i$, bound to the request context and its index. The verifier checks membership, freshness, uniqueness per index, proof validity and the deadline, and accepts after $q$ valid responses.
 
-\paragraph{Authorized dispute.} A dispute starts once the policy contract binds a record, epoch, authorized verifier and deadline $\Delta_d$. Each custodian checks the authorization and returns $C_1^{x_i}$ with a DLEQ proof bound to the dispute. The combiner verifies responses on arrival, discards duplicates and invalid ones, stops at $t$ valid partials, interpolates $C_1^{x}=PK_E^{\rho}$, re-derives $\kappa$, unwraps $K_r$ and decrypts.
+\paragraph{Authorized dispute.} A dispute starts once the policy contract binds a record, epoch, authorized verifier and deadline $\Delta_d$. Each custodian checks the authorization, the TDH2 proof and that the label is the authorized record's, and returns $C_1^{x_i}$ with a DLEQ proof bound to the dispute. The combiner verifies responses on arrival, off its network event loop, discards duplicates and invalid ones, stops at $t$ valid partials, interpolates $C_1^{x}=PK_E^{\rho}$, re-derives $\kappa$, unwraps $K_r$ and decrypts.
 
 \paragraph{Transcript and evidence.} For each request, the board records commitments to valid, invalid, equivocal, stale and unauthorized responses and the absence of missing ones, with timestamps. Invalid proofs and conflicting responses are self-contained cryptographic evidence; attributing a missing response to a custodian additionally requires Assumption~\ref{as:sync}. The prototype contract is a skeleton: an administrator supplies the sample and canary hash when opening an audit without an on-chain beacon check, records invalid-response evidence after off-chain verification, and can cancel requests. Theorem~\ref{thm:fa} therefore holds for the prototype only if the administrator samples as the protocol prescribes; deriving the sample on chain from the committed beacon and verifying proofs on chain are needed for a trustless deployment.
 
@@ -203,32 +205,28 @@ Item~(2) is why audit and dispute readiness are separate predicates; item~(3) is
 An honest response passes verification. In the random-oracle model a verifying response satisfies $D_i=X^{x_i}$ except with negligible probability, and the proof is a proof of knowledge: from any party that produces verifying responses for fresh canaries with non-negligible probability, an extractor obtains $x_i$. Any $t$ verified partials of $C_1$ with distinct indices $I$ combine to $\prod_{i\in I}(C_1^{x_i})^{\lambda_i^I}=PK_E^{\rho}$.
 \end{lemma}
 
-\begin{proof}
-Completeness: $g^{z}=g^{\nu+cx_i}=a_1Y_i^{c}$ and $X^{z}=a_2D_i^{c}$ when $D_i=X^{x_i}$. The protocol is special-sound, since two accepting transcripts with one commitment and different challenges yield $x_i$; with the Fiat--Shamir hash as a random oracle, the forking lemma turns a party that succeeds with non-negligible probability into an extractor, and value soundness follows\cite{chaum1992dleq,fiat1987prove}. Combination: $\prod_{i\in I}C_1^{x_i\lambda_i^I}=C_1^{x}=g^{\rho x}=PK_E^{\rho}$.
+\begin{proof}[Proof sketch]
+Completeness and combination are direct computations. The protocol is special-sound, and with the Fiat--Shamir hash as a random oracle the forking lemma yields an extractor\cite{chaum1992dleq,fiat1987prove}. Full proofs of Lemmas~\ref{lem:correct}--\ref{lem:subst} are in the supplementary material.
 \end{proof}
 
 Knowledge soundness makes a passed audit meaningful: whoever passes canary audits with non-negligible probability holds $x_i$, and under Assumption~\ref{as:conf} the adversary cannot obtain an honest custodian's share from public values without solving a discrete logarithm.
 
 \begin{lemma}[Audit transcripts are simulatable]\label{lem:sim}
-Model $H_G$ and $H$ as random oracles. A simulator that knows only $g$ and $Y_1,\dots,Y_n$ answers all queries to $H_G$ and $H$ and produces the honest custodians' audit responses $(X,(D_i,\pi_i)_{i\in S})$ for any audit context and any $S$, including $S=\{1,\dots,n\}$. With at most $N$ simulated proofs and $Q$ oracle queries, simulated and real views are within statistical distance $NQ/\ell$, so observing audits changes any adversary's advantage against $\PAC$, measured as $|\Pr[1\mid K_r]-\Pr[1\mid\text{random}]|$, by at most $2NQ/\ell$.
+Model $H_G$ and $H$ as random oracles. A simulator that knows only $g$ and $Y_1,\dots,Y_n$ answers all queries to $H_G$ and $H$ and produces the honest custodians' audit responses $(X,(D_i,\pi_i)_{i\in S})$ for any audit context and any $S$, including $S=\{1,\dots,n\}$. With at most $N$ simulated proofs and $Q$ oracle queries, simulated and real views are within statistical distance $NQ/\ell$, so observing audits changes any adversary's advantage against $\PAC$ by at most $2NQ/\ell$.
 \end{lemma}
 
-\begin{proof}
-The simulator answers every fresh $H_G$ query, from the protocol or the adversary, with $g^{a}$ for a stored $a\leftarrow\mathbb{Z}_\ell^{*}$, which is exactly a random oracle onto $\G\setminus\{1\}$. For an honest custodian and canary $X=g^{a}$ it sets $D_i=Y_i^{a}=X^{x_i}$, the real response. Each proof is produced by the honest-verifier zero-knowledge simulator: draw $c,z\leftarrow\Zq$, set $a_1=g^{z}Y_i^{-c}$ and $a_2=X^{z}D_i^{-c}$, and program $H$ at that input to $c$. Since $a_1$ is uniform, the input was queried before with probability at most $Q/\ell$, and a union bound over $N$ proofs gives the distance. Corrupted custodians' responses come from the adversary. Because $H$, $H_G$ and the key-derivation function are independent and domain separated, this programming does not interfere with a reduction to the KEM that programs the key-derivation oracle, so an adversary against $\PAC$ that sees audits becomes one against the threshold KEM alone, each output probability moving by at most $NQ/\ell$.
+\begin{proof}[Proof sketch]
+The simulator answers each fresh $H_G$ query with $g^{a}$ for a stored random $a$, so for an honest custodian and canary $X=g^{a}$ it can output the real response $D_i=Y_i^{a}=X^{x_i}$, and it produces each proof with the honest-verifier zero-knowledge simulator, programming $H$; a programmed input was queried before with probability at most $Q/\ell$. Domain separation keeps this programming apart from a KEM reduction that programs the key-derivation oracle.
 \end{proof}
 
 This is the standard simulation argument for threshold-coin and threshold-signature shares on hashed messages\cite{cachin2005constantinople,boldyreva2003threshold}, which we restate for the audit setting. Lemma~\ref{lem:sim} holds even for adversarially chosen audit contexts and beacons. It is why the audit can exercise every sampled share without opening any record: combining $t$ canary partials yields $X^{x}$ for a hash-derived $X$, which equals a fixed record component only with negligible probability.
 
 \begin{lemma}[No production substitution]\label{lem:subst}
-Model $H_G$ as a random oracle. For a fixed $C_1$, a coordinator making $Q$ queries to $H_G$ finds an audit context whose canary equals $C_1$ with probability at most $Q/(\ell-1)$.
+Model $H_G$ as a random oracle. For a fixed $C_1$, a coordinator making $Q$ queries to $H_G$ finds an audit context whose canary equals $C_1$ with probability at most $Q/(\ell-1)$, by a union bound over uniform oracle answers.
 \end{lemma}
 
-\begin{proof}
-Each query returns an independent uniform element of $\G\setminus\{1\}$, equal to the fixed $C_1\neq1$ with probability $1/(\ell-1)$; apply the union bound.
-\end{proof}
-
 \begin{remark}
-The prototype hashes to an integer modulo $p$ and squares into the quadratic residues; a production system should use a standardized hash-to-curve suite\cite{rfc9380}. Binding request context into the Fiat--Shamir hash gives verification-domain binding, not the share isolation of context-dependent threshold decryption\cite{boneh2025context}. The lemmas do not cover side channels.
+The prototype hashes to ristretto255 with the standard map from a 64-byte hash\cite{rfc9496}; the ffdhe baseline uses \texttt{expand\_message\_xmd}\cite{rfc9380} before squaring. Binding request context into the Fiat--Shamir hash does not give the share isolation of context-dependent threshold decryption\cite{boneh2025context}, and the lemmas do not cover side channels.
 \end{remark}
 
 \subsection{Confidentiality against releases of other records}\label{sec:conf}
@@ -243,7 +241,21 @@ With the plain threshold Diffie--Hellman KEM, $\PAC^{+}$ does not hold: an adver
 For the target's component $C_1$, the adversary commits a record $r'$ with $C_1'=C_1g^{\gamma}$ and obtains its release $C_1'^{x}=C_1^{x}PK_E^{\gamma}$. It computes $PK_E^{\rho}=C_1^{x}=C_1'^{x}PK_E^{-\gamma}$, derives the target's key-encryption key from $PK_E^{\rho}$ and the target's public record identifier and metadata, and unwraps $K_r$. Already $\gamma=0$, re-submitting $C_1$ under a new identifier, suffices.
 \end{proof}
 
-The attack does not involve the audit. It is prevented by any threshold KEM whose custodians refuse components not bound to the authorized record, such as TDH2 with the record identifier as label\cite{shoup2002securing} or context-dependent threshold decryption with the record as context\cite{boneh2025context}. Lemma~\ref{lem:sim} holds unchanged for such a KEM, since the canary path uses only shares and public values. Our prototype implements the plain KEM and so provides $\PAC$ but not $\PAC^{+}$; a deployment that lets untrusted parties obtain releases must bind releases to records, at the cost of one extra proof verification per custodian per dispute.
+The attack does not involve the audit. It is blocked by a threshold KEM whose custodians refuse components not bound to the authorized record, such as TDH2 with the record label\cite{shoup2002securing} or context-dependent threshold decryption\cite{boneh2025context}; KEYSTONE uses TDH2.
+
+\begin{assumption}[TDH2 key encapsulation]\label{as:tdh2}
+TDH2 used as a key-encapsulation mechanism, with $\kappa=\mathrm{KDF}(PK_E^{\rho},L)$ in place of a one-time pad, is secure against chosen-ciphertext attacks in the threshold model of Shoup and Gennaro, who prove this for the encryption scheme under DDH in the random-oracle model\cite{shoup2002securing}.
+\end{assumption}
+
+\begin{lemma}[Record-bound releases]\label{lem:pacplus}
+Let the dispute KEM be TDH2 with label $L_r$, and let each custodian release $C_1^{x_i}$ only for a ciphertext whose TDH2 proof verifies and whose label is the authorized one. Under Assumptions~\ref{as:conf} and~\ref{as:tdh2} and static corruption, $\PAC^{+}$ holds for every record, and Lemma~\ref{lem:sim} continues to hold.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+A release of a record $r'\neq r$ answers a decryption-share query for a valid ciphertext with label $L_{r'}\neq L_r$. Because the label enters the TDH2 proof, a re-labelled or mauled $C_1$ either fails verification and is refused, or is a valid ciphertext other than the challenge, which the chosen-ciphertext game of Assumption~\ref{as:tdh2} answers. The target's key-encryption key is therefore pseudorandom, and AES-GCM hides the wrapped key and then the record. The canary path is unchanged and its oracles are domain separated, so the simulation of Lemma~\ref{lem:sim} composes with the TDH2 reduction.
+\end{proof}
+
+The cost is one ciphertext-proof check per custodian per dispute (\RtwoCtCheckRis\,ms in ristretto255, Table~\ref{tab:operations}). The prototype's custodians enforce both checks, and a test reproduces the attack of Proposition~\ref{prop:malleable} once they are removed.
 
 % =====================================================================
 \section{Analysis}\label{sec:analysis}
@@ -262,10 +274,10 @@ This is non-decreasing in $k$, so over catastrophic states ($k\le t-1$) it is ma
 \end{theorem}
 
 \begin{proof}
-The number of ready custodians in $S$ is hypergeometric with parameters $(n,k,s)$, and by Lemma~\ref{lem:correct} the audit accepts exactly when it is at least $q$, except with negligible probability. For monotonicity, if $R\subset R'$ with $|R|=k$, $|R'|=k+1$, then $|S\cap R|\le|S\cap R'|$ for every $S$, so acceptance under $R$ implies acceptance under $R'$. For $q=s$ only $j=s$ contributes, giving $\binom{k}{s}/\binom{n}{s}$, largest at $k=t-1$.
+The number of ready custodians in $S$ is hypergeometric $(n,k,s)$, and by Lemma~\ref{lem:correct} the audit accepts exactly when it is at least $q$, up to negligible error. If $R\subset R'$, then $|S\cap R|\le|S\cap R'|$ for every $S$, which gives monotonicity; for $q=s$ only $j=s$ contributes.
 \end{proof}
 
-For $n=32$, $t=22$, $s=q=8$, $\varepsilon_a=\binom{21}{8}/\binom{32}{8}=203{,}490/10{,}518{,}300=0.0193$, so a single audit detects the worst catastrophic state with probability $0.9807$ under a static, non-selective fault model. Section~\ref{sec:oc} shows why this number alone is misleading. Figure~\ref{fig:detection} shows detection against $s$.
+For $n=32$, $t=22$, $s=q=8$, $\varepsilon_a=\binom{21}{8}/\binom{32}{8}=203{,}490/10{,}518{,}300=0.0193$, so a single audit detects the worst catastrophic state with probability $0.9807$ under a static, non-selective fault model. Section~\ref{sec:oc} shows why this number alone is misleading. Supplementary Figure~S1 shows detection against $s$.
 
 \begin{corollary}[Repeated audits under a static state]\label{cor:repeat}
 If the ready set is fixed and catastrophic for $m$ audits whose samples are independent (Assumption~\ref{as:beacon}), all $m$ falsely accept with probability at most $\varepsilon_a^{m}$.
@@ -277,45 +289,19 @@ Given the fixed ready set, the acceptance events are independent, each with prob
 
 By Observation~\ref{prop:nonimpl}(3), the static hypothesis cannot be dropped without a temporal model.
 
-\begin{proposition}[Stratified samples]\label{prop:strat}
-Partition the committee into failure domains $F_1,\dots,F_h$ of sizes $n_j$ with $k_j$ audit-ready custodians, and sample $s_j$ custodians uniformly without replacement from each $F_j$, independently, with $\sum_j s_j=s$. Then
-\[
-\Pr[\mathsf{accept}]=\sum_{\substack{(i_1,\dots,i_h)\\ i_1+\dots+i_h\ge q}}\ \prod_{j=1}^{h}\frac{\binom{k_j}{i_j}\binom{n_j-k_j}{s_j-i_j}}{\binom{n_j}{s_j}}.
-\]
-\end{proposition}
-
-\begin{proof}
-The per-domain counts of ready sampled custodians are independent hypergeometric variables with parameters $(n_j,k_j,s_j)$, and the audit accepts if and only if their sum is at least $q$.
-\end{proof}
-
-For stratified samples the worst catastrophic state depends on how the $t-1$ ready custodians are spread across domains; Proposition~\ref{prop:strat} evaluates any placement exactly, and Section~\ref{sec:eval-robust} evaluates stratification by simulation.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{fig2_detection_vs_sample.pdf}
-\caption{Exact worst-case detection $1-\binom{t-1}{s}/\binom{n}{s}$ versus sample size with $q=s$. (a)~Thresholds $t\in\{17,22,27\}$ at $n=32$; the baseline $s=8$, $t=22$ is annotated. (b)~Committee sizes 16--128 with $t=n-\lfloor(n-1)/3\rfloor$. Values for $(n,s)\in\{(16,4),(32,8),(64,12),(128,16)\}$ are listed in Table~\ref{tab:scalability}.}
-\label{fig:detection}
-\end{figure}
+For samples stratified by domain, the per-domain counts of ready sampled custodians are independent hypergeometric variables, so acceptance is the probability that their sum reaches $q$ (supplementary Proposition~S1); the worst catastrophic state then depends on how the $t-1$ ready custodians are spread across domains.
 
 \begin{observation}[Placement cap]\label{prop:cap}
-With no failures other than whole-domain outages, if every domain has at most $n-t$ custodians, no single domain outage prevents reconstruction; if some domain has more than $n-t$, its outage alone does. The cap is tight for single-domain outages.
+With no failures other than whole-domain outages, no single domain outage prevents reconstruction if and only if every domain has at most $n-t$ custodians, since an outage of a domain of size $d$ leaves $n-d$.
 \end{observation}
-
-\begin{proof}
-An outage of a domain of size $d$ leaves $n-d$ custodians, and $n-d\ge t$ if and only if $d\le n-t$.
-\end{proof}
 
 The baseline places four domains of eight under the cap $n-t=10$: one outage is survivable, two leave $16<22$ custodians.
 
 \begin{observation}[Benign pass probability]\label{prop:benign}
-If each custodian is independently unavailable with probability $f$ and the sample is independent of availability, the audit passes with probability $\Pr[\mathrm{Bin}(s,1-f)\ge q]$.
+If each custodian is independently unavailable with probability $f$ and the sample is independent of availability, the audit passes with probability $\Pr[\mathrm{Bin}(s,1-f)\ge q]$, since the sampled custodians' availability indicators are independent.
 \end{observation}
 
-\begin{proof}
-Given the sample, its members' availability indicators are independent Bernoulli$(1-f)$, and the audit passes if and only if at least $q$ are available.
-\end{proof}
-
-The strict rule $q=s$ that maximizes detection also turns every benign miss into an alarm. For $s=q=8$ and $f=0.10$ a healthy committee passes only with probability $0.9^{8}=0.430$, although $t$ of 32 shares are reachable with probability $\Pr[\mathrm{Bin}(32,0.9)\ge 22]=0.99983$. Table~\ref{tab:acceptance} and Figure~\ref{fig:acceptance} give the trade-off. At $s=8$ no rule achieves both goals: $q=7$ lowers detection to \RAccEightSevenDet{} and raises the benign pass rate at $f=0.10$ to \RAccEightSevenPass{}. A larger sample helps: $s=16$, $q=14$ detects \RAccSixteenFourteenDet{} with benign pass rates of \RAccSixteenFourteenPassFive{} at $f=0.05$ and \RAccSixteenFourteenPassTen{} at $f=0.10$. We added this analysis after observing the alarm rate in exploratory runs and report it as design guidance, not a prespecified result.
+The strict rule $q=s$ that maximizes detection also turns every benign miss into an alarm. For $s=q=8$ and $f=0.10$ a healthy committee passes only with probability $0.9^{8}=0.430$, although $t$ of 32 shares are reachable with probability $\Pr[\mathrm{Bin}(32,0.9)\ge 22]=0.99983$. Table~\ref{tab:acceptance} and supplementary Figure~S2 give the trade-off. At $s=8$, $q=7$ lowers detection to \RAccEightSevenDet{} and raises the benign pass rate at $f=0.10$ only to \RAccEightSevenPass{}; a larger sample helps: $s=16$, $q=14$ detects \RAccSixteenFourteenDet{} with benign pass rates of \RAccSixteenFourteenPassFive{} at $f=0.05$ and \RAccSixteenFourteenPassTen{} at $f=0.10$. This post hoc analysis is design guidance, not a prespecified result.
 
 \begin{table}[t]
 \caption{Exact acceptance-rule trade-off at $n=32$, $t=22$: worst-case detection ($k=t-1$, Theorem~\ref{thm:fa}) versus the probability that a healthy committee passes under IID unavailability $f$ (Observation~\ref{prop:benign}). Post hoc analysis.}
@@ -327,7 +313,7 @@ The strict rule $q=s$ that maximizes detection also turns every benign miss into
 
 \subsection{Operating characteristic and sequential audits}\label{sec:oc}
 
-Worst-case detection hides how weak a small audit is near the threshold. Table~\ref{tab:oc} gives the full operating characteristic of Eq.~\eqref{eq:hypergeom}: with $s=q=8$ the audit accepts a committee one share short of $t$ with probability \OcEightTwentyOne{}, a live committee with no spare share with \OcEightTwentyTwo{}, and one with four spare shares with only \OcEightTwentySix{}. Only the full probe ($s=n$) separates $k=t-1$ from $k=t$ at 5\% error rates, so sampled guarantees must be stated for a safety margin $m$, testing $k\le t-1$ against $k\ge t+m$. With error rates of 5\% each, a single audit needs $s=\SepSFour$ ($q=\SepQFour$) for $m=4$, $s=\SepSSix$ ($q=\SepQSix$) for $m=6$ and $s=\SepSEight$ ($q=\SepQEight$) for $m=8$. A sequential probability ratio test across audits\cite{wald1945sprt}, valid under the static state of Corollary~\ref{cor:repeat}, is far cheaper: for $m=6$ it decides on average after \AsnSixteenDead{} audits for a failed committee and \AsnSixteenLive{} for a live one with $s=16$, $q=14$, and after \AsnEightDead{} and \AsnEightLive{} with $s=q=8$ (Wald's approximations). Audits should therefore be specified by the margin they certify and the error rates they achieve, not by worst-case detection. This analysis is exact.
+Worst-case detection hides how weak a small audit is near the threshold. Table~\ref{tab:oc} gives the exact operating characteristic: with $s=q=8$ the audit accepts a committee one share short of $t$ with probability \OcEightTwentyOne{}, a live committee with no spare share with \OcEightTwentyTwo{}, and one with four spare shares with only \OcEightTwentySix{}. Only the full probe ($s=n$) separates $k=t-1$ from $k=t$ at 5\% error rates, so sampled guarantees must be stated for a safety margin $m$, testing $k\le t-1$ against $k\ge t+m$. With error rates of 5\% each, a single audit needs $s=\SepSFour$ ($q=\SepQFour$) for $m=4$, $s=\SepSSix$ ($q=\SepQSix$) for $m=6$ and $s=\SepSEight$ ($q=\SepQEight$) for $m=8$. A sequential probability ratio test across audits\cite{wald1945sprt}, valid under the static state of Corollary~\ref{cor:repeat}, is far cheaper: for $m=6$ it decides on average after \AsnSixteenDead{} audits for a failed committee and \AsnSixteenLive{} for a live one with $s=16$, $q=14$, and after \AsnEightDead{} and \AsnEightLive{} with $s=q=8$ (Wald's approximations). Audits should therefore be specified by the margin they certify and their error rates, not by worst-case detection.
 
 \begin{table}[t]
 \caption{Exact operating characteristic: probability that an audit with sample size $s$ and threshold $q$ accepts when $k$ of $n=32$ custodians are ready ($t=22$, uniform sampling, Theorem~\ref{thm:fa}).}
@@ -342,32 +328,59 @@ Under Assumptions~\ref{as:board} and~\ref{as:sync}, suppose at least $t$ custodi
 \end{proposition}
 
 \begin{proof}
-Each of the $t$ correct custodians sees the request by $\tau+\delta_b$ and its response arrives by $T=\tau+\delta_b+c_p+\delta$. Authenticated channels prevent an adversary from occupying a correct custodian's index, so the combiner verifies at most one response per index, at most $n$ in total, and never idles while responses are pending; it therefore finishes by $T+n\,c_v$, or by $T+t\,c_v$ if no invalid response comes first.
+Each of the $t$ correct custodians' responses arrives by $T'=\tau+\delta_b+c_p+\delta$. Authenticated channels stop an adversary from occupying a correct custodian's index, so the work-conserving combiner verifies at most $n$ responses and finishes by $T'+n\,c_v$, or by $T'+t\,c_v$ if no invalid response comes first.
 \end{proof}
 
-On a production settlement layer, $\delta_b$ is a block or finality time and can dominate; in our testbed $\delta_b$ is negligible and unoptimized verification makes $t\,c_v$ the largest term.
+On a production settlement layer, $\delta_b$ is a block or finality time and can dominate. The budget counts only protocol work; Section~\ref{sec:eval-deadline} shows that host overhead must be added when no network delay absorbs it.
+
+\subsection{Readiness over time}\label{sec:temporal}
+
+Corollary~\ref{cor:repeat} needs a static state. We now let custodians fail and recover. Each custodian is an independent two-state Markov chain with failure rate $\phi$ and repair rate $\psi$, so it is up a fraction $v=\psi/(\phi+\psi)$ of the time; in a variant, each of four domains of eight also fails as a unit at rate $\phi_d$ and recovers at rate $\psi_d$. Audits run every $T$ with a fresh uniform sample and only observe: they trigger no repair. Faults are non-selective, so a custodian is audit-ready exactly when it is dispute-ready, and disputes arrive independently of the process. Let $Z(\tau)$ be the number of ready custodians, $A(k)$ the acceptance probability of Eq.~\eqref{eq:hypergeom}, $\omega$ the stationary law of $Z$, and $\mathbf{1}_{<t}$ the indicator column of $Z<t$; vectors are rows over $k\in\{0,\dots,n\}$.
+
+\begin{theorem}[Risk given an audit history]\label{thm:hmm}
+$Z$ is a Markov chain with $P_u(k,k')=\sum_i \mathrm{b}(i;k,p_{\uparrow}(u))\,\mathrm{b}(k'-i;n-k,p_{\downarrow}(u))$, where $\mathrm{b}$ is the binomial mass function, $p_{\uparrow}(u)=v+(1-v)e^{-(\phi+\psi)u}$ and $p_{\downarrow}(u)=v(1-e^{-(\phi+\psi)u})$. For audit outcomes $o_1,\dots,o_j$, let $\alpha_1\propto\omega\odot e_{o_1}$ and $\alpha_i\propto(\alpha_{i-1}P_T)\odot e_{o_i}$, normalized, with $e_{\mathsf{acc}}=A$ and $e_{\mathsf{rej}}=1-A$. A dispute at $jT+u$, $0\le u<T$, fails to reach $t$ with probability $\alpha_jP_u\mathbf{1}_{<t}$ given $o_1,\dots,o_j$. With domain shocks, the same holds for the chain of per-domain pairs (domain up, members up).
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+From any configuration with $k$ custodians up, after time $u$ each up custodian is up with probability $p_{\uparrow}(u)$ and each down one with $p_{\downarrow}(u)$, independently, so $Z$ is strongly lumpable with kernel $P_u$. A fresh uniform sample makes each outcome conditionally independent of everything else given $Z$ at its audit, with emission $A$, so the history is a hidden Markov model and the recursion is the forward algorithm.
+\end{proof}
+
+After an unbroken run of accepted audits, $\alpha_j$ converges from any start to the normalized Perron vector $\alpha^{*}$ of $P_T\,\mathrm{diag}(A)$ on the states the audit can accept, where it is entrywise positive for $T>0$. We call $R(T)=\sup_{0\le u<T}\alpha^{*}P_u\mathbf{1}_{<t}$ the \emph{posterior risk}: the failure probability a dispute faces, at the worst point of an audit cycle, after a long clean audit record.
+
+\begin{theorem}[Undetected failure]\label{thm:floor}
+Let $U(T)=\frac1T\int_0^T(\omega\odot A)P_u\mathbf{1}_{<t}\,du$, the long-run probability that a dispute fails and the most recent audit accepted. With or without domain shocks, $U$ is non-decreasing in $T$ and $U(T)\ge U_0=\sum_{k<t}\omega(k)A(k)$, its limit as $T\to0$. Without domain shocks,
+\[
+U(T)\le A(t-1)\,\omega(Z<t)+\sum_{k\ge t}\omega(k)A(k)\Pr[\mathrm{Bin}(k,p_{\uparrow}(T))<t].
+\]
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The chain is reversible, moves one custodian or domain at a time, and is stochastically monotone because $p_{\uparrow}\ge p_{\downarrow}$. Let $g(u)=(\omega\odot A)P_u\mathbf{1}_{<t}$. Then $g'(u)$ is minus the Dirichlet form of $A$ and $P_u\mathbf{1}_{<t}$; $A$ is increasing and $P_u$ keeps $\mathbf{1}_{<t}$ decreasing, so every term has the sign that makes $g'\ge0$. Hence $U$, the mean of $g$ over $[0,T]$, is non-decreasing and at least $g(0)=U_0$. For the bound, use $A(k)\le A(t-1)$ for $k<t$, and for $k\ge t$ note that the custodians up at the audit and still up at $u$ number $\mathrm{Bin}(k,p_{\uparrow}(u))$, lower-bound $Z(u)$, and decrease in $u$.
+\end{proof}
+
+Since audits trigger no repair, the failure probability itself is $\omega(Z<t)$ for every $T$; $U$ measures how much of it the latest audit fails to flag. A target $\varepsilon<U_0$ cannot be met by auditing more often, only by a stronger design or a larger availability margin. Otherwise the longest admissible interval $T^{*}(\varepsilon)=\sup\{T:U(T)\le\varepsilon\}$ is the cheapest schedule, found by bisection because $U$ is monotone, and the bound gives a conservative interval in closed form. Full proofs are in the supplementary material.
 
 % =====================================================================
 \section{Evaluation}\label{sec:evaluation}
 
-We compare the audit with simpler checks (Q1), separate audit outcomes from dispute success under failures (Q2), identify what governs dispute completion (Q3), and measure scaling (Q4).
+We compare the audit with simpler checks (Q1), separate audit outcomes from dispute success under failures (Q2), test deadline liveness (Q3), measure cost (Q4) and evaluate readiness over time (Q5).
 
-\paragraph{Method.} Table~\ref{tab:config} lists every experiment, and each result carries one of four evidence labels. \emph{Exact} values are closed form under a declared model. \emph{Simulation} results come from three cells whose parameters, endpoints and seeds were fixed and hashed before execution; each has 131{,}072 draws, above the 73{,}778 that Hoeffding's inequality requires for a half-width of 0.005 at 95\% confidence\cite{hoeffding1963}. Where an exact value exists, the cells serve as an implementation check against it. The sampling-policy cell compares uniform and stratified samples on common random numbers. \emph{Microbenchmarks} are single-process medians, and \emph{emulation} runs 32 custodian processes on one host. Proportions carry 95\% Wilson intervals\cite{wilson1927}.
+\paragraph{Method.} Table~\ref{tab:config} lists every experiment, and each result carries one of four evidence labels. \emph{Exact} values are closed forms or recursions under a declared model. \emph{Simulation} results come from cells whose parameters, endpoints and seeds were fixed and hashed before execution; the three Q2 cells have 131{,}072 draws each, above the 73{,}778 that Hoeffding's inequality requires for a proportion's half-width of 0.005 at 95\% confidence\cite{hoeffding1963}, and where an exact value exists simulation serves as an implementation check. \emph{Microbenchmarks} are single-process medians, and \emph{emulation} runs 32 custodian processes on one host. A first prototype (R1: ffdhe2048, serial verification on the network loop) produced Q1, Q2 and the comparison column of Q3; the second (R2: ristretto255, TDH2, verification off the loop) followed a second design hashed before any R2 run. Proportions carry 95\% Wilson intervals\cite{wilson1927}.
 
 \begin{table}[t]
 \caption{Experimental configuration. The baseline committee is $n=32$, $t=22$, $s=q=8$ with four failure domains of eight custodians.}
 \label{tab:config}
 \centering
 \footnotesize
-\input{tables/t2_configuration.tex}
+\input{tables/t2_configuration_r2.tex}
 \end{table}
 
 \subsection{Readiness baselines (Q1)}
 
-Table~\ref{tab:baselines} compares the canary audit with the obvious alternatives. A heartbeat is answered even by a custodian that lost its share, registration is checked once, and decrypting a real record discloses it. A full-committee canary probe detects every static catastrophic state at four times KEYSTONE's per-round cost; it is the case $s=n$ of Theorem~\ref{thm:fa} and is affordable for one audit per epoch at $n=32$. Sampling pays off when audits are frequent, committees are large or responses are recorded on chain: at the measured 57{,}882 gas per response (Table~\ref{tab:gas}), recording responses costs about $0.46$ million gas per audit for $s=8$ and $1.85$ million for $s=32$.
+Table~\ref{tab:baselines} compares the canary audit with the obvious alternatives. A heartbeat is answered even by a custodian that lost its share, registration is checked once, and decrypting a real record discloses it. A full-committee canary probe ($s=n$) detects every static catastrophic state at four times KEYSTONE's cost and is affordable once per epoch at $n=32$. Sampling pays off when audits are frequent, committees are large or responses are recorded on chain: at the measured 57{,}882 gas per response (supplementary Table~S2), recording responses costs about $0.46$ million gas per audit for $s=8$ and $1.85$ million for $s=32$.
 
 \begin{table}[t]
-\caption{Readiness checks compared. Costs are measured medians for ffdhe2048 in the prototype (Table~\ref{tab:operations}); bytes are canonical request plus response transcripts.}
+\caption{Readiness checks compared. Costs are R1 medians for ffdhe2048; bytes are canonical request plus response transcripts.}
 \label{tab:baselines}
 \centering
 \footnotesize
@@ -376,7 +389,7 @@ Table~\ref{tab:baselines} compares the canary audit with the obvious alternative
 
 \subsection{Robustness under failures (Q2)}\label{sec:eval-robust}
 
-In the simulation cells (Table~\ref{tab:robustness}), 10\% independent unavailability leaves the committee reconstructable in \RIIDRecon{} of draws while the strict audit passes in only \RIIDAudit{}: it is a sensitive alarm, not a health score, as Observation~\ref{prop:benign} predicts. Under 20\% domain outages, stratified sampling raised conditional detection of catastrophic draws from \RStratDetU{} to \RStratDetS{} and lowered the benign pass rate from \RStratPassU{} to \RStratPassS{}. The prespecified endpoint, the paired difference in detected catastrophes per draw, was \RStratD{} with Hoeffding half-width \RStratHW{}, a conservative test that cannot resolve an effect this small; a post hoc exact sign test on the \RStratDiscordant{} discordant pairs, all favoring stratification, gives $p=\McNemarP$, and Proposition~\ref{prop:strat} gives the exact difference for any placement. With eleven selective withholders, audits passed in \RSWAudit{} of draws and disputes succeeded in \RSWDispute{}; this cell instantiates the deterministic witness of Observation~\ref{prop:nonimpl}(2) and only confirms that the implementation reproduces it.
+In the simulation cells (Table~\ref{tab:robustness}), 10\% independent unavailability leaves the committee reconstructable in \RIIDRecon{} of draws while the strict audit passes in only \RIIDAudit{}: it is a sensitive alarm, not a health score, as Observation~\ref{prop:benign} predicts. Under 20\% domain outages, stratified sampling raised conditional detection of catastrophic draws from \RStratDetU{} to \RStratDetS{} and lowered the benign pass rate from \RStratPassU{} to \RStratPassS{}. The prespecified endpoint, the paired difference in detected catastrophes per draw, was \RStratD{} with Hoeffding half-width \RStratHW{}, too conservative to resolve an effect this small; a post hoc exact sign test on the \RStratDiscordant{} discordant pairs, all favoring stratification, gives $p=\McNemarP$. With eleven selective withholders, audits passed in \RSWAudit{} of draws and disputes succeeded in \RSWDispute{}, reproducing the witness of Observation~\ref{prop:nonimpl}(2).
 
 \begin{table}[t]
 \caption{Simulation cells, 131{,}072 draws each, 95\% Wilson intervals. Reconstructable means at least $t$ custodians can serve the dispute.}
@@ -386,7 +399,7 @@ In the simulation cells (Table~\ref{tab:robustness}), 10\% independent unavailab
 \input{tables/t4a_simulation.tex}
 \end{table}
 
-Placement matters more (Figure~\ref{fig:correlation}). At per-unit unavailability $f=0.10$, an IID committee reconstructs with probability \RIIDReconTen{}, four domains of eight (under the cap of Observation~\ref{prop:cap}) with \RDomFourRecon{}, and two domains of sixteen, which violate it, with only \RDomTwoRecon{}. These values are exact under a declared synthetic model; field studies show that correlated failures dominate real unavailability\cite{ford2010availability}.
+Placement matters more (Figure~\ref{fig:correlation}). At per-unit unavailability $f=0.10$, an IID committee reconstructs with probability \RIIDReconTen{}, four domains of eight (under the cap of Observation~\ref{prop:cap}) with \RDomFourRecon{}, and two domains of sixteen, which violate it, with only \RDomTwoRecon{}. Field studies show that correlated failures dominate real unavailability\cite{ford2010availability}.
 
 \begin{figure}[t]
 \centering
@@ -395,99 +408,63 @@ Placement matters more (Figure~\ref{fig:correlation}). At per-unit unavailabilit
 \label{fig:correlation}
 \end{figure}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.62\textwidth]{fig6_acceptance_tradeoff.pdf}
-\caption{Detection versus benign alarm rate (the audit fails while the committee is healthy, $f=0.10$) for each $q$, one curve per sample size. Exact values from Table~\ref{tab:acceptance} and its full source grid.}
-\label{fig:acceptance}
-\end{figure}
-
 \subsection{Deadline liveness in an emulated testbed (Q3)}\label{sec:eval-deadline}
 
-Thirty-two custodian processes, each an asyncio TCP server holding only its own ffdhe2048 share, and one combiner run on one host. Each trace runs one canary audit and one dispute over a freshly sealed 1\,KiB record; the combiner verifies proofs on arrival, stops at $t=22$ valid partials, combines, unwraps $K_r$ and checks the plaintext. One-way delays are lognormal with the profile's median, loss drops messages without retransmission, and crashed custodians never answer. Each of eight profiles ran \RDLTraces{} traces with seeds fixed in advance.
+Thirty-two custodian processes, each a TCP server holding only its own ristretto255 share, and one combiner run on one host. Each trace runs one canary audit ($s=q=8$) and one dispute over a fresh 1\,KiB record: custodians check the TDH2 proof and label, and the combiner verifies DLEQ proofs in a worker thread, stops at $t=22$ valid partials and checks the decrypted plaintext. Delays are lognormal on both legs, lost messages are not retransmitted, and crashed custodians never answer. Each profile ran \RtwoTraces{} traces per verification variant, \RtwoTracesTotal{} in all. The primary endpoint, fixed before any trace, is success by $\Delta_d^{*}=c_p+2\delta_{99}+t\,c_v+c_c$: Proposition~\ref{prop:budget} with the profile's 99th-percentile one-way delay on both legs and the R2 medians of Table~\ref{tab:operations}. An earlier single-leg version was corrected before any testbed code ran.
 
-Table~\ref{tab:testbed} gives the results. No dispute finished in under 3.5\,s, so the primary endpoint fixed before the run, success by $\Delta_d=2$\,s, was $0\%$ in every profile; that deadline was set without budgeting for the serial verification term of Proposition~\ref{prop:budget}, which in this prototype alone exceeds 2\,s. Within 5\,s every reconstructable dispute succeeded except one control trace (299 of 300), with medians from \RDLMedLo{} to \RDLMedHi\,s and a slowest success of \RDLMaxSucc\,s; that trace timed out with 19 valid partials during unrelated load on the shared host. Without injected delay the median was \RDLControlMed\,ms, of which 22 serial verifications at \RVerifyTwoK\,ms (Table~\ref{tab:operations}) account for about 2{,}980\,ms; the remainder was not instrumented. A 120\,ms-median delay moved the median only to \RDLGlobalMed\,ms, because responses arrive while earlier ones are still being verified, and a heavy-tailed law ($\sigma=1.2$) did not lengthen completion (95th percentile \RDLHeavyTailPninefive\,ms). Ten crashes and a domain outage finished slightly faster, plausibly because fewer processes competed for the CPU; eleven crashes defeated every dispute (\RDLCrashElevenSucc{} succeeded), since $21<t$ custodians remain. In this unoptimized single-host setting, completion was bounded by computation rather than emulated network delay; we did not measure optimized or batched verification.
+Table~\ref{tab:testbed} gives the results. Five of the seven reconstructable profiles succeeded in every trace. Without network delay the deadline is \RtwoControlDstar\,ms and no dispute met it (\RtwoControlSucc{} of \RtwoTraces): disputes took \RtwoControlMed\,ms at the median, \RtwoControlSpeedup{} times faster than in R1, which differs in group, code and where verification runs, but the formula counts cryptographic work only, not message encoding and hand-offs among 33 processes. A deadline budget must therefore include host overhead when no network delay absorbs it. With ten crashes all 22 survivors must answer, so completion follows the slowest of 22 round trips, which exceeds the 99th percentile of one: \RtwoCrashTenSerial{} met the deadline (\RtwoCrashTenBatch{} with batch verification). Eleven crashes defeated every dispute, as $21<t$ custodians remain. With network delay, completion follows the network, with medians from \RtwoMedLo{} to \RtwoMedHi\,ms, against \RDLMedLo--\RDLMedHi\,s in R1, where serial verification on the network loop took about 3\,s. Elsewhere batch verification matched serial verification, consistent with Q4. Audit pass rates fell inside the Wilson interval of their exact expectation (sampled silent members, loss on both legs and the timeout) in \RtwoAuditInside{} of 16 profile and variant pairs.
 
 \begin{table}[t]
-\caption{Emulated testbed, 32 custodian processes on one host with real ffdhe2048 cryptography, \RDLTraces{} traces per profile, 95\% Wilson intervals. Audit pass is $q=8$ valid responses within the 6\,s timeout; dispute columns require the correct plaintext by the stated deadline; times are over successful disputes.}
+\caption{Emulated testbed (R2): 32 custodian processes on one host, ristretto255 and TDH2, \RtwoTraces{} traces per profile and variant. $\Delta_d^{*}$ is the primary deadline fixed before the run. Audit pass ($s=q=8$, 6\,s timeout) with its exact expectation; dispute success requires the correct plaintext, with the 95\% Wilson interval for serial verification; times are serial completion over disputes that eventually succeeded; R1 median is the first prototype (ffdhe2048).}
 \label{tab:testbed}
 \centering
-\footnotesize
-\input{tables/t4b_testbed.tex}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\input{tables/t4b_testbed_r2.tex}
 \end{table}
 
-Audit pass rates on real cryptography matched the exact expectations (Eq.~\eqref{eq:hypergeom} for crashes and outages, Observation~\ref{prop:benign} for loss): \RDLCrashTenAudit{} against \RExpCrashTen{} with ten crashes, \RDLDomainOutAudit{} against \RExpDomainOut{} with one domain down, and \RDLLossAudit{} against \RExpLoss{} with 2\% loss, while the dispute succeeded in every trace of these profiles. A single audit took \RDLAuditMedLo--\RDLAuditMedHi\,s at the median. Under the heavy-tailed law the audit failed in 5 of 300 traces, each with 7 of 8 responses verified before the 6\,s timeout, consistent with the lognormal tail.
+\subsection{Cost and scalability (Q4)}\label{sec:eval-cost}
 
-\subsection{Performance and scalability (Q4)}
-
-Table~\ref{tab:operations} gives per-operation costs of the pure-Python prototype; optimized libraries, in particular elliptic-curve groups, are substantially faster. At ffdhe2048 a partial decryption with proof takes \RProveTwoK\,ms and its verification \RVerifyTwoK\,ms, and verifying 22 partials and combining takes \RCombineTwoK\,ms (\RCombineThreeK\,ms at ffdhe3072). The 256-bit group is listed for reference only and is not a secure size. Audit cost grows with $s$ and dispute cost with $t$ (Table~\ref{tab:scalability}); Table~\ref{tab:gas} gives gas costs.
+Table~\ref{tab:operations} gives per-operation medians of the R2 prototype. In ristretto255 a partial decryption with proof takes \RtwoProveRis\,ms and its verification \RtwoVerifyRis\,ms, so the term $t\,c_v$ of Proposition~\ref{prop:budget} is \RtwoTcvRis\,ms, against \RtwoTcvTwoK\,ms for R2's own ffdhe2048 code and about 2{,}980\,ms for R1's; combining 22 partials, unwrapping and decrypting takes \RtwoCombineRis\,ms. Batch verification of 22 proofs by a random linear combination runs at \RtwoBatchRis{} times the speed of serial verification in ristretto255, where scalar multiplications dominate either way, and at \RtwoBatchTwoK{} and \RtwoBatchThreeK{} times in ffdhe2048 and ffdhe3072. Supplementary Table~S1 gives R1 costs for committees of up to 128: audit cost grows with $s$ and dispute cost with $t$.
 
 \begin{table}[t]
-\caption{Median wall time per operation, CPython 3.13 on an Apple M4 Pro; RFC~7919 groups\cite{rfc7919} with $\ell=(p-1)/2$ and generator~4. Pure-Python reference implementation.}
+\caption{Median wall time per operation in the R2 prototype, 1{,}000 timed runs, CPython 3.13 on an Apple M4 Pro; ristretto255 through libsodium, RFC~7919 groups\cite{rfc7919} in pure Python. Batch verification uses 128-bit random coefficients.}
 \label{tab:operations}
 \centering
 \small
-\input{../r1/tables/t6_operations.tex}
+\input{tables/t6_operations_r2.tex}
 \end{table}
 
-\begin{table}[t]
-\caption{Scalability with $t=n-\lfloor(n-1)/3\rfloor$. Detection is exact (Eq.~\eqref{eq:bound}, $q=s$). Audit CPU is $s$ proofs plus $s$ verifications; bytes are one request plus $s$ responses. Dispute time is measured verification of $t$ partials plus combination.}
-\label{tab:scalability}
-\centering
-\small
-\input{../r1/tables/t5_scalability.tex}
-\end{table}
+\subsection{Readiness over time (Q5)}\label{sec:eval-temporal}
+
+We evaluated Theorems~\ref{thm:hmm} and~\ref{thm:floor} on a synthetic grid of \TmpGridCells{} cells (Table~\ref{tab:config}); Table~\ref{tab:temporal} shows five scenarios. The bound of Theorem~\ref{thm:floor} held in all \TmpBoundCells{} shock-free cells. An event simulation without closed forms matched \TmpSimInfoPass{} of the \TmpSimInfo{} quantities with observed events within 99\% Wilson intervals; the miss agreed on five further seeds, and \TmpSimVacuous{} quantities near $10^{-16}$ saw no events. Three findings stand out. First, correlated failures dominate: with custodian MTBF 30\,d and MTTR 6\,h, $\Pr[Z<t]$ is $\TmpCatIID$ for independent custodians and $\TmpCatShock$ when each domain fails every 90 days on average. Second, the floor binds: with domain shocks, custodian MTBF 7\,d and MTTR 24\,h, $U_0=\TmpFloorHard$ for $(8,8)$, so no audit interval reaches $\varepsilon=10^{-4}$, and $(24,20)$ reaches it only with audits every \TmpHardWideMin{} minutes, at the edge of the searched range. Third, larger samples are not uniformly better: $(24,20)$ lowers the floor by orders of magnitude, yet its $U$ exceeds that of $(8,8)$ in all \TmpShockTotal{} shock cells and \TmpIidWorse{} of \TmpIidTotal{} shock-free ones, each time because it accepts more often; $U$ ignores the benign alarms the strict rule raises instead. For independent custodians with MTBF 7\,d, MTTR 24\,h and $(8,8)$, the longest interval for $\varepsilon=10^{-4}$ is \TmpExactIntervalIID\,h under $U$, \TmpPostIntervalIID\,h under the posterior risk $R$, and a conservative \TmpBoundIntervalIID\,h from the bound.
 
 \begin{table}[t]
-\caption{Bulletin-board gas per operation, measured with Foundry 1.5.1 and Solidity 0.8.24 (test-body gas; fixture setup excluded), in the small harness committee named in the scope column; values are deterministic.}
-\label{tab:gas}
+\caption{Readiness over time, exact under a declared synthetic model, $n=32$, $t=22$. Scenarios give custodian MTBF / MTTR and, for shocks, the domain MTBF (domain MTTR 6\,h). $U$: probability that a dispute fails and the last audit accepted; $U_0$: its floor; $T^{*}$: longest interval with $U\le10^{-4}$, by bisection over $[0.25\,\mathrm{h},30\,\mathrm{d}]$ (none: infeasible at 0.25\,h).}
+\label{tab:temporal}
 \centering
-\footnotesize
-\input{../r1/tables/t8_gas.tex}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\input{tables/t9_temporal.tex}
 \end{table}
 
 % =====================================================================
 \section{Discussion}\label{sec:discussion}
 
-Availability is layered: data availability concerns encrypted bytes, share registration the key's formation, a readiness audit present share access, and a dispute whether $t$ custodians serve a specific target in time; the evaluation separates each layer.
+Five design consequences follow. First, specify audits by the safety margin they certify: choose $s$ and $q$, or a sequential test across audits, for target error rates at $k\le t-1$ and $k\ge t+m$ (Section~\ref{sec:oc}). Second, placement under the cap $n-t$ matters more than the sampling policy, and correlated domain failures dominate the risk over time (Q5). Third, schedule audits from a risk target: Theorem~\ref{thm:floor} gives the longest admissible interval, and below the floor $U_0$ only a stronger design helps. Fourth, deadlines must budget for the ledger delay, for verifying up to $n$ proofs and for host overhead; with elliptic-curve verification off the network loop, the network rather than computation governs completion (Q3). Fifth, if untrusted parties can obtain releases, the dispute path must bind each release to its record (Proposition~\ref{prop:malleable}, Lemma~\ref{lem:pacplus}).
 
-Four design consequences follow. First, specify audits by the safety margin they certify: choose $s$ and $q$, or a sequential test across audits, for target error rates at $k\le t-1$ and $k\ge t+m$ (Section~\ref{sec:oc}), which favors larger samples with $q<s$. Second, placement under the cap $n-t$ matters more than the sampling policy. Third, deadlines must budget for the ledger delay and for verifying up to $n$ proofs, or $t$ when no invalid response comes first (Proposition~\ref{prop:budget}); optimized or batched verification is the first improvement. Fourth, if untrusted parties can obtain releases, the dispute path must bind each release to its record (Proposition~\ref{prop:malleable}).
-
-Invalid proofs and equivocation are transferable evidence, whereas non-response proves only absence and its attribution depends on timing\cite{lewis2025accountable}, so slashing should be reserved for transferable evidence. Finally, the audit cannot detect selective withholding, because canaries are unrelated to records by design (Lemma~\ref{lem:sim}). Making canaries indistinguishable from record components would stop observers from checking that an audit opened no production record (Lemma~\ref{lem:subst}), so resistance needs a different mechanism, such as unpredictable dispute routing or economic commitments enforced by the deadline transcript.
+Invalid proofs and equivocation are transferable evidence, whereas attributing non-response depends on timing\cite{lewis2025accountable}, so slashing should rest on transferable evidence. The audit cannot detect selective withholding, because canaries are unrelated to records by design (Lemma~\ref{lem:sim}); making them indistinguishable from record components would stop observers from checking that an audit opened no record (Lemma~\ref{lem:subst}), so resistance needs another mechanism, such as unpredictable dispute routing or economic commitments enforced by the deadline transcript.
 
 % =====================================================================
 \section{Related work}\label{sec:related}
 
-Table~\ref{tab:related} summarizes how KEYSTONE relates to other checks of availability or readiness.
+\paragraph{Optimistic and verifiable computation.} Optimistic rollups rely on an honest challenger to force correct results on chain\cite{kalodner2018arbitrum}; opML applies this to machine-learning inference\cite{conway2024opml}, and EigenAI re-executes private inference in a trusted environment after a threshold key release\cite{eigenai2026}. These systems assume the challenger can read the disputed inputs; with encrypted inputs this becomes the requirement that keys be serviceable before the deadline, which KEYSTONE audits without changing the dispute game.
 
-\begin{table}[t]
-\caption{Mechanisms that check some form of availability or readiness. ``Secret-key operation'' means the check makes a custodian apply its secret share. Entries describe the mechanism class, not every system in it.}
-\label{tab:related}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}@{}}
-\toprule
-Mechanism & What is checked & Secret-key operation & Deadline evidence\\
-\midrule
-Liveness heartbeat & A process answers & No & No\\
-Threshold-wallet heartbeat (tBTC v2)\cite{tbtc2026heartbeat} & The full signing group signs a heartbeat message & Yes (signing) & A failed heartbeat triggers fund migration\\
-Proof of custody\cite{feist2021custody} & A validator holds the data it attests to & Secret-dependent bit & Challenge and penalty\\
-PoR and PDP\cite{juels2007por,ateniese2007pdp,bowers2009hail} & A server still stores a file & No & No\\
-Data-availability sampling\cite{albassam2021fraud,hallandersen2025das,eip7594} & Published data are retrievable & No & No\\
-VSS, PVSS and DKG transcripts\cite{feldman1987vss,schoenmakers1999pvss,gennaro2007dkg} & Shares were distributed consistently & At setup only & No\\
-Threshold-release systems\cite{kokoriskogias2020calypso,stengele2021ethtid,bebel2022ferveo} & A release is performed when requested & At release only & System-specific\\
-KEYSTONE & $q$ of $s$ sampled custodians can apply their shares now; $t$ custodians serve a dispute by $\Delta_d$ & Before release (canary) and at release & Bulletin board\\
-\bottomrule
-\end{tabularx}
-\end{table}
+\paragraph{Threshold decryption and key management.} Threshold cryptosystems\cite{desmedt1990threshold}, their chosen-ciphertext-secure variants\cite{shoup2002securing} and DLEQ proofs\cite{chaum1992dleq,fiat1987prove} provide the release mechanism. Verifiable and publicly verifiable secret sharing and distributed key generation\cite{feldman1987vss,schoenmakers1999pvss,gennaro2007dkg,das2022adkg} make shares consistent when created, and proactive and dynamic sharing refreshes them\cite{herzberg1995proactive,yurek2023dpss,maram2019churp}; a refresh also exercises every share, but it is infrequent and costly. A canary response is structurally a threshold-coin share\cite{cachin2005constantinople} or a threshold-signature share on a hashed message\cite{boldyreva2003threshold}; our contribution is its use as a sampled readiness test and what that test can and cannot certify. Context-dependent threshold decryption isolates shares across contexts\cite{boneh2025context}.
 
-\paragraph{Optimistic and verifiable computation.} Optimistic rollups rely on dispute protocols in which an honest challenger forces correct results on chain\cite{kalodner2018arbitrum}; opML applies this to machine-learning inference\cite{conway2024opml}, and EigenAI re-executes private inference in a trusted environment after a threshold key release\cite{eigenai2026}. These systems assume the challenger can read the disputed inputs. With encrypted inputs that assumption becomes the requirement that keys be serviceable before the deadline, which KEYSTONE isolates and audits without changing the dispute game.
+\paragraph{Threshold release on ledgers.} CALYPSO releases on-ledger secrets to authorized readers through a threshold committee with an auditable access log\cite{kokoriskogias2020calypso}, and ETHTID provides threshold disclosure on Ethereum\cite{stengele2021ethtid}. Encrypted mempools face the same concerns of committees, epochs, collusion and timely decryption\cite{bebel2022ferveo,bormet2025epochless,choudhuri2024mempool}. FairBlock has a committee exchange a fixed number of identity-based decryption shares per block\cite{momeni2023fairblock}, and F3B, building on CALYPSO, has a committee release a per-transaction key once the transaction is final\cite{zhang2023f3b}. In both, timely decryption depends on a threshold of members serving the release, the property DKA makes explicit; the descriptions we found specify the release path but no pre-release readiness audit. UQ-Vote combines a consensus-finalized bulletin board with consensus-authorized threshold decryption and evaluates liveness under faults\cite{liu2026uqvote}. These ideas are established; KEYSTONE adds the deadline-bound property that release must satisfy for disputes, an audit that measures it without opening records, and an analysis of what passing it implies.
 
-\paragraph{Threshold decryption and key management.} Threshold cryptosystems\cite{desmedt1990threshold}, their chosen-ciphertext-secure variants with verifiable shares\cite{shoup2002securing} and DLEQ proofs\cite{chaum1992dleq,fiat1987prove} provide the release mechanism. Verifiable and publicly verifiable secret sharing and distributed key generation\cite{feldman1987vss,schoenmakers1999pvss,gennaro2007dkg,das2022adkg} make shares consistent when created, and proactive and dynamic sharing refreshes them\cite{herzberg1995proactive,yurek2023dpss}. A refresh, including dynamic-committee resharing\cite{maram2019churp}, also exercises every share, but it is infrequent and costly, and shares can be lost between refreshes. A canary response is structurally a threshold-coin share\cite{cachin2005constantinople} or a threshold-signature share on a hashed message\cite{boldyreva2003threshold}; our contribution is not this primitive but its use as a sampled readiness test, with the properties it can and cannot certify. Context-dependent threshold decryption isolates shares across contexts\cite{boneh2025context}. KEYSTONE uses these primitives unchanged and asks whether enough custodians can apply their shares \emph{now}.
-
-\paragraph{Threshold release on ledgers.} CALYPSO releases on-ledger secrets to authorized readers through a threshold committee with an auditable access log\cite{kokoriskogias2020calypso}, and ETHTID provides threshold disclosure on Ethereum\cite{stengele2021ethtid}. Encrypted mempools face the same operational concerns of committees, epochs, collusion and timely decryption\cite{bebel2022ferveo,bormet2025epochless,choudhuri2024mempool}. FairBlock applies identity-based encryption so that a committee exchanges a fixed number of decryption shares per block, independent of the number of transactions\cite{momeni2023fairblock}, and F3B, building on CALYPSO, has a secret-management committee release a per-transaction key once the transaction is finalized\cite{zhang2023f3b}. In both, timely decryption depends on a threshold of committee members serving the release, which is the property DKA makes explicit; the published descriptions we found specify the release path but no pre-release readiness audit. UQ-Vote combines a consensus-finalized bulletin board with consensus-authorized threshold decryption and evaluates liveness under faults\cite{liu2026uqvote}. Authorization by finalized state, public request logs and decryption deadlines are thus established, and we do not claim them. These systems specify the release path; KEYSTONE adds the deadline-bound property that release must satisfy for disputes, a pre-release audit that measures it without opening records, and an analysis of what passing it implies.
-
-\paragraph{Proofs of storage, custody and heartbeats.} Proofs of retrievability and provable data possession spot-check random parts of a stored file and bound the probability that a server missing data passes\cite{juels2007por,ateniese2007pdp}; HAIL extends this to servers under a mobile adversary\cite{bowers2009hail}. KEYSTONE's audit belongs to this family: the DLEQ proof is a proof of knowledge (Lemma~\ref{lem:correct}), and Theorem~\ref{thm:fa} plays the role of their sampling bounds. It differs in that possession is not service, a gap KEYSTONE makes explicit (Observation~\ref{prop:nonimpl}); in that confidentiality forces canary responses to be useless for decrypting records (Lemmas~\ref{lem:sim} and~\ref{lem:subst}); and in that DKA is a multi-party, threshold, target-specific and deadline-bound property. Proof-of-custody proposals make validators commit to a secret-dependent bit of attested data so lazy validators can be penalized\cite{feist2021custody}. The closest deployed analogue is the tBTC v2 heartbeat, in which each threshold wallet's signing group signs periodic messages and funds leave a wallet that fails one\cite{tbtc2026heartbeat}; KEYSTONE instead samples custodians with exact operating characteristics, audits decryption shares under a confidentiality constraint, and ties readiness to dispute deadlines. Data-availability proofs and sampling\cite{albassam2021fraud,hallandersen2025das,eip7594} concern public data, which KEYSTONE takes as given.
+\paragraph{Proofs of storage, custody and heartbeats.} Proofs of retrievability and provable data possession spot-check stored files and bound the probability that a server missing data passes\cite{juels2007por,ateniese2007pdp}, also under a mobile adversary\cite{bowers2009hail}. KEYSTONE's audit belongs to this family, with a proof of knowledge (Lemma~\ref{lem:correct}) and sampling bounds (Theorem~\ref{thm:fa}). It differs in that possession is not service (Observation~\ref{prop:nonimpl}), in that confidentiality forces canary responses to be useless for decrypting records (Lemmas~\ref{lem:sim} and~\ref{lem:subst}), and in that DKA is a threshold, target-specific and deadline-bound property. Proof-of-custody proposals penalize validators that do not hold attested data\cite{feist2021custody}. The closest deployed analogue is the tBTC v2 heartbeat, in which each threshold wallet's signing group signs periodic messages and funds leave a wallet that fails one\cite{tbtc2026heartbeat}; KEYSTONE instead samples custodians with exact operating characteristics, audits decryption shares under a confidentiality constraint, and models readiness over time. Data-availability proofs and sampling\cite{albassam2021fraud,hallandersen2025das} concern public data, which KEYSTONE takes as given. Supplementary Table~S3 compares these mechanisms.
 
 \paragraph{Accountability.} Slashing conditions\cite{buterin2017casper} and BFT forensics\cite{sheng2021forensics} attribute safety violations with transferable evidence, threshold traitor tracing addresses coalitions that leak decryption capability\cite{boneh2023accountability}, and attributing liveness failures depends on timing\cite{lewis2025accountable}.
 
@@ -496,16 +473,16 @@ KEYSTONE & $q$ of $s$ sampled custodians can apply their shares now; $t$ custodi
 
 \paragraph{Novelty.} The components are not new; our claim covers the property decomposition, the confidentiality-preserving audit and its analysis, and the labeled evaluation, and it rests on a bounded literature search.
 
-\paragraph{Internal validity.} The simulation design was hashed before execution, but the hash is self-recorded and the design was not reviewed by an independent party; the acceptance-rule and operating-characteristic analyses were added afterwards. The testbed shares one CPU among 33 processes, which explains the slightly faster crash profiles and the one control timeout; both are reported, not discarded.
+\paragraph{Internal validity.} Both designs were hashed before execution, but the hashes are self-recorded and no independent party reviewed the designs; the acceptance-rule and operating-characteristic analyses were added afterwards. R2 logged nine deviations, among them a correction of the deadline formula before any testbed run and a restart after the host ran out of ephemeral ports; none changed an endpoint or an analysis in response to outcomes. 
 
-\paragraph{Construct and external validity.} The audit measures present sampled serviceability, not future cooperation, and repeated-audit bounds need a static or modeled readiness process. Failure models are synthetic, the testbed uses loopback TCP with synthetic delays, geo-distributed effects and clock skew are not measured, and timings reflect pure Python.
+\paragraph{Construct and external validity.} The audit measures present sampled serviceability, not future cooperation. The temporal model assumes independent exponential failures and repairs with synthetic rates, failure models are synthetic, the testbed uses loopback TCP with synthetic delays, and geo-distributed effects, ledger delay and clock skew are not measured.
 
-\paragraph{Prototype scope.} A dealer replaces distributed key generation; the plain KEM provides $\PAC$ but not $\PAC^{+}$; the contract trusts an administrator for sampling, invalid-response evidence and cancellation; neither code nor contract has been externally audited; and the lemmas hold in the random-oracle model with static corruption.
+\paragraph{Prototype scope.} A dealer replaces distributed key generation; the contract trusts an administrator for sampling, invalid-response evidence and cancellation; neither code nor contract has been externally audited; the lemmas hold in the random-oracle model with static corruption; and Lemma~\ref{lem:pacplus} and the temporal results are given with proof sketches here and full proofs in the supplementary material.
 
 % =====================================================================
 \section{Conclusion and future directions}\label{sec:conclusion}
 
-Ciphertext availability does not ensure that the threshold service needed for an encrypted-rollup dispute answers in time. We defined dispute-key availability and the weaker properties it is confused with, showed that a beacon-derived canary audit exercises real shares while its transcripts are simulatable from public data, gave its exact operating characteristics, the sample sizes and sequential tests that certify a safety margin, a placement condition and a deadline budget, and showed that confidentiality against parties who obtain other releases requires binding releases to records. The evaluation confirmed each separation: a small strict audit barely distinguishes a failed committee from a live one and alarms often on healthy committees, selective withholders pass every audit and defeat every dispute, and in the emulated committee all but one reconstructable dispute completed within five seconds, bounded by serial proof verification in our unoptimized prototype. Future work should address selective withholding, which the audit provably cannot detect alone; temporal readiness models calibrated on operational data; and a production instantiation with distributed key generation, record-bound releases, optimized verification and realistic ledger delays, evaluated across regions.
+Ciphertext availability does not ensure that the threshold service needed for an encrypted-rollup dispute answers in time. We defined dispute-key availability and the weaker properties it is confused with, showed that a beacon-derived canary audit exercises real shares while its transcripts are simulatable from public data, gave its exact operating characteristics, sample sizes and sequential tests that certify a safety margin, a placement condition and a deadline budget, and showed that confidentiality against parties who obtain other releases requires binding releases to records, as record-labeled TDH2 does. For custodians that fail and recover, an exact recursion gives the risk that a dispute fails after any audit history, and a floor shows when auditing more often cannot help. The evaluation confirmed each separation: a small strict audit barely distinguishes a failed committee from a live one and alarms often on healthy committees, selective withholders pass every audit and defeat every dispute, correlated domain failures dominate risk over time, and with elliptic-curve verification off the network loop the network governs dispute completion, while a deadline that ignores host overhead fails without network delay. Future work should address selective withholding, which the audit provably cannot detect alone; readiness models calibrated on operational data; and a production instantiation with distributed key generation and realistic ledger delays, evaluated across regions.
 
 % =====================================================================
 \section*{Statements and Declarations}
@@ -520,7 +497,7 @@ Ciphertext availability does not ensure that the threshold service needed for an
 
 \paragraph*{Funding statement.}The author(s) received no financial support for the research, authorship and/or publication of this article.
 
-\paragraph*{Data availability.}Source code, frozen designs with SHA-256 hashes, seed schedules, raw per-block and per-trace outputs, and the scripts that generate every table, figure and in-text number are provided as anonymized supplementary material for review. A public repository link is given on the title page and will be included in the published article.
+\paragraph*{Data availability.}Code, frozen designs with SHA-256 hashes, deviation logs, raw outputs and the scripts that generate every table, figure and in-text number are provided as anonymized supplementary material. A public repository link is given on the title page and will be included in the published article.
 
 \paragraph*{Declaration of AI use.}AI assistance was used for drafting text, integrating code, scripting experiments and generating figures. The author(s) verified the scientific content, the proofs and every reported number against the generated outputs, and take full responsibility for the article.
 

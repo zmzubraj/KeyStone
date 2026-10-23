@@ -34,5 +34,9 @@ find "$ARTIFACT_DIR" \( -name __pycache__ -o -name .pytest_cache \) -type d -pru
 find "$ARTIFACT_DIR" -name .DS_Store -delete
 (cd "$(dirname "$ARTIFACT_DIR")" && zip -qr "$OUT/KEYSTONE_artifact_anonymized.zip" "$(basename "$ARTIFACT_DIR")")
 cp "$HERE/KEYSTONE_JCS.pdf" "$OUT/KEYSTONE_JCS_anonymized.pdf"
+
+# 4. Supplementary material (full proofs, moved figures and tables), anonymized.
+(cd "$HERE/supplement" && latexmk -pdf -interaction=nonstopmode -halt-on-error KEYSTONE_supplement.tex >/dev/null)
+cp "$HERE/supplement/KEYSTONE_supplement.pdf" "$OUT/KEYSTONE_supplement_anonymized.pdf"
 rm -rf "$STAGE"
 ls -la "$OUT"

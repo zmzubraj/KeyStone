@@ -13,3 +13,5 @@ KEYSTONE_JCS.pdf
 submission/Title_Page.*
 submission/Cover_Letter.*
 .DS_Store
+supplement/KEYSTONE_supplement.pdf
+supplement/*.bbl

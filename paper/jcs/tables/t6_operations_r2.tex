@@ -1,0 +1,14 @@
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Operation (median, ms) & ristretto255 & ffdhe2048 & ffdhe3072\\
+\midrule
+Canary derivation $H_G$ & 0.011 & 0.020 & 0.034\\
+Partial decryption + DLEQ proof & 0.086 & 49.53 & 160.8\\
+DLEQ verification & 0.152 & 48.26 & 140.0\\
+Batch verification of $t=22$ proofs & 3.61 & 580.7 & 1301.6\\
+Seal 1\,KiB, plain KEM & 0.041 & 32.38 & 103.9\\
+Seal 1\,KiB, TDH2 & 0.106 & 83.29 & 266.5\\
+TDH2 ciphertext-proof check & 0.116 & 47.85 & 137.6\\
+Combine $t$ partials, unwrap, decrypt & 0.923 & 244.9 & 729.6\\
+\bottomrule
+\end{tabular}

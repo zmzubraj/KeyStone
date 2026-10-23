@@ -183,3 +183,27 @@ and checks only that the exact value is small. This limits what those cells can 
   fresh uniform samples, disputes independent of the process.
 - Synthetic parameters (MTBF, MTTR, domain rates); no field data.
 - Says nothing about adaptive adversaries who answer audits and withhold disputes (W4(a), future work).
+
+## Addendum (2026-10-23): monotonicity of U, and numbering in the article
+
+Added after the temporal results existed and after an AI cold read of the article. It proves a property
+that the frozen analysis had assumed and checked numerically; no number or analysis changes.
+
+**Proposition 7 (monotone undetected failure).** With or without domain shocks, U(T) (metric 2, the
+F(T) of Section 4) is non-decreasing in T and U(T) >= U_0 = sum_{k<t} pi(k) A(k) for every T > 0.
+
+*Proof.* Order states coordinatewise (K; or each domain state and member count). A is non-decreasing
+and 1_{<t} non-increasing in this order. The chain (i) is reversible with respect to pi (a product of
+two-state and birth-death chains), (ii) changes one coordinate by one step per transition, and (iii)
+maps non-increasing functions to non-increasing functions under P_u, because p_uu(u) >= p_du(u). With
+g(u) = <A, P_u 1_{<t}>_pi, g'(u) = -E(A, P_u 1_{<t}), where E is the Dirichlet form
+(1/2) sum pi(x) L(x,y) (f(y)-f(x))(h(y)-h(x)). By (ii) every jump joins comparable states, and by (iii)
+each term is <= 0, so g' >= 0. U(T), the running mean of g, is then non-decreasing and at least g(0) = U_0.
+
+Consequences: Corollary 6 holds for every T, not only in the limit; the bisection for the metric-2
+interval is exact. Monotonicity of metric 1 (posterior risk) is not proved.
+
+**Numbering and notation in the article.** Theorem 3 here is the article's Theorem 2; Proposition 4 is the
+limit stated after it; Theorem 5, Corollary 6 and Proposition 7 together are the article's Theorem 3. The
+article writes Z for K, omega for pi, (phi, psi) for (lambda, mu), v for a, U and U_0 for metric 2 and its
+floor, and R(T) for metric 1, to avoid clashes with its other notation.

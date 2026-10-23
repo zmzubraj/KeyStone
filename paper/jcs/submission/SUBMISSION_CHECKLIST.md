@@ -10,15 +10,16 @@ Portal: https://mc.manuscriptcentral.com/j-cs (ScholarOne). Journal: https://jou
 | LaTeX source (if requested) | `KEYSTONE_JCS_source.zip` | Flattened source: main .tex, sagej.cls, endnotes.sty, tables, figures, .bib, .bbl |
 | Title page (not sent to reviewers) | `Title_Page.docx` / `Title_Page.pdf` | ORCID and postal address filled in (2026-10-21) |
 | Cover letter | `Cover_Letter.docx` / `Cover_Letter.pdf` | Dated 21 October 2026; update if you submit later; confirm the editors' names on the live journal page |
-| Supplementary material (for review) | `KEYSTONE_artifact_anonymized.zip` | Code, frozen design, raw results; regenerates every table, figure and number |
+| Supplementary material (for review) | `KEYSTONE_supplement_anonymized.pdf` | Full proofs (Lemmas 1 to 4, Theorems 2 and 3, Proposition S1), Figures S1 and S2, Tables S1 to S3 (scalability, gas, related-work comparison) |
+| Supplementary material (for review) | `KEYSTONE_artifact_anonymized.zip` | R1 and R2 code, frozen designs, deviation logs, raw results; regenerates every table, figure and number |
 
 ## Values to enter in ScholarOne
 
 - Article type: Research article
 - Title: KEYSTONE: Readiness Audits for Dispute-Key Availability in Encrypted Rollups
-- Abstract: copy from the manuscript (185 words; limit 150–200)
+- Abstract: copy from the manuscript (197 words in the rendered PDF; limit 150 to 200)
 - Keywords: Dispute-key availability; threshold decryption; encrypted rollups; readiness audit; acceptance sampling; selective withholding
-- Counts: ~9,250 words main text incl. tables (~10,800 in the whole PDF incl. references), 23 pages, 4 figures, 10 tables, 45 references
+- Counts: 10,984 words in the whole PDF incl. references, tables and figure labels; 23 pages, 2 figures, 8 tables, 45 references; supplement 8 pages
 - Funding: none. Conflicts: none.
 - Preprint: none on a preprint server (an earlier draft is in the public GitHub repository; this is disclosed in the cover letter)
 - Suggested reviewers: not accepted by this journal
@@ -63,3 +64,15 @@ Review: `paper/jcs/reviews/expert_review_2026-10-21.md` (AI cold read; not indep
 - W10: simulation cells framed as implementation checks; exact sign test reported. W12: title and framing no longer AI-specific or "Auditable".
 - W13: static corruption, share pooling, self-declared domains, trust-model change stated. W15: Table 4 split, deadline figure and withholding panel replaced by tables, process vocabulary trimmed, non-independent design review disclosed.
 - Next: Group B (W1 temporal theorem, W3 TDH2, W5 EC core + testbed rerun, W11 hash-to-group); needs a design amendment before any new experiment.
+
+## R2 integration (2026-10-23)
+
+Plan: `paper/jcs/reviews/R2-PAPER-INTEGRATION-PLAN.md` (author approved all recommendations).
+- Added: Lemma 4 (record-bound releases, PAC+ with record-labeled TDH2; the KEM form of TDH2 is stated as an assumption); Definition 7 now requires PAC+; Section 6.3 "Readiness over time" (Theorems 2 and 3, accepted-run limit, floor F0, longest admissible interval); R2 testbed (Q3), R2 costs (Q4), temporal results (Q5).
+- Reported negative result: the primary deadline Delta_d* missed on D0-CONTROL (0/300) because the formula omits host overhead; D4 met it in 97.3% (serial) and 94.7% (batch).
+- Moved to the supplement: full proofs of Lemmas 1 to 3, Figures 2 and 6, scalability, gas and related-work tables. RFC 9496 added; EIP-7594 dropped (45 references).
+- All R2 numbers come from `paper/jcs/r2_assets.py`; the artifact reproduces the R2 tables and the deadline summary byte-identically, and its 89 R2 tests pass.
+- Artifact anonymization: R2 authorization record omitted (its line removed from `r2-design-freeze.SHA256SUMS`); git commit ids in environment and provenance records and in the deviation log redacted.
+- OPEN (author decision): `r2-design-freeze.json` and the design draft it hashes cite the full base commit of the public repository. They cannot be changed without breaking the hash checks. A reviewer could search GitHub for that commit and find the repository. Choose: keep (the cover letter already discloses the public draft) or ship R2 design files only after review.
+- Human gates unchanged: the expert read-through must cover the new proofs (Lemma 4 and the temporal results were drafted with AI assistance), and the AI-use declaration must stay true.
+- AI cold read of the R2 changes and the fixes: `paper/jcs/reviews/cold_read_R2_2026-10-23.md` (3 must-fix, 7 should-fix, 7 minor; all addressed). Notable: Definition 6 (PAC) is now plaintext indistinguishability, because the earlier key-indistinguishability form was trivially winnable; Assumption 5 states TDH2's KEM security; Theorem 3 now proves U monotone and never below its floor (deviation entry 9).
