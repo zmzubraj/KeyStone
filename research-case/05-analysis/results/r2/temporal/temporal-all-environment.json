@@ -1,0 +1,37 @@
+{
+  "families": [
+    "R2_TEMPORAL_EXACT",
+    "R2_TEMPORAL_SIM_CHECK"
+  ],
+  "part": "all",
+  "freeze_sha256": "98e89893c06db3b68640038bb627b7e3e3892885c9a00e2849fba1a1763addb1",
+  "started_utc": "2026-10-23T04:38:55+00:00",
+  "finished_utc": "2026-10-23T04:42:50+00:00",
+  "git_commit": "a2e6130ba4c1bad1bafac5aa1d3cdd4cb203f1ee",
+  "committee": {
+    "n": 32,
+    "t": 22
+  },
+  "targets": [
+    0.01,
+    0.001,
+    0.0001
+  ],
+  "continuous_T_bracket_hours": [
+    0.25,
+    720.0
+  ],
+  "metric1_offset_points": {
+    "grid": 97,
+    "bisection": 25
+  },
+  "sim_run_length": 8,
+  "sim_k_min_prob": 0.001,
+  "python": "3.13.13",
+  "numpy": "2.5.4",
+  "host": "macOS-15.1-arm64-arm-64bit-Mach-O",
+  "labels": {
+    "exact": "EXACT_UNDER_DECLARED_SYNTHETIC_MODEL",
+    "sim": "SIMULATION_IMPLEMENTATION_CHECK"
+  }
+}
