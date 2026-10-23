@@ -27,6 +27,8 @@ R2 = ROOT / "research-case/05-analysis/results/r2"
 R1_DEADLINE = ROOT / "research-case/05-analysis/results/r1/deadline"
 R2B = ROOT / "research-case/05-analysis/results/r2b"
 R2B_DESIGN = ROOT / "research-case/03-design/r2b-replication"
+R2C = ROOT / "research-case/05-analysis/results/r2c"
+R2C_DESIGN = ROOT / "research-case/03-design/r2c-repair-withholding"
 TABLES = HERE / "tables"
 T_DESIGN = 22  # dispute threshold t of the R2 committee (n = 32)
 
@@ -137,6 +139,65 @@ def r2b_assets(r2_summary: dict) -> dict:
     }
 
 
+def r2c_assets() -> dict:
+    """Repair-on-alarm design table and macros for repair and selective withholding (R2c)."""
+    fh = hashlib.sha256((R2C_DESIGN / "r2c-design-freeze.json").read_bytes()).hexdigest()
+    assert fh == (R2C_DESIGN / "r2c-design-freeze.SHA256SUMS").read_text().split()[0], "R2c freeze hash mismatch"
+    grid, design = rows(R2C / "repair-grid.csv"), rows(R2C / "repair-design.csv")
+    sim, wh, coal = rows(R2C / "repair-sim-check.csv"), rows(R2C / "withholding.csv"), rows(R2C / "withholding-coalition.csv")
+    assert all(r["freeze_sha256"] == fh for r in grid + design + sim + wh + coal)
+
+    def g(shock: str, mtbf: str, mttr: str, T: str, dr: str, s_: str) -> dict:
+        return next(r for r in grid if (r["domain_shock"], r["mtbf_days"], r["mttr_hours"], r["T_hours"],
+                                        r["repair_delay_hours"], r["s"]) == (shock, mtbf, mttr, T, dr, s_))
+
+    def dsg(shock: str, mtbf: str, mttr: str, dr: str, s_: str, target: str) -> dict:
+        return next(r for r in design if (r["domain_shock"], r["mtbf_days"], r["mttr_hours"], r["repair_delay_hours"],
+                                          r["s"], r["target"]) == (shock, mtbf, mttr, dr, s_, target))
+
+    scenarios = [("IID", "none"), ("Shock 365\\,d", "MTBF_d=365d,MTTR_d=6h"), ("Shock 90\\,d", "MTBF_d=90d,MTTR_d=6h")]
+    designs = [("8", "8"), ("16", "14"), ("24", "20")]
+    lines = ["\\begin{tabular}{@{}llrrrrr@{}}", "\\toprule",
+             "Scenario & $(s,q)$ & no repair & $T^{*}$ (h) & audits/day & resharings/day & benign\\\\", "\\midrule"]
+    for label, shock in scenarios:
+        for i, (s_, q_) in enumerate(designs):
+            r = dsg(shock, "7", "24", "1", s_, "0.0001")
+            base = float(g(shock, "7", "24", "6", "1", s_)["failure_no_repair"])
+            if r["status"] == "infeasible_at_lo":
+                cells = ["none", "--", "--", "--"]
+            else:
+                cells = [f"{float(r['continuous_T_hours']):.1f}", f"{float(r['audits_per_day_at_T']):.2f}",
+                         f"{float(r['repairs_per_day_at_T']):.2f}", pct(float(r["benign_fraction_at_T"]), 2)]
+            lines.append(f"{label if i == 0 else ''} & ({s_},{q_}) & {'$' + sci(base) + '$' if i == 0 else ''} & "
+                         + " & ".join(cells) + "\\\\")
+    lines += ["\\bottomrule", "\\end{tabular}", ""]
+    (TABLES / "t10_repair.tex").write_text("\n".join(lines))
+
+    informative = [r for r in sim if r["vacuous"] == "False"]
+    lowered = sum(float(r["failure_with_repair"]) <= float(r["failure_no_repair"]) * (1 + 1e-9) for r in grid)
+    nonmono = [r for r in design if r["monotone_on_check_grid"] == "False"]
+    assert all(r["status"] != "bisected" for r in nonmono), "a bisected interval depends on a non-monotone metric"
+    benign = [float(r["benign_fraction"]) for r in grid if float(r["p_reject"]) > 0]
+    iid6 = g("none", "7", "24", "6", "1", "8")
+    w = {(r["v"], r["w"]): r for r in wh}
+    cmin = {(r["v"], r["failure_target"], r["p_a"]): r for r in coal}
+    return {
+        "RepRows": str(len(grid)), "RepLowered": str(lowered),
+        "RepSimInfo": str(len(informative)), "RepSimInfoPass": str(sum(r["wilson_pass"] == "True" for r in informative)),
+        "RepSimVacuous": str(len(sim) - len(informative)),
+        "RepNonMono": str(len(nonmono)), "RepDesignRows": str(len(design)),
+        "RepBenignMin": pct(min(benign), 0),
+        "RepIIDNoRep": sci(float(iid6["failure_no_repair"])), "RepIIDSix": sci(float(iid6["failure_with_repair"])),
+        "RepIIDSixPerDay": f"{float(iid6['repairs_per_day']):.2f}",
+        "WhSuccTen": pct(float(w[("0.99", "10")]["dispute_success"])),
+        "WhAuditEleven": pct(float(w[("0.99", "11")]["audit_pass_s8q8"])),
+        "WhAuditZero": pct(float(w[("0.99", "0")]["audit_pass_s8q8"])),
+        "WhMinHigh": cmin[("0.99", "0.5", "1.0")]["w_min"], "WhMinLow": cmin[("0.9", "0.5", "1.0")]["w_min"],
+        "WhStakeLo": f"{float(cmin[('0.99', '0.5', '1.0')]['stake_to_value_ratio']):.2f}",
+        "WhStakeHi": f"{float(cmin[('0.99', '0.5', '0.5')]['stake_to_value_ratio']):.2f}",
+    }
+
+
 def write_configuration_table() -> None:
     """Extend the derived configuration table (derive_assets.py) with the R2 experiment families."""
     lines = (TABLES / "t2_configuration.tex").read_text().splitlines()
@@ -149,6 +210,9 @@ def write_configuration_table() -> None:
                   "loss, crashes, domain outage & 32 processes on one host; emulation\\\\")
     lines.insert(bed + 1, "Temporal readiness & MTBF 7/30/90\\,d, MTTR 1/6/24\\,h, $T$ 1/6/24\\,h, "
                           "$(s,q)$ $(8,8)$/$(16,14)$/$(24,20)$; domain shocks & Exact, synthetic; "
+                          "3-cell simulation check\\\\")
+    lines.insert(bed + 2, "Repair and withholding (R2c) & Same grid with resharing after $D_r\\in\\{0.25,1\\}$\\,h; "
+                          "$w\\le 11$ withholders, $v\\in\\{0.9,0.99,0.999\\}$ & Exact, synthetic; "
                           "3-cell simulation check\\\\")
     (TABLES / "t2_configuration_r2.tex").write_text("\n".join(lines) + "\n")
 
@@ -340,6 +404,7 @@ def main() -> None:
 
     write_configuration_table()
     macros.update(r2b_assets(summary))
+    macros.update(r2c_assets())
 
     header = [f"% Generated by paper/jcs/r2_assets.py from committed R2 results; R2 freeze {fh[:12]}."]
     (TABLES / "r2_numbers.tex").write_text(

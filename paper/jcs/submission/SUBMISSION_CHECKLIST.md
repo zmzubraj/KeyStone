@@ -19,7 +19,7 @@ Portal: https://mc.manuscriptcentral.com/j-cs (ScholarOne). Journal: https://jou
 - Title: KEYSTONE: Readiness Audits for Dispute-Key Availability in Encrypted Rollups
 - Abstract: copy from the manuscript (193 words in the rendered PDF; limit 150 to 200)
 - Keywords: Dispute-key availability; threshold decryption; encrypted rollups; readiness audit; acceptance sampling; selective withholding
-- Counts: 10,974 words in the whole PDF incl. references, tables and figure labels; 23 pages, 2 figures, 7 tables, 45 references; supplement 8 pages (Tables S1 to S4)
+- Counts: 12,548 words in the whole PDF incl. references, tables and figure labels (JCS sets no limit; author target about 12,500); 26 pages, 5 figures, 8 tables, 45 references; supplement 9 pages (Figure S1, Tables S1 to S4)
 - Funding: none. Conflicts: none.
 - Preprint: none on a preprint server (an earlier draft is in the public GitHub repository; this is disclosed in the cover letter)
 - Suggested reviewers: not accepted by this journal
@@ -74,7 +74,7 @@ Plan: `paper/jcs/reviews/R2-PAPER-INTEGRATION-PLAN.md` (author approved all reco
 - All R2 numbers come from `paper/jcs/r2_assets.py`; the artifact reproduces the R2 tables and the deadline summary byte-identically, and its 89 R2 tests pass.
 - Artifact anonymization: R2 authorization record omitted (its line removed from `r2-design-freeze.SHA256SUMS`); git commit ids in environment and provenance records and in the deviation log redacted.
 - RESOLVED 2026-10-23 (author: keep): `r2-design-freeze.json` and the design draft it hashes cite the full base commit of the public repository. They cannot be changed without breaking the hash checks. A reviewer could search GitHub for that commit and find the repository. Choose: keep (the cover letter already discloses the public draft) or ship R2 design files only after review.
-- Human gates unchanged: the expert read-through must cover the new proofs, all drafted with AI assistance: Definition 6 (PAC), Assumption 5, Lemma 4, Corollary 2 (stochastic deadline), Theorems 2 and 3, and their supplement proofs. The AI-use declaration must stay true.
+- Human gates unchanged: the expert read-through must cover the new proofs, all drafted with AI assistance: Definition 6 (PAC), Assumption 5 (TDH2 tag-KEM), Lemma 4, Corollary 2 (stochastic deadline), Theorems 2 and 3, Proposition 3 (repair on alarm), Proposition 4 (targeted withholding), and their supplement proofs. The AI-use declaration must stay true.
 - AI cold read of the R2 changes and the fixes: `paper/jcs/reviews/cold_read_R2_2026-10-23.md` (3 must-fix, 7 should-fix, 7 minor; all addressed). Notable: Definition 6 (PAC) is now plaintext indistinguishability, because the earlier key-indistinguishability form was trivially winnable; Assumption 5 states TDH2's KEM security; Theorem 3 now proves U monotone and never below its floor (deviation entry 9).
 
 ## Deadline diagnosis and R2b replication (2026-10-23)
@@ -87,3 +87,33 @@ Plan: `paper/jcs/reviews/R2-PAPER-INTEGRATION-PLAN.md` (author approved all reco
   - Paired batch vs serial: batch is 8 to 12 ms slower under delay (sign tests p < 1e-74) and 0.9 ms faster without delay. Batch met the control deadline (99.3%) but missed the regional one (87.7%). The pre-stated "no difference" did not hold; this is reported as a negative result.
 - Deviation entries 10 to 13 record the post hoc model, the calibration design and its revision after the smoke test (before the recorded run), the R2b freeze, the results and one display fix.
 - Paper: Corollary 2 added; Q3 rewritten with R2, the post hoc check, the calibration and R2b; Table 4 now shows R2 and R2b side by side; the baselines table moved to the supplement (Table S4).
+
+## R3 revision (2026-10-23)
+
+Plan: `paper/jcs/reviews/R3-REVISION-PLAN.md`. Origin: the self-review of the R2b manuscript.
+
+- **Phase 1 (writing).**
+  - "Pre-registered" is now "specified in advance / publicly timestamped".
+  - The Method section has an evidence map: R1, R2, R2b, R2c.
+  - Three headline results are stated up front.
+  - Q3 is framed as a test of the deadline model.
+  - B is identified as a calibrated p99.
+  - The dispute ciphertext is recast as a tag-KEM/DEM hybrid (Abe, Gennaro and Kurosawa 2008), with Assumption 5 narrowed to TDH2's tag-KEM.
+- **Phase 2 (R2c, frozen before any output, commit 80bdf43).**
+  - Repair on alarm (Proposition 3):
+    - Resharing after a rejected audit lowered the failure probability in all 486 grid rows.
+    - At least 95% of resharings come from benign alarms.
+    - Sample size trades audits against resharings (Table 7).
+    - With domain shocks, only frequent strict audits reach 1e-4.
+  - Selective withholding (Proposition 4 and Q6):
+    - Targeted withholding escapes every test.
+    - Blocking needs 11 withholders at v = 0.99 and 9 at v = 0.9.
+    - A stake of 0.09 to 0.18 times the disputed value per custodian deters it.
+  - Simulation check: 7/7 informative quantities passed, 2 vacuous.
+  - Monotonicity: 27 design rows were not monotone, none of them bisected.
+- **Phase 3 (minor).**
+  - Arbitrum challenge period cited (about 6.4 days, docs.arbitrum.io).
+  - Abstract rewritten (197 words).
+  - Figures rebalanced: detection versus sample is back in the main text; new Figure 4 (temporal, with repair) and Figure 5 (withholding).
+  - References: Abe et al. 2008 and Arbitrum docs added; Buterin 2017 and BEAT-MEV dropped (45 total).
+- Deviation entries 14 and 15 record the R2c design and its results.

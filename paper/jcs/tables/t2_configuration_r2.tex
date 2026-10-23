@@ -9,5 +9,6 @@ Acceptance rule & $s\in\{8,12,16\}$, $q\in[\lceil s/2\rceil,s]$, IID $f\in\{0.05
 Cryptographic cost & R1: ffdhe groups, $n\le 128$. R2: ristretto255 and ffdhe, 1{,}000 runs & Microbenchmark, CPython 3.13, Apple M4 Pro\\
 Deadline testbed & R2 and R2b (fresh paired seeds): ristretto255, TDH2, $n=32,t=22$; 8 profiles $\times$ 300 traces $\times$ 2 variants; lognormal delay (median 0/40/120\,ms), loss, crashes, domain outage & 32 processes on one host; emulation\\
 Temporal readiness & MTBF 7/30/90\,d, MTTR 1/6/24\,h, $T$ 1/6/24\,h, $(s,q)$ $(8,8)$/$(16,14)$/$(24,20)$; domain shocks & Exact, synthetic; 3-cell simulation check\\
+Repair and withholding (R2c) & Same grid with resharing after $D_r\in\{0.25,1\}$\,h; $w\le 11$ withholders, $v\in\{0.9,0.99,0.999\}$ & Exact, synthetic; 3-cell simulation check\\
 \bottomrule
 \end{tabularx}

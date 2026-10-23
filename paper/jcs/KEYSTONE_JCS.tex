@@ -64,7 +64,7 @@
 \author{[Author details removed for peer review]}
 
 \begin{abstract}
-Encrypted optimistic rollups can keep ciphertexts available and still fail a dispute because the threshold service that must decrypt the disputed record is unavailable, late or uncooperative. We call the missing property dispute-key availability (DKA) and separate it from ciphertext availability, valid-share registration, audit-time readiness, authorized decryptability and deadline liveness. KEYSTONE audits readiness with sampled canary shares carrying Chaum--Pedersen proofs; their transcripts are simulatable from public shares, so audits exercise real shares without revealing records. We give exact operating characteristics and show that a single small audit cannot separate a committee one share short of its threshold from a live one, whereas sequential tests can. Under a stated assumption, record-labeled TDH2 restores the confidentiality plain threshold ElGamal loses to parties obtaining other releases. For custodians that fail and recover, a hidden-Markov recursion gives the exact risk that a dispute fails after a given audit history, and a floor shows when auditing more often cannot help. Exact analysis, simulation and a 32-process testbed confirm these results and show that selective withholders pass every audit yet defeat every dispute; in a replication specified in advance, an order-statistic deadline met its target except where no network delay absorbed host overhead.
+Encrypted optimistic rollups can keep ciphertexts available and still fail a dispute because the threshold service that must decrypt the disputed record is unavailable, late or uncooperative. We call the missing property dispute-key availability (DKA) and separate it from five weaker properties. KEYSTONE audits readiness with sampled canary shares carrying Chaum--Pedersen proofs; their transcripts are simulatable from public shares, so audits exercise real shares without revealing records. We give exact operating characteristics and show that a single small audit cannot separate a committee one share short of its threshold from a live one, whereas sequential tests can. Under a stated assumption, record-labeled TDH2 restores the confidentiality plain threshold ElGamal loses to parties obtaining other releases. For custodians that fail and recover, a hidden-Markov recursion gives the exact failure risk after any audit history; without repair, auditing more often cannot beat a floor, and with resharing on alarm, sample size trades audits against mostly benign resharings. Exact analysis, simulation and a 32-process testbed confirm these results and show that selective withholders pass every audit yet defeat every dispute; in a replication specified in advance, an order-statistic deadline met its target except where no network delay absorbed host overhead.
 \end{abstract}
 
 \keywords{Dispute-key availability, threshold decryption, encrypted rollups, readiness audit, acceptance sampling, selective withholding}
@@ -82,7 +82,7 @@ We study this property, \emph{dispute-key availability} (DKA), and design and ev
 \begin{enumerate}
   \item \textbf{A property decomposition} (Section~\ref{sec:properties}) of $(\varepsilon,\Delta_d)$-DKA into ciphertext availability, valid-share registration, audit-time readiness, authorized decryptability, deadline liveness and pre-authorization confidentiality, with witnesses for three inferences a deployment must not draw.
   \item \textbf{A confidentiality-preserving audit} (Section~\ref{sec:protocol}) whose canary transcripts are simulatable from public shares, so audits exercise real shares without opening records. The plain threshold KEM is malleable across records; record-labeled TDH2 restores confidentiality against parties who obtain other releases.
-  \item \textbf{An exact analysis} (Section~\ref{sec:analysis}): operating characteristics, showing that small audits cannot separate a committee one share short of $t$ from a live one; sample sizes and sequential tests that certify a safety margin; a placement condition; a deadline budget; and, for custodians that fail and recover, the exact posterior risk given an audit history, a frequency floor and the longest audit interval meeting a risk target.
+  \item \textbf{An exact analysis} (Section~\ref{sec:analysis}): operating characteristics, showing that small audits cannot separate a committee one share short of $t$ from a live one; sample sizes and sequential tests that certify a safety margin; a placement condition; a deadline budget; for custodians that fail and recover, the exact posterior risk given an audit history, a frequency floor, the longest audit interval meeting a risk target and the cost of resharing on alarm; and a proof that targeted withholding escapes every test, with the stake that deters it.
   \item \textbf{An evaluation with labeled evidence} (Section~\ref{sec:evaluation}): exact analysis, prespecified simulation, microbenchmarks and a 32-custodian testbed with a replication specified in advance, with negative results: a high benign alarm rate under the strictest rule, a selective-withholding counterexample, deadlines missed without network delay and slower batch verification.
 \end{enumerate}
 None of the primitives is new; the contribution is what audits built from them can and cannot certify, and a passed audit does not prove future availability.
@@ -279,7 +279,14 @@ This is non-decreasing in $k$, so over catastrophic states ($k\le t-1$) it is ma
 The number of ready custodians in $S$ is hypergeometric $(n,k,s)$, and by Lemma~\ref{lem:correct} the audit accepts exactly when it is at least $q$, up to negligible error. If $R\subset R'$, then $|S\cap R|\le|S\cap R'|$ for every $S$, which gives monotonicity; for $q=s$ only $j=s$ contributes.
 \end{proof}
 
-For $n=32$, $t=22$, $s=q=8$, $\varepsilon_a=\binom{21}{8}/\binom{32}{8}=203{,}490/10{,}518{,}300=0.0193$, so a single audit detects the worst catastrophic state with probability $0.9807$ under a static, non-selective fault model. Section~\ref{sec:oc} shows why this number alone is misleading. Supplementary Figure~S1 shows detection against $s$.
+For $n=32$, $t=22$, $s=q=8$, $\varepsilon_a=\binom{21}{8}/\binom{32}{8}=203{,}490/10{,}518{,}300=0.0193$, so a single audit detects the worst catastrophic state with probability $0.9807$ under a static, non-selective fault model. Section~\ref{sec:oc} shows why this number alone is misleading. Figure~\ref{fig:detection} shows detection against $s$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig2_detection_vs_sample.pdf}
+\caption{Exact worst-case detection $1-\binom{t-1}{s}/\binom{n}{s}$ versus sample size with $q=s$. (a)~Thresholds $t\in\{17,22,27\}$ at $n=32$; the baseline $s=8$, $t=22$ is annotated. (b)~Committee sizes 16--128 with $t=n-\lfloor(n-1)/3\rfloor$ (values for four sizes in supplementary Table~S1).}
+\label{fig:detection}
+\end{figure}
 
 \begin{corollary}[Repeated audits under a static state]\label{cor:repeat}
 If the ready set is fixed and catastrophic for $m$ audits whose samples are independent (Assumption~\ref{as:beacon}), all $m$ falsely accept with probability at most $\varepsilon_a^{m}$.
@@ -303,7 +310,7 @@ The baseline places four domains of eight under the cap $n-t=10$: one outage is 
 If each custodian is independently unavailable with probability $f$ and the sample is independent of availability, the audit passes with probability $\Pr[\mathrm{Bin}(s,1-f)\ge q]$, since the sampled custodians' availability indicators are independent.
 \end{observation}
 
-The strict rule $q=s$ that maximizes detection also turns every benign miss into an alarm. For $s=q=8$ and $f=0.10$ a healthy committee passes only with probability $0.9^{8}=0.430$, although $t$ of 32 shares are reachable with probability $\Pr[\mathrm{Bin}(32,0.9)\ge 22]=0.99983$. Table~\ref{tab:acceptance} and supplementary Figure~S2 give the trade-off. At $s=8$, $q=7$ lowers detection to \RAccEightSevenDet{} and raises the benign pass rate at $f=0.10$ only to \RAccEightSevenPass{}; a larger sample helps: $s=16$, $q=14$ detects \RAccSixteenFourteenDet{} with benign pass rates of \RAccSixteenFourteenPassFive{} at $f=0.05$ and \RAccSixteenFourteenPassTen{} at $f=0.10$. This post hoc analysis is design guidance, not a prespecified result.
+The strict rule $q=s$ that maximizes detection also turns every benign miss into an alarm. For $s=q=8$ and $f=0.10$ a healthy committee passes only with probability $0.9^{8}=0.430$, although $t$ of 32 shares are reachable with probability $\Pr[\mathrm{Bin}(32,0.9)\ge 22]=0.99983$. Table~\ref{tab:acceptance} and supplementary Figure~S1 give the trade-off. At $s=8$, $q=7$ lowers detection to \RAccEightSevenDet{} and raises the benign pass rate at $f=0.10$ only to \RAccEightSevenPass{}; a larger sample helps: $s=16$, $q=14$ detects \RAccSixteenFourteenDet{} with benign pass rates of \RAccSixteenFourteenPassFive{} at $f=0.05$ and \RAccSixteenFourteenPassTen{} at $f=0.10$. This post hoc analysis is design guidance, not a prespecified result.
 
 \begin{table}[t]
 \caption{Exact acceptance-rule trade-off at $n=32$, $t=22$: worst-case detection ($k=t-1$, Theorem~\ref{thm:fa}) versus the probability that a healthy committee passes under IID unavailability $f$ (Observation~\ref{prop:benign}). Post hoc analysis.}
@@ -370,12 +377,42 @@ The chain is reversible, moves one custodian or domain at a time, and is stochas
 
 Since audits trigger no repair, the failure probability itself is $\omega(Z<t)$; $U$ measures how much of it the latest audit fails to flag. A target $\varepsilon<U_0$ cannot be met by auditing more often, only by a stronger design or a larger availability margin. Otherwise the longest admissible interval $T^{*}(\varepsilon)=\sup\{T:U(T)\le\varepsilon\}$ is the cheapest schedule, found by bisection because $U$ is monotone, and the bound gives a conservative interval in closed form. Full proofs are in the supplementary material.
 
+\paragraph{Repair on alarm.} So far audits only observe. Let a rejected audit trigger a resharing that makes every custodian ready after a delay $D_r\le T$; a domain outage persists, since resharing within the committee does not end it.
+
+\begin{proposition}[Repair on alarm]\label{prop:repair}
+The state just before audits is a Markov chain with kernel $M=\mathrm{diag}(A)P_T+\mathrm{diag}(1-A)P_{D_r}\Pi P_{T-D_r}$, where $\Pi$ makes every custodian ready. With $\mu$ its stationary law, $\mu_a=\mu\odot A$ and $\mu_r=\mu\odot(1-A)$, the long-run probability that a dispute fails is
+\[
+F_{\mathrm{rep}}(T)=\frac1T\Big[\int_0^T\!\mu_aP_u\mathbf{1}_{<t}\,du+\int_0^{D_r}\!\mu_rP_u\mathbf{1}_{<t}\,du+\int_0^{T-D_r}\!\mu_rP_{D_r}\Pi P_u\mathbf{1}_{<t}\,du\Big],
+\]
+and resharings occur at rate $\mu_r\mathbf{1}/T$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Between audits the state evolves by $P_u$; at an audit it branches on the outcome, and a rejection inserts the reset after $D_r$. The pre-audit states therefore form a Markov chain with the primitive kernel $M$, and the renewal-reward theorem averages failure over an interval started from $\mu$; the three integrals cover an accepted interval, the repair window and the rest of a rejected interval.
+\end{proof}
+
+Unlike $U$, $F_{\mathrm{rep}}$ falls as audits become more frequent, but every rejection costs a resharing, benign ones included; Section~\ref{sec:eval-temporal} quantifies this trade-off.
+
+\subsection{Selective withholding}\label{sec:withhold}
+
+Observation~\ref{prop:nonimpl}(2) shows that withholders can pass every audit and defeat a dispute. The next proposition bounds what any test can do about it.
+
+\begin{proposition}[Targeted withholding]\label{prop:withhold}
+A custodian that answers every request except those for one record $r$ it can identify produces, on every audit, decoy or other request not for $r$, exactly the transcript of an honest custodian, so no such test detects it. If a fraction $\theta$ of dispute requests are decoys over protocol-sealed records that custodians cannot tell apart from real ones, a custodian that refuses a class of disputes it cannot separate from decoys is caught, under Assumption~\ref{as:sync}, with probability $\theta$ for each refusal.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+On requests other than $r$ the custodian behaves honestly, so its transcript is the honest one. In the second case each refused request is a decoy with probability $\theta$ independently of the custodian's view, and the party that sealed the decoy observes the missing response by the deadline.
+\end{proof}
+
+A known target is therefore protected only by deterrence after the fact: the deadline transcript names the non-responders under Assumption~\ref{as:sync}. If blocking needs $w$ withholders and each forfeits a stake $S$ with probability $p_a$, blocking a dispute worth $V$ is unprofitable when $V<w\,S\,p_a$; Section~\ref{sec:eval-withhold} gives the smallest $w$.
+
 % =====================================================================
 \section{Evaluation}\label{sec:evaluation}
 
-We compare the audit with simpler checks (Q1), separate audit outcomes from dispute success under failures (Q2), test deadline liveness (Q3), measure cost (Q4) and evaluate readiness over time (Q5).
+We compare the audit with simpler checks (Q1), separate audit outcomes from dispute success under failures (Q2), test deadline liveness (Q3), measure cost (Q4), evaluate readiness over time with and without repair (Q5) and quantify selective withholding (Q6).
 
-\paragraph{Method.} Table~\ref{tab:config} lists every experiment, and each result carries one of four evidence labels. \emph{Exact} values are closed forms or recursions under a declared model. \emph{Simulation} results come from cells whose parameters, endpoints and seeds were fixed and hashed before execution; the three Q2 cells have 131{,}072 draws each, above the 73{,}778 that Hoeffding's inequality requires for a proportion's half-width of 0.005 at 95\% confidence\cite{hoeffding1963}, and where an exact value exists simulation serves as an implementation check. \emph{Microbenchmarks} are single-process medians, and \emph{emulation} runs 32 custodian processes on one host. Three runs carry the empirical results, each specified in a design that was hashed and publicly timestamped before it ran (the timestamps can be checked after review). R1, the first prototype (ffdhe2048, serial verification on the network loop), produced Q1, Q2 and the comparison column of Q3. R2, the second prototype (ristretto255, TDH2, verification off the loop), produced Q3 to Q5. R2b, specified after R2's results, replicated Q3 on fresh traces with a corrected deadline. Analyses computed after a run are labeled post hoc. Proportions carry 95\% Wilson intervals\cite{wilson1927}.
+\paragraph{Method.} Table~\ref{tab:config} lists every experiment, and each result carries one of four evidence labels. \emph{Exact} values are closed forms or recursions under a declared model. \emph{Simulation} results come from cells whose parameters, endpoints and seeds were fixed and hashed before execution; the three Q2 cells have 131{,}072 draws each, above the 73{,}778 that Hoeffding's inequality requires for a proportion's half-width of 0.005 at 95\% confidence\cite{hoeffding1963}, and where an exact value exists simulation serves as an implementation check. \emph{Microbenchmarks} are single-process medians, and \emph{emulation} runs 32 custodian processes on one host. Four runs carry the empirical results, each specified in a design that was hashed and publicly timestamped before it ran (the timestamps can be checked after review). R1, the first prototype (ffdhe2048, serial verification on the network loop), produced Q1, Q2 and the comparison column of Q3. R2, the second prototype (ristretto255, TDH2, verification off the loop), produced Q3 to Q5. R2b, specified after R2's results, replicated Q3 on fresh traces with a corrected deadline, and R2c, specified before any of its outputs, produced the repair results of Q5 and Q6. Analyses computed after a run are labeled post hoc. Proportions carry 95\% Wilson intervals\cite{wilson1927}.
 
 \begin{table}[t]
 \caption{Experimental configuration. The baseline committee is $n=32$, $t=22$, $s=q=8$ with four failure domains of eight custodians.}
@@ -445,6 +482,8 @@ Table~\ref{tab:operations} gives per-operation medians of the R2 prototype. In r
 
 We evaluated Theorems~\ref{thm:hmm} and~\ref{thm:floor} on a synthetic grid of \TmpGridCells{} cells (Table~\ref{tab:config}); Table~\ref{tab:temporal} shows five scenarios. The bound of Theorem~\ref{thm:floor} held in all \TmpBoundCells{} shock-free cells. An event simulation without closed forms matched \TmpSimInfoPass{} of the \TmpSimInfo{} quantities with observed events within 99\% Wilson intervals (\TmpSimVacuous{} more, near $10^{-16}$, saw no events). Three findings stand out. First, correlated failures dominate: with custodian MTBF 30\,d and MTTR 6\,h, $\Pr[Z<t]$ is $\TmpCatIID$ for independent custodians and $\TmpCatShock$ when each domain fails every 90 days on average. Second, the floor binds: with domain shocks, custodian MTBF 7\,d and MTTR 24\,h, $U_0=\TmpFloorHard$ for $(8,8)$, so no audit interval reaches $\varepsilon=10^{-4}$, and $(24,20)$ reaches it only with audits every \TmpHardWideMin{} minutes, at the edge of the searched range. Third, larger samples are not uniformly better: $(24,20)$ lowers the floor by orders of magnitude, yet its $U$ exceeds that of $(8,8)$ in all \TmpShockTotal{} shock cells and \TmpIidWorse{} of \TmpIidTotal{} shock-free ones, each time because it accepts more often; $U$ ignores the benign alarms the strict rule raises instead. For independent custodians with MTBF 7\,d, MTTR 24\,h and $(8,8)$, the longest interval for $\varepsilon=10^{-4}$ is \TmpExactIntervalIID\,h under $U$, \TmpPostIntervalIID\,h under the posterior risk $R$, and a conservative \TmpBoundIntervalIID\,h from the bound.
 
+\paragraph{Repair on alarm.} With resharing after a rejected audit (Proposition~\ref{prop:repair}, $D_r=1$\,h), the failure probability fell in all \RepLowered{} grid rows, for example from $\RepIIDNoRep$ to $\RepIIDSix$ for independent custodians with MTBF 7\,d, MTTR 24\,h, $(8,8)$ and $T=6$\,h, at \RepIIDSixPerDay{} resharings a day (Figure~\ref{fig:temporal}). At least \RepBenignMin{} of resharings followed benign alarms in every row, so a strict audit protects mainly by refreshing a committee before failures accumulate. Table~\ref{tab:repair} turns this into a trade-off: for a target of $10^{-4}$, $(8,8)$ needs the fewest audits and the most resharings, $(24,20)$ the reverse, and with domain shocks only frequent strict audits reach the target, because resharing does not end a provider outage. The event simulation with repair matched \RepSimInfoPass{} of the \RepSimInfo{} quantities with observed events (\RepSimVacuous{} saw none); \RepNonMono{} of \RepDesignRows{} design rows were not monotone in $T$, none of them with a bisected interval.
+
 \begin{table}[t]
 \caption{Readiness over time, exact under a declared synthetic model, $n=32$, $t=22$. Scenarios give custodian MTBF / MTTR and, for shocks, the domain MTBF (domain MTTR 6\,h). $U$: probability that a dispute fails and the last audit accepted; $U_0$: its floor; $T^{*}$: longest interval with $U\le10^{-4}$, by bisection over $[0.25\,\mathrm{h},30\,\mathrm{d}]$ (none: infeasible at 0.25\,h).}
 \label{tab:temporal}
@@ -454,12 +493,38 @@ We evaluated Theorems~\ref{thm:hmm} and~\ref{thm:floor} on a synthetic grid of \
 \input{tables/t9_temporal.tex}
 \end{table}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig7_temporal.pdf}
+\caption{Readiness over time for custodian MTBF 7\,d and MTTR 24\,h, exact under the declared synthetic model ($n=32$, $t=22$). Dashed: $U(T)$, failure undetected by the latest audit, without repair; solid: $F_{\mathrm{rep}}(T)$, failure with resharing after each rejected audit ($D_r=1$\,h, Proposition~\ref{prop:repair}); dotted: floors $U_0$ in the design's colour and, in grey, the failure probability without repair.}
+\label{fig:temporal}
+\end{figure}
+
+\begin{table}[t]
+\caption{Repair on alarm, exact under the declared synthetic model: longest audit interval $T^{*}$ with failure probability at most $10^{-4}$, custodian MTBF 7\,d, MTTR 24\,h, $D_r=1$\,h, and the audits and resharings per day it costs; benign is the share of resharings triggered while at least $t$ custodians were ready; none: unattainable at $T\ge0.25$\,h. Shock rows add domain outages with the stated domain MTBF.}
+\label{tab:repair}
+\centering
+\footnotesize
+\input{tables/t10_repair.tex}
+\end{table}
+
+\subsection{Selective withholding (Q6)}\label{sec:eval-withhold}
+
+Figure~\ref{fig:withhold} gives the exact effect of $w$ selective withholders when every other custodian is ready with probability $v$. With $v=0.99$, ten withholders still leave the dispute \WhSuccTen{} likely to succeed and eleven defeat it, while the strict audit passes more often than with none (\WhAuditEleven{} against \WhAuditZero), since withholders always answer canaries. Blocking needs \WhMinHigh{} withholders at $v=0.99$ but only \WhMinLow{} at $v=0.9$, because a coalition can wait for natural outages. Withholding by the minimal coalition is unprofitable if each withholder's stake is at least \WhStakeLo{} to \WhStakeHi{} times the value of the blocked dispute, for attribution probabilities from 1 to 0.5.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\textwidth]{fig8_withholding.pdf}
+\caption{Selective withholding, exact: dispute success and audit pass against the number $w$ of withholders ($n=32$, $t=22$), with every other custodian ready with probability $v=0.99$ (solid) or $v=0.9$ (dashed). At $v=0.99$ the $(16,14)$ and $(24,20)$ audits pass with probability near 1 for every $w$.}
+\label{fig:withhold}
+\end{figure}
+
 % =====================================================================
 \section{Discussion}\label{sec:discussion}
 
-Five design consequences follow. First, specify audits by the safety margin they certify, with error rates at $k\le t-1$ and $k\ge t+m$ (Section~\ref{sec:oc}). Second, placement under the cap $n-t$ matters more than the sampling policy, and correlated domain failures dominate the risk over time (Q5). Third, schedule audits from a risk target: Theorem~\ref{thm:floor} gives the longest admissible interval, and below the floor $U_0$ only a stronger design helps. Fourth, deadlines must budget for the ledger delay, host overhead and the slowest of the $t$ needed responses (Corollary~\ref{cor:os}), not a per-message quantile; with elliptic-curve verification off the network loop, the network governs completion, and batch verification helps only when responses arrive together (Q3). Fifth, if untrusted parties can obtain releases, the dispute path must bind each release to its record (Proposition~\ref{prop:malleable}, Lemma~\ref{lem:pacplus}).
+Five design consequences follow. First, specify audits by the safety margin they certify, with error rates at $k\le t-1$ and $k\ge t+m$ (Section~\ref{sec:oc}). Second, placement under the cap $n-t$ matters more than the sampling policy, and correlated domain failures dominate the risk over time (Q5). Third, schedule audits from a risk target and couple them to repair: without action an audit only reports risk, and below the floor $U_0$ only a stronger design helps; with resharing on alarm, the choice of $(s,q)$ trades audits against resharings, most of them benign (Table~\ref{tab:repair}). Fourth, deadlines must budget for the ledger delay, host overhead and the slowest of the $t$ needed responses (Corollary~\ref{cor:os}), not a per-message quantile; with elliptic-curve verification off the network loop, the network governs completion, and batch verification helps only when responses arrive together (Q3). Fifth, if untrusted parties can obtain releases, the dispute path must bind each release to its record (Proposition~\ref{prop:malleable}, Lemma~\ref{lem:pacplus}).
 
-Invalid proofs and equivocation are transferable evidence, whereas attributing non-response depends on timing\cite{lewis2025accountable}, so slashing should rest on transferable evidence. The audit cannot detect selective withholding, because canaries are unrelated to records by design (Lemma~\ref{lem:sim}); making them indistinguishable from record components would stop observers from checking that an audit opened no record (Lemma~\ref{lem:subst}), so resistance needs another mechanism, such as unpredictable dispute routing or economic commitments enforced by the deadline transcript.
+Invalid proofs and equivocation are transferable evidence, whereas attributing non-response depends on timing\cite{lewis2025accountable}, so slashing should rest on transferable evidence. The audit cannot detect selective withholding, because canaries are unrelated to records by design (Lemma~\ref{lem:sim}); making them indistinguishable from record components would stop observers from checking that an audit opened no record (Lemma~\ref{lem:subst}), so a known target is protected only by deterrence: decoy disputes catch withholding as a policy (Proposition~\ref{prop:withhold}), and stakes of roughly a tenth to a fifth of the disputed value per custodian make blocking unprofitable (Q6).
 
 % =====================================================================
 \section{Related work}\label{sec:related}
@@ -479,7 +544,7 @@ Invalid proofs and equivocation are transferable evidence, whereas attributing n
 
 \paragraph{Novelty.} The components are not new; our claim covers the property decomposition, the confidentiality-preserving audit and its analysis, and the labeled evaluation, and it rests on a bounded literature search.
 
-\paragraph{Internal validity.} Both designs were hashed before execution, but the hashes are self-recorded and no independent party reviewed the designs; the acceptance-rule and operating-characteristic analyses were added afterwards. R2 and R2b logged thirteen deviations, among them a deadline correction before any testbed run and a restart after the host ran out of ephemeral ports; none changed an endpoint or an analysis in response to outcomes, and the corrected deadline was tested only on fresh R2b traces. 
+\paragraph{Internal validity.} Both designs were hashed before execution, but the hashes are self-recorded and no independent party reviewed the designs; the acceptance-rule and operating-characteristic analyses were added afterwards. R2, R2b and R2c logged fifteen deviations, among them a deadline correction before any testbed run and a restart after the host ran out of ephemeral ports; none changed an endpoint or an analysis in response to outcomes, and the corrected deadline was tested only on fresh R2b traces. 
 
 \paragraph{Construct and external validity.} The audit measures present sampled serviceability, not future cooperation. The temporal model assumes independent exponential failures and repairs with synthetic rates, failure models are synthetic, the testbed uses loopback TCP with synthetic delays, and geo-distributed effects, ledger delay and clock skew are not measured.
 
@@ -488,7 +553,7 @@ Invalid proofs and equivocation are transferable evidence, whereas attributing n
 % =====================================================================
 \section{Conclusion and future directions}\label{sec:conclusion}
 
-Ciphertext availability does not ensure that the threshold service needed for an encrypted-rollup dispute answers in time. We defined dispute-key availability and the weaker properties it is confused with, showed that a beacon-derived canary audit exercises real shares while its transcripts are simulatable from public data, gave its exact operating characteristics, sample sizes and sequential tests that certify a safety margin, a placement condition and a deadline budget, and showed that confidentiality against parties who obtain other releases requires binding releases to records, as record-labeled TDH2 does. For custodians that fail and recover, an exact recursion gives the risk that a dispute fails after any audit history, and a floor shows when auditing more often cannot help. The evaluation confirmed each separation: a small strict audit barely distinguishes a failed committee from a live one and alarms often on healthy committees, selective withholders pass every audit and defeat every dispute, correlated domain failures dominate risk over time, and with elliptic-curve verification off the network loop the network governs dispute completion; an order-statistic deadline held in a replication specified in advance, except without network delay, where host drift of a few percent defeats any deadline without slack. Future work should address selective withholding, which the audit provably cannot detect alone; readiness models calibrated on operational data; and a production instantiation with distributed key generation and realistic ledger delays, evaluated across regions.
+Ciphertext availability does not ensure that the threshold service needed for an encrypted-rollup dispute answers in time. We defined dispute-key availability and the weaker properties it is confused with, showed that a beacon-derived canary audit exercises real shares while its transcripts are simulatable from public data, gave its exact operating characteristics, sample sizes and sequential tests that certify a safety margin, a placement condition and a deadline budget, and showed that confidentiality against parties who obtain other releases requires binding releases to records, as record-labeled TDH2 does. For custodians that fail and recover, an exact recursion gives the risk that a dispute fails after any audit history, and a floor shows when auditing more often cannot help. The evaluation confirmed each separation: a small strict audit barely distinguishes a failed committee from a live one and alarms often on healthy committees, selective withholders pass every audit and defeat every dispute, correlated domain failures dominate risk over time, and with elliptic-curve verification off the network loop the network governs dispute completion; an order-statistic deadline held in a replication specified in advance, except without network delay, where host drift of a few percent defeats any deadline without slack. Audits pay off when they trigger resharing, and a known dispute target can be protected against withholders only by deterrence. Future work should evaluate decoy disputes and stake-based deterrence against selective withholding, which no pre-dispute test detects; readiness models calibrated on operational data; and a production instantiation with distributed key generation and realistic ledger delays, evaluated across regions.
 
 % =====================================================================
 \section*{Statements and Declarations}
