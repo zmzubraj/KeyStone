@@ -17,9 +17,10 @@ Portal: https://mc.manuscriptcentral.com/j-cs (ScholarOne). Journal: https://jou
 
 - Article type: Research article
 - Title: KEYSTONE: Readiness Audits for Dispute-Key Availability in Encrypted Rollups
-- Abstract: copy from the manuscript (193 words in the rendered PDF; limit 150 to 200)
+- Abstract: copy from the manuscript (198 words in the rendered PDF; limit 150 to 200)
 - Keywords: Dispute-key availability; threshold decryption; encrypted rollups; readiness audit; acceptance sampling; selective withholding
-- Counts: 12,548 words in the whole PDF incl. references, tables and figure labels (JCS sets no limit; author target about 12,500); 26 pages, 5 figures, 8 tables, 45 references; supplement 9 pages (Figure S1, Tables S1 to S4)
+- Keywords: Dispute-key availability; threshold decryption; TDH2; encrypted rollups; readiness audit; acceptance sampling; hidden Markov model; selective withholding
+- Counts: 12,646 words in the whole PDF incl. references, tables and figure labels (JCS sets no limit; author target about 12,500); 26 pages, 5 figures, 8 tables, 45 references; supplement 9 pages (Figure S1, Tables S1 to S4)
 - Funding: none. Conflicts: none.
 - Preprint: none on a preprint server (an earlier draft is in the public GitHub repository; this is disclosed in the cover letter)
 - Suggested reviewers: not accepted by this journal
@@ -117,3 +118,14 @@ Plan: `paper/jcs/reviews/R3-REVISION-PLAN.md`. Origin: the self-review of the R2
   - Figures rebalanced: detection versus sample is back in the main text; new Figure 4 (temporal, with repair) and Figure 5 (withholding).
   - References: Abe et al. 2008 and Arbitrum docs added; Buterin 2017 and BEAT-MEV dropped (45 total).
 - Deviation entries 14 and 15 record the R2c design and its results.
+
+## Self-review round 3 fixes (2026-10-23)
+
+- M1 (must-fix): the R2c repair rule reshared from states with fewer than t ready custodians. R2d gates resharing on at least t ready custodians (frozen before any output, commit 3eeffd6; deviation entries 16 and 17). R2c repair numbers were optimistic by a factor of 1.3 to 3; R2d replaces them everywhere in the paper. With R2d, repair still lowered failure in all 486 rows; at least 90% of alarms were benign; with domain MTBF 90 d no design reaches 1e-4, with 365 d only (8,8). Three bisected rows (D_r 0.25 h, not tabulated) were not monotone; a post hoc 200-point scan confirms contiguous feasible ranges.
+- M2: Q3 shortened; calibration and batch details moved to supplement Section S6.
+- M3: withholding claim worded modestly; decoy cost (load times 1/(1-theta)) stated.
+- M4: Ishihara et al., ACISP 2007 (threshold tag-KEM in the random-oracle model; verified via Crossref) added; UQ-Vote dropped (45 references).
+- M5: D0 drift worded as "consistent with ..., which we did not test".
+- Minor: abstract and contribution 1 consistent ("five availability properties"); Figure 4 legend below the panels with floors labelled; cost sentence moved from Lemma 4 to Q4; keywords added; cover letter's resharing sentence updated.
+- Editors: a SAGE listing snippet and Calzavara's own page name Stefano Calzavara and Peng Liu as Editors-in-Chief (Calzavara since 2025); the full SAGE page could not be fetched and an older page lists Stephanie Delaune. Confirm the masthead before submitting.
+- Double-blind: the base commit stays in the R2 freeze file by author decision (keep).

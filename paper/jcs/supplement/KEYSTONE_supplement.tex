@@ -15,11 +15,13 @@
 \newtheorem*{theoremS}{Theorem}
 \newtheorem*{propositionS}{Proposition}
 \renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thesection}{S\arabic{section}}
 \renewcommand{\thetable}{S\arabic{table}}
 
 \newcommand{\G}{\mathbb{G}}
 \newcommand{\Zq}{\mathbb{Z}_\ell}
 \newcommand{\PAC}{\mathrm{PAC}}
+\input{../tables/r2_numbers.tex}
 
 \title{KEYSTONE: Readiness Audits for Dispute-Key Availability in Encrypted Rollups\\[4pt]
 \large Supplementary material}
@@ -165,11 +167,11 @@ is the Dirichlet form. By (b), each pair $x,y$ with $\mathcal{L}(x,y)>0$ is comp
 \section{Proofs for repair on alarm and selective withholding}
 
 \begin{propositionS}[Proposition 3, repair on alarm]
-Let a rejected audit at time $a$ trigger a resharing that makes every custodian individually ready at $a+D_r$, with $0\le D_r\le T$, leaving domain states unchanged. Then the state just before audits is a Markov chain with kernel $M=\mathrm{diag}(A)P_T+\mathrm{diag}(1-A)P_{D_r}\Pi P_{T-D_r}$, where $\Pi$ is the reset map, and with $\mu$ its stationary law the long-run probability that a dispute fails is $F_{\mathrm{rep}}(T)$ as stated in the article, and resharings occur at rate $\mu_r\mathbf{1}/T$.
+Let a rejected audit at time $a$ trigger a resharing at $a+D_r$, with $0\le D_r\le T$, that succeeds if and only if at least $t$ custodians are ready at $a+D_r$, in which case every custodian becomes individually ready; domain states are unchanged. Then the state just before audits is a Markov chain with kernel $M=\mathrm{diag}(A)P_T+\mathrm{diag}(1-A)P_{D_r}\Pi_t P_{T-D_r}$, where $\Pi_t$ resets the states with $Z\ge t$ and leaves the others, and with $\mu$ its stationary law the long-run probability that a dispute fails is $F_{\mathrm{rep}}(T)$ as stated in the article; alarms occur at rate $\mu_r\mathbf{1}/T$ and resharings at rate $\mu_rP_{D_r}\mathbf{1}_{\ge t}/T$.
 \end{propositionS}
 
 \begin{proof}
-Condition on the state $x$ just before an audit at $a$. The audit accepts with probability $A(x)$, independently of everything else given $x$ (Theorem~2). If it accepts, no action follows and the state at $a+T$ has law $\delta_xP_T$. If it rejects, the state evolves for $D_r$, the reset $\Pi$ is applied, and it evolves for $T-D_r$, giving law $\delta_xP_{D_r}\Pi P_{T-D_r}$. Because $D_r\le T$, every repair completes before the next audit, so the next pre-audit state depends only on $x$ and the outcome; summing over outcomes gives the kernel $M$. The kernel is primitive: for $T>D_r$ every row of $P_T$ and of $P_{T-D_r}$ is positive on the chain's support (Theorem~2), and for $T=D_r$ every row reaches the reset state, from which $P_T$ is positive. Hence $\mu$ exists, is unique and is the limit from any start. The process restarted at audit times is a Markov renewal process with intervals of length $T$, so by the renewal-reward theorem the long-run fraction of time with $Z<t$ equals the expected time with $Z<t$ in one interval started from $\mu$, divided by $T$. Within the interval the law at offset $u$ is $\mu_aP_u$ on the accepted branch, $\mu_rP_u$ before the reset and $\mu_rP_{D_r}\Pi P_{u-D_r}$ after it; integrating the mass on $Z<t$ gives the three terms. Since disputes arrive independently of the process, this fraction is the probability that a dispute fails. Each interval triggers a resharing with probability $\mu_r\mathbf{1}$, which gives the rate.
+Condition on the state $x$ just before an audit at $a$. The audit accepts with probability $A(x)$, independently of everything else given $x$ (Theorem~2). If it accepts, no action follows and the state at $a+T$ has law $\delta_xP_T$. If it rejects, the state evolves for $D_r$; the resharing succeeds exactly on the states with $Z\ge t$, because fewer than $t$ shares cannot reconstruct the epoch secret, which is the map $\Pi_t$; then the state evolves for $T-D_r$, giving law $\delta_xP_{D_r}\Pi_t P_{T-D_r}$. Because $D_r\le T$, every repair completes before the next audit, so the next pre-audit state depends only on $x$ and the outcome; summing over outcomes gives the kernel $M$. The chain has a unique stationary law, the limit from any start: for $T>D_r$ every row of $M$ is positive, because every row of $P_T$ and of $P_{T-D_r}$ is positive on the chain's support (Theorem~2); for $T=D_r$, one step from any state puts positive mass on every state with $Z<t$ and on the all-ready state, from which an accepted audit (probability $A>0$) leads to a positive row of $P_T$, so the chain is irreducible and aperiodic. Hence $\mu$ exists, is unique and is the limit from any start. The process restarted at audit times is a Markov renewal process with intervals of length $T$, so by the renewal-reward theorem the long-run fraction of time with $Z<t$ equals the expected time with $Z<t$ in one interval started from $\mu$, divided by $T$. Within the interval the law at offset $u$ is $\mu_aP_u$ on the accepted branch, $\mu_rP_u$ before the resharing time and $\mu_rP_{D_r}\Pi_t P_{u-D_r}$ after it; integrating the mass on $Z<t$ gives the three terms. Since disputes arrive independently of the process, this fraction is the probability that a dispute fails. Each interval raises an alarm with probability $\mu_r\mathbf{1}$ and completes a resharing with probability $\mu_rP_{D_r}\mathbf{1}_{\ge t}$, which gives the rates.
 \end{proof}
 
 \begin{propositionS}[Proposition 4, targeted withholding]
@@ -179,6 +181,12 @@ Condition on the state $x$ just before an audit at $a$. The audit accepts with p
 \begin{proof}
 (i) The custodian's responses to requests not for $r$ are computed exactly as an honest custodian's, so the joint distribution of all transcripts of such tests is identical to the honest case, and any test's acceptance probability is unchanged. (ii) By indistinguishability, the custodian's decision to refuse a request in $\mathcal{C}$ is independent of whether the request is a decoy, so each refused request is a decoy with probability $\theta$, independently across requests. The party that sealed a decoy knows the request was issued and observes no valid response by the deadline; under Assumption~4 the missing response is attributable to the custodian. The bound for $m$ refusals follows from independence.
 \end{proof}
+
+\section{Testbed calibration and batch verification}
+
+\paragraph{Calibration.} Before the R2b replication, the testbed harness was measured on its own, with a design logged before it ran. With 32 null custodians that answer dispute-sized requests without cryptography and no injected delay, collecting 22 responses took \RtwobNullMed\,ms at the median, of which about \RtwobHandoffUs\,$\mu$s per response is the hand-off to the verification thread. The full dispute path with real cryptography and no injected delay took \RtwobCalibMed\,ms at the median; its 99th percentile, $B=\RtwobBzero$\,ms, is the deterministic term of the R2b deadline. A null-transport floor alone was rejected as $B$ after a smoke test, before the recorded calibration, because it omits decoding and the custodians' TDH2 check.
+
+\paragraph{Batch verification.} In the paired R2b design both variants see identical crashes, losses and delays. Batch verification was \RtwobBatchSlowLo--\RtwobBatchSlowHi\,ms slower at the median in every profile with injected delay (exact sign tests, $p<\RtwobSignPBound$), plausibly because it starts only after the last needed arrival while serial verification overlaps with arrivals, and \RtwobBatchFastZero\,ms faster without delay, where responses arrive together and a single batch saves per-response hand-offs. It therefore met the deadline without delay (\RtwobControlBatch) but missed the regional one (\RtwobRegionalBatch). The microbenchmark explains the absence of a gain at the cryptographic level: in ristretto255, batch verification of 22 proofs runs at \RtwoBatchRis{} times the speed of serial verification.
 
 \section{Additional figures and tables}
 

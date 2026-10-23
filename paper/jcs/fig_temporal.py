@@ -5,7 +5,7 @@ For the two scenarios of the paper's temporal table that use custodian MTBF 7 d 
 audit interval T, for the designs (8,8) and (24,20):
 * U(T), the probability that a dispute fails and the latest audit accepted (no repair);
 * F_rep(T), the probability that a dispute fails when a rejected audit triggers resharing after
-  D_r = 1 h (R2c repair rule);
+  D_r = 1 h, which succeeds only if at least t custodians are ready then (R2d repair rule);
 * the floor U_0 and the failure probability without repair, Pr[Z < t], as horizontal lines.
 Values are computed directly from keystone_r2.temporal; no data file is read.
 
@@ -46,24 +46,23 @@ def main() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(6.8, 2.7), sharey=True)
     for ax, (title, model) in zip(axes, SCENARIOS):
         base = temporal.stationary_catastrophic(model, THRESHOLD)
-        ax.axhline(base, color=MUTED, linestyle=":", linewidth=1.0)
-        ax.annotate("no repair: Pr[Z<t]", (Ts[0], base), xytext=(2, 3), textcoords="offset points", fontsize=6.5,
-                    color=MUTED)
+        ax.axhline(base, color=MUTED, linestyle=":", linewidth=1.0, label="failure without repair")
         for i, (s, q) in enumerate(DESIGNS):
             undetected = [temporal.stationary_undetected(model, T, s, q, THRESHOLD) for T in Ts]
             warm, repaired = None, []
             for T in Ts:
-                r = temporal.repair_metrics(model, float(T), s, q, THRESHOLD, REPAIR_DELAY, start=warm)
+                r = temporal.repair_metrics(model, float(T), s, q, THRESHOLD, REPAIR_DELAY, start=warm, gate=THRESHOLD)
                 warm = r["stationary"]
                 repaired.append(r["failure"])
             floor = temporal.undetected_floor(model, s, q, THRESHOLD)
             ax.plot(Ts / 24.0, undetected, "--", color=SERIES[i], label=f"$U$, $({s},{q})$")
             ax.plot(Ts / 24.0, repaired, "-", color=SERIES[i], label=f"$F_{{rep}}$, $({s},{q})$")
-            ax.axhline(floor, color=SERIES[i], linestyle=(0, (1, 2)), linewidth=0.9)
+            ax.axhline(floor, color=SERIES[i], linestyle=(0, (1, 2)), linewidth=0.9, label=f"floor $U_0$, $({s},{q})$")
         ax.set(xscale="log", yscale="log", title=title, xlabel="Audit interval $T$ (days)")
     axes[0].set_ylabel("Probability")
-    axes[1].legend(loc="lower right", fontsize=6.5, ncol=2)
-    fig.tight_layout()
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=4, fontsize=6.5, bbox_to_anchor=(0.5, -0.02))
+    fig.tight_layout(rect=(0, 0.12, 1, 1))
     OUT.mkdir(exist_ok=True)
     fig.savefig(OUT / "fig7_temporal.pdf", bbox_inches="tight")
     fig.savefig(OUT / "fig7_temporal.png", bbox_inches="tight")

@@ -29,6 +29,8 @@ R2B = ROOT / "research-case/05-analysis/results/r2b"
 R2B_DESIGN = ROOT / "research-case/03-design/r2b-replication"
 R2C = ROOT / "research-case/05-analysis/results/r2c"
 R2C_DESIGN = ROOT / "research-case/03-design/r2c-repair-withholding"
+R2D = ROOT / "research-case/05-analysis/results/r2d"
+R2D_DESIGN = ROOT / "research-case/03-design/r2d-gated-repair"
 TABLES = HERE / "tables"
 T_DESIGN = 22  # dispute threshold t of the R2 committee (n = 32)
 
@@ -140,12 +142,15 @@ def r2b_assets(r2_summary: dict) -> dict:
 
 
 def r2c_assets() -> dict:
-    """Repair-on-alarm design table and macros for repair and selective withholding (R2c)."""
+    """Repair-on-alarm design table and macros (R2d, gated resharing) and withholding macros (R2c)."""
     fh = hashlib.sha256((R2C_DESIGN / "r2c-design-freeze.json").read_bytes()).hexdigest()
     assert fh == (R2C_DESIGN / "r2c-design-freeze.SHA256SUMS").read_text().split()[0], "R2c freeze hash mismatch"
-    grid, design = rows(R2C / "repair-grid.csv"), rows(R2C / "repair-design.csv")
-    sim, wh, coal = rows(R2C / "repair-sim-check.csv"), rows(R2C / "withholding.csv"), rows(R2C / "withholding-coalition.csv")
-    assert all(r["freeze_sha256"] == fh for r in grid + design + sim + wh + coal)
+    fd = hashlib.sha256((R2D_DESIGN / "r2d-design-freeze.json").read_bytes()).hexdigest()
+    assert fd == (R2D_DESIGN / "r2d-design-freeze.SHA256SUMS").read_text().split()[0], "R2d freeze hash mismatch"
+    grid, design = rows(R2D / "repair-grid.csv"), rows(R2D / "repair-design.csv")
+    sim, wh, coal = rows(R2D / "repair-sim-check.csv"), rows(R2C / "withholding.csv"), rows(R2C / "withholding-coalition.csv")
+    assert all(r["freeze_sha256"] == fd for r in grid + design + sim)
+    assert all(r["freeze_sha256"] == fh for r in wh + coal)
 
     def g(shock: str, mtbf: str, mttr: str, T: str, dr: str, s_: str) -> dict:
         return next(r for r in grid if (r["domain_shock"], r["mtbf_days"], r["mttr_hours"], r["T_hours"],
@@ -157,17 +162,19 @@ def r2c_assets() -> dict:
 
     scenarios = [("IID", "none"), ("Shock 365\\,d", "MTBF_d=365d,MTTR_d=6h"), ("Shock 90\\,d", "MTBF_d=90d,MTTR_d=6h")]
     designs = [("8", "8"), ("16", "14"), ("24", "20")]
-    lines = ["\\begin{tabular}{@{}llrrrrr@{}}", "\\toprule",
-             "Scenario & $(s,q)$ & no repair & $T^{*}$ (h) & audits/day & resharings/day & benign\\\\", "\\midrule"]
+    lines = ["\\begin{tabular}{@{}llrrrrrr@{}}", "\\toprule",
+             "Scenario & $(s,q)$ & no repair & $T^{*}$ (h) & audits/day & alarms/day & resharings/day & benign\\\\",
+             "\\midrule"]
     for label, shock in scenarios:
         for i, (s_, q_) in enumerate(designs):
             r = dsg(shock, "7", "24", "1", s_, "0.0001")
             base = float(g(shock, "7", "24", "6", "1", s_)["failure_no_repair"])
             if r["status"] == "infeasible_at_lo":
-                cells = ["none", "--", "--", "--"]
+                cells = ["none", "--", "--", "--", "--"]
             else:
                 cells = [f"{float(r['continuous_T_hours']):.1f}", f"{float(r['audits_per_day_at_T']):.2f}",
-                         f"{float(r['repairs_per_day_at_T']):.2f}", pct(float(r["benign_fraction_at_T"]), 2)]
+                         f"{float(r['alarms_per_day_at_T']):.2f}", f"{float(r['repairs_per_day_at_T']):.2f}",
+                         pct(float(r["benign_fraction_at_T"]), 2)]
             lines.append(f"{label if i == 0 else ''} & ({s_},{q_}) & {'$' + sci(base) + '$' if i == 0 else ''} & "
                          + " & ".join(cells) + "\\\\")
     lines += ["\\bottomrule", "\\end{tabular}", ""]
@@ -176,7 +183,9 @@ def r2c_assets() -> dict:
     informative = [r for r in sim if r["vacuous"] == "False"]
     lowered = sum(float(r["failure_with_repair"]) <= float(r["failure_no_repair"]) * (1 + 1e-9) for r in grid)
     nonmono = [r for r in design if r["monotone_on_check_grid"] == "False"]
-    assert all(r["status"] != "bisected" for r in nonmono), "a bisected interval depends on a non-monotone metric"
+    nonmono_bisected = [r for r in nonmono if r["status"] == "bisected"]
+    # Non-monotone bisected rows must not feed the table (D_r = 1 h); entry 17 records a 200-point scan of them.
+    assert all(r["repair_delay_hours"] != "1" for r in nonmono_bisected), "a tabulated interval is non-monotone"
     benign = [float(r["benign_fraction"]) for r in grid if float(r["p_reject"]) > 0]
     iid6 = g("none", "7", "24", "6", "1", "8")
     w = {(r["v"], r["w"]): r for r in wh}
@@ -186,6 +195,7 @@ def r2c_assets() -> dict:
         "RepSimInfo": str(len(informative)), "RepSimInfoPass": str(sum(r["wilson_pass"] == "True" for r in informative)),
         "RepSimVacuous": str(len(sim) - len(informative)),
         "RepNonMono": str(len(nonmono)), "RepDesignRows": str(len(design)),
+        "RepNonMonoBisected": str(len(nonmono_bisected)),
         "RepBenignMin": pct(min(benign), 0),
         "RepIIDNoRep": sci(float(iid6["failure_no_repair"])), "RepIIDSix": sci(float(iid6["failure_with_repair"])),
         "RepIIDSixPerDay": f"{float(iid6['repairs_per_day']):.2f}",

@@ -1,0 +1,9 @@
+{
+  "family": "R2D",
+  "freeze_sha256": "53a32e81920a2540c26b678d306fbfdc5666d82a4951e4caa35112f80a1e73a1",
+  "gate": 22,
+  "started_utc": "2026-10-23T12:23:17+00:00",
+  "smoke": false,
+  "finished_utc": "2026-10-23T12:37:31+00:00",
+  "python": "3.13.13"
+}
