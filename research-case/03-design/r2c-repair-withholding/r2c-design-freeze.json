@@ -1,0 +1,179 @@
+{
+  "schema_id": "KEYSTONE_R2C_DESIGN_FREEZE",
+  "frozen_at_utc": "2026-10-23T11:45:45+00:00",
+  "frozen_before_any_r2c_output": true,
+  "design_document": "R2C-DESIGN.md",
+  "origin": "paper/jcs/reviews/R3-REVISION-PLAN.md (items M3, M1)",
+  "committee": {
+    "n": 32,
+    "t": 22,
+    "domains": "4 x 8 by index mod 4"
+  },
+  "label": "EXACT_UNDER_DECLARED_SYNTHETIC_MODEL",
+  "repair_rule": "a rejected audit at time a with no pending repair triggers a resharing completing at a + D_r that makes every custodian individually up; domain states unchanged; D_r <= T",
+  "grid": {
+    "MTBF_days": [
+      7,
+      30,
+      90
+    ],
+    "MTTR_hours": [
+      1,
+      6,
+      24
+    ],
+    "audit_interval_hours": [
+      1,
+      6,
+      24
+    ],
+    "designs_s_q": [
+      [
+        8,
+        8
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        24,
+        20
+      ]
+    ],
+    "repair_delay_hours": [
+      0.25,
+      1
+    ],
+    "domain_shock": {
+      "MTBF_domain_days": [
+        90,
+        365
+      ],
+      "MTTR_domain_hours": 6
+    }
+  },
+  "metrics": [
+    "failure_with_repair: long-run Pr[dispute fails], u uniform on [0,T)",
+    "undetected_with_repair: long-run Pr[dispute fails and latest audit accepted]",
+    "repairs_per_day",
+    "audits_per_day",
+    "benign_fraction: Pr[reject and Z>=t]/Pr[reject]"
+  ],
+  "numerics": {
+    "stationary": "power iteration of the embedded audit-epoch chain, L1 tolerance 1e-13",
+    "integration": "24-point Gauss-Legendre per piece"
+  },
+  "design": {
+    "targets": [
+      0.001,
+      0.0001,
+      1e-05
+    ],
+    "T_bracket_hours": [
+      0.25,
+      720
+    ],
+    "bisection_iterations": 40,
+    "monotonicity_points": 25,
+    "rule": "largest T with failure_with_repair <= target, by bisection on log T over [max(0.25, D_r), 720] h; report audits and repairs per day at that T; no combined cost"
+  },
+  "simulation_check": {
+    "label": "SIMULATION_IMPLEMENTATION_CHECK",
+    "intervals": 200000,
+    "burn_in": 10000,
+    "seed": "int.from_bytes(SHA256('KEYSTONE-R2C|REPAIR|' + cell_id)[:8], 'big')",
+    "cells": [
+      {
+        "cell_id": "MTBF7d-MTTR24h-T6h-s8q8-Dr1h",
+        "mtbf_days": 7,
+        "mttr_hours": 24,
+        "T_hours": 6,
+        "design": [
+          8,
+          8
+        ],
+        "repair_delay_hours": 1,
+        "mtbf_domain_days": null
+      },
+      {
+        "cell_id": "MTBF7d-MTTR24h-T24h-s16q14-Dr1h",
+        "mtbf_days": 7,
+        "mttr_hours": 24,
+        "T_hours": 24,
+        "design": [
+          16,
+          14
+        ],
+        "repair_delay_hours": 1,
+        "mtbf_domain_days": null
+      },
+      {
+        "cell_id": "MTBF30d-MTTR6h-T6h-s16q14-Dr1h-domainMTBF90d",
+        "mtbf_days": 30,
+        "mttr_hours": 6,
+        "T_hours": 6,
+        "design": [
+          16,
+          14
+        ],
+        "repair_delay_hours": 1,
+        "mtbf_domain_days": 90,
+        "mttr_domain_hours": 6
+      }
+    ],
+    "quantities": [
+      "p_reject",
+      "failure_with_repair",
+      "undetected_with_repair"
+    ],
+    "criterion": "exact value inside the 99% Wilson interval; zero-event quantities reported as vacuous; 99% batch-means interval (100 batches) as a diagnostic"
+  },
+  "withholding": {
+    "model": "w selective custodians always answer audits and withhold the targeted dispute; the other n-w are each ready with probability v independently",
+    "w": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "v": [
+      0.9,
+      0.99,
+      0.999
+    ],
+    "designs_s_q": [
+      [
+        8,
+        8
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        24,
+        20
+      ]
+    ],
+    "failure_targets": [
+      0.5,
+      0.99
+    ],
+    "attribution_probabilities": [
+      0.5,
+      0.9,
+      1.0
+    ],
+    "stake_bound": "withholding by w custodians with stake S each is unprofitable when V < w S p_a; report S/V = 1/(w_min p_a)"
+  },
+  "outputs": "research-case/05-analysis/results/r2c/"
+}
